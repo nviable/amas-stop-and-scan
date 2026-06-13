@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "stopscan",
+  "name": "amas-stop-and-scan",
   "compatibility_date": "2026-06-01",
   // Static-assets Worker: serves the built Vite SPA from /dist.
   // No server-side script needed — this is an assets-only Worker.
