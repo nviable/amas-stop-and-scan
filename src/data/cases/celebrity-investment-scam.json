@@ -1,0 +1,158 @@
+{
+  "id": "celebrity-investment-scam",
+  "slug": "celebrity-investment-scam",
+  "title": "The Celebrity Investment Video",
+  "kind": "scam",
+  "difficulty": "intro",
+  "summary": "A famous tech entrepreneur appears to promote a limited-time AI investment platform. People say they're making thousands overnight. Spots are closing soon.",
+  "estMinutes": 8,
+  "post": {
+    "account": "Future Wealth AI",
+    "handle": "@futurewealth.ai_official",
+    "verified": false,
+    "timeAgo": "2h",
+    "avatarColor": "#22b8cf",
+    "body": "🚀 BREAKING: Tech billionaire reveals the AI platform banks don't want you to know about. Early users are making $5,000+ a day. Limited spots — closing tonight!",
+    "mediaCaption": "▶ Video: \"I'm giving back to the people\" — AI investment reveal",
+    "stat": { "likes": "48.2K", "comments": "3,914", "shares": "12.7K" },
+    "linkLabel": "future-wealth-ai-access.net/join",
+    "linkUrl": "#",
+    "highlights": [
+      "limited-time",
+      "guaranteed returns",
+      "everyone is joining",
+      "don't miss out",
+      "AI-powered profit system"
+    ]
+  },
+  "comments": [
+    { "name": "Dana R.", "text": "I made $4,800 in my first day!! Thank you 🙏", "suspicious": true },
+    { "name": "Mike_invests", "text": "Just joined, this is REAL. Spots almost gone!", "suspicious": true },
+    { "name": "Sarah", "text": "Withdrew already, life changing 💰💰", "suspicious": true },
+    { "name": "Tom89", "text": "Is this actually legit? Seems too good", "suspicious": false }
+  ],
+  "gutCheck": {
+    "reactionOptions": [
+      "This seems real",
+      "This seems suspicious",
+      "I'm not sure",
+      "I want to click",
+      "I want to send it to someone"
+    ],
+    "feelingOptions": [
+      "excited",
+      "anxious",
+      "curious",
+      "pressured",
+      "hopeful",
+      "skeptical"
+    ]
+  },
+  "stop": {
+    "message": "STOP is not about deciding if something is fake. It's about noticing what the content is doing to you before you act. You just named your gut reaction — that's your pre-commitment. We'll come back to it at the end."
+  },
+  "source": {
+    "message": "Who actually made this? Not who shared it — who created it? Let's trace it back.",
+    "findings": [
+      {
+        "icon": "calendar",
+        "label": "Account created 6 days ago",
+        "detail": "Brand-new accounts that push urgent money offers are a classic scam pattern."
+      },
+      {
+        "icon": "badge",
+        "label": "Name imitates a real brand",
+        "detail": "\"Future Wealth AI\" mimics legitimate fintech names but isn't an official, verified account."
+      },
+      {
+        "icon": "link",
+        "label": "Link goes to an unrelated domain",
+        "detail": "future-wealth-ai-access.net has no connection to the entrepreneur or any real company."
+      },
+      {
+        "icon": "chat",
+        "label": "Comments are repetitive and generic",
+        "detail": "Near-identical 'I made $X' comments are often automated to manufacture credibility."
+      }
+    ],
+    "question": {
+      "prompt": "Which source signal concerns you most?",
+      "multi": false,
+      "options": [
+        { "id": "age", "label": "Account age", "flag": true },
+        { "id": "link", "label": "Unofficial link", "flag": true },
+        { "id": "comments", "label": "Repetitive comments", "flag": true },
+        { "id": "announcement", "label": "No original announcement", "flag": true },
+        { "id": "all", "label": "All of the above", "flag": true }
+      ],
+      "insight": "If you cannot find a real, accountable origin, that absence is itself the manipulation. Unverifiable origin = unverified content."
+    }
+  },
+  "content": {
+    "message": "Now inspect the claim itself. What is this trying to make you feel or do? Notice the highlighted phrases.",
+    "question": {
+      "prompt": "What pressure signals do you see?",
+      "multi": true,
+      "options": [
+        { "id": "urgency", "label": "Urgency (\"closing tonight\")", "flag": true },
+        { "id": "authority", "label": "Authority mimicry (famous face)", "flag": true },
+        { "id": "promise", "label": "Unrealistic promise ($5,000/day)", "flag": true },
+        { "id": "social", "label": "Social proof (\"everyone is joining\")", "flag": true },
+        { "id": "financial", "label": "Financial pressure (\"limited spots\")", "flag": true }
+      ],
+      "insight": "A strong emotional reaction — excitement, urgency, fear of missing out — is a signal to slow down, not speed up. Manipulation targets feeling before reasoning."
+    }
+  },
+  "alignment": {
+    "message": "Real opportunities leave independent traces. Scam campaigns often leave warnings. Let's search beyond this single post.",
+    "results": [
+      {
+        "source": "Official company / entrepreneur page",
+        "headline": "No such investment platform announced",
+        "snippet": "Verified channels contain no mention of an 'AI investment platform' or giveaway.",
+        "signal": "absent"
+      },
+      {
+        "source": "Consumer protection agency",
+        "headline": "Warning: celebrity investment deepfake scams",
+        "snippet": "Reports of fabricated endorsement videos used to steal deposits.",
+        "signal": "warning"
+      },
+      {
+        "source": "Independent fact-check",
+        "headline": "Manipulated celebrity endorsement videos circulating",
+        "snippet": "Analysts confirm the audio and likeness were synthetically generated.",
+        "signal": "warning"
+      },
+      {
+        "source": "Unrelated blog",
+        "headline": "\"It totally works!\" (no evidence)",
+        "snippet": "An anonymous post claims success but links back to the same signup page.",
+        "signal": "unrelated"
+      }
+    ],
+    "question": {
+      "prompt": "What does the outside evidence suggest?",
+      "multi": false,
+      "options": [
+        { "id": "confirmed", "label": "The claim is independently confirmed" },
+        { "id": "notconfirmed", "label": "The claim is not confirmed", "flag": true },
+        { "id": "warnings", "label": "There are active scam warnings", "flag": true },
+        { "id": "more", "label": "More evidence is needed before acting", "flag": true }
+      ],
+      "insight": "If a claim exists only in one piece of content — and trusted, independent outlets either say nothing or post warnings — that isolation is a red flag."
+    }
+  },
+  "reflect": {
+    "message": "Return to your first reaction. What changed? Remember: \"I don't know yet\" is a complete, honest, and responsible answer. The goal isn't to win a fake-spotting game — it's to slow down when something wants you to rush.",
+    "nextActions": [
+      { "id": "donotclick", "label": "Do not click", "recommended": true },
+      { "id": "donotshare", "label": "Do not share", "recommended": true },
+      { "id": "verify", "label": "Verify through official channels", "recommended": true },
+      { "id": "report", "label": "Report the post" },
+      { "id": "wait", "label": "Wait — I'm not decided yet" }
+    ],
+    "recommendedOutcome": "Do not click. Do not share. Verify through official channels.",
+    "rewardMessage": "You slowed down when the post wanted speed. That is the habit."
+  }
+}
