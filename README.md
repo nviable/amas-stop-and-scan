@@ -65,5 +65,7 @@ directions.
 
 ## Deployment
 
-Builds to a static `/dist`. `public/_redirects` provides SPA routing fallback for
-Cloudflare Pages (or any static host).
+Builds to a static `/dist` and deploys as a Cloudflare static-assets Worker via
+`wrangler deploy`. SPA routing fallback is handled by the Worker's
+`not_found_handling: "single-page-application"` setting in `wrangler.jsonc`, so no
+`_redirects` file is needed.
