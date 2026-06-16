@@ -32,7 +32,7 @@ export default function CaseFile() {
     );
   }
 
-  if (started) return <LessonEngine data={data} />;
+  if (started) return <LessonEngine data={data} mode="practice" />;
 
   return (
     <div className="container-page py-12">
@@ -48,6 +48,10 @@ export default function CaseFile() {
           {data.summary}
         </p>
         <Amito state="stop" size="lg" float className="mx-auto mt-6" />
+        <p className="mx-auto mt-3 max-w-md text-sm text-ink/55">
+          Practice mode gives you fewer cues while you scan. If you get stuck,
+          use Show hint and Amito will add extra feedback at the end.
+        </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <button onClick={() => setStarted(true)} className="btn-primary">
             Begin this case →

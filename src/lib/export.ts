@@ -10,12 +10,26 @@ function fmtDate(iso: string) {
 
 export function entryToMarkdown(entry: ReflectionEntry): string {
   const lines: string[] = [];
+  const modeLabel =
+    entry.mode === "learn"
+      ? "Guided lesson"
+      : entry.mode === "practice"
+        ? "Practice case"
+        : "Reflection";
+  const hintsUsed = Object.entries(entry.hintsUsed ?? {})
+    .filter(([, used]) => used)
+    .map(([step]) => step);
+
   lines.push(`# My STOP&SCAN Reflection`);
   lines.push("");
   lines.push(`> A personal record of how my judgment changed as I checked the evidence.`);
   lines.push("");
   lines.push(`**Case:** ${entry.caseTitle}`);
+  lines.push(`**Experience:** ${modeLabel}`);
   lines.push(`**Date:** ${fmtDate(entry.createdAt)}`);
+  if (hintsUsed.length > 0) {
+    lines.push(`**Hints used:** ${hintsUsed.join(", ")}`);
+  }
   lines.push("");
   lines.push(`## What I felt first`);
   lines.push(`- My first reaction: ${entry.firstReaction || "—"}`);

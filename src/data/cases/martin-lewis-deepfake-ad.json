@@ -1,0 +1,158 @@
+{
+  "id": "martin-lewis-deepfake-ad",
+  "slug": "martin-lewis-deepfake-ad",
+  "title": "The Deepfake Money Expert Ad",
+  "kind": "scam",
+  "difficulty": "core",
+  "summary": "A sponsored social ad uses a familiar money expert and a tech billionaire to promote a bitcoin platform. A caller says profitable months are coming and asks for fast deposits.",
+  "estMinutes": 9,
+  "post": {
+    "account": "Smart Money Insider",
+    "handle": "@smartmoney_insider",
+    "verified": false,
+    "timeAgo": "Sponsored",
+    "avatarColor": "#7950f2",
+    "body": "Sponsored: Martin Lewis and Elon Musk finally reveal a bitcoin platform for ordinary people. Earn extra money before Christmas. Leave your details and an adviser calls back in minutes - profitable months are coming, so invest quickly.",
+    "mediaCaption": "Video: \"The banks do not want people to know about this\"",
+    "stat": { "likes": "32.7K", "comments": "2,806", "shares": "8,119" },
+    "linkLabel": "smart-bitcoin-access.net/start",
+    "linkUrl": "#",
+    "highlights": [
+      "Sponsored",
+      "finally reveal",
+      "earn extra money before Christmas",
+      "calls back in minutes",
+      "profitable months",
+      "invest quickly"
+    ]
+  },
+  "comments": [
+    { "name": "ClareP", "text": "My first withdrawal worked instantly. This is the one.", "suspicious": true },
+    { "name": "MoneyWinNow", "text": "I got called after 5 minutes and already doubled it.", "suspicious": true },
+    { "name": "Aaron", "text": "Why is this not on Martin Lewis's own site?", "suspicious": false },
+    { "name": "FastReturns", "text": "Do it today. The adviser told me the window closes soon.", "suspicious": true }
+  ],
+  "gutCheck": {
+    "reactionOptions": [
+      "This seems real",
+      "This seems suspicious",
+      "I'm not sure",
+      "I want to click",
+      "I want to ask someone first"
+    ],
+    "feelingOptions": [
+      "hopeful",
+      "pressured",
+      "curious",
+      "anxious",
+      "skeptical",
+      "excited"
+    ]
+  },
+  "stop": {
+    "message": "STOP is especially important when a familiar face appears to remove doubt. Capture your first pull before the ad, comments, or caller turn that feeling into action."
+  },
+  "source": {
+    "message": "Who is behind the offer? A recognizable face in a video is not the same as an accountable source.",
+    "findings": [
+      {
+        "icon": "badge",
+        "label": "Celebrity endorsement is not on official channels",
+        "detail": "Martin Lewis has repeatedly warned that scammers use his face in fake investment adverts."
+      },
+      {
+        "icon": "link",
+        "label": "Signup link is an unrelated domain",
+        "detail": "The link is not a verified page for the named expert, the billionaire, or a regulated investment firm."
+      },
+      {
+        "icon": "chat",
+        "label": "Private caller takes over quickly",
+        "detail": "The BBC story describes victims being called within minutes and moved into one-on-one pressure."
+      },
+      {
+        "icon": "calendar",
+        "label": "Ad creates a short window",
+        "detail": "Fast callbacks and claims that profitable months are coming are designed to reduce time for independent checks."
+      }
+    ],
+    "question": {
+      "prompt": "Which source signal should you check first?",
+      "multi": false,
+      "options": [
+        { "id": "official-channels", "label": "Whether the expert endorsed it on official channels", "flag": true },
+        { "id": "domain", "label": "Whether the link belongs to a real regulated firm", "flag": true },
+        { "id": "caller", "label": "Who the caller really works for", "flag": true },
+        { "id": "comments", "label": "Whether the testimonials are real people", "flag": true }
+      ],
+      "insight": "A scam can borrow trust from a real person while hiding the true operator. Trace the offer to an official, accountable source before giving details or money."
+    }
+  },
+  "content": {
+    "message": "Now scan the message itself. What is it trying to make you feel, believe, or do before you verify?",
+    "question": {
+      "prompt": "What pressure signals do you see?",
+      "multi": true,
+      "options": [
+        { "id": "authority", "label": "Borrowed authority from famous people", "flag": true },
+        { "id": "urgency", "label": "Urgency around profitable months and fast action", "flag": true },
+        { "id": "easy-money", "label": "Easy-money promise without risk detail", "flag": true },
+        { "id": "callback", "label": "Moving from public ad to private phone call", "flag": true },
+        { "id": "social-proof", "label": "Comments that make success look common", "flag": true }
+      ],
+      "insight": "The ad does not need you to understand the investment. It needs you to feel trust, hope, and urgency long enough to hand over contact details and deposits."
+    }
+  },
+  "alignment": {
+    "message": "Real financial opportunities leave a trail you can verify outside the ad and outside the caller's script.",
+    "results": [
+      {
+        "source": "BBC News",
+        "headline": "Victim lost GBP 76,000 after Martin Lewis deepfake advert",
+        "snippet": "The report describes a fake Facebook advert using Martin Lewis and Elon Musk to promote a non-existent bitcoin investment scheme.",
+        "signal": "warning"
+      },
+      {
+        "source": "Official consumer advice",
+        "headline": "Martin Lewis warns he does not do investment adverts",
+        "snippet": "Official guidance says celebrity investment adverts using his name or face should be treated as scams.",
+        "signal": "warning"
+      },
+      {
+        "source": "Company / regulator search",
+        "headline": "No verified firm behind this domain",
+        "snippet": "The advertised domain does not connect to an accountable, regulated investment provider.",
+        "signal": "absent"
+      },
+      {
+        "source": "Platform announcement",
+        "headline": "Meta says it is cracking down on celebrity scam ads",
+        "snippet": "The platform announced facial-recognition checks because scammers repeatedly abuse public figures in adverts.",
+        "signal": "warning"
+      }
+    ],
+    "question": {
+      "prompt": "What does the outside evidence suggest?",
+      "multi": false,
+      "options": [
+        { "id": "confirmed", "label": "The investment offer is independently confirmed" },
+        { "id": "scam-pattern", "label": "This matches a known celebrity deepfake scam pattern", "flag": true },
+        { "id": "no-source", "label": "The real source of the offer is not accountable", "flag": true },
+        { "id": "more-checks", "label": "More verification is needed before acting", "flag": true }
+      ],
+      "insight": "When independent checks show warnings, missing official endorsement, and an unaccountable domain, the safest answer is not to click, pay, or keep talking to the caller."
+    }
+  },
+  "reflect": {
+    "message": "Return to the first feeling the ad created. Did familiarity or urgency change how risky the offer seemed?",
+    "nextActions": [
+      { "id": "do-not-click", "label": "Do not click or submit details", "recommended": true },
+      { "id": "hang-up", "label": "End contact with the caller", "recommended": true },
+      { "id": "official-check", "label": "Check official consumer or regulator sources", "recommended": true },
+      { "id": "warn-someone", "label": "Warn someone who might trust the advert" },
+      { "id": "report", "label": "Report the advert to the platform" }
+    ],
+    "recommendedOutcome": "Do not click. End contact. Verify through official consumer and regulator channels.",
+    "rewardMessage": "You separated a trusted face from an untrusted offer. That is the habit."
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "id": "minab-ai-fact-check",
+  "slug": "minab-ai-fact-check",
+  "title": "The AI Fact-Check That Was Wrong",
+  "kind": "authentic",
+  "difficulty": "advanced",
+  "summary": "A viral post says an AI assistant proved a cemetery image from Minab was old disaster footage from another country. Independent checks tell a different story.",
+  "estMinutes": 10,
+  "post": {
+    "account": "Conflict Watch Daily",
+    "handle": "@conflictwatch_daily",
+    "verified": false,
+    "timeAgo": "41m",
+    "avatarColor": "#e8590c",
+    "body": "AI check says this cemetery image is old disaster footage, not Minab. The model found sources placing it in Turkey and Indonesia. Share this proof before fake atrocity claims spread.",
+    "mediaCaption": "Image: rows of new graves described as being in Minab",
+    "stat": { "likes": "18.9K", "comments": "1,204", "shares": "6,447" },
+    "linkLabel": "threadreader.example/minab-ai-check",
+    "linkUrl": "#",
+    "highlights": [
+      "AI check says",
+      "old disaster footage",
+      "found sources",
+      "Share this proof",
+      "fake atrocity claims"
+    ]
+  },
+  "comments": [
+    { "name": "ModelSaysNo", "text": "Grok already checked it. Case closed.", "suspicious": true },
+    { "name": "Nadia", "text": "Can someone link the original photo or geolocation work?", "suspicious": false },
+    { "name": "SourcePlease", "text": "The AI citations do not seem to include this image.", "suspicious": false },
+    { "name": "FastDebunk", "text": "If AI says it is fake, stop spreading it.", "suspicious": true }
+  ],
+  "gutCheck": {
+    "reactionOptions": [
+      "The AI check seems convincing",
+      "The post seems suspicious",
+      "I'm not sure",
+      "I want to share the debunk",
+      "I want to check independent reporting"
+    ],
+    "feelingOptions": [
+      "confused",
+      "skeptical",
+      "angry",
+      "uncertain",
+      "concerned",
+      "pressured"
+    ]
+  },
+  "stop": {
+    "message": "STOP matters when a confident debunk feels like relief. In high-stakes news, being too quick to call something fake can cause harm too."
+  },
+  "source": {
+    "message": "Who is the source of the verification claim? An AI answer is not the same thing as a traceable origin.",
+    "findings": [
+      {
+        "icon": "badge",
+        "label": "AI assistant is a secondary source",
+        "detail": "The model did not create the image or independently document the scene; it generated an answer about it."
+      },
+      {
+        "icon": "link",
+        "label": "Citations do not resolve cleanly",
+        "detail": "The Guardian reported that the confident AI answers pointed to dead ends or sources that did not contain the image."
+      },
+      {
+        "icon": "chat",
+        "label": "Different tools gave different origins",
+        "detail": "One model reportedly placed the image in Turkey, while another placed it in Indonesia."
+      },
+      {
+        "icon": "calendar",
+        "label": "Conflict context raises the stakes",
+        "detail": "Claims about atrocities need careful verification because both false images and false dismissals can spread quickly."
+      }
+    ],
+    "question": {
+      "prompt": "Which source signal matters most?",
+      "multi": false,
+      "options": [
+        { "id": "ai-secondary", "label": "The AI assistant is not the original source", "flag": true },
+        { "id": "dead-citations", "label": "The cited sources do not prove the claim", "flag": true },
+        { "id": "conflicting-ai", "label": "Different AI tools gave conflicting origins", "flag": true },
+        { "id": "poster", "label": "The posting account is not enough by itself", "flag": true }
+      ],
+      "insight": "A confident AI answer can sound like verification while still being disconnected from the actual evidence. Source means traceable origin, not polished certainty."
+    }
+  },
+  "content": {
+    "message": "Now inspect the claim. What is the post asking you to accept or do because an AI answer sounded certain?",
+    "question": {
+      "prompt": "What content signals need caution?",
+      "multi": true,
+      "options": [
+        { "id": "certainty", "label": "Overconfident wording from the AI check", "flag": true },
+        { "id": "share-fast", "label": "Instruction to share the debunk quickly", "flag": true },
+        { "id": "single-tool", "label": "Treating one tool output as proof", "flag": true },
+        { "id": "harm", "label": "Claim could dismiss real victims if wrong", "flag": true },
+        { "id": "missing-origin", "label": "No clear original image source in the post", "flag": true }
+      ],
+      "insight": "STOP&SCAN is not only about catching fakes. It is also about resisting confident claims that real evidence is fake before the evidence has been independently checked."
+    }
+  },
+  "alignment": {
+    "message": "Alignment asks whether the claim fits with independent evidence, not whether one tool sounded confident.",
+    "results": [
+      {
+        "source": "The Guardian",
+        "headline": "Researchers found the Minab cemetery image was authentic",
+        "snippet": "The report says researchers cross-referenced the photo with satellite images, other photos, and video footage from the same site.",
+        "signal": "confirm"
+      },
+      {
+        "source": "Satellite imagery",
+        "headline": "Location checks matched Minab",
+        "snippet": "Independent geolocation and satellite comparison supported the image's connection to Minab rather than Turkey or Indonesia.",
+        "signal": "confirm"
+      },
+      {
+        "source": "AI answer trail",
+        "headline": "Model citations led to dead ends",
+        "snippet": "The cited materials either did not contain the image or did not exist as described.",
+        "signal": "warning"
+      },
+      {
+        "source": "Follow-up prompts",
+        "headline": "Model revised to new wrong explanations",
+        "snippet": "After correction, the AI reportedly offered other origins instead of reliably grounding the image.",
+        "signal": "warning"
+      }
+    ],
+    "question": {
+      "prompt": "What does the outside evidence suggest?",
+      "multi": false,
+      "options": [
+        { "id": "ai-proved-fake", "label": "The AI answer proves the image is fake" },
+        { "id": "authentic-supported", "label": "Independent evidence supports the image as authentic", "flag": true },
+        { "id": "ai-not-arbiter", "label": "AI checks should not be treated as final proof", "flag": true },
+        { "id": "verify-more", "label": "More careful verification is needed before resharing", "flag": true }
+      ],
+      "insight": "The strongest evidence is not the AI's confidence. It is the independent alignment across geolocation, satellite imagery, related photos, video, and accountable reporting."
+    }
+  },
+  "reflect": {
+    "message": "Return to your first reaction. Did the AI's confidence make the debunk feel safer than it was?",
+    "nextActions": [
+      { "id": "do-not-share-ai", "label": "Do not share the AI verdict as proof", "recommended": true },
+      { "id": "check-reporting", "label": "Check accountable reporting and verification work", "recommended": true },
+      { "id": "look-for-origin", "label": "Look for original source, geolocation, and corroborating media", "recommended": true },
+      { "id": "avoid-denial", "label": "Avoid dismissing harm without evidence", "recommended": true },
+      { "id": "wait", "label": "Wait - I am not ready to decide yet" }
+    ],
+    "recommendedOutcome": "Do not share the AI verdict as proof. Check accountable reporting, origin, geolocation, and corroborating media.",
+    "rewardMessage": "You did not outsource judgment to a confident machine. That is the habit."
+  }
+}

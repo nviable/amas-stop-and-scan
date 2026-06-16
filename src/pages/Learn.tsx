@@ -11,7 +11,7 @@ export default function Learn() {
 
   if (!data) return null;
 
-  if (started) return <LessonEngine data={data} />;
+  if (started) return <LessonEngine data={data} mode="learn" />;
 
   return (
     <div className="container-page py-12">
