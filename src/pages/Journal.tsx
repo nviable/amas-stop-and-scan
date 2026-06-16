@@ -17,6 +17,16 @@ function fmt(iso: string) {
 }
 
 function EntryView({ entry }: { entry: ReflectionEntry }) {
+  const modeLabel =
+    entry.mode === "learn"
+      ? "Guided lesson"
+      : entry.mode === "practice"
+        ? "Practice case"
+        : "Reflection";
+  const hintsUsed = Object.entries(entry.hintsUsed ?? {})
+    .filter(([, used]) => used)
+    .map(([step]) => step);
+
   return (
     <div className="container-page py-12">
       <div className="mx-auto max-w-2xl">
@@ -42,8 +52,13 @@ function EntryView({ entry }: { entry: ReflectionEntry }) {
               evidence.
             </p>
             <p className="mt-2 text-sm text-ink/50">
-              {entry.caseTitle} · {fmt(entry.createdAt)}
+              {entry.caseTitle} · {modeLabel} · {fmt(entry.createdAt)}
             </p>
+            {hintsUsed.length > 0 && (
+              <p className="mt-1 text-sm font-semibold text-alignment">
+                Hints used: {hintsUsed.join(", ")}
+              </p>
+            )}
           </header>
 
           <Section color="#ef4a6b" tab="What I felt first">
@@ -189,6 +204,13 @@ export default function Journal() {
               <h3 className="mt-1 font-display text-lg font-extrabold">
                 {e.caseTitle}
               </h3>
+              <p className="mt-1 text-xs font-bold uppercase tracking-wide text-ink/40">
+                {e.mode === "learn"
+                  ? "Guided lesson"
+                  : e.mode === "practice"
+                    ? "Practice case"
+                    : "Reflection"}
+              </p>
               <p className="mt-1 flex-1 text-sm text-ink/60">
                 Felt <strong>{e.firstFeeling || "—"}</strong> →{" "}
                 {e.nextActions.length

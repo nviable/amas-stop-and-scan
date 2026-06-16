@@ -13,9 +13,9 @@ export default function Practice() {
       <div className="max-w-2xl">
         <h1 className="font-display text-4xl font-extrabold">Case Files</h1>
         <p className="mt-3 text-lg text-ink/70">
-          Practice STOP&SCAN on example scenarios. Each case ends with a personal
-          reflection you can save and export. The goal isn't to "win" — it's to
-          notice when something is rushing you.
+          Practice STOP&SCAN on example scenarios with fewer cues than the
+          guided lesson. You can ask for hints when you need them, and each case
+          ends with a personal reflection you can save and export.
         </p>
       </div>
 

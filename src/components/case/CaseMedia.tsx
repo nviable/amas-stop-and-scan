@@ -96,8 +96,10 @@ export function PostCard({
 
 export function CommentList({
   comments,
+  revealSignals = true,
 }: {
   comments: CaseFile["comments"];
+  revealSignals?: boolean;
 }) {
   return (
     <div className="space-y-2">
@@ -105,13 +107,15 @@ export function CommentList({
         <div
           key={i}
           className={`rounded-2xl border p-3 text-sm ${
-            c.suspicious ? "border-stop/30 bg-stop/5" : "border-ink/10 bg-white"
+            revealSignals && c.suspicious
+              ? "border-stop/30 bg-stop/5"
+              : "border-ink/10 bg-white"
           }`}
         >
           <span className="font-bold">{c.name}</span>{" "}
           <span className="text-ink/70">{c.text}</span>
-          {c.suspicious && (
-            <span className="ml-1 text-xs font-bold text-stop">⚑ generic</span>
+          {revealSignals && c.suspicious && (
+            <span className="ml-1 text-xs font-bold text-stop">⚑ signal</span>
           )}
         </div>
       ))}
@@ -126,7 +130,13 @@ const FINDING_ICONS: Record<string, string> = {
   chat: "💬",
 };
 
-export function SourceFindings({ findings }: { findings: SourceFinding[] }) {
+export function SourceFindings({
+  findings,
+  showDetails = true,
+}: {
+  findings: SourceFinding[];
+  showDetails?: boolean;
+}) {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {findings.map((f, i) => (
@@ -135,7 +145,13 @@ export function SourceFindings({ findings }: { findings: SourceFinding[] }) {
             <span className="text-xl">{FINDING_ICONS[f.icon] ?? "🔍"}</span>
             {f.label}
           </div>
-          <p className="mt-1.5 text-sm text-ink/70">{f.detail}</p>
+          {showDetails ? (
+            <p className="mt-1.5 text-sm text-ink/70">{f.detail}</p>
+          ) : (
+            <p className="mt-1.5 text-xs font-semibold uppercase tracking-wide text-ink/40">
+              Details available with a hint
+            </p>
+          )}
         </div>
       ))}
     </div>
@@ -149,7 +165,13 @@ const SIGNAL_STYLE: Record<SearchResult["signal"], { ring: string; tag: string; 
   confirm: { ring: "border-content/40 bg-content/5", tag: "text-content", label: "✔ Confirmed" },
 };
 
-export function SearchResults({ results }: { results: SearchResult[] }) {
+export function SearchResults({
+  results,
+  showSignals = true,
+}: {
+  results: SearchResult[];
+  showSignals?: boolean;
+}) {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {results.map((r, i) => {
@@ -164,7 +186,9 @@ export function SearchResults({ results }: { results: SearchResult[] }) {
               <span className="text-xs font-bold uppercase tracking-wide text-ink/50">
                 {r.source}
               </span>
-              <span className={`text-xs font-bold ${s.tag}`}>{s.label}</span>
+              {showSignals && (
+                <span className={`text-xs font-bold ${s.tag}`}>{s.label}</span>
+              )}
             </div>
             <div className="mt-1 font-bold text-source">{r.headline}</div>
             <p className="mt-1 text-sm text-ink/70">{r.snippet}</p>

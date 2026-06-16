@@ -12,6 +12,7 @@ export interface ReflectionEntry {
   id: string;
   caseId: string;
   caseTitle: string;
+  mode?: "learn" | "practice";
   createdAt: string;
   updatedAt: string;
   completed: boolean;
@@ -26,6 +27,7 @@ export interface ReflectionEntry {
   finalThought: string;
   changedBy: string;
   nextActions: string[];
+  hintsUsed?: Partial<Record<"source" | "content" | "alignment", boolean>>;
 }
 
 interface JournalContextValue {
