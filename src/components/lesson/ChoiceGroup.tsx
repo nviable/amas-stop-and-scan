@@ -1,5 +1,7 @@
 import type { ChoiceQuestion } from "../../lib/caseTypes";
 
+type ChoiceOption = ChoiceQuestion["options"][number];
+
 interface ChoiceGroupProps {
   question: ChoiceQuestion;
   selected: string[];
@@ -8,7 +10,7 @@ interface ChoiceGroupProps {
   includeUnsure?: boolean;
 }
 
-const UNSURE_OPTION = {
+const UNSURE_OPTION: ChoiceOption = {
   id: "not-sure-yet",
   label: "I need more evidence before deciding",
 };
@@ -37,7 +39,7 @@ export default function ChoiceGroup({
     }
   };
 
-  const options = includeUnsure
+  const options: ChoiceOption[] = includeUnsure
     ? [...question.options, UNSURE_OPTION]
     : question.options;
 
@@ -47,7 +49,7 @@ export default function ChoiceGroup({
       <div className="grid gap-2.5 sm:grid-cols-2">
         {options.map((opt) => {
           const isSel = selected.includes(opt.id);
-          const showFlag = revealed && "flag" in opt && opt.flag;
+          const showFlag = Boolean(revealed && opt.flag);
           return (
             <button
               key={opt.id}
