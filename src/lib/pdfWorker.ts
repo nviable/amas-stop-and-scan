@@ -1,4 +1,4 @@
 import { pdfjs } from "react-pdf";
+import workerSrc from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 
-/** Served from public/ — copied on install/build to match react-pdf's pdfjs-dist version */
-pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
