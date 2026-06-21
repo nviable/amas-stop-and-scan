@@ -44,9 +44,10 @@ src/
     cases/           Case files as JSON (financial scam is the first)
     resources.ts     Per-step rationale (seeded from the framework paper)
   lib/               framework constants, types, export helpers
-  pages/             Home, Learn, Practice, CaseFile, Resources, Journal, Project, MeetAmito
+  pages/             Home, Learn, Practice, CaseFile, Resources, Journal, Project, MeetAmito, Comics
 public/
   amito/             Amito pose art (placeholder renders — swap with finals)
+  comics/            Comic strip PDFs, cover art, and thumbnails
 ```
 
 ## Amito assets
@@ -62,6 +63,26 @@ Add a JSON file under `src/data/cases/` matching the `CaseFile` type in
 engine renders any conforming case. The schema already supports `authentic` and
 `decontextualized` cases so the framework can train calibration in both
 directions.
+
+## Adding a comic strip
+
+1. Place the PDF in `public/comics/` (e.g. `public/comics/my-strip.pdf`).
+2. Add an optional thumbnail at `public/comics/thumbnails/my-strip.png` (first
+   page export works well; the gallery falls back to this path by slug).
+3. Register the strip in `src/data/comics.ts`:
+
+```ts
+{
+  id: "my-strip",
+  slug: "my-strip",
+  title: "My Strip Title",
+  summary: "One-line description for the gallery card.",
+  pdfPath: "/comics/my-strip.pdf",
+  thumbnail: "/comics/thumbnails/my-strip.png", // optional
+}
+```
+
+The gallery at `/comics` and reader at `/comics/:slug` update automatically.
 
 ## Deployment
 

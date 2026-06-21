@@ -118,6 +118,35 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Comics */}
+      <section className="container-page py-14">
+        <div className="card overflow-hidden p-0 md:grid md:grid-cols-2">
+          <div className="relative min-h-[220px] overflow-hidden bg-ink md:min-h-[320px]">
+            <img
+              src="/comics/stop-and-scan-cover.png"
+              alt="STOP & SCAN! Real or AI? — comic cover art showing a person overwhelmed by sensational headlines on their phone"
+              className="absolute inset-0 h-full w-[145%] max-w-none object-cover object-[18%_top] sm:w-[130%] md:w-[155%] md:object-[12%_top]"
+            />
+          </div>
+          <div className="flex flex-col justify-center p-8">
+            <span className="chip w-fit border-ink/15 bg-cream text-ink/70">
+              Supplementary literacy
+            </span>
+            <h2 className="mt-3 font-display text-3xl font-extrabold">
+              Read it as a comic strip
+            </h2>
+            <p className="mt-3 text-ink/70">
+              Visual stories that complement the framework — panel by panel
+              explorations of real-or-AI judgment, developed with cartoonist and
+              educator Julian Lawrence and his students at Teesside University.
+            </p>
+            <Link to="/comics" className="btn-primary mt-6 w-fit">
+              Browse comics →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Thesis band */}
       <section className="container-page pb-6">
         <div className="card bg-ink text-white">

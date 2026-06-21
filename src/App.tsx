@@ -9,6 +9,8 @@ import ResourceStep from "./pages/ResourceStep";
 import Journal from "./pages/Journal";
 import Project from "./pages/Project";
 import MeetAmito from "./pages/MeetAmito";
+import Comics from "./pages/Comics";
+import ComicReader from "./pages/ComicReader";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -25,6 +27,8 @@ export default function App() {
         <Route path="journal/:id" element={<Journal />} />
         <Route path="project" element={<Project />} />
         <Route path="amito" element={<MeetAmito />} />
+        <Route path="comics" element={<Comics />} />
+        <Route path="comics/:slug" element={<ComicReader />} />
         <Route path="404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Route>

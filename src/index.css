@@ -50,6 +50,10 @@ body {
   .option-selected {
     @apply border-alignment bg-alignment/15;
   }
+
+  .reader-btn {
+    @apply inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-bold text-white transition-colors hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-40 sm:text-sm;
+  }
 }
 
 /* Print styles for journal export */
