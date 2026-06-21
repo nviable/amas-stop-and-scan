@@ -4,8 +4,10 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "prepare-pdf-worker": "cp node_modules/react-pdf/node_modules/pdfjs-dist/build/pdf.worker.min.mjs public/pdf.worker.min.mjs",
+    "postinstall": "npm run prepare-pdf-worker",
+    "dev": "npm run prepare-pdf-worker && vite",
+    "build": "npm run prepare-pdf-worker && tsc -b && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
     "deploy": "npm run build && wrangler deploy",
