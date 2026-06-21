@@ -19,6 +19,7 @@ export default function Footer() {
             <li><Link className="hover:text-ink" to="/learn">Learn STOP&SCAN</Link></li>
             <li><Link className="hover:text-ink" to="/practice">Practice with Case Files</Link></li>
             <li><Link className="hover:text-ink" to="/resources">Resource hub</Link></li>
+            <li><Link className="hover:text-ink" to="/comics">Comics</Link></li>
             <li><Link className="hover:text-ink" to="/journal">My Journal</Link></li>
           </ul>
         </div>
