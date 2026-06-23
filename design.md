@@ -1,11 +1,12 @@
 ---
 name: STOP&SCAN Colors
 colors:
-  primary: "#82e896"
+  primary: "#2665fd"
   secondary: "#f3a530"
-  surface: "#0b1326"
-  on-surface: "#dae2fd"
+  surface: "#F1F5F9"
+  on-surface: "#0F172A"
   error: "#ffb4ab"
+  success: "#82e896"
   pasten-green: "#82e896
   turqoise: "#6ae4e7"
   lavender: "#ea80dc"
@@ -19,7 +20,7 @@ typography:
   heading-md:
     fontFamily: Outfit
     fontSize: 32px
-    fontWeight: 800
+    fontWeight: 600
 rounded:
   md: 8px
   sm: 4px
