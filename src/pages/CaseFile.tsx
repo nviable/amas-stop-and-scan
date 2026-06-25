@@ -13,24 +13,48 @@ const KIND_LABEL: Record<string, string> = {
   decontextualized: "Decontextualized footage",
 };
 
+const KIND_STYLE: Record<string, { icon: string; className: string }> = {
+  scam: {
+    icon: "account_balance_wallet",
+    className: "border-stop-red/20 bg-stop-red/10 text-stop-red",
+  },
+  authentic: {
+    icon: "fact_check",
+    className: "border-content-green/20 bg-content-green/10 text-content-green",
+  },
+  decontextualized: {
+    icon: "content_cut",
+    className: "border-reflect-orange/20 bg-reflect-orange/10 text-reflect-orange",
+  },
+};
+
+const DIFFICULTY_STYLE: Record<string, string> = {
+  intro: "border-content-green/20 bg-content-green/10 text-content-green",
+  core: "border-welcome-blue/20 bg-welcome-blue/10 text-welcome-blue",
+  advanced: "border-reflect-orange/20 bg-reflect-orange/10 text-reflect-orange",
+};
+
+// The framework is reasoning-based, not artifact-spotting: these mirror the
+// transferable STOP&SCAN habits the case exercises, so they apply equally to
+// scams, authentic content, and decontextualized footage.
 const PREVIEW_SKILLS = [
   {
-    icon: "psychology",
-    iconClass: "bg-lilac-accent/20 text-lilac-accent",
-    title: "Identify Deepfakes",
-    body: "Learn to spot visual and auditory inconsistencies in AI-generated videos.",
-  },
-  {
-    icon: "security",
-    iconClass: "bg-content-green/20 text-content-green",
-    title: "Urgency Tactics",
-    body: "Deconstruct how scammers use time pressure to bypass critical thinking.",
+    icon: "pan_tool",
+    iconClass: "bg-stop-red/15 text-stop-red",
+    title: "Pause before reacting",
+    body: "Catch your gut reaction and name the emotion a post is trying to trigger before you act.",
   },
   {
     icon: "travel_explore",
-    iconClass: "bg-welcome-blue/20 text-welcome-blue",
-    title: "Source Verification",
-    body: "Practice looking beyond the profile to find the true origin of a post.",
+    iconClass: "bg-source-cyan/15 text-source-cyan",
+    title: "Trace the real source",
+    body: "Look past whoever shared it to who actually created it — and whether that origin is accountable.",
+  },
+  {
+    icon: "hub",
+    iconClass: "bg-lilac-accent/20 text-lilac-accent",
+    title: "Cross-check the story",
+    body: "Decide what independent sources actually confirm before you trust, share, or dismiss.",
   },
 ];
 
@@ -60,11 +84,22 @@ export default function CaseFile() {
         <div className="grid grid-cols-1 items-center gap-xxl lg:grid-cols-12">
           <div className="flex flex-col items-start lg:col-span-6">
             <div className="mb-lg flex flex-wrap gap-sm">
-              <span className="flex items-center gap-xs rounded-full border border-stop-red/20 bg-stop-red/10 px-md py-xs font-label-md text-stop-red">
-                <Icon name="account_balance_wallet" className="text-[14px]" />
+              <span
+                className={`flex items-center gap-xs rounded-full border px-md py-xs font-label-md ${
+                  KIND_STYLE[data.kind]?.className ?? KIND_STYLE.scam.className
+                }`}
+              >
+                <Icon
+                  name={KIND_STYLE[data.kind]?.icon ?? KIND_STYLE.scam.icon}
+                  className="text-[14px]"
+                />
                 {KIND_LABEL[data.kind] ?? data.kind}
               </span>
-              <span className="flex items-center gap-xs rounded-full border border-welcome-blue/20 bg-welcome-blue/10 px-md py-xs font-label-md text-welcome-blue">
+              <span
+                className={`flex items-center gap-xs rounded-full border px-md py-xs font-label-md uppercase ${
+                  DIFFICULTY_STYLE[data.difficulty] ?? DIFFICULTY_STYLE.intro
+                }`}
+              >
                 <Icon name="school" className="text-[14px]" />
                 {data.difficulty}
               </span>
@@ -118,7 +153,11 @@ export default function CaseFile() {
           </div>
         </div>
 
-        <section className="mt-xxl grid grid-cols-1 gap-lg md:grid-cols-3">
+        <section className="mt-xxl">
+          <h2 className="mb-lg font-display text-headline-md text-on-surface">
+            The habits you&apos;ll practice
+          </h2>
+          <div className="grid grid-cols-1 gap-lg md:grid-cols-3">
           {PREVIEW_SKILLS.map((skill) => (
             <div
               key={skill.title}
@@ -131,6 +170,7 @@ export default function CaseFile() {
               <p className="text-body-md text-on-surface-variant">{skill.body}</p>
             </div>
           ))}
+          </div>
         </section>
       </div>
     </div>
