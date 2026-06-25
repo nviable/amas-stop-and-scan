@@ -51,7 +51,7 @@ Every page shares a sticky header and footer via `Layout`.
 
 ### Guided lesson (LessonEngine, `mode="learn"`)
 
-Five sequential screens matching the STOP&SCAN steps. Progress bar at top.
+Five sequential screens matching the STOP&SCAN steps. Progress bar at top. The post being evaluated stays pinned in a sticky left column through every step, with Amito's guidance and the interactive controls consistently in the right column.
 
 | Step | Screen content | User interactions |
 |------|----------------|-------------------|
