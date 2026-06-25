@@ -1,7 +1,8 @@
 import Icon from "../components/ui/Icon";
 import AmitoSpotlight from "../components/AmitoSpotlight";
 import { CtaBanner, HeroBadge } from "../components/ui/PageSections";
-import { AMITO_IMAGES, PROJECT_TEAM } from "../lib/assets";
+import { PROJECT_MEMBERS } from "../data/projectMembers";
+import { AMITO_IMAGES } from "../lib/assets";
 
 const DIFFERENTIATORS = [
   {
@@ -15,24 +16,6 @@ const DIFFERENTIATORS = [
     iconClass: "bg-content-green/10 text-content-green",
     title: "Trust Calibration",
     body: "Helping you decide how much weight to give to a specific piece of media.",
-  },
-] as const;
-
-const PROJECT_MEMBERS = [
-  {
-    name: "Fatma Aksu",
-    role: "PhD Candidate in University of Bologna Department of Psychology",
-    photo: PROJECT_TEAM.fatmaAksu,
-  },
-  {
-    name: "Saniat Sohrawardi (John)",
-    role: "Postdoc, DeFake Project Lead at Rochester Institute of Technology",
-    photo: PROJECT_TEAM.saniatSohrawardi,
-  },
-  {
-    name: "Emanuel Lukawiecki",
-    role: "PhD Student, Carleton University",
-    photo: PROJECT_TEAM.emanuelLukawiecki,
   },
 ] as const;
 
@@ -127,6 +110,26 @@ export default function Project() {
                   </div>
                   <h4 className="font-display text-headline-md">{member.name}</h4>
                   <p className="mt-1 text-body-sm opacity-70">{member.role}</p>
+                  <div className="mt-md flex justify-center gap-md">
+                    <a
+                      href={member.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-on-primary/70 transition-colors hover:text-on-primary"
+                      aria-label={`${member.name} website`}
+                    >
+                      <Icon name="language" className="text-xl" />
+                    </a>
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-on-primary/70 transition-colors hover:text-on-primary"
+                      aria-label={`${member.name} on LinkedIn`}
+                    >
+                      <Icon name="linkedin" className="text-xl" />
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>

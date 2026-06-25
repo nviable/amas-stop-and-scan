@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Icon from "./Icon";
+import { PROJECT_MEMBERS } from "../../data/projectMembers";
 import { LOGO_URL } from "../../lib/assets";
 
 export const NAV_LINKS = [
@@ -88,14 +89,34 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-md border-t border-white/10 pt-xl md:flex-row">
-          <p className="font-label-md text-outline-variant">
-            © {new Date().getFullYear()} STOP&SCAN Sensemaking Labs. Educational use.
+        <div className="flex flex-col items-center justify-between gap-lg border-t border-white/10 pt-xl md:flex-row">
+          <p className="text-center font-label-md text-outline-variant md:text-left">
+            © 2026 STOP&SCAN AI for Good AMAS YRAP 2026 Cohort
           </p>
-          <div className="flex gap-lg text-outline-variant">
-            <Icon name="language" className="cursor-pointer hover:text-white" />
-            <Icon name="share" className="cursor-pointer hover:text-white" />
-            <Icon name="mail" className="cursor-pointer hover:text-white" />
+          <div className="flex flex-wrap items-center justify-center gap-lg">
+            {PROJECT_MEMBERS.map((member) => (
+              <div key={member.key} className="flex items-center gap-sm">
+                <span className="font-label-md text-outline-variant">{member.name.split(" ")[0]}</span>
+                <a
+                  href={member.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-outline-variant transition-colors hover:text-white"
+                  aria-label={`${member.name} website`}
+                >
+                  <Icon name="language" className="text-lg" />
+                </a>
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-outline-variant transition-colors hover:text-white"
+                  aria-label={`${member.name} on LinkedIn`}
+                >
+                  <Icon name="linkedin" className="text-lg" />
+                </a>
+              </div>
+            ))}
           </div>
         </div>
       </div>
