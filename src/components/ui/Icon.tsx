@@ -39,7 +39,26 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-const ICONS: Record<string, LucideIcon> = {
+/** Lucide dropped brand icons; keep a matching stroke SVG for LinkedIn */
+const LinkedinIcon = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    aria-hidden
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    {...props}
+  >
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-13h4v2" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
+const ICONS: Record<string, LucideIcon | typeof LinkedinIcon> = {
   menu_book: BookOpen,
   arrow_forward: ArrowRight,
   arrow_back: ArrowLeft,
@@ -65,6 +84,7 @@ const ICONS: Record<string, LucideIcon> = {
   history: History,
   delete: Trash2,
   language: Globe,
+  linkedin: LinkedinIcon,
   mail: Mail,
   psychology: Brain,
   verified_user: BadgeCheck,
@@ -95,8 +115,13 @@ export default function Icon({ name, className = "", filled = false }: IconProps
     return null;
   }
 
+  if (name === "linkedin") {
+    return <LinkedinIcon className={`inline-block shrink-0 size-[1em] ${className}`} />;
+  }
+
+  const Component = LucideComponent as LucideIcon;
   return (
-    <LucideComponent
+    <Component
       aria-hidden
       className={`inline-block shrink-0 size-[1em] ${className}`}
       fill={filled ? "currentColor" : "none"}
