@@ -71,6 +71,13 @@ const STATIC_PAGES: Record<string, PageSeo> = {
       "Meet Amito, your friendly guide through STOP&SCAN. Explore framework step cues, poses, and how Amito helps you pause without judgment.",
     image: "/amito/home-waving.png",
   },
+  "/styleguide": {
+    title: `Style Guide — ${SITE.name}`,
+    description:
+      "Brand colors, typography, buttons, components, Amito poses, and STOP&SCAN framework assets for designers and contributors.",
+    image: "/logo.png",
+    noindex: true,
+  },
   "/404": {
     title: `Page Not Found — ${SITE.name}`,
     description: "That page doesn't exist yet. Return to STOP&SCAN and continue learning with Amito.",
