@@ -21,13 +21,13 @@ const AMITO_POSE = {
   reward: "/amito/pose-heart.png",
   comics: "/amito/pose-comics.png",
   project: "/amito/pose-project.png",
-  learn: "/amito/greeting.png",
+  learn: "/amito/home-waving.png",
 } as const;
 
 const AMITO_MEDIA = {
   postVideo: "/media/post-video.png",
   comicCover: "/comics/stop-and-scan-cover.png",
-  videoTeaser: "/media/video-teaser.png",
+  videoTeaser: "/media/video-teaser.jpeg",
 } as const;
 
 export const AMITO_IMAGES = {

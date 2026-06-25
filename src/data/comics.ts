@@ -5,7 +5,7 @@ import type { ComicStrip } from "../lib/comicTypes";
  *
  * To add a strip:
  * 1. Place the PDF in public/comics/ (e.g. public/comics/my-strip.pdf)
- * 2. Optionally add a thumbnail at public/comics/thumbnails/my-strip.png
+ * 2. Optionally add a cover/thumbnail at public/comics/ (e.g. stop-and-scan-cover.png)
  * 3. Add an entry below — slug should match the PDF filename without .pdf
  */
 export const COMICS: ComicStrip[] = [
@@ -17,7 +17,7 @@ export const COMICS: ComicStrip[] = [
     summary:
       "Charleen sits down with her phone as a flood of sensational posts, ads, and headlines compete for attention — a visual introduction to pausing before you trust what scrolls past.",
     pdfPath: "/comics/comic-charleen.pdf",
-    thumbnail: "/comics/thumbnails/comic-charleen.png",
+    thumbnail: "/comics/stop-and-scan-cover.png",
   },
 ];
 
