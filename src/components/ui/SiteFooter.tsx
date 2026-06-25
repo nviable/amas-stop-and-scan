@@ -90,9 +90,17 @@ export default function SiteFooter() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-lg border-t border-white/10 pt-xl md:flex-row">
-          <p className="text-center font-label-md text-outline-variant md:text-left">
-            © 2026 STOP&SCAN AI for Good AMAS YRAP 2026 Cohort
-          </p>
+          <div className="flex flex-col items-center gap-sm md:items-start">
+            <p className="text-center font-label-md text-outline-variant md:text-left">
+              © 2026 STOP&SCAN AI for Good AMAS YRAP 2026 Cohort
+            </p>
+            <Link
+              className="font-label-md text-outline-variant transition-colors hover:text-white"
+              to="/styleguide"
+            >
+              Style guide
+            </Link>
+          </div>
           <div className="flex flex-wrap items-center justify-center gap-lg">
             {PROJECT_MEMBERS.map((member) => (
               <div key={member.key} className="flex items-center gap-sm">

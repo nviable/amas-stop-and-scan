@@ -12,6 +12,7 @@ import MeetAmito from "./pages/MeetAmito";
 import Comics from "./pages/Comics";
 import ComicReader from "./pages/ComicReader";
 import NotFound from "./pages/NotFound";
+import Styleguide from "./pages/Styleguide";
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="amito" element={<MeetAmito />} />
         <Route path="comics" element={<Comics />} />
         <Route path="comics/:slug" element={<ComicReader />} />
+        <Route path="styleguide" element={<Styleguide />} />
         <Route path="404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Route>
