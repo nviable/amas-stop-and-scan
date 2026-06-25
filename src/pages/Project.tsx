@@ -55,7 +55,7 @@ export default function Project() {
             glowClassName="bg-primary/15 blur-[80px]"
             speech="Let's look behind the curtain together!"
             speechPlacement="upper-right"
-            speechTail="bottom"
+            speechTail="left"
           />
         </div>
       </section>

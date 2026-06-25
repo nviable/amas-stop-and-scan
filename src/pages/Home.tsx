@@ -1,31 +1,30 @@
 import { Link } from "react-router-dom";
 import AmitoSpotlight from "../components/AmitoSpotlight";
 import Icon from "../components/ui/Icon";
-import { AMITO_IMAGES, FRAMEWORK_STEP_IMAGES } from "../lib/assets";
+import { AMITO_IMAGES, FRAMEWORK_STEP_IMAGES, LOGO_URL } from "../lib/assets";
 
 export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-welcome-blue/10 to-white px-margin-mobile py-xxl md:px-margin-desktop md:py-32">
-        <div className="mx-auto grid max-w-container-max items-center gap-xl md:grid-cols-2">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-welcome-blue/10 to-white px-margin-mobile py-xl md:px-margin-desktop md:py-xxl">
+        <div className="mx-auto grid max-w-container-max items-center gap-lg md:grid-cols-2 md:gap-xl">
           <div className="z-10">
-            <div className="mb-md inline-flex items-center gap-sm rounded-full border border-lilac-accent/20 bg-lilac-accent/10 px-md py-xs text-on-surface-variant">
-              <Icon name="auto_awesome" className="text-lilac-accent" />
-              <span className="font-label-md uppercase tracking-widest">
-                Powered by AI for Good
-              </span>
-            </div>
-            <h1 className="font-display text-display-xl leading-tight text-on-surface">
+            <img
+              alt="STOP&SCAN"
+              className="mb-sm h-auto w-full max-w-[240px] object-contain sm:max-w-[280px] md:max-w-[320px]"
+              src={LOGO_URL}
+            />
+            <h1 className="font-display text-headline-md text-on-surface md:text-display-lg">
               Empowering Digital Resilience
             </h1>
-            <p className="mt-lg max-w-lg text-body-lg text-on-surface-variant">
-              Join Amito on a journey to navigate the digital world with confidence.
-              Learn to pause, process, and act with clarity in the age of information
-              overload.
+            <p className="mt-sm max-w-md text-body-md text-on-surface-variant md:text-body-lg">
+              <span className="font-semibold text-on-surface">STOP&SCAN</span> is a
+              five-step habit for pausing before you trust what you see online. Join Amito
+              to practice pause, verify, analyze, align, and reflect.
             </p>
-            <div className="mt-xxl flex flex-wrap gap-md">
-              <Link to="/learn" className="btn-primary shadow-2xl shadow-primary/30">
+            <div className="mt-lg flex flex-wrap gap-md md:mt-xl">
+              <Link to="/learn" className="btn-primary shadow-xl shadow-primary/20">
                 Start Learning
               </Link>
               <Link to="/practice" className="btn-accent">
@@ -36,14 +35,16 @@ export default function Home() {
           </div>
 
           <AmitoSpotlight
+            className="mx-auto max-w-[280px] md:max-w-xs md:justify-self-end lg:max-w-sm"
             src={AMITO_IMAGES.greeting}
             alt="Amito waving"
+            imageClassName="relative z-10 w-full object-contain"
             float
             glow="primary"
-            glowClassName="scale-125 -translate-y-8 bg-gradient-to-tr from-primary/20 via-welcome-blue/10 to-transparent blur-3xl"
+            glowClassName="scale-110 bg-gradient-to-tr from-primary/20 via-welcome-blue/10 to-transparent blur-3xl"
             speech="Hi! I'm Amito. Let's learn how to spot tricky content together!"
             speechTail="bottom"
-            speechClassName="absolute -right-4 top-0 z-20 max-w-[240px] md:-right-8"
+            speechClassName="absolute top-[-20%] -right-4 z-20 max-w-[200px] md:-right-4 md:max-w-[220px]"
           />
         </div>
       </section>
