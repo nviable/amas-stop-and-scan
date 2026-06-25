@@ -51,7 +51,7 @@ export const PROJECT_TEAM = {
   fatmaAksu: asset("/team/fatma-aksu.png"),
   saniatSohrawardi: asset("/team/saniat-sohrawardi.png"),
   emanuelLukawiecki: asset("/team/emanuel-lukawiecki.png"),
-  julianLawrence: asset("/team/julian-lawrence.png"),
+  julianLawrence: asset("/team/julian-lawrence.jpg"),
 } as const;
 
 const FRAMEWORK_ICONS = {
