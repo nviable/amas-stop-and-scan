@@ -1,0 +1,376 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Stop &amp; Scan | Practice - Step 1: STOP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;family=Gochi+Hand&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffddb6",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#feae39",
+                        "error": "#ba1a1a",
+                        "primary": "#004cd7",
+                        "surface-container-high": "#eee4ff",
+                        "on-background": "#1f1635",
+                        "inverse-on-surface": "#f6edff",
+                        "reflect-orange": "#ff922b",
+                        "welcome-blue": "#4dabf7",
+                        "surface": "#fef7ff",
+                        "tertiary-container": "#c94600",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#2a1800",
+                        "primary-fixed-dim": "#b5c4ff",
+                        "tertiary": "#a03600",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "on-primary-fixed": "#00164d",
+                        "on-secondary-container": "#6d4400",
+                        "background": "#fef7ff",
+                        "on-surface": "#1f1635",
+                        "on-secondary": "#ffffff",
+                        "content-green": "#37b24d",
+                        "tertiary-fixed-dim": "#ffb59a",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#fef7ff",
+                        "surface-container-low": "#f8f1ff",
+                        "on-primary-fixed-variant": "#003cad",
+                        "surface-cream": "#f6f0e4",
+                        "outline": "#737687",
+                        "inverse-surface": "#342b4b",
+                        "on-primary-container": "#f9f7ff",
+                        "surface-variant": "#e9ddff",
+                        "source-cyan": "#22b8cf",
+                        "secondary-fixed-dim": "#ffb95a",
+                        "on-tertiary-container": "#fff7f4",
+                        "on-tertiary-fixed": "#380d00",
+                        "surface-dim": "#e1d4fd",
+                        "stop-red": "#ef4a6b",
+                        "on-tertiary-fixed-variant": "#802a00",
+                        "primary-fixed": "#dce1ff",
+                        "outline-variant": "#c3c5d8",
+                        "inverse-primary": "#b5c4ff",
+                        "surface-tint": "#0050e1",
+                        "surface-container": "#f3eaff",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#2665fd",
+                        "lilac-accent": "#b197fc",
+                        "tertiary-fixed": "#ffdbcf",
+                        "secondary": "#845400",
+                        "background-paper": "#fbf8f2",
+                        "on-surface-variant": "#434655",
+                        "surface-container-highest": "#e9ddff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "48px",
+                        "lg": "24px",
+                        "container-max": "1152px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "margin-desktop": "40px",
+                        "md": "16px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Outfit"],
+                        "label-md": ["Outfit"],
+                        "body-lg": ["Nunito Sans"],
+                        "body-sm": ["Nunito Sans"],
+                        "handwritten-lg": ["Gochi Hand"],
+                        "display-xl": ["Outfit"],
+                        "display-lg": ["Outfit"],
+                        "body-md": ["Nunito Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "handwritten-lg": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                        "display-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #fbf8f2; }
+        .aura-glow { box-shadow: 0 0 40px rgba(239, 74, 107, 0.15); }
+        .paper-card { border: 1px solid rgba(36, 27, 58, 0.1); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .active-step { border-color: #ef4a6b; color: #ffffff; background-color: #ef4a6b; }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid white;
+        }
+        .hidden-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="font-body-md text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-on-surface/10">
+<div class="flex justify-between items-center px-margin-desktop max-w-container-max mx-auto h-20">
+<div class="font-display-lg text-display-lg font-bold text-primary">Stop &amp; Scan</div>
+<div class="hidden md:flex gap-xl items-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-opacity" href="#">Learn</a>
+<a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary" href="#">Practice</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-opacity" href="#">Resources</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-opacity" href="#">Comics</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-opacity" href="#">Project</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-opacity" href="#">Meet Amito</a>
+</div>
+<button class="bg-lilac-accent text-on-primary px-lg py-sm rounded-full font-bold hover:opacity-80 transition-opacity active:scale-95 duration-150">My Journal</button>
+</div>
+</nav>
+<main class="pt-24 pb-xxl px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Progress Steps -->
+<div class="flex justify-center items-center gap-md mb-xl"><div class="flex items-center w-full max-w-2xl mx-auto px-md">
+  <div class="flex items-center justify-between w-full relative">
+    <div class="absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant -z-10 -translate-y-1/2"></div>
+    <div class="flex flex-col items-center gap-xs">
+      <div class="w-12 h-12 rounded-full flex items-center justify-center font-headline-md text-white shadow-md ring-4 ring-white" style="background-color: #f36734;">STOP</div>
+      <span class="text-label-md font-bold uppercase tracking-widest" style="color: #f36734;">Stop</span>
+    </div>
+    <div class="flex flex-col items-center gap-xs">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center font-headline-md bg-white border-2 text-outline-variant ring-4 ring-white" style="border-color: #6ae4e7;">S</div>
+      <span class="text-label-md font-bold uppercase tracking-widest text-outline-variant">Scan</span>
+    </div>
+    <div class="flex flex-col items-center gap-xs">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center font-headline-md bg-white border-2 text-outline-variant ring-4 ring-white" style="border-color: #82e896;">C</div>
+      <span class="text-label-md font-bold uppercase tracking-widest text-outline-variant">content</span>
+    </div>
+    <div class="flex flex-col items-center gap-xs">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center font-headline-md bg-white border-2 text-outline-variant ring-4 ring-white" style="border-color: #ea80dc;">A</div>
+      <span class="text-label-md font-bold uppercase tracking-widest text-outline-variant">align</span>
+    </div>
+    <div class="flex flex-col items-center gap-xs">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center font-headline-md bg-white border-2 text-outline-variant ring-4 ring-white" style="border-color: #f3a530;">N</div>
+      <span class="text-label-md font-bold uppercase tracking-widest text-outline-variant">Now</span>
+    </div>
+  </div>
+</div></div>
+<div class="text-center mb-xxl">
+<span class="inline-block bg-stop-red text-white font-bold px-lg py-1 rounded-full text-label-md mb-sm">STOP · Stop</span>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Pause and register your gut reaction.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xxl items-start">
+<!-- Left Side: Case Study Content (Bento Style) -->
+<div class="lg:col-span-6 space-y-lg">
+<div class="bg-white rounded-[24px] paper-card shadow-sm overflow-hidden">
+<!-- Social Post Header -->
+<div class="p-md flex justify-between items-center border-b border-on-surface/5">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-source-cyan flex items-center justify-center text-white font-bold">F</div>
+<div>
+<p class="font-bold text-body-md leading-tight">Future Wealth AI <span class="text-outline-variant font-normal text-xs">(unverified)</span></p>
+<p class="text-outline-variant text-xs">@futurewealth.ai_official · 2h</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">more_horiz</span>
+</div>
+<!-- Social Post Content -->
+<div class="p-md space-y-md">
+<p class="text-body-md">🚀 BREAKING: Tech billionaire reveals the AI platform banks don't want you to know about. Early users are making $5,000+ a day. Limited spots — closing tonight!</p>
+<div class="relative rounded-xl overflow-hidden aspect-video bg-on-surface">
+<img alt="Mockup of a viral investment video" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBph6goBmYvPC7CZvy6MYTFnC1BZ2TjkIgm0EHcClNtVIYEWTLRxw6_E-vrg35jv03LK9gYHhDoubbhoEOie3s9u_W0w_Z0GHXoVxh5OWJbs51fhKcXJdIQZgQzLF2ll30lYYNakjcHfPXHpRXOwVsWcO3MJ3ooslXLT3jsvOiphDZIHSQcETmoE3vLXKAtncHpwph25adlgZk3btbFLeJ3cKpSDhIvzFUf6yRUBxCo2E7zGpIN3RzLlJV1PLZkiKxcC6icROxG4Vs">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-0 w-full p-sm bg-black/40 backdrop-blur-sm text-[10px] text-white flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">play_circle</span>
+                                Video: "I'm giving back to the people" — AI Investment Reveal
+                            </div>
+</div>
+<div class="flex items-center gap-xs text-source-cyan text-sm">
+<span class="material-symbols-outlined text-sm">link</span>
+<span class="underline underline-offset-2">future-wealth-ai-access.net/join</span>
+</div>
+</div>
+<!-- Social Post Footer -->
+<div class="px-md py-sm flex justify-between border-t border-on-surface/5 text-outline text-xs">
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-sm">favorite</span> 48.2K</span>
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-sm">chat_bubble</span> 3,914</span>
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-sm">share</span> 12.7K</span>
+</div>
+</div>
+</div>
+<!-- Right Side: Interaction (Interactive Canvas) -->
+<div class="lg:col-span-6 space-y-xl">
+<!-- Amito Prompt -->
+<div class="flex items-start gap-md">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center aura-glow">
+<img class="w-10 h-10 object-contain" data-alt="A friendly, rounded robot mascot named Amito with large glowing eyes and a soft metallic finish, sitting in a thoughtful pose against a warm cream background, modern digital illustration style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU2G0hTufj8dRIwiVcIY-k8jj_yjXw6KNT0QZBUQWnmXndjz1roBdTmOb5vHRvCjYF2O7mQssgrW8A_iTWC7cUMw0G1uOLvilpYHal_Qloco-4wWWZP9zNHR49qVngT0PZvLdpozWs_YGT2DJQXwBBOZzxx0GHo7OvtEJQDAlyPtOAVqNe0CbZFB3OrbACVlFUbojtIBY_d6z6qPE7GwSCI3CI_aW9ZcDxtLUq5IKVfY9cNLC6Le-vdxjgGWtnd60Ih4hsvvxfSZtmvw">
+</div>
+<div class="relative bg-white p-lg rounded-xl rounded-tl-none paper-card shadow-sm speech-bubble">
+<p class="text-body-md italic text-on-surface-variant font-handwritten-lg">"Name your first reaction before checking the evidence. That gives you an honest baseline to compare against later."</p>
+</div>
+</div>
+<!-- Input Section -->
+<div class="bg-surface-cream/50 rounded-[32px] p-xl space-y-xl border border-on-surface/5">
+<!-- Gut Reaction Grid -->
+<section>
+<h3 class="font-headline-md text-headline-md mb-md">What is your gut reaction?</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-sm">
+<button class="text-left p-md rounded-xl bg-white border-2 border-transparent hover:border-lilac-accent/30 transition-all duration-200 shadow-sm active:scale-95 group" onclick="toggleSelect(this, 'gut')">
+<span class="text-body-md">This seems real</span>
+</button>
+<button class="text-left p-md rounded-xl bg-white border-2 border-transparent hover:border-lilac-accent/30 transition-all duration-200 shadow-sm active:scale-95 group" onclick="toggleSelect(this, 'gut')">
+<span class="text-body-md">This seems suspicious</span>
+</button>
+<button class="text-left p-md rounded-xl bg-white border-2 border-transparent hover:border-lilac-accent/30 transition-all duration-200 shadow-sm active:scale-95 group" onclick="toggleSelect(this, 'gut')">
+<span class="text-body-md">I'm not sure</span>
+</button>
+<button class="text-left p-md rounded-xl bg-white border-2 border-transparent hover:border-lilac-accent/30 transition-all duration-200 shadow-sm active:scale-95 group" onclick="toggleSelect(this, 'gut')">
+<span class="text-body-md">I want to click</span>
+</button>
+<button class="sm:col-span-2 text-left p-md rounded-xl bg-white border-2 border-transparent hover:border-lilac-accent/30 transition-all duration-200 shadow-sm active:scale-95 group" onclick="toggleSelect(this, 'gut')">
+<span class="text-body-md">I want to send it to someone</span>
+</button>
+</div>
+</section>
+<!-- Emotion Chips -->
+<section>
+<h3 class="font-headline-md text-headline-md mb-md">What did it make you feel?</h3>
+<div class="flex flex-wrap gap-sm">
+<button class="px-lg py-sm rounded-full border-2 border-outline-variant text-on-surface-variant hover:bg-lilac-accent/10 hover:border-lilac-accent transition-colors font-bold text-sm" onclick="toggleChip(this)">excited</button>
+<button class="px-lg py-sm rounded-full border-2 border-outline-variant text-on-surface-variant hover:bg-lilac-accent/10 hover:border-lilac-accent transition-colors font-bold text-sm" onclick="toggleChip(this)">anxious</button>
+<button class="px-lg py-sm rounded-full border-2 border-outline-variant text-on-surface-variant hover:bg-lilac-accent/10 hover:border-lilac-accent transition-colors font-bold text-sm" onclick="toggleChip(this)">curious</button>
+<button class="px-lg py-sm rounded-full border-2 border-outline-variant text-on-surface-variant hover:bg-lilac-accent/10 hover:border-lilac-accent transition-colors font-bold text-sm" onclick="toggleChip(this)">pressured</button>
+<button class="px-lg py-sm rounded-full border-2 border-outline-variant text-on-surface-variant hover:bg-lilac-accent/10 hover:border-lilac-accent transition-colors font-bold text-sm" onclick="toggleChip(this)">hopeful</button>
+<button class="px-lg py-sm rounded-full border-2 border-outline-variant text-on-surface-variant hover:bg-lilac-accent/10 hover:border-lilac-accent transition-colors font-bold text-sm" onclick="toggleChip(this)">skeptical</button>
+</div>
+</section>
+<!-- Reflective Journaling -->
+<section>
+<h3 class="font-headline-md text-headline-md mb-md">Before checking, I felt...</h3>
+<div class="relative">
+<textarea class="w-full h-32 p-lg rounded-2xl bg-white border-on-surface/10 focus:ring-lilac-accent focus:border-lilac-accent resize-none font-body-md" placeholder="I felt ________ because ________."></textarea>
+<span class="absolute right-4 bottom-4 material-symbols-outlined text-outline-variant">edit_note</span>
+</div>
+</section>
+</div>
+<!-- Footer Actions -->
+<div class="flex items-center justify-between gap-lg pt-md">
+<button class="flex items-center gap-xs px-xl py-sm rounded-full border border-on-surface/10 text-on-surface-variant font-bold hover:bg-on-surface/5 transition-colors">
+<span class="material-symbols-outlined text-sm">arrow_back</span> Back
+                    </button>
+<div class="flex flex-col items-end gap-xs">
+<button class="px-xxl py-sm rounded-full bg-outline-variant text-white font-bold opacity-50 cursor-not-allowed transition-all shadow-md flex items-center gap-xs" disabled="" id="continueBtn">
+                            Continue <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<p class="text-[10px] text-outline-variant uppercase tracking-widest font-bold">Pick a reaction to proceed</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-cream border-t border-on-surface/5 py-xl w-full">
+<div class="max-w-container-max mx-auto px-margin-desktop flex flex-col md:flex-row justify-between items-start gap-lg">
+<div class="space-y-sm max-w-sm">
+<div class="font-display-xl text-display-xl text-primary font-bold">Stop &amp; Scan</div>
+<p class="text-body-sm text-on-surface-variant">Pause before you trust, scan before you share, and reflect before you act. Amito is your friendly guide.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-xl">
+<div class="space-y-sm">
+<h4 class="font-bold text-on-surface">Explore</h4>
+<ul class="space-y-xs text-body-sm text-on-surface-variant">
+<li class=""><a class="hover:text-primary transition-colors" href="#">Learn STOP&amp;SCAN</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">Practice with Case Files</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">Resource hub</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">Comics</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">My Journal</a></li>
+</ul>
+</div>
+<div class="space-y-sm">
+<h4 class="font-bold text-on-surface">About</h4>
+<ul class="space-y-xs text-body-sm text-on-surface-variant">
+<li class=""><a class="hover:text-primary transition-colors" href="#">The project</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">Meet Amito</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div class="space-y-sm col-span-2 sm:col-span-1">
+<h4 class="font-bold text-on-surface">The habit</h4>
+<p class="italic text-body-sm text-on-surface-variant">"I don't know yet" is a complete and honest answer. Uncertainty, properly calibrated, is protective.</p>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop mt-xl pt-lg border-t border-on-surface/5 flex justify-between items-center text-[10px] text-outline-variant uppercase tracking-widest font-bold">
+<span class="">© 2024 Stop &amp; Scan. All rights reserved.</span>
+<span class="">A scaffolded sensemaking framework for trust calibration. Educational use.</span>
+</div>
+</footer>
+<script>
+        let selectionState = {
+            gut: null,
+            feelings: []
+        };
+
+        function toggleSelect(el, type) {
+            const container = el.parentElement;
+            container.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('border-lilac-accent', 'bg-lilac-accent/5');
+            });
+            el.classList.add('border-lilac-accent', 'bg-lilac-accent/5');
+            selectionState.gut = el.innerText;
+            checkValidation();
+        }
+
+        function toggleChip(el) {
+            const isActive = el.classList.contains('bg-lilac-accent');
+            if (isActive) {
+                el.classList.remove('bg-lilac-accent', 'text-white', 'border-lilac-accent');
+                el.classList.add('border-outline-variant', 'text-on-surface-variant');
+                selectionState.feelings = selectionState.feelings.filter(f => f !== el.innerText);
+            } else {
+                el.classList.add('bg-lilac-accent', 'text-white', 'border-lilac-accent');
+                el.classList.remove('border-outline-variant', 'text-on-surface-variant');
+                selectionState.feelings.push(el.innerText);
+            }
+            checkValidation();
+        }
+
+        function checkValidation() {
+            const btn = document.getElementById('continueBtn');
+            if (selectionState.gut && selectionState.feelings.length > 0) {
+                btn.disabled = false;
+                btn.classList.remove('bg-outline-variant', 'opacity-50', 'cursor-not-allowed');
+                btn.classList.add('bg-primary', 'hover:bg-primary/90', 'cursor-pointer');
+            } else {
+                btn.disabled = true;
+                btn.classList.add('bg-outline-variant', 'opacity-50', 'cursor-not-allowed');
+                btn.classList.remove('bg-primary', 'hover:bg-primary/90', 'cursor-pointer');
+            }
+        }
+    </script>
+
+
+</body></html>

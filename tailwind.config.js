@@ -4,31 +4,98 @@ export default {
   theme: {
     extend: {
       colors: {
-        // STOP&SCAN step cues (mapped to Amito's glow colors)
-        stop: "#ef4a6b", // pink-red torso
-        source: "#22b8cf", // cyan right cuff
-        content: "#37b24d", // green left cuff
-        alignment: "#b197fc", // lilac head A
-        reflect: "#ff922b", // orange torso
-        ink: "#241b3a", // deep navy from Amito visor
-        cream: "#f6f0e4", // journal paper
+        primary: "#004cd7",
+        "primary-container": "#2665fd",
+        "on-primary": "#ffffff",
+        "on-primary-container": "#f9f7ff",
+        "on-primary-fixed": "#00164d",
+        "on-primary-fixed-variant": "#003cad",
+        "primary-fixed": "#dce1ff",
+        "primary-fixed-dim": "#b5c4ff",
+        "inverse-primary": "#b5c4ff",
+        "inverse-surface": "#342b4b",
+        "inverse-on-surface": "#f6edff",
+        "background-paper": "#fbf8f2",
+        background: "#fef7ff",
+        "on-background": "#1f1635",
+        "on-surface": "#1f1635",
+        "on-surface-variant": "#434655",
+        surface: "#fef7ff",
+        "surface-bright": "#fef7ff",
+        "surface-cream": "#f6f0e4",
+        "surface-container": "#f3eaff",
+        "surface-container-low": "#f8f1ff",
+        "surface-container-high": "#eee4ff",
+        "surface-container-highest": "#e9ddff",
+        "surface-container-lowest": "#ffffff",
+        "surface-variant": "#e9ddff",
+        "surface-dim": "#e1d4fd",
+        outline: "#737687",
+        "outline-variant": "#c3c5d8",
+        "lilac-accent": "#b197fc",
+        "welcome-blue": "#4dabf7",
+        "stop-red": "#ef4a6b",
+        "source-cyan": "#22b8cf",
+        "content-green": "#37b24d",
+        "reflect-orange": "#ff922b",
+        "secondary-container": "#feae39",
+        "on-secondary-container": "#6d4400",
+        "fuel-yellow": "#f3a530",
+        turquoise: "#6ae4e7",
+        "pastel-green": "#82e896",
+        flamingo: "#f36734",
+        error: "#ba1a1a",
+        "error-container": "#ffdad6",
+        // Legacy aliases used in lesson/case code
+        stop: "#ef4a6b",
+        source: "#22b8cf",
+        content: "#37b24d",
+        alignment: "#b197fc",
+        reflect: "#ff922b",
+        ink: "#1f1635",
+        cream: "#f6f0e4",
       },
       fontFamily: {
-        display: ["'Baloo 2'", "system-ui", "sans-serif"],
-        body: ["Nunito", "system-ui", "sans-serif"],
-        hand: ["'Gochi Hand'", "cursive"],
+        display: ["Outfit", "system-ui", "sans-serif"],
+        body: ["Nunito Sans", "Nunito", "system-ui", "sans-serif"],
+        hand: ["Gochi Hand", "cursive"],
+        "label-md": ["Outfit", "system-ui", "sans-serif"],
+      },
+      fontSize: {
+        "display-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "display-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+        "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
+        "handwritten-lg": ["24px", { lineHeight: "32px", fontWeight: "400" }],
+      },
+      spacing: {
+        xs: "4px",
+        sm: "8px",
+        md: "16px",
+        lg: "24px",
+        xl: "32px",
+        xxl: "48px",
+        gutter: "16px",
+        "margin-mobile": "20px",
+        "margin-desktop": "40px",
+      },
+      maxWidth: {
+        "container-max": "1152px",
+      },
+      borderRadius: {
+        xxl: "24px",
       },
       boxShadow: {
-        soft: "0 10px 30px -12px rgba(36, 27, 58, 0.25)",
+        soft: "0 4px 20px -2px rgba(36, 27, 58, 0.08)",
+        card: "0 10px 30px -12px rgba(36, 27, 58, 0.15)",
       },
       keyframes: {
-        wave: {
-          "0%,100%": { transform: "rotate(0deg)" },
-          "50%": { transform: "rotate(12deg)" },
-        },
         float: {
           "0%,100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-8px)" },
+          "50%": { transform: "translateY(-12px)" },
         },
         glowpulse: {
           "0%,100%": { opacity: "0.55", transform: "scale(1)" },
@@ -36,7 +103,6 @@ export default {
         },
       },
       animation: {
-        wave: "wave 1.6s ease-in-out infinite",
         float: "float 4s ease-in-out infinite",
         glowpulse: "glowpulse 2.4s ease-in-out infinite",
       },

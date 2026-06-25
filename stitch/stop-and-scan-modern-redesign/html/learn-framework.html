@@ -1,0 +1,427 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Learn STOP&amp;SCAN - Guided Sensemaking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;family=Gochi+Hand&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "content-green": "#37b24d",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-surface-variant": "#434655",
+                        "inverse-on-surface": "#f6edff",
+                        "lilac-accent": "#b197fc",
+                        "tertiary-fixed": "#ffdbcf",
+                        "on-primary-container": "#f9f7ff",
+                        "tertiary-fixed-dim": "#ffb59a",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#eee4ff",
+                        "on-secondary-fixed": "#2a1800",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1f1635",
+                        "source-cyan": "#22b8cf",
+                        "background-paper": "#fbf8f2",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e9ddff",
+                        "surface-tint": "#0050e1",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#00164d",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e9ddff",
+                        "secondary-container": "#feae39",
+                        "tertiary-container": "#c94600",
+                        "inverse-primary": "#b5c4ff",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "welcome-blue": "#4dabf7",
+                        "outline-variant": "#c3c5d8",
+                        "primary-fixed-dim": "#b5c4ff",
+                        "stop-red": "#ef4a6b",
+                        "surface-dim": "#e1d4fd",
+                        "primary": "#004cd7",
+                        "on-tertiary-container": "#fff7f4",
+                        "on-secondary-container": "#6d4400",
+                        "background": "#fef7ff",
+                        "outline": "#737687",
+                        "inverse-surface": "#342b4b",
+                        "on-tertiary-fixed-variant": "#802a00",
+                        "surface-container-low": "#f8f1ff",
+                        "primary-fixed": "#dce1ff",
+                        "reflect-orange": "#ff922b",
+                        "on-primary-fixed-variant": "#003cad",
+                        "on-error": "#ffffff",
+                        "on-background": "#1f1635",
+                        "surface-bright": "#fef7ff",
+                        "surface": "#fef7ff",
+                        "surface-container": "#f3eaff",
+                        "tertiary": "#a03600",
+                        "primary-container": "#2665fd",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#ffddb6",
+                        "secondary-fixed-dim": "#ffb95a",
+                        "secondary": "#845400",
+                        "surface-cream": "#f6f0e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "8px",
+                        "xl": "12px",
+                        "xxl": "24px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "container-max": "1152px",
+                        "margin-desktop": "40px",
+                        "gutter": "16px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "xxl": "48px",
+                        "unit": "4px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Outfit", "sans-serif"],
+                        "display-lg": ["Outfit", "sans-serif"],
+                        "body-sm": ["Nunito Sans", "sans-serif"],
+                        "body-md": ["Nunito Sans", "sans-serif"],
+                        "handwritten-lg": ["Gochi Hand", "cursive"],
+                        "label-md": ["Outfit", "sans-serif"],
+                        "display-xl": ["Outfit", "sans-serif"],
+                        "body-lg": ["Nunito Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #fbf8f2;
+            color: #1f1635;
+            font-family: 'Nunito Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .amito-float {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .aura-glow {
+            filter: blur(40px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 24px;
+            width: 0;
+            height: 0;
+            border: 20px solid transparent;
+            border-top-color: white;
+            border-bottom: 0;
+            border-left: 0;
+            margin-left: -10px;
+            margin-bottom: -20px;
+        }
+        .framework-section {
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-background-paper overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background-paper/90 backdrop-blur-md border-b border-on-surface/10">
+<div class="max-w-container-max mx-auto px-margin-desktop py-md flex justify-between items-center">
+<div class="flex items-center gap-md">
+<img alt="STOP&amp;SCAN Logo" class="h-12 w-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAifli5DfnylQqeRS2kFXV3jydRw-rDDcubXS7sPKAcVtqUKM9AHyYLU9lMw6SPymEfiPygvgqLvq9ebHQ17XOpzKJIlZy62EtB721MFu2RTtAdYULWinOIw1gGurWTpGsHfpZhYZa7cKbwWGbK5b9MZdyRmqYy-S0uVHeCRL4A2zCTMbwM-sdeX1_b9Ef_NHJ30LQC2EuVKOa3WXingxYUVa2S8izm5Bis6g9TTqWIeSgQy-qVFwJ8hEFq1nOrBeZxUnOApRsVXXs">
+</div>
+<nav class="hidden md:flex items-center gap-xl"><a class="font-label-md text-label-md hover:opacity-80 transition-opacity bg-primary-container text-on-primary-container px-md py-1 rounded-full" href="#">Learn</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Practice</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Resources</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Comics</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Project</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Meet Amito</a></nav>
+<div class="flex items-center gap-md">
+<button class="bg-primary text-on-primary px-lg py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">
+                    My Journal
+                </button>
+</div>
+</div>
+</header>
+<main class="pt-xxl">
+<!-- Hero Section -->
+<section class="relative pt-xxl pb-xxl px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto overflow-visible">
+<div class="absolute aura-glow bg-primary w-96 h-96 top-0 left-0"></div>
+<div class="grid md:grid-cols-2 gap-xxl items-center">
+<div class="space-y-lg order-2 md:order-1">
+<div class="inline-block px-md py-xs bg-primary-fixed text-on-primary-fixed-variant rounded-full font-label-md text-label-md">
+                        Sensemaking Framework
+                    </div>
+<h1 class="font-display-xl text-display-xl text-on-surface leading-tight">Learn STOP&amp;SCAN</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                        Join Amito on a guided journey to master the 5-step framework. We'll walk through a real-world case together so you can practice spotting digital manipulation.
+                    </p>
+<div class="flex flex-wrap gap-md pt-md">
+<button class="bg-primary text-on-primary px-xxl py-md rounded-full font-label-md text-label-md hover:brightness-105 active:scale-98 transition-all shadow-md">
+                            Start Guided Lesson
+                        </button>
+<button class="border-2 border-on-surface/15 text-on-surface px-xxl py-md rounded-full font-label-md text-label-md hover:bg-on-surface/5 active:scale-98 transition-all">
+                            Explore the Framework
+                        </button>
+</div>
+</div>
+<div class="relative flex justify-center items-center order-1 md:order-2">
+<div class="relative w-72 md:w-full max-w-md aspect-square">
+<img alt="Amito Mascot Waving" class="w-full h-full object-contain amito-float z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJgL_aPcXrzIi-hjzpn4HZKG7xX5qT4emhiH_nXzVhWJpkRIp0pkQsATA8Avr0xc6Cl2nlduuYkI0evaD2KkZIVGfsSxuoZmDtkfmJbibWa3BOY-tbNQ0dDf4HZ7qTl-cj0MAXb8-v5WSkKaylmDpu-iUvEMdK7EHlzBVhKfd_Rs98Vbj4gO3uBD79qaQpVocBaLxmfUvcCS5cDbRM6yhsbpnHB1qSqfop3e1PMVWIWLbLqpVp49VD5PmBEr4L6u9Xa_ufeQbmL4E">
+<div class="absolute -top-4 -right-4 md:-right-8 bg-white p-lg rounded-xxl shadow-soft border border-on-surface/10 max-w-[240px] z-20 speech-bubble">
+<p class="font-handwritten-lg text-handwritten-lg text-on-surface">Hi! I'm Amito. Let's learn how to spot tricky content together!</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Full-Width Framework Sections -->
+<div class="w-full space-y-0"><!-- STEP 1: STOP -->
+<section class="framework-section w-full py-xl bg-[#f3a530] text-white">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid md:grid-cols-2 gap-xl items-center">
+<div class="space-y-md order-2 md:order-1">
+<div class="flex items-center gap-md">
+<div class="bg-white rounded-full p-2 w-12 h-12 flex items-center justify-center">
+<img alt="Stop Icon" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqvHNTZ59ICPw_yXgtgbtff9_epliMjgs-7Y3PnFCJyVJUcNDvlSIgVaJBrsJ4cURdYmdBhj-i-6r7qtmFT0nt0WYp5Gzbv6IcNRAog1GvhE7JXjrB04P7w4zQdXRv7InMbNxLODtQGtOrmnm6zgJ7B814OBRqBbpabp4uTy1-RNAODGz2snN1TUXbsPUoFaIiwuHklPjxj-GADFBFUdkoJsQ8wORvHlFHhzoI0Mq-2b_CT0yuEEJJF_cmQX4rAEnqtv29aC7Ie54">
+</div>
+<span class="font-label-md text-label-md bg-white/20 px-md py-xs rounded-full uppercase tracking-widest">Step 1</span>
+</div>
+<h2 class="font-display-xl text-display-xl">STOP</h2>
+<p class="font-body-lg text-body-lg opacity-90">
+                When you encounter content that triggers a strong emotional reaction—whether it's outrage, excitement, or fear—the first thing to do is pause. Don't share, don't comment, just stop.
+            </p>
+<button class="bg-white text-[#f3a530] px-xl py-md rounded-full font-label-md text-label-md hover:bg-opacity-90 active:scale-95 transition-all">Learn more about Stopping</button>
+</div>
+<div class="flex justify-center order-1 md:order-2">
+<div class="relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center">
+<div class="absolute inset-0 bg-white/20 rounded-full scale-125 animate-pulse"></div>
+<img alt="Amito Stop Pose" class="w-full h-full object-contain relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEWm2JIsu8X1JreP3C070Pk3tGeFWIpzVtGmyj6Gg_xdhjMG9fw6gEmAAQTwHNjjbcIABA_apo61FB4jY1bdU90CF9dYT1lZQJ1y-e8plXtSFZxNYytG2On4uaAAdIBDrpjBztOmBBZuOm4w_kinp99liwFbmurk_PLzxg3hoMW3eV4AF7TdfLHkoJy90vaYrlJvJ4izM7O6r7gyDrnFm4BqACiyjvM1yGCas3UGUzBic-pGPn1oJFJa73-yokOzkU2ZsA7y715Lw">
+</div>
+</div>
+</div>
+</section>
+<!-- STEP 2: SOURCE -->
+<section class="framework-section w-full py-xl bg-[#6ae4e7] text-on-surface">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid md:grid-cols-2 gap-xl items-center">
+<div class="flex justify-center">
+<div class="relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center">
+<div class="absolute inset-0 bg-white/40 rounded-full scale-110"></div>
+<img alt="Amito Source Pose" class="w-full h-full object-contain relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDydxkTcX7KktEliZ4EW9U5h4nL-O2yqaCPBPt5XpBazxxvYeWf0O9BNGSXXyMBwJAjH58P4yB1SmoJn5mAOawChqFxITkuesiNonI6zLp5k8LlDC1A2OUgwYX1hWwsB8MCLIuwBSbDtq7rRaNNrNKS_XmAY-N3ChZMGe7QXyZ1c4YlwcporQ1B1xlojUeXO61N92LoZPFCfUfTODWKvdZ2y08HQQj1mGPwLdUtakkzckg11PUqtQojtlNvwLtQ3zVHXFCKa5mv6S8">
+</div>
+</div>
+<div class="space-y-md">
+<div class="flex items-center gap-md">
+<div class="bg-white rounded-full p-2 w-12 h-12 flex items-center justify-center">
+<img alt="Source Icon" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6AY_N6rARw5DKD0o4ymyWoiSpZ46vBwBSyBYScwFqoYHEI16RI_Lq2eZWMUIDtTlUVJDgKzGDGvSCX73ZN4aqEMLsH6lGg-5xOYEUMswcU6FZFj3ozGB5RM8ejpVCaQPnrh-dtGEuzCnw3AhGhRd6kth3fQshgTcuRmTjjNO9oEIWWS2EGb1E7URwlcL6ZrQjMQGNGGlLci8pf9f8bqucBd-MWlDw03UwpaUcRCo7kX8oBWarGujrX7LdBrrxdDZ1UHJOfCfUzVs">
+</div>
+<span class="font-label-md text-label-md bg-black/5 px-md py-xs rounded-full uppercase tracking-widest">Step 2</span>
+</div>
+<h2 class="font-display-xl text-display-xl">SOURCE</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                Investigate the source. Who created this? Are they an expert or a random account? Look past the name to find their reputation and track record.
+            </p>
+<button class="bg-on-surface text-white px-xl py-md rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">Master Source Checking</button>
+</div>
+</div>
+</section>
+<!-- STEP 3: CONTENT -->
+<section class="framework-section w-full py-xl bg-[#82e896] text-on-surface">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid md:grid-cols-2 gap-xl items-center">
+<div class="space-y-md order-2 md:order-1">
+<div class="flex items-center gap-md">
+<div class="bg-white rounded-full p-2 w-12 h-12 flex items-center justify-center">
+<img alt="Content Icon" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFkXREkUqnULSOyjdGVZ7SwsIy9N6AGMF_ewYJKnEmrbTLk0NRCXG5PT9QsX1sg1hNQWP8iL7oXM_GbGpyF69K7JGL9iBkXoTROhcH9bgFfYAresFHGV2yVQOq4nFJBL5s-71iyOUkzIkI482tZ9IYXtXLKQPhMY83vtJx6rPDI8zlUTPYDV6aCuLNfJl4eXkN8GPpSM31nprPUsGOPltlBtgVuCNTLv6kflReLoHVSfXEj-C-zIk4CLCSlx_2fccP05w3Srlw76c">
+</div>
+<span class="font-label-md text-label-md bg-black/5 px-md py-xs rounded-full uppercase tracking-widest">Step 3</span>
+</div>
+<h2 class="font-display-xl text-display-xl">CONTENT</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                Look for evidence within the content itself. Check for manipulation, AI artifacts, or missing context. Does the evidence actually support the claim being made?
+            </p>
+<button class="bg-on-surface text-white px-xl py-md rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">Deconstruct Content</button>
+</div>
+<div class="flex justify-center order-1 md:order-2">
+<div class="relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center">
+<div class="absolute inset-0 bg-black/5 rounded-full rotate-45 scale-110"></div>
+<img alt="Amito Content Pose" class="w-full h-full object-contain relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEsdbv4h_U9waFRDVgM_H5lEQb2SC9zuI4hEpZgRMmVMFSbOD3nTi45Sdk-wylU-Or6uQeGSV2h3fceWS4ABcmQN22MJZ91xSlq1MJPMvx_tTafyGNFnPGPkaFUOTDd_RXvzv9I0KtLkSZAlZcnCXQqM5BGWmKrvqLdOQ-L2xQaCQvGf2wwyEZatLg3PcL-_oT2ciXqhR2DSSeg78emEQ5Zp334iIxJiw4u8JiyGjz1UN1bOvm-DwiiJZYYuJl5dKacJpmqvDJmBk">
+</div>
+</div>
+</div>
+</section>
+<!-- STEP 4: ALIGN -->
+<section class="framework-section w-full py-xl bg-[#f36734] text-white">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid md:grid-cols-2 gap-xl items-center">
+<div class="flex justify-center">
+<div class="relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center">
+<div class="absolute inset-0 bg-white/20 rounded-full rotate-12"></div>
+<img alt="Amito Align Pose" class="w-full h-full object-contain relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2C1vdQ_byinbivhhvkslkqW-dAOkcolq0r6dixD89xl0KPgkJbM5ufDGIqt53z-YgWi_i2XMZ_yv10vepdH_wujBSlQpaMWQ7egIteq4rhU4Vgdz2erDMbJvxsiJ3__lyO7mssIE1EptVid-oyUP8gkRbcBLXrsy-TqN2aqbcb7EU4NZg_aOQnISlTbJuY--s4fVG1O2GkRD74nS63-kRlCAg02pt3cyxIejMJhm9dQ8CiqXMs_KAAfpBdKM29pBKdqv4X1oCCLw">
+</div>
+</div>
+<div class="space-y-md">
+<div class="flex items-center gap-md">
+<div class="bg-white rounded-full p-2 w-12 h-12 flex items-center justify-center">
+<img alt="Align Icon" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbP1DPoaNAM7cFGxeSFckLmN3nv23Imtbto_aB1bED1y8mHG95FdVYmBYWL0QDmEw1_HNbK3tot_iSlT8yvyJDPYKyiM_d5C2NSPmwPPpEZ-hosTaHBDjQor-EeUr_jlrqNuXUcEHDKfPRrhv2OFQzxIHAKkTtnb5X2HnIM2pL_N5MwiXL19KR5hw2nueZMgFsOvnHq7AYR3O6t8gqDUHPsfdQ0O9_PbgD-_2fpuCPnJKGORkGbpi59yne8e4t-_6lyKj3jdYlUxo">
+</div>
+<span class="font-label-md text-label-md bg-white/20 px-md py-xs rounded-full uppercase tracking-widest">Step 4</span>
+</div>
+<h2 class="font-display-xl text-display-xl">ALIGN</h2>
+<p class="font-body-lg text-body-lg opacity-90">
+                Find other sources. Does this information align with what trusted organizations or diverse experts are reporting? If it's only on one site, be careful.
+            </p>
+<button class="bg-white text-[#f36734] px-xl py-md rounded-full font-label-md text-label-md hover:bg-opacity-90 active:scale-95 transition-all">Practice Alignment</button>
+</div>
+</div>
+</section>
+<!-- STEP 5: NOW REFLECT -->
+<section class="framework-section w-full py-xl bg-[#f3a530] text-white">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid md:grid-cols-2 gap-xl items-center">
+<div class="space-y-md order-2 md:order-1">
+<div class="flex items-center gap-md">
+<div class="bg-white rounded-full p-2 w-12 h-12 flex items-center justify-center">
+<img alt="Reflect Icon" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr8LhfLYk9912MrmUCv4q-o8AFM6Fovo4CtgsD-MsdKbgj84KTWVg8StoAMdLKadiOWuXFf0DgEMM8FuUCrf9NdTCmhexIcjwqWDch-5v-2Dh6oJHY8ohDyh2LbrvARzMPwITJHxdBbScZLgionR42iChTHQiwwM2-rxT8eN947becf7CCwYJuFp43iS7skXIFIsRI4FgZ-WFKgUPQGCBWBJuffEdBgEAmpJFdzLhqljXuChBRZFvPUOIlV8r6aKCtCCELu6uyQys">
+</div>
+<span class="font-label-md text-label-md bg-white/20 px-md py-xs rounded-full uppercase tracking-widest">Step 5</span>
+</div>
+<h2 class="font-display-xl text-display-xl">NOW REFLECT</h2>
+<p class="font-body-lg text-body-lg opacity-90">
+                Final check: Why was this content created? Was it to inform you, or to manipulate your opinion? Reflect on your own biases before you decide what to do next.
+            </p>
+<button class="bg-white text-[#f3a530] px-xl py-md rounded-full font-label-md text-label-md hover:bg-opacity-90 active:scale-95 transition-all">Take a Reflection Moment</button>
+</div>
+<div class="flex justify-center order-1 md:order-2">
+<div class="relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center">
+<div class="absolute inset-0 bg-white/20 rounded-full scale-125 animate-pulse"></div>
+<img alt="Amito Reflect Pose" class="w-full h-full object-contain relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf1cRyrVCdVSvIAHf1pFX4cOeHb5zoTY33EAUaw_mV8wG__YyBu8KYNGJFWDyzLpl9G3V0tf2cJCA5ngBpQwAarHe2GJiWxVBPC4Q57OPfjtRqmacasbodnQAL0EFREhhcaCibf9keupWunKc9v95efEA3U0FNF1KWBT3GKdp6YqF13zRL7ewszpsv9D6TLQF2pT23kTBefhqi42MjJ9jLD9vZk49G1LghS8rxfPyKmq7pUD4a1G5uCQ1AI1PcA1xLhk8fod-kC4M">
+</div>
+</div>
+</div>
+</section></div>
+<!-- Case Study Focus -->
+<section class="py-xxl px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="bg-white rounded-xxl overflow-hidden border border-on-surface/10 shadow-lg flex flex-col md:flex-row">
+<div class="p-xxl flex-1 space-y-md">
+<div class="flex items-center gap-sm text-primary">
+<span class="material-symbols-outlined">play_circle</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Active Case Study</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-on-surface">Today's Lesson: The Celebrity Investment Video</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        Estimated time: 8 minutes. No wrong answers—just practice for your brain. We'll examine a viral video of a famous actor promoting a crypto investment. Is it real or a deepfake?
+                    </p>
+<div class="pt-lg flex items-center gap-xl">
+<button class="bg-primary text-on-primary px-xxl py-md rounded-full font-label-md text-label-md hover:brightness-105 active:scale-98 transition-all flex items-center gap-sm">
+                            Launch Case <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<div class="flex -space-x-3">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-secondary-fixed"></div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-primary-fixed"></div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-tertiary-fixed"></div>
+<span class="pl-lg font-label-md text-label-md text-on-surface-variant">+420 others learning now</span>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/3 min-h-[300px] bg-surface-container-high relative flex items-center justify-center p-xl">
+<div class="relative group cursor-pointer w-full h-full">
+<div class="absolute inset-0 bg-cover bg-center rounded-xl transition-transform group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAFSn9n2dxrgauBJJ5o5-Ufv_vzd5frKU_af9roZy012I5nDcg2aSvIbodpf1gEV1xK_5xmJW9OdgxduPbRyHXladETy-Yoh2K4xdzFAUWCM7Ux_bP5yYQw2q9KITR66mND3uLn6mrEZyKGU4BCzbejpbjQCKcrWUoQCK_cYqVXClI7qf7w_Ezpo9-aWqIQ0P9FnE0PL-3_j6aRjNZi8RsVm67UHNGW7642g0NG59p1dQxoqVd4m5Jd6REfOLLx0uCN85Z9dg55ShA')"></div>
+<img alt="Amito Analyzing" class="absolute inset-0 w-full h-full object-contain p-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz3xjwI0dBU_OwpcJrVSJg09kHSpBEmEaj_LSGJZU_hYWqbE2epcEUTkGuhVe3LU0nw5ZWj9BP3n-bqCRf5h-LTo8hkJORREchE38JcKAxcnYAUvXBgYWhO-7hisQxVROVKH3Ljk_Na8f8Kqn0DxwivKQwOkwnVle6cHRSkc7kkWhgAlexEYow5KfOIYAiaYd1kkD1R-NQhX828Ji-m5kRReZCuJjDfeMFqHYN3lrsuXAKUHddd6N_MqgRSrNMeyazYn-8cGEnEuM">
+<div class="absolute inset-0 bg-on-surface/10 group-hover:bg-on-surface/0 transition-colors rounded-xl flex items-center justify-center">
+<div class="bg-white/90 backdrop-blur p-md rounded-full">
+<span class="material-symbols-outlined text-primary text-[48px]">play_arrow</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface text-inverse-on-surface pt-xxl pb-xl">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-xxl mb-xxl">
+<div class="col-span-1 md:col-span-1"><div class="flex items-center gap-sm mb-lg">
+<img alt="STOP&amp;SCAN Logo" class="h-8 w-8 brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAifli5DfnylQqeRS2kFXV3jydRw-rDDcubXS7sPKAcVtqUKM9AHyYLU9lMw6SPymEfiPygvgqLvq9ebHQ17XOpzKJIlZy62EtB721MFu2RTtAdYULWinOIw1gGurWTpGsHfpZhYZa7cKbwWGbK5b9MZdyRmqYy-S0uVHeCRL4A2zCTMbwM-sdeX1_b9Ef_NHJ30LQC2EuVKOa3WXingxYUVa2S8izm5Bis6g9TTqWIeSgQy-qVFwJ8hEFq1nOrBeZxUnOApRsVXXs">
+<span class="font-display-lg text-display-lg text-white">Stop &amp; Scan</span>
+</div>
+<p class="font-body-md text-body-md text-outline-variant opacity-80">
+    Equipping the next generation with the tools to navigate the digital frontier with curiosity and critical thought.
+</p></div>
+<div>
+<h4 class="font-label-md text-label-md text-white mb-lg uppercase tracking-widest">Learn</h4>
+<ul class="space-y-sm font-body-md text-body-md text-outline-variant">
+<li class=""><a class="hover:text-white transition-colors" href="#">The Framework</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Case Studies</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Amito's Guide</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-white mb-lg uppercase tracking-widest">Connect</h4>
+<ul class="space-y-sm font-body-md text-body-md text-outline-variant">
+<li class=""><a class="hover:text-white transition-colors" href="#">Discord Community</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">The Lab</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Support</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-white mb-lg uppercase tracking-widest">Legal</h4>
+<ul class="space-y-sm font-body-md text-body-md text-outline-variant">
+<li class=""><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Terms of Service</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Educational Use</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/10 pt-xl flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="font-label-md text-label-md text-outline-variant">© 2024 STOP&amp;SCAN Sensemaking Labs. All rights reserved.</p>
+<div class="flex gap-lg">
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors">language</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors">share</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors">mail</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-on-surface/5 flex justify-around items-center px-4 py-2 pb-safe md:hidden z-50">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-md text-label-md">Lessons</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-label-md text-label-md">Saves</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Me</span>
+</a>
+</nav>
+<script>
+        document.querySelectorAll('button').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.96)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = '';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+            });
+        });
+    </script>
+</body></html>

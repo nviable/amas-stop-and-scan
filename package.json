@@ -9,9 +9,11 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "deploy": "npm run build && wrangler deploy",
-    "cf:dev": "npm run build && wrangler dev"
+    "cf:dev": "npm run build && wrangler dev",
+    "stitch:fetch": "node scripts/fetch-stitch-screens.mjs"
   },
   "dependencies": {
+    "lucide-react": "^1.21.0",
     "pdfjs-dist": "^5.4.296",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -19,6 +21,7 @@
     "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
+    "@google/stitch-sdk": "^0.1.0",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.18.0",

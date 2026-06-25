@@ -1,0 +1,315 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Comics - Stop &amp; Scan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;family=Gochi+Hand&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "lilac-accent": "#b197fc",
+                    "on-surface-variant": "#434655",
+                    "surface-variant": "#e9ddff",
+                    "surface-bright": "#fef7ff",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#b5c4ff",
+                    "on-tertiary-fixed": "#380d00",
+                    "surface-dim": "#e1d4fd",
+                    "on-secondary": "#ffffff",
+                    "welcome-blue": "#4dabf7",
+                    "secondary-fixed": "#ffddb6",
+                    "on-secondary-fixed-variant": "#643f00",
+                    "content-green": "#37b24d",
+                    "outline": "#737687",
+                    "surface": "#fef7ff",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "source-cyan": "#22b8cf",
+                    "background-paper": "#fbf8f2",
+                    "on-primary-container": "#f9f7ff",
+                    "surface-container-high": "#eee4ff",
+                    "stop-red": "#ef4a6b",
+                    "primary-container": "#2665fd",
+                    "on-secondary-fixed": "#2a1800",
+                    "surface-container-low": "#f8f1ff",
+                    "surface-tint": "#0050e1",
+                    "background": "#fef7ff",
+                    "on-secondary-container": "#6d4400",
+                    "on-primary-fixed-variant": "#003cad",
+                    "primary-fixed": "#dce1ff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#845400",
+                    "tertiary-fixed": "#ffdbcf",
+                    "tertiary-container": "#c94600",
+                    "surface-container-highest": "#e9ddff",
+                    "surface-container": "#f3eaff",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#c3c5d8",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#a03600",
+                    "surface-cream": "#f6f0e4",
+                    "primary-fixed-dim": "#b5c4ff",
+                    "primary": "#004cd7",
+                    "inverse-surface": "#342b4b",
+                    "reflect-orange": "#ff922b",
+                    "on-primary-fixed": "#00164d",
+                    "secondary-fixed-dim": "#ffb95a",
+                    "secondary-container": "#feae39",
+                    "on-background": "#1f1635",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#1f1635",
+                    "tertiary-fixed-dim": "#ffb59a",
+                    "on-tertiary-fixed-variant": "#802a00",
+                    "on-tertiary-container": "#fff7f4",
+                    "inverse-on-surface": "#f6edff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "container-max": "1152px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "margin-desktop": "40px",
+                    "gutter": "16px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "xxl": "48px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Nunito Sans"],
+                    "label-md": ["Outfit"],
+                    "body-sm": ["Nunito Sans"],
+                    "display-xl": ["Outfit"],
+                    "headline-md": ["Outfit"],
+                    "display-lg": ["Outfit"],
+                    "body-md": ["Nunito Sans"],
+                    "handwritten-lg": ["Gochi Hand"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "handwritten-lg": ["24px", {"lineHeight": "32px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .aura-glow {
+            filter: drop-shadow(0 0 15px rgba(177, 151, 252, 0.3));
+        }
+        .comic-card-hover:hover {
+            transform: translateY(-4px) scale(1.01);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .paper-texture {
+            background-color: #fbf8f2;
+            background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+        }
+    </style>
+</head>
+<body class="paper-texture text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-background-paper/90 backdrop-blur-md border-b border-on-surface/10">
+<div class="max-w-container-max mx-auto px-margin-desktop py-md flex justify-between items-center">
+<div class="flex items-center gap-md">
+<img alt="STOP&amp;SCAN Logo" class="h-12 w-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAifli5DfnylQqeRS2kFXV3jydRw-rDDcubXS7sPKAcVtqUKM9AHyYLU9lMw6SPymEfiPygvgqLvq9ebHQ17XOpzKJIlZy62EtB721MFu2RTtAdYULWinOIw1gGurWTpGsHfpZhYZa7cKbwWGbK5b9MZdyRmqYy-S0uVHeCRL4A2zCTMbwM-sdeX1_b9Ef_NHJ30LQC2EuVKOa3WXingxYUVa2S8izm5Bis6g9TTqWIeSgQy-qVFwJ8hEFq1nOrBeZxUnOApRsVXXs">
+</div>
+<nav class="hidden md:flex items-center gap-xl"><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Learn</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Practice</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Resources</a><a class="font-label-md text-label-md hover:opacity-80 transition-opacity bg-primary-container text-on-primary-container px-md py-1 rounded-full" href="#">Comics</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Project</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Meet Amito</a></nav>
+<div class="flex items-center gap-md">
+<button class="bg-primary text-on-primary px-lg py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">
+                    My Journal
+                </button>
+</div>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative overflow-hidden bg-gradient-to-b from-welcome-blue/20 to-background-paper py-xxl">
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-2 items-center gap-xl">
+<div class="z-10">
+<span class="inline-block px-md py-xs bg-lilac-accent/20 text-on-surface border border-lilac-accent/30 rounded-full font-label-md mb-md">Visual Sensemaking</span>
+<h1 class="font-display-xl text-display-xl text-on-background mb-md">Comics</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mb-lg">
+                        Visual stories to help you slow down and see the signals. Explore how Charleen and others navigate the messy digital landscape.
+                    </p>
+<div class="flex gap-md items-center">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of Julian Lawrence, a celebrated comic book artist and illustrator, looking warm and approachable. The lighting is soft studio light, and the background is a neutral grey to keep focus on the personality. Julian has a kind expression, representing the creative collaboration of the Stop and Scan project." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjsDTLPtmevpRhzX4RJqdBEgTWAPU5id4UQeM1-4_Pd1L04xgjKhHAaIsJWyGIQ_bNFSmf_akp-Nbg4sG9zmukDb4nQmla661KN1Ww5HyOrOapHXwGfAq7HgU4MXZrOBK3_rxJISY51fbzxjv2o0FLUWZV0pr-7TX7X-hcNwmiUFnbk-NKoU-8UIvehqVgIvf1oPEU9NnENtiEAO8yHaCBSMytVEkGuOqM9skLAR8woSnxt_8U1jBeL3OpA9XJWK1Q-OjclSSPtfE">
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">In collaboration with</p>
+<a class="font-body-md text-body-md font-bold text-primary hover:underline" href="#">Julian Lawrence</a>
+</div>
+</div>
+</div>
+<div class="relative flex justify-center items-center">
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-3xl aura-glow"></div>
+<img alt="Amito reading a comic" class="relative z-10 w-full max-w-sm transform -rotate-3 hover:rotate-0 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC-_49rirjfDVoaYnTmrcs7Q2D8xujEmH61B5cRYwBIUNvdZ3WRWtIdSvTEZO2_UCHkRlGgKjdbeKtFX55WtjSKxmVIPsgtKOelgqRI650JZOr-V-jz7F7AEejhCp0NN47rgoCvxbGO2t-ghvI0qmr5g-st4BCfw_yesifMem-X-7GRAinrcHgqGOgeB1R6xJm1i0T2J_BGOzIJuQuIV_MUT2vMT8QMbYdsqUBeuvuMeuvS0GrtM6MSMlMxySArLnWhRz2Gyy1bMY" style="transform: translate(12.72px, -0.97px) rotate(-3deg);">
+<div class="absolute -bottom-4 -left-4 bg-white p-md rounded-xl shadow-soft border border-on-surface/5 transform rotate-6 hidden lg:block">
+<p class="font-handwritten-lg text-handwritten-lg text-on-surface-variant">"Slow down..."</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Intro Text Section -->
+<section class="py-xl">
+<div class="max-w-3xl mx-auto px-margin-desktop text-center">
+<div class="inline-flex items-center gap-sm mb-md text-stop-red">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-md uppercase tracking-wider">Literacy Tool</span>
+</div>
+<h2 class="font-headline-md text-headline-md mb-md">Why Comics?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    Visual narratives allow us to observe digital behaviors from a distance. By watching characters like Charleen react to sensationalist media, we can recognize our own impulses to "click and react." These comics are designed as literacy anchors—helping you translate complex sensemaking frameworks into everyday scrolling habits.
+                </p>
+</div>
+</section>
+<!-- Main Grid Section -->
+<section class="py-xxl bg-surface-cream/30">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg lg:grid-cols-2">
+<!-- Comic Card 1 -->
+<div class="bg-white rounded-3xl overflow-hidden border border-on-surface/10 shadow-sm comic-card-hover group flex flex-col h-full">
+<div class="aspect-[4/5] relative overflow-hidden bg-on-background">
+<img alt="STOP &amp; SCAN! Real or AI? Comic Cover" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1ZvQGXTmK-HxeMT2ZmyvQ4Bw7sOlSipYr1JVf6t2flNRVZWBgnIjF3DsNw4mTfr9maL11tMcsQVjRgAlwhVNl7jLdtKihy1UhWp6u6fzd-6-UzbRnGqlp1zl4NYhixUttgQ0UJx34YnikhwHuICP4cLYwTea_tqvORfUmKMslWRPkcWb3DBXqxJVyekH8kJHNGRkl_k_N3hAHEZlhh7FYH2EjwVAmOjTtDDNEAfg00HwACEQgOe13bU2LehlJoScLAvF8QnQWqG4">
+<div class="absolute top-md right-md">
+<span class="bg-stop-red text-white px-md py-xs rounded-full font-label-md shadow-lg">New Release</span>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-grow">
+<h3 class="font-headline-md text-headline-md text-on-background mb-sm group-hover:text-primary transition-colors">STOP &amp; SCAN! Real or AI?</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-xl flex-grow">
+                                Charleen and a flood of sensational posts — a visual intro to pausing before you trust what scrolls past.
+                            </p>
+<button class="w-full bg-primary-container text-white py-md rounded-full font-label-md flex items-center justify-center gap-sm hover:opacity-90 active:scale-95 transition-all">
+                                Read Comic <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Placeholder Card 1 -->
+<div class="bg-white/50 rounded-3xl border-2 border-dashed border-outline-variant flex flex-col items-center justify-center p-xl text-center min-h-[500px]">
+<div class="w-20 h-20 bg-surface-variant rounded-full flex items-center justify-center mb-lg">
+<span class="material-symbols-outlined text-display-lg text-primary/40">hourglass_top</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface-variant mb-sm">More coming soon</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-[200px]">
+                            Amito is busy sketching more stories to help you navigate the web.
+                        </p>
+</div>
+<!-- Placeholder Card 2 -->
+
+</div>
+</div>
+</section>
+<!-- Collaborator Banner -->
+<section class="py-xl">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="bg-primary rounded-3xl p-xl text-white flex flex-col md:flex-row items-center justify-between gap-lg overflow-hidden relative">
+<div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+<div class="grid grid-cols-12 h-full w-full">
+<div class="col-span-1 border-r border-white"></div>
+<div class="col-span-1 border-r border-white"></div>
+<div class="col-span-1 border-r border-white"></div>
+</div>
+</div>
+<div class="z-10 text-center md:text-left">
+<h3 class="font-headline-md text-headline-md mb-xs">Want to use these in your classroom?</h3>
+<p class="font-body-md text-body-md opacity-90">Download high-resolution PDFs and teaching guides for all comics.</p>
+</div>
+<button class="z-10 bg-white text-primary px-xl py-md rounded-full font-label-md hover:bg-surface-bright transition-colors shadow-lg active:scale-95">
+                        Access Resources
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface text-inverse-on-surface pt-xxl pb-xl">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-xxl mb-xxl">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-sm mb-lg">
+<img alt="STOP&amp;SCAN Logo" class="h-8 w-8 brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAifli5DfnylQqeRS2kFXV3jydRw-rDDcubXS7sPKAcVtqUKM9AHyYLU9lMw6SPymEfiPygvgqLvq9ebHQ17XOpzKJIlZy62EtB721MFu2RTtAdYULWinOIw1gGurWTpGsHfpZhYZa7cKbwWGbK5b9MZdyRmqYy-S0uVHeCRL4A2zCTMbwM-sdeX1_b9Ef_NHJ30LQC2EuVKOa3WXingxYUVa2S8izm5Bis6g9TTqWIeSgQy-qVFwJ8hEFq1nOrBeZxUnOApRsVXXs">
+<span class="font-display-lg text-display-lg text-white">Stop &amp; Scan</span>
+</div>
+<p class="font-body-md text-body-md text-outline-variant opacity-80">
+                        Equipping the next generation with the tools to navigate the digital frontier with curiosity and critical thought.
+                    </p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-white mb-lg uppercase tracking-widest">Learn</h4>
+<ul class="space-y-sm font-body-md text-body-md text-outline-variant">
+<li class=""><a class="hover:text-white transition-colors" href="#">The Framework</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Case Studies</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Amito's Guide</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-white mb-lg uppercase tracking-widest">Connect</h4>
+<ul class="space-y-sm font-body-md text-body-md text-outline-variant">
+<li class=""><a class="hover:text-white transition-colors" href="#">Discord Community</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">The Lab</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Support</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-white mb-lg uppercase tracking-widest">Legal</h4>
+<ul class="space-y-sm font-body-md text-body-md text-outline-variant">
+<li class=""><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Terms of Service</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Educational Use</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/10 pt-xl flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="font-label-md text-label-md text-outline-variant">© 2024 STOP&amp;SCAN Sensemaking Labs. All rights reserved.</p>
+<div class="flex gap-lg">
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors">language</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors">share</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors">mail</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => button.style.transform = 'scale(0.95)');
+            button.addEventListener('mouseup', () => button.style.transform = 'scale(1)');
+            button.addEventListener('mouseleave', () => button.style.transform = 'scale(1)');
+        });
+
+        // Parallax effect for the hero mascot
+        window.addEventListener('mousemove', (e) => {
+            const mascot = document.querySelector('img[alt="Amito reading a comic"]');
+            if(mascot) {
+                const moveX = (e.clientX - window.innerWidth / 2) / 50;
+                const moveY = (e.clientY - window.innerHeight / 2) / 50;
+                mascot.style.transform = `translate(${moveX}px, ${moveY}px) rotate(-3deg)`;
+            }
+        });
+    </script>
+
+
+</body></html>

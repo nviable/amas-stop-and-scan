@@ -1,0 +1,68 @@
+/** Brand and Stitch design assets (hosted URLs from the redesign export). */
+export const LOGO_URL =
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuAifli5DfnylQqeRS2kFXV3jydRw-rDDcubXS7sPKAcVtqUKM9AHyYLU9lMw6SPymEfiPygvgqLvq9ebHQ17XOpzKJIlZy62EtB721MFu2RTtAdYULWinOIw1gGurWTpGsHfpZhYZa7cKbwWGbK5b9MZdyRmqYy-S0uVHeCRL4A2zCTMbwM-sdeX1_b9Ef_NHJ30LQC2EuVKOa3WXingxYUVa2S8izm5Bis6g9TTqWIeSgQy-qVFwJ8hEFq1nOrBeZxUnOApRsVXXs";
+
+export const AMITO_IMAGES = {
+  greeting:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuA7zzuMLGil-wCsz6kcSP4EpP_JsFrvxrgCE7I-2JnF7ePRodQDFiodwXyipwPm-OIV_R94_mgesBSODY7XuC4JEl5jtHi6_7yoEY8lOtqegLPlGqMjaD6sJwcFoF_bAHsdS0jfGIqf21swqAD3jyRh0McxED_DQva-n-YIVyfz0LhBpYxnQxeYpdBsMWrcDPegKfCmzyRTwjZx7fJfy0wao9J5WA-gEDIjpiOEf1lAHV5PhX9BjHgce80wF2scmdh-2aw0bVD25HE",
+  stop: "https://lh3.googleusercontent.com/aida-public/AB6AXuACiL-ehVWribjVOVwK9FPIsJfP0oPkrh0WNj79qt4QXfy5dLLwmutPZW4AnE9q4nGHlHZS3DlxuG64E-UNps69o5QykSPuqKoUTX1wh3EB5a8yfkhb_QYRlLRotLtnLinIAOkdTPjFzmvzz_bwN8m34i4U3Tola1JxVB7rQENloVZgSr1r1cM_8Dsr9uk53QzNNxWLoTGNFRvO1cCSeG6kE8l5QF7CDBv3V86jkkiA5LH3LYuEQUGjK9a5AZDZ5-OCGz91NVh1ZjQ",
+  source: "/amito/pose-source.png",
+  content:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuDEsdbv4h_U9waFRDVgM_H5lEQb2SC9zuI4hEpZgRMmVMFSbOD3nTi45Sdk-wylU-Or6uQeGSV2h3fceWS4ABcmQN22MJZ91xSlq1MJPMvx_tTafyGNFnPGPkaFUOTDd_RXvzv9I0KtLkSZAlZcnCXQqM5BGWmKrvqLdOQ-L2xQaCQvGf2wwyEZatLg3PcL-_oT2ciXqhR2DSSeg78emEQ5Zp334iIxJiw4u8JiyGjz1UN1bOvm-DwiiJZYYuJl5dKacJpmqvDJmBk",
+  alignment: "/amito/pose-analyze.png",
+  reflect:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuDvqzkWnUiH833h8L7R6iVOiEEzEwjjH655a9P15lA27VGy4MhYFNGRb4D5JM4pcozA4Xoivx2FRnn_RCIE0dj37c1j0iOGwS6XUCQx2fn_N4IfTCh1nyxZHOrgMKsyxOtl5o22_TxYrZM76dEKK9xlVBxOoD3s63Z2gR4mRkWuQOSh1JmUoGIWi6Ugzp389xQ-0Ld3rY7dIW30C7BuOSl1XUGjTNDryzhA376Fgn7WDKyMNs2mj1_7NGphOLYAXvzdTHzJP62fx6A",
+  reward:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuBdQ28RnwiwNYHgCDoqwI4DgsLYC9oTiqFj_5WjYukxc3ptf9ODC37RbUJRnu114eyXhvNVRFhaBtPUbKYSTON0HL2rJNTWIU5N1yagT_AzwM_esnxMtuQGnlbHb71OiAlsSeylwydGvghaBuUK51jHSNCz3EES5gxA1EnlON515GB-q3htrGl4K8ONomhRzZczkyIisfHOh4eFEJh4KHyzzStdHtbq3lS3Cf9cOVhpMhW3j6fF9Uo_g1ML3y63YgYFb4KaC-0A-vQ",
+  comics:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuDC-_49rirjfDVoaYnTmrcs7Q2D8xujEmH61B5cRYwBIUNvdZ3WRWtIdSvTEZO2_UCHkRlGgKjdbeKtFX55WtjSKxmVIPsgtKOelgqRI650JZOr-V-jz7F7AEejhCp0NN47rgoCvxbGO2t-ghvI0qmr5g-st4BCfw_yesifMem-X-7GRAinrcHgqGOgeB1R6xJm1i0T2J_BGOzIJuQuIV_MUT2vMT8QMbYdsqUBeuvuMeuvS0GrtM6MSMlMxySArLnWhRz2Gyy1bMY",
+  project:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuBBnShiF4mgyUJeilDaqA3rUtd3lOnvLWIGs5chnxcRInXQQnhUD6Wz7WETvRIn6lmfKCOdzv6OcFnj4KhrHYoPHBhbylf9QbsroYXWSDYb3aFZ3rFTKZgKFYSef_qs6lR4nPPZh0XDx7Stv2LX-XlEmarERFFPY3zmhYTEoK5V9dYfzEMNgP7jtd1_pbu446G4ognaiv3vIKtmJlR2AsZp-rRfQ5woVNl6w4KMBlbE2qRwrSyamdF4W0QC8OEG4Va_73MIX_kF1eYJFg",
+  learn:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuAJgL_aPcXrzIi-hjzpn4HZKG7xX5qT4emhiH_nXzVhWJpkRIp0pkQsATA8Avr0xc6Cl2nlduuYkI0evaD2KkZIVGfsSxuoZmDtkfmJbibWa3BOY-tbNQ0dDf4HZ7qTl-cj0MAXb8-v5WSkKaylmDpu-iUvEMdK7EHlzBVhKfd_Rs98Vbj4gO3uBD79qaQpVocBaLxmfUvcCS5cDbRM6yhsbpnHB1qSqfop3e1PMVWIWLbLqpVp49VD5PmBEr4L6u9Xa_ufeQbmL4E",
+  postVideo:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuBph6goBmYvPC7CZvy6MYTFnC1BZ2TjkIgm0EHcClNtVIYEWTLRxw6_E-vrg35jv03LK9gYHhDoubbhoEOie3s9u_W0w_Z0GHXoVxh5OWJbs51fhKcXJdIQZgQzLF2ll30lYYNakjcHfPXHpRXOwVsWcO3MJ3ooslXLT3jsvOiphDZIHSQcETmoE3vLXKAtncHpwph25adlgZk3btbFLeJ3cKpSDhIvzFUf6yRUBxCo2E7zGpIN3RzLlJV1PLZkiKxcC6icROxG4Vs",
+  comicCover:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuC1ZvQGXTmK-HxeMT2ZmyvQ4Bw7sOlSipYr1JVf6t2flNRVZWBgnIjF3DsNw4mTfr9maL11tMcsQVjRgAlwhVNl7jLdtKihy1UhWp6u6fzd-6-UzbRnGqlp1zl4NYhixUttgQ0UJx34YnikhwHuICP4cLYwTea_tqvORfUmKMslWRPkcWb3DBXqxJVyekH8kJHNGRkl_k_N3hAHEZlhh7FYH2EjwVAmOjTtDDNEAfg00HwACEQgOe13bU2LehlJoScLAvF8QnQWqG4",
+  videoTeaser:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuAnujHXRRxg0c2xhbiLjV2fVhWADIta_Zy05Dsw0wLkhmo2xvyUDGbTh62hhhff2ttzTtfLKC_WB_Md-1i0im_3jNy4zV3Wel-g4FHlIFmkw8NJWX1u5TyFGtLuhDL_NsjNeYIpQ7Vkq5u53InQRj5OD144JgQw3hFHTChaLie18xLnQ-J8OPnV094S-tcoW3V7pG4yZY-2iS3Hkc4OOD17nXoEGMjbAMloN3TQBrsRjP0N-6a5dWOeFTX4tl7HTFwX7c2A1mg4Wl4",
+} as const;
+
+/** Team photos (local assets in public/team/) */
+export const PROJECT_TEAM = {
+  fatmaAksu: "/team/fatma-aksu.png",
+  saniatSohrawardi:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuAMKkxct0ySmOWSjLzfnNYTLkuNfoj5hVLn3CZM64zbULiAYCB4SZOUd0XqMJFDcYR_ruRuihU30_Xaj3K4I6Fh6gFKjVU82J4_G6O1nWAN6rzYkF8j80d8ozaVwemf1PZO-mKVYIvGvmZDGlS7pqb-MllVgO8oUeUKi8Tapij3PYtoucBdkkawXqEOckGUZqLYobRdbp_rv8glrfiD5gjwAlEcs56buv1Vpyg7vod5M1HyKPCL8BCdWctUQxzPG1KgcDSyOYcZkhQsNQ",
+  emanuelLukawiecki: "/team/emanuel-lukawiecki.png",
+} as const;
+
+export const FRAMEWORK_STEP_IMAGES = {
+  stop: {
+    icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuAYwgkufZf6hpUMHAeYJVa-D97dUbX7qmrxlkZu1AayhJsabEiuc4xzzGI3an1YHOwdQhEYExObwmhF3OqFbP4QQZkosZpsVo7UBbqEIUCPhE6zp7KojpOHsVKt4-PGLMLdFlq-6D4OVtpJgYmm5zRaeAzvzlCJoZrdUWSwO6Uf1HGAYN4qVqpOmNkFINzH2y88RQB3E2yllbbFw3MZrIbwqgHr6zBTPoCkWQFMWJTzF3NEpML4M8-9nM8YR79iYjd8zw_6May1WqRhyw",
+    amito:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDUVsFDY-f9Lykd0Qa47VwS5VipivNKSQ3LWoa8jEZp1qgn3wYuKoErlwThkS0uFTwudOdoNliNmfZm8057a8NQbhZJzYR4yzf27Mct3lQKY6T6u1AZk5n2h69so5sxcos4WJ-nDA_2Tiom3UvYBWU2U47lVXNcPdnFgBmeAUnsbDF4sum0AJaf-OzcOu91aYkX1qriMAjjUypu8wShmy0HmFxG1LNgemIFYA9IX8QH4DZ2QxETSMBRHHXAEDNmVdGR894QatH3Lbs",
+    bg: "#f3a530",
+  },
+  source: {
+    icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuA3bykVA8JSyPZVko1u8MdSEijVvttaUxtO2uPNR7Yom91sVwV0ZcEZ3573Qg4QGUMmcp38SADx7jCrcFSFl9i-PPCv6IwiyWfOmC4bjyP9aeQ81HyNK4kzyFz9ydXTLiNjcD8Ageasq1Box5C-6YryOrSNoboZGJvd4nv7otdR8oyPrp7M01rE_qHMuvqlIH7wqJ7czRP5Bk_hRR6EBgU2r-e-D3Jj7BQUYmYym08uM-OZ71wy_5hNr4PP2xZVqibv5VL69-UEd-E",
+    amito: "/amito/pose-source.png",
+    bg: "#6ae4e7",
+  },
+  content: {
+    icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTTPoZ6EEb9Qq3T2RmWEr5ze4HEczgKe42rfA8IUZCFIErEvH5fcU8jE0eEq9Laub3mN9OtKYnCJSU6GVBfaskduAgqm8TgBMGxVXOC_djtvFZ5FpVydG7U-bYKvjtp4RY5i-n6fJEcPiEwfSURmzNkLhC_ZVZu53t03tZyz9cPG5PuZAt-mYtRnlO5mri1X5q5kpbVHbcRlZTGZ0NGgqiDfvEqbjO7jyMseK_e_WwHzL06EpWzx0mw9HNuYA7gy5WJFdyuBH3bvY",
+    amito:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDLWk39eqjwoC3sls1fRmaPoVhTlz4V-8zrhHXQpUHrjmlYMiFyHJ0jWjGIc_IkZJxSKJMEbU_2O8W1hJ-ML_eGBK8R6StaAvITyYSToAJiERABxAAp_C3eEzyKk0Aa2wvhLiQvpQ0BLpWd_ji8HDjij__cvZ9UQCBO30S6aoDgmbW4tm-wRKDiO-dl9Z5DjVif1cGvuRHDi7Y0rd9h1fqStn48TNqRYpYHGYqxd_T8ZC7DmBqINcKlw3gM5fgLrQFRyqYLOZo_4J0",
+    bg: "#82e896",
+  },
+  alignment: {
+    icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuDCm_4lseIYsr5euJ_-q6OuwFVhXPthAoU-pVHCFV68KvJDIetTv9qpPsFozBjlzQqOATHEbmzvmpVx9ViNE0JnAI6WhT54R3tof4HH0jFWxTw8KQzwW5VKOh2ENyFSSqv9KS8irtz8_AHKs02ARz3cMqUrRrzqNQE2ZrZ6-Ms-1SKyY1d5RBtzpJo6BwRu74HWgsuzvHP1TKvBJRXdSmX8j5dq66X5qxsdYyhrhOr1Kv2SN83YuFxByPs9rrL1lBiDXECDADY78SM",
+    amito: "/amito/pose-analyze.png",
+    bg: "#f36734",
+  },
+  reflect: {
+    icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuD-k2cZgF0Dn82GHlzGc_ZQTfFiEi-7zFGI4PJcSbS8egutk5Ltpuf5HHz8Ma5D7XQZYDPVS8Kk9SYN08BoqLd_kySpBWz6GVtXoX4fVwW4U_5pTSZDsN-sNxbsATk9rpgEdi6K9T5od-m1RNNmyDr_1HwQ-oAoU0QbsQLKPVL2-idj-v_VQLEME-lHlnx6ehl9ZCsK3tUa0j3XcwdqnqFhV_CPYmpvJGwmxdDNpyaSuHr3WRKWHcqg3QPGkUbeyKXFDDCIU3BPiLs",
+    amito:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAxb1ATnAiIRtsHvhGTjew0oA3ALtn9dPsPUdqWB_mv3nnCkI6RFbIw0ITz2c9MVqf6hYK-xdffTzOXE66XDqAmsELwEVXeq8NSGGDqYa1o144pefHc382Sj_6B1r2xmqqk18k12oLp7xZuL7v110T7v1aKHXk7I2QvKbk2fvZAPffOvcUnguOf_jRHAPP5jd206kAcrimDxPrTw6D5Kvi26TRty2AScauiFadymNIJp1rw71uDNe-ThKFtD9IM2FGAoreG6d8e7uM",
+    bg: "#f3a530",
+  },
+} as const;

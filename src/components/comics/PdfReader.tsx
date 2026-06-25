@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Document, Page } from "react-pdf";
+import Icon from "../ui/Icon";
 import "../../lib/pdfWorker";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
@@ -9,11 +10,12 @@ type FitMode = "width" | "page";
 type PdfReaderProps = {
   url: string;
   title: string;
+  author?: string;
 };
 
 const SWIPE_THRESHOLD = 48;
 
-export default function PdfReader({ url, title }: PdfReaderProps) {
+export default function PdfReader({ url, title, author }: PdfReaderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const touchRef = useRef<{ x: number; y: number } | null>(null);
 
@@ -30,6 +32,13 @@ export default function PdfReader({ url, title }: PdfReaderProps) {
   const spreadActive = spread && containerWidth >= 640;
   const rightPage = spreadActive && page < numPages ? page + 1 : null;
   const pageStep = spreadActive ? 2 : 1;
+
+  const pageLabel =
+    numPages === 0
+      ? "…"
+      : rightPage
+        ? `${page}–${rightPage} of ${numPages}`
+        : `${page} of ${numPages}`;
 
   const goPrev = useCallback(() => {
     setPage((p) => Math.max(1, p - pageStep));
@@ -129,73 +138,96 @@ export default function PdfReader({ url, title }: PdfReaderProps) {
     setScale(1);
   };
 
+  const canGoPrev = page > 1;
+  const canGoNext = numPages > 0 && page < numPages;
+
   return (
     <div
       ref={containerRef}
-      className={`flex flex-col overflow-hidden rounded-3xl border border-ink/10 bg-ink/95 ${
+      className={`flex flex-col overflow-hidden rounded-xxl border border-on-surface/10 bg-inverse-surface shadow-card ${
         fullscreen ? "h-screen rounded-none border-0" : "min-h-[70vh]"
       }`}
     >
-      <div className="no-print flex flex-wrap items-center gap-2 border-b border-white/10 px-3 py-2.5 text-white sm:px-4">
-        <div className="min-w-0 flex-1">
-          <p className="truncate font-display text-sm font-bold sm:text-base">{title}</p>
-          <p className="text-xs text-white/55">
-            Page {page}
-            {rightPage ? `–${rightPage}` : ""} of {numPages || "…"}
+      {/* Toolbar */}
+      <div className="no-print border-b border-white/10 bg-on-background/95 backdrop-blur-sm">
+        <div className="flex flex-wrap items-center justify-between gap-md px-md py-md sm:px-lg">
+          <div className="min-w-0">
+            <p className="truncate font-display text-headline-md text-white">{title}</p>
+            {author && (
+              <p className="truncate text-body-sm text-white/60">By {author}</p>
+            )}
+          </div>
+          <p className="rounded-full bg-white/10 px-md py-xs font-label-md text-white/80">
+            Page {pageLabel}
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-1.5">
-          <button type="button" onClick={goPrev} disabled={page <= 1} className="reader-btn">
-            ← Prev
-          </button>
-          <button
-            type="button"
-            onClick={goNext}
-            disabled={numPages === 0 || page >= numPages}
-            className="reader-btn"
-          >
-            Next →
-          </button>
-          <span className="mx-1 hidden h-5 w-px bg-white/15 sm:inline" />
-          <button type="button" onClick={zoomOut} className="reader-btn" aria-label="Zoom out">
-            −
-          </button>
-          <button type="button" onClick={fitWidth} className="reader-btn">
-            Fit width
-          </button>
-          <button type="button" onClick={zoomIn} className="reader-btn" aria-label="Zoom in">
-            +
-          </button>
-          <button
-            type="button"
-            onClick={() => setSpread((s) => !s)}
-            className={`reader-btn hidden sm:inline-flex ${spread ? "bg-white/20" : ""}`}
-            aria-pressed={spread}
-          >
-            Spread
-          </button>
-          <button type="button" onClick={toggleFullscreen} className="reader-btn">
-            {fullscreen ? "Exit" : "Full screen"}
-          </button>
-          <a href={url} download className="reader-btn">
-            Download
-          </a>
+        <div className="flex flex-col gap-sm border-t border-white/5 px-md py-sm sm:flex-row sm:items-center sm:justify-between sm:px-lg">
+          {/* Primary: page navigation */}
+          <div className="flex items-center justify-center gap-sm sm:justify-start">
+            <ReaderButton
+              onClick={goPrev}
+              disabled={!canGoPrev}
+              label="Previous"
+              icon="chevron_left"
+              variant="primary"
+            />
+            <ReaderButton
+              onClick={goNext}
+              disabled={!canGoNext}
+              label="Next"
+              icon="chevron_right"
+              iconAfter
+              variant="primary"
+            />
+          </div>
+
+          {/* Secondary: zoom */}
+          <div className="flex items-center justify-center gap-xs">
+            <span className="mr-xs hidden font-label-md uppercase tracking-wide text-white/40 sm:inline">
+              Zoom
+            </span>
+            <ReaderIconButton onClick={zoomOut} label="Zoom out" icon="zoom_out" />
+            <ReaderButton onClick={fitWidth} label="Fit width" icon="fit_width" compact />
+            <ReaderIconButton onClick={zoomIn} label="Zoom in" icon="zoom_in" />
+          </div>
+
+          {/* Tertiary: view options */}
+          <div className="flex items-center justify-center gap-xs sm:justify-end">
+            <ReaderButton
+              onClick={() => setSpread((s) => !s)}
+              label="Spread"
+              icon="spread"
+              compact
+              active={spread}
+              className="hidden sm:inline-flex"
+            />
+            <ReaderIconButton
+              onClick={toggleFullscreen}
+              label={fullscreen ? "Exit full screen" : "Full screen"}
+              icon={fullscreen ? "fullscreen_exit" : "fullscreen"}
+            />
+            <a href={url} download className="inline-flex">
+              <ReaderIconButton as="span" label="Download PDF" icon="download" />
+            </a>
+          </div>
         </div>
       </div>
 
+      {/* Canvas */}
       <div
-        className="relative flex flex-1 items-start justify-center overflow-auto p-2 sm:p-4"
+        className="relative flex flex-1 items-start justify-center overflow-auto bg-[#1a1428] p-sm sm:p-lg"
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
         {loading && (
-          <p className="absolute inset-0 flex items-center justify-center text-sm text-white/60">
+          <p className="absolute inset-0 flex items-center justify-center gap-sm text-body-sm text-white/60">
+            <Icon name="hourglass_top" className="text-lg" />
             Loading comic…
           </p>
         )}
         {error && (
-          <p className="absolute inset-0 flex items-center justify-center px-6 text-center text-sm text-stop">
+          <p className="absolute inset-0 flex items-center justify-center px-lg text-center text-body-sm text-stop-red">
             {error}
           </p>
         )}
@@ -212,7 +244,7 @@ export default function PdfReader({ url, title }: PdfReaderProps) {
             setLoading(false);
             setError("Could not load this comic. Try downloading the PDF instead.");
           }}
-          className={`flex items-start justify-center gap-3 transition-opacity ${
+          className={`flex items-start justify-center gap-md transition-opacity ${
             loading ? "opacity-0" : "opacity-100"
           } ${spreadActive ? "flex-row" : "flex-col"}`}
         >
@@ -223,7 +255,7 @@ export default function PdfReader({ url, title }: PdfReaderProps) {
             scale={fitMode === "page" ? scale : undefined}
             renderTextLayer
             renderAnnotationLayer
-            className="overflow-hidden rounded-lg shadow-lg"
+            className="overflow-hidden rounded-lg shadow-2xl"
           />
           {rightPage && (
             <Page
@@ -233,15 +265,112 @@ export default function PdfReader({ url, title }: PdfReaderProps) {
               scale={fitMode === "page" ? scale : undefined}
               renderTextLayer
               renderAnnotationLayer
-              className="overflow-hidden rounded-lg shadow-lg"
+              className="overflow-hidden rounded-lg shadow-2xl"
             />
           )}
         </Document>
       </div>
 
-      <p className="no-print border-t border-white/10 px-4 py-2 text-center text-xs text-white/45 sm:hidden">
-        Swipe left or right to turn pages
-      </p>
+      {/* Mobile page bar + swipe hint */}
+      <div className="no-print border-t border-white/10 bg-on-background/95 px-md py-sm sm:hidden">
+        <div className="flex items-center justify-between gap-sm">
+          <ReaderButton
+            onClick={goPrev}
+            disabled={!canGoPrev}
+            label="Prev"
+            icon="chevron_left"
+            variant="primary"
+            compact
+          />
+          <span className="font-label-md text-white/70">Swipe to turn pages</span>
+          <ReaderButton
+            onClick={goNext}
+            disabled={!canGoNext}
+            label="Next"
+            icon="chevron_right"
+            iconAfter
+            variant="primary"
+            compact
+          />
+        </div>
+      </div>
     </div>
+  );
+}
+
+function ReaderButton({
+  onClick,
+  disabled,
+  label,
+  icon,
+  iconAfter,
+  variant = "default",
+  compact,
+  active,
+  className = "",
+}: {
+  onClick?: () => void;
+  disabled?: boolean;
+  label: string;
+  icon: string;
+  iconAfter?: boolean;
+  variant?: "default" | "primary";
+  compact?: boolean;
+  active?: boolean;
+  className?: string;
+}) {
+  const base =
+    variant === "primary"
+      ? "bg-primary text-on-primary hover:brightness-110"
+      : active
+        ? "bg-white/20 text-white"
+        : "border border-white/15 bg-white/5 text-white hover:bg-white/15";
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className={`inline-flex items-center gap-xs rounded-full font-label-md transition-all active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 ${compact ? "px-md py-sm" : "px-lg py-sm"} ${base} ${className}`}
+    >
+      {!iconAfter && <Icon name={icon} className="text-base" />}
+      <span>{label}</span>
+      {iconAfter && <Icon name={icon} className="text-base" />}
+    </button>
+  );
+}
+
+function ReaderIconButton({
+  onClick,
+  label,
+  icon,
+  as,
+}: {
+  onClick?: () => void;
+  label: string;
+  icon: string;
+  as?: "span";
+}) {
+  const className =
+    "inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-colors hover:bg-white/15 active:scale-95";
+
+  if (as === "span") {
+    return (
+      <span className={className} aria-label={label} title={label}>
+        <Icon name={icon} className="text-base" />
+      </span>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={className}
+      aria-label={label}
+      title={label}
+    >
+      <Icon name={icon} className="text-base" />
+    </button>
   );
 }

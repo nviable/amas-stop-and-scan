@@ -1,0 +1,382 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Stop &amp; Scan | Empowering Digital Resilience</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;family=Gochi+Hand&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .aura-glow {
+            filter: drop-shadow(0 0 20px rgba(177, 151, 252, 0.3));
+        }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 24px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+        }
+        .paper-texture {
+            background-image: radial-gradient(#241b3a05 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        
+        /* Brand Colors */
+        .bg-fuel-yellow { background-color: #f3a530; }
+        .bg-turquoise { background-color: #6ae4e7; }
+        .bg-pastel-green { background-color: #82e896; }
+        .bg-flamingo { background-color: #f36734; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#2665fd",
+                        "source-cyan": "#22b8cf",
+                        "on-primary-fixed-variant": "#003cad",
+                        "tertiary-fixed": "#ffdbcf",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#1f1635",
+                        "tertiary-container": "#c94600",
+                        "on-secondary-container": "#6d4400",
+                        "surface-bright": "#fef7ff",
+                        "on-tertiary-fixed": "#380d00",
+                        "primary-fixed": "#dce1ff",
+                        "background-paper": "#fbf8f2",
+                        "surface-container": "#f3eaff",
+                        "surface-cream": "#f6f0e4",
+                        "surface-dim": "#e1d4fd",
+                        "surface-container-low": "#f8f1ff",
+                        "content-green": "#37b24d",
+                        "on-error": "#ffffff",
+                        "welcome-blue": "#4dabf7",
+                        "secondary": "#845400",
+                        "on-primary-container": "#f9f7ff",
+                        "on-tertiary-fixed-variant": "#802a00",
+                        "surface-container-highest": "#e9ddff",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#ffddb6",
+                        "secondary-fixed-dim": "#ffb95a",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "surface": "#fef7ff",
+                        "on-primary-fixed": "#00164d",
+                        "on-surface-variant": "#434655",
+                        "error": "#ba1a1a",
+                        "lilac-accent": "#b197fc",
+                        "tertiary": "#a03600",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "stop-red": "#ef4a6b",
+                        "tertiary-fixed-dim": "#ffb59a",
+                        "on-background": "#1f1635",
+                        "outline": "#737687",
+                        "outline-variant": "#c3c5d8",
+                        "on-secondary-fixed": "#2a1800",
+                        "primary": "#004cd7",
+                        "secondary-container": "#feae39",
+                        "background": "#fef7ff",
+                        "surface-variant": "#e9ddff",
+                        "inverse-on-surface": "#f6edff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#fff7f4",
+                        "inverse-primary": "#b5c4ff",
+                        "inverse-surface": "#342b4b",
+                        "surface-container-high": "#eee4ff",
+                        "reflect-orange": "#ff922b",
+                        "primary-fixed-dim": "#b5c4ff",
+                        "surface-tint": "#0050e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "8px",
+                        "lg": "12px",
+                        "xl": "16px",
+                        "2xl": "24px",
+                        "3xl": "32px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "48px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "gutter": "16px",
+                        "container-max": "1152px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "40px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Outfit", "sans-serif"],
+                        "handwritten-lg": ["Gochi Hand", "cursive"],
+                        "headline-md": ["Outfit", "sans-serif"],
+                        "label-md": ["Outfit", "sans-serif"],
+                        "body-md": ["Nunito Sans", "sans-serif"],
+                        "body-sm": ["Nunito Sans", "sans-serif"],
+                        "body-lg": ["Nunito Sans", "sans-serif"],
+                        "display-xl": ["Outfit", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "handwritten-lg": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-paper text-on-surface font-body-md selection:bg-lilac-accent/30 paper-texture overflow-x-hidden">
+<header class="fixed top-0 w-full z-50 bg-background-paper/90 backdrop-blur-md border-b border-on-surface/10">
+<div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<img alt="STOP&amp;SCAN Logo" class="h-10 w-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuB3_VCH6avp5Q3StA7F27fu2HL_DSgvTSy4jNffQliykNA67895c_zfkoMDrYqvWD1aFzk6L-1q3HmMrOtGlBcjiarX9uPNSpqjSqlxkRitJS95R4sb7V_5CVq1uvuRi9Me7-1NhSxgL0A048I5wQWuSPYfdGj0LO2kriJ04wYvxbzSPZ1gyyaq_JUs67VNbP0kbhmuPHV3kUKdN6kjn52z89CO6oGXcK0LBd1YEtWBHZ8-fHoHtXwLg8BLpi2KwDKWxIIdieZME">
+</div>
+<nav class="hidden lg:flex items-center gap-xl"><a class="text-primary font-label-md text-label-md border-b-2 border-primary pb-1" href="#">Learn</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Practice</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Resources</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Comics</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Project</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Meet Amito</a></nav>
+<div class="flex items-center gap-md"><button class="bg-primary text-on-primary px-lg py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">My Journal</button></div>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative overflow-hidden pt-xxl pb-xxl md:pt-32 md:pb-32 px-margin-mobile md:px-margin-desktop transition-all duration-1000 opacity-100 translate-y-0 bg-gradient-to-br from-primary/5 via-welcome-blue/10 to-white">
+<div class="max-w-container-max mx-auto grid md:grid-cols-2 gap-xl items-center">
+<div class="z-10">
+<div class="inline-flex items-center gap-sm bg-lilac-accent/10 border border-lilac-accent/20 px-md py-xs rounded-full text-on-surface-variant mb-md">
+<span class="material-symbols-outlined text-lilac-accent">auto_awesome</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Powered by AI for Good</span>
+</div>
+<h1 class="font-display-xl text-display-xl text-on-surface mb-lg tracking-tight leading-tight">Empowering Digital Resilience</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xxl max-w-lg leading-relaxed">
+                    Join Amito on a journey to navigate the digital world with confidence. Learn to pause, process, and act with clarity in the age of information overload.
+                </p>
+<div class="flex flex-wrap gap-md">
+<button class="bg-primary text-on-primary px-xxl py-md rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-primary/30">Start Learning</button>
+<button class="flex items-center gap-sm border-2 border-primary px-xl py-md rounded-full font-bold hover:bg-primary hover:text-white transition-all text-primary">
+<span class="material-symbols-outlined">explore</span>
+                        Practice
+                    </button>
+</div>
+</div>
+<div class="relative flex justify-center items-center">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/20 via-welcome-blue/10 to-transparent rounded-full blur-3xl transform -translate-y-8 scale-125"></div>
+<img alt="Amito Mascot Waving" class="w-full max-w-md object-contain amito-float z-10 relative" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7zzuMLGil-wCsz6kcSP4EpP_JsFrvxrgCE7I-2JnF7ePRodQDFiodwXyipwPm-OIV_R94_mgesBSODY7XuC4JEl5jtHi6_7yoEY8lOtqegLPlGqMjaD6sJwcFoF_bAHsdS0jfGIqf21swqAD3jyRh0McxED_DQva-n-YIVyfz0LhBpYxnQxeYpdBsMWrcDPegKfCmzyRTwjZx7fJfy0wao9J5WA-gEDIjpiOEf1lAHV5PhX9BjHgce80wF2scmdh-2aw0bVD25HE">
+<div class="absolute -top-8 -right-4 md:-right-8 bg-white p-lg rounded-2xl shadow-soft border border-on-surface/10 max-w-[240px] z-20 speech-bubble"><p class="font-handwritten-lg text-handwritten-lg text-on-surface">Hi! I'm Amito. Let's learn how to spot tricky content together!</p></div>
+</div>
+</div>
+</section>
+<!-- Video Teaser Block -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-surface-container-low transition-all duration-1000 opacity-100 translate-y-0">
+<div class="max-w-4xl mx-auto">
+<div class="aspect-video bg-inverse-surface rounded-3xl overflow-hidden shadow-2xl relative group cursor-pointer border-4 border-white/50">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center z-10">
+<div class="w-20 h-20 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl fill-current">play_arrow</span>
+</div>
+</div>
+<img alt="Video Teaser Placeholder" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnujHXRRxg0c2xhbiLjV2fVhWADIta_Zy05Dsw0wLkhmo2xvyUDGbTh62hhhff2ttzTtfLKC_WB_Md-1i0im_3jNy4zV3Wel-g4FHlIFmkw8NJWX1u5TyFGtLuhDL_NsjNeYIpQ7Vkq5u53InQRj5OD144JgQw3hFHTChaLie18xLnQ-J8OPnV094S-tcoW3V7pG4yZY-2iS3Hkc4OOD17nXoEGMjbAMloN3TQBrsRjP0N-6a5dWOeFTX4tl7HTFwX7c2A1mg4Wl4">
+<div class="absolute bottom-lg left-lg z-10">
+<span class="bg-white/90 backdrop-blur-md px-md py-xs rounded-full text-primary font-bold text-label-md uppercase tracking-wider">Teaser Video: Meet Amito</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Compact Framework Grid Section -->
+<section class="py-xxl px-margin-mobile md:px-margin-desktop bg-background-paper transition-all duration-1000 opacity-100 translate-y-0">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-xl">
+<h2 class="font-display-xl text-display-xl text-on-surface mb-sm">The Framework</h2>
+<p class="font-body-lg text-on-surface-variant">Simple steps to master digital resilience.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- STOP -->
+<div class="bg-fuel-yellow p-xl rounded-3xl text-white flex flex-col items-center text-center group hover:scale-[1.02] transition-transform shadow-xl">
+<div class="w-16 h-16 flex items-center justify-center bg-white rounded-full mx-auto mb-4"><img alt="Stop Icon" class="w-10 h-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYwgkufZf6hpUMHAeYJVa-D97dUbX7qmrxlkZu1AayhJsabEiuc4xzzGI3an1YHOwdQhEYExObwmhF3OqFbP4QQZkosZpsVo7UBbqEIUCPhE6zp7KojpOHsVKt4-PGLMLdFlq-6D4OVtpJgYmm5zRaeAzvzlCJoZrdUWSwO6Uf1HGAYN4qVqpOmNkFINzH2y88RQB3E2yllbbFw3MZrIbwqgHr6zBTPoCkWQFMWJTzF3NEpML4M8-9nM8YR79iYjd8zw_6May1WqRhyw"></div>
+<h3 class="font-display-lg text-display-lg font-bold mb-xs">STOP</h3>
+<p class="font-body-md opacity-90 mb-lg">Reclaim Your Attention</p>
+<img alt="Amito Stop" class="w-48 h-auto mt-auto drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUVsFDY-f9Lykd0Qa47VwS5VipivNKSQ3LWoa8jEZp1qgn3wYuKoErlwThkS0uFTwudOdoNliNmfZm8057a8NQbhZJzYR4yzf27Mct3lQKY6T6u1AZk5n2h69so5sxcos4WJ-nDA_2Tiom3UvYBWU2U47lVXNcPdnFgBmeAUnsbDF4sum0AJaf-OzcOu91aYkX1qriMAjjUypu8wShmy0HmFxG1LNgemIFYA9IX8QH4DZ2QxETSMBRHHXAEDNmVdGR894QatH3Lbs">
+</div>
+<!-- SOURCE -->
+<div class="bg-turquoise p-xl rounded-3xl text-[#1f1635] flex flex-col items-center text-center group hover:scale-[1.02] transition-transform shadow-xl">
+<div class="w-16 h-16 flex items-center justify-center bg-white rounded-full mx-auto mb-4"><img alt="Source Icon" class="w-10 h-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3bykVA8JSyPZVko1u8MdSEijVvttaUxtO2uPNR7Yom91sVwV0ZcEZ3573Qg4QGUMmcp38SADx7jCrcFSFl9i-PPCv6IwiyWfOmC4bjyP9aeQ81HyNK4kzyFz9ydXTLiNjcD8Ageasq1Box5C-6YryOrSNoboZGJvd4nv7otdR8oyPrp7M01rE_qHMuvqlIH7wqJ7czRP5Bk_hRR6EBgU2r-e-D3Jj7BQUYmYym08uM-OZ71wy_5hNr4PP2xZVqibv5VL69-UEd-E"></div>
+<h3 class="font-display-lg text-display-lg font-bold mb-xs">SOURCE</h3>
+<p class="font-body-md opacity-80 mb-lg">Verify the Origin</p>
+<img alt="Amito Source" class="w-48 h-auto mt-auto drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkTO65rlHGX8kkGYi6hf23iep81STWp53QZ5pFK6QCWsrzS48xOjx-2DYL1Ppp4URWKiPOHZFnay1aBQEQMOGj6LfK-WFlk9vuHPrgq244Zc_01QrWSEhxOGKKGDaNso9iw_ui307Y49RIfUwexWHbzIhky-uAZcKfFIBA0wnq8-KrsdX0d22n9s4CTGmBEjyRKL1CZuWHBv0DjEvrJ-8KdaYFq2VU4ZEglZZPJX7opIQPOGc6yoq-nh9RSfwoN-ZLJH5OPqfXTQI">
+</div>
+<!-- CONTENT -->
+<div class="bg-pastel-green p-xl rounded-3xl text-[#1f1635] flex flex-col items-center text-center group hover:scale-[1.02] transition-transform shadow-xl">
+<div class="w-16 h-16 flex items-center justify-center bg-white rounded-full mx-auto mb-4"><img alt="Content Icon" class="w-10 h-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTTPoZ6EEb9Qq3T2RmWEr5ze4HEczgKe42rfA8IUZCFIErEvH5fcU8jE0eEq9Laub3mN9OtKYnCJSU6GVBfaskduAgqm8TgBMGxVXOC_djtvFZ5FpVydG7U-bYKvjtp4RY5i-n6fJEcPiEwfSURmzNkLhC_ZVZu53t03tZyz9cPG5PuZAt-mYtRnlO5mri1X5q5kpbVHbcRlZTGZ0NGgqiDfvEqbjO7jyMseK_e_WwHzL06EpWzx0mw9HNuYA7gy5WJFdyuBH3bvY"></div>
+<h3 class="font-display-lg text-display-lg font-bold mb-xs">CONTENT</h3>
+<p class="font-body-md opacity-80 mb-lg">Analyze the Message</p>
+<img alt="Amito Content" class="w-48 h-auto mt-auto drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLWk39eqjwoC3sls1fRmaPoVhTlz4V-8zrhHXQpUHrjmlYMiFyHJ0jWjGIc_IkZJxSKJMEbU_2O8W1hJ-ML_eGBK8R6StaAvITyYSToAJiERABxAAp_C3eEzyKk0Aa2wvhLiQvpQ0BLpWd_ji8HDjij__cvZ9UQCBO30S6aoDgmbW4tm-wRKDiO-dl9Z5DjVif1cGvuRHDi7Y0rd9h1fqStn48TNqRYpYHGYqxd_T8ZC7DmBqINcKlw3gM5fgLrQFRyqYLOZo_4J0">
+</div>
+<!-- ALIGN -->
+<div class="bg-flamingo p-xl rounded-3xl text-white flex flex-col items-center text-center group hover:scale-[1.02] transition-transform shadow-xl">
+<div class="w-16 h-16 flex items-center justify-center bg-white rounded-full mx-auto mb-4"><img alt="Align Icon" class="w-10 h-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCm_4lseIYsr5euJ_-q6OuwFVhXPthAoU-pVHCFV68KvJDIetTv9qpPsFozBjlzQqOATHEbmzvmpVx9ViNE0JnAI6WhT54R3tof4HH0jFWxTw8KQzwW5VKOh2ENyFSSqv9KS8irtz8_AHKs02ARz3cMqUrRrzqNQE2ZrZ6-Ms-1SKyY1d5RBtzpJo6BwRu74HWgsuzvHP1TKvBJRXdSmX8j5dq66X5qxsdYyhrhOr1Kv2SN83YuFxByPs9rrL1lBiDXECDADY78SM"></div>
+<h3 class="font-display-lg text-display-lg font-bold mb-xs">ALIGN</h3>
+<p class="font-body-md opacity-90 mb-lg">Check Your Values</p>
+<img alt="Amito Align" class="w-48 h-auto mt-auto drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgqRBqId1ozI_1uZL5UmPLpETfQWejVqlRJ5DVNreHM9lozwdX9IVvMkqy_KSmxLSXiA94oO5eZ3bgN2VHVqVvX8Fxqe3GPxomiThXVZICEkA1Ztt-XOX1CCkM7kfPXr7cPXfI6tWjidoIhSxKmoKHKJff7pIPC_MgVCuNQg1CCzTPjLt_-qaexpLtjJSMBn_0wxaoMBa8Z0fzgresBY02CrJwp1upL0v4-jBVQ5yoNshDHmeUdEoS-iF6-xFolDpE2Di0kt1FYG0">
+</div>
+<!-- NOW REFLECT -->
+<div class="bg-fuel-yellow p-xl rounded-3xl text-white flex flex-col items-center text-center group hover:scale-[1.02] transition-transform shadow-xl">
+<div class="w-16 h-16 flex items-center justify-center bg-white rounded-full mx-auto mb-4"><img alt="Reflect Icon" class="w-10 h-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-k2cZgF0Dn82GHlzGc_ZQTfFiEi-7zFGI4PJcSbS8egutk5Ltpuf5HHz8Ma5D7XQZYDPVS8Kk9SYN08BoqLd_kySpBWz6GVtXoX4fVwW4U_5pTSZDsN-sNxbsATk9rpgEdi6K9T5od-m1RNNmyDr_1HwQ-oAoU0QbsQLKPVL2-idj-v_VQLEME-lHlnx6ehl9ZCsK3tUa0j3XcwdqnqFhV_CPYmpvJGwmxdDNpyaSuHr3WRKWHcqg3QPGkUbeyKXFDDCIU3BPiLs"></div>
+<h3 class="font-display-lg text-display-lg font-bold mb-xs">REFLECT</h3>
+<p class="font-body-md opacity-90 mb-lg">Act with Purpose</p>
+<img alt="Amito Reflect" class="w-48 h-auto mt-auto drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxb1ATnAiIRtsHvhGTjew0oA3ALtn9dPsPUdqWB_mv3nnCkI6RFbIw0ITz2c9MVqf6hYK-xdffTzOXE66XDqAmsELwEVXeq8NSGGDqYa1o144pefHc382Sj_6B1r2xmqqk18k12oLp7xZuL7v110T7v1aKHXk7I2QvKbk2fvZAPffOvcUnguOf_jRHAPP5jd206kAcrimDxPrTw6D5Kvi26TRty2AScauiFadymNIJp1rw71uDNe-ThKFtD9IM2FGAoreG6d8e7uM">
+</div>
+<!-- CTA CARD -->
+<div class="bg-primary-container p-xl rounded-3xl text-white flex flex-col justify-center items-center text-center shadow-xl">
+<h3 class="font-display-lg text-display-lg font-bold mb-md">Ready to start?</h3>
+<p class="font-body-md opacity-90 mb-xl">Dive into the full experience and earn your digital resilience badges.</p>
+<button class="bg-white text-primary px-xl py-md rounded-full font-bold hover:scale-105 transition-all shadow-xl shadow-black/10 active:scale-95">Start Learning</button>
+<button class="mt-md font-label-md hover:text-white uppercase tracking-widest transition-colors flex items-center gap-xs text-white">
+                        View Detailed Guide <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Comics Section -->
+<section class="relative py-32 px-margin-mobile md:px-margin-desktop overflow-hidden min-h-[600px] flex items-center transition-all duration-1000 opacity-100 translate-y-0">
+<div class="absolute inset-0 z-0">
+<img alt="Comic Background" class="w-full h-full object-cover filter blur-[2px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnujHXRRxg0c2xhbiLjV2fVhWADIta_Zy05Dsw0wLkhmo2xvyUDGbTh62hhhff2ttzTtfLKC_WB_Md-1i0im_3jNy4zV3Wel-g4FHlIFmkw8NJWX1u5TyFGtLuhDL_NsjNeYIpQ7Vkq5u53InQRj5OD144JgQw3hFHTChaLie18xLnQ-J8OPnV094S-tcoW3V7pG4yZY-2iS3Hkc4OOD17nXoEGMjbAMloN3TQBrsRjP0N-6a5dWOeFTX4tl7HTFwX7c2A1mg4Wl4">
+<div class="absolute inset-0 bg-gradient-to-r from-on-surface/90 via-on-surface/70 to-on-surface/40"></div>
+</div>
+<div class="max-w-container-max mx-auto relative z-10 grid lg:grid-cols-2 gap-xxl items-center">
+<div class="space-y-xl">
+<div class="bg-white/95 backdrop-blur-md p-xl rounded-2xl border border-white shadow-2xl max-w-xl">
+<h2 class="font-display-xl text-display-xl text-on-surface mb-md">Learn through Comics</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl">
+                        Explore real-world digital dilemmas with Amito through our engaging visual stories. See how 'Stop &amp; Scan' works in action amidst the noise of the internet.
+                    </p>
+<a class="inline-flex items-center gap-sm bg-primary text-on-primary px-xl py-md rounded-full font-bold hover:scale-105 transition-all shadow-xl shadow-primary/20" href="/comics">
+<span class="material-symbols-outlined">menu_book</span>
+                        Browse Comics
+                    </a>
+</div>
+</div>
+<div class="hidden lg:flex justify-center items-center">
+<div class="relative">
+<div class="absolute inset-0 bg-lilac-accent/30 rounded-full blur-3xl animate-pulse"></div>
+<img alt="Amito reading comics" class="w-full max-w-md relative aura-glow drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcoN7vTTZGcflBt5xzfAxG5UNoSfsrWOUdTClZnPQLxn5gobYWYKYvSoVwvU7HYoU5gULP7D3x0LgYLBHrzgkZVUPKS8J4oQm6CXequhTQsudl-GzUJI6CuGmDwUvMigBijKJsyLt8VEVeYkdPEcYaLTh5T2yaFHnO8SJJEUuxk6mVlTItZMkg1VMDOTzvUEDlpLckOICH7XqEGMcxhKz2qKhEicNv93Yp5ybwmzkPdmDMBaxw1LtHtpGpPqzMKXYO5U5CWah5ngQ">
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface text-inverse-on-surface pt-xxl pb-xl">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-xxl mb-xxl">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-sm mb-lg">
+<img alt="STOP&amp;SCAN Logo" class="h-8 w-8 brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJDB1rd06yew9ckSHfDROp1jVIYmz2N7pd-y-VWe3OW1amf9H1hOURD7pzJsG5UXuvceDBRl7C-zEVdyXKFlhXEMrHcojtLfAR_9dl4jcMDfZHN3Zfyc9obm3Qps4RkZqP4SEtVJjsyxCXN54iN6XkccwDf73ssKgALn_dGLSZyBn2vcRGXuZHtzftmdrFmjqF66XEYdQ8S37Nc8bXEnd-qyeCp5DIoQ2fp3bz03g7tmThU2Ft3CeKolH__yW11At7QWIBwdOkmRQ">
+<span class="font-display-lg text-display-lg text-white">Stop &amp; Scan</span>
+</div>
+<p class="font-body-md text-body-md text-outline-variant opacity-80">
+                    Equipping the next generation with the tools to navigate the digital frontier with curiosity and critical thought.
+                </p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-white mb-lg uppercase tracking-widest">Learn</h4>
+<ul class="space-y-sm font-body-md text-body-md text-outline-variant">
+<li class=""><a class="hover:text-white transition-colors" href="#">The Framework</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Case Studies</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Amito's Guide</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-white mb-lg uppercase tracking-widest">Connect</h4>
+<ul class="space-y-sm font-body-md text-body-md text-outline-variant">
+<li class=""><a class="hover:text-white transition-colors" href="#">Discord Community</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">The Lab</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Support</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-white mb-lg uppercase tracking-widest">Legal</h4>
+<ul class="space-y-sm font-body-md text-body-md text-outline-variant">
+<li class=""><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Terms of Service</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Educational Use</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/10 pt-xl flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="font-label-md text-label-md text-outline-variant">© 2024 STOP&amp;SCAN Sensemaking Labs. All rights reserved.</p>
+<div class="flex gap-lg">
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors">language</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors">share</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors">mail</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+    // Simple scroll reveal
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-8');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-8');
+        observer.observe(section);
+    });
+
+    // Trigger first section immediately
+    setTimeout(() => {
+        const firstSection = document.querySelector('section');
+        if (firstSection) {
+            firstSection.classList.remove('opacity-0', 'translate-y-8');
+            firstSection.classList.add('opacity-100', 'translate-y-0');
+        }
+    }, 100);
+</script>
+<style>
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+    @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+    }
+    .animate-bounce-slow {
+        animation: bounce-slow 4s ease-in-out infinite;
+    }
+    .shadow-soft {
+        box-shadow: 0 4px 20px -2px rgba(36, 27, 58, 0.08);
+    }
+</style>
+
+
+
+
+
+
+
+
+</body></html>

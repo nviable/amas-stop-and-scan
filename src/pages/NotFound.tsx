@@ -1,17 +1,15 @@
 import { Link } from "react-router-dom";
-import Amito from "../components/Amito";
+import { AMITO_IMAGES } from "../lib/assets";
 
 export default function NotFound() {
   return (
     <div className="container-page py-24 text-center">
-      <Amito state="alignment" size="lg" float className="mx-auto" />
-      <h1 className="mt-4 font-display text-4xl font-extrabold">
-        Hmm — nothing here yet
-      </h1>
-      <p className="mt-2 text-ink/60">
-        That page doesn't exist. Let's get you back on track.
+      <img alt="Amito" className="mx-auto h-48 w-48 animate-float object-contain" src={AMITO_IMAGES.alignment} />
+      <h1 className="mt-md font-display text-display-xl">Hmm — nothing here yet</h1>
+      <p className="mt-2 text-on-surface-variant">
+        That page doesn&apos;t exist. Let&apos;s get you back on track.
       </p>
-      <Link to="/" className="btn-primary mt-6">
+      <Link to="/" className="btn-primary mt-lg">
         Back home
       </Link>
     </div>

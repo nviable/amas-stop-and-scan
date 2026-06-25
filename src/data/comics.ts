@@ -13,6 +13,7 @@ export const COMICS: ComicStrip[] = [
     id: "comic-charleen",
     slug: "comic-charleen",
     title: "STOP & SCAN! Real or AI?",
+    author: "Charleen Tang",
     summary:
       "Charleen sits down with her phone as a flood of sensational posts, ads, and headlines compete for attention — a visual introduction to pausing before you trust what scrolls past.",
     pdfPath: "/comics/comic-charleen.pdf",

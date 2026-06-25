@@ -45,7 +45,7 @@ export default function ChoiceGroup({
 
   return (
     <div>
-      <p className="mb-3 font-display text-lg font-bold">{question.prompt}</p>
+      <p className="mb-3 font-display text-headline-md">{question.prompt}</p>
       <div className="grid gap-2.5 sm:grid-cols-2">
         {options.map((opt) => {
           const isSel = selected.includes(opt.id);
@@ -68,7 +68,7 @@ export default function ChoiceGroup({
         })}
       </div>
       {question.multi && (
-        <p className="mt-2 text-xs text-ink/50">Select all that apply.</p>
+        <p className="mt-2 text-xs text-on-surface-variant">Select all that apply.</p>
       )}
     </div>
   );

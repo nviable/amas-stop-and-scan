@@ -1,6 +1,8 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import PdfReader from "../components/comics/PdfReader";
-import { getComicBySlug } from "../data/comics";
+import Icon from "../components/ui/Icon";
+import { HeroBadge } from "../components/ui/PageSections";
+import { comicThumbnail, getComicBySlug } from "../data/comics";
 
 export default function ComicReader() {
   const { slug } = useParams<{ slug: string }>();
@@ -11,22 +13,40 @@ export default function ComicReader() {
   }
 
   return (
-    <div className="container-page py-8 sm:py-12">
-      <Link
-        to="/comics"
-        className="no-print mb-4 inline-flex items-center gap-1 text-sm font-bold text-ink/60 hover:text-ink"
-      >
-        ← Back to comics
-      </Link>
+    <div className="pb-xxl">
+      <section className="hero-gradient overflow-visible border-b border-on-surface/10 px-margin-mobile py-lg md:px-margin-desktop">
+        <div className="mx-auto max-w-container-max">
+          <Link
+            to="/comics"
+            className="no-print mb-lg inline-flex items-center gap-xs font-label-md text-on-surface-variant transition-colors hover:text-on-surface"
+          >
+            <Icon name="arrow_back" className="text-sm" />
+            Back to comics
+          </Link>
 
-      <div className="max-w-3xl">
-        <h1 className="font-display text-3xl font-extrabold sm:text-4xl">{comic.title}</h1>
-        <p className="mt-2 text-ink/70">{comic.summary}</p>
-      </div>
+          <div className="flex flex-col gap-lg sm:flex-row sm:items-start">
+            <div className="shrink-0 overflow-hidden rounded-2xl border border-on-surface/10 bg-white shadow-soft sm:w-28">
+              <img
+                alt=""
+                className="aspect-[3/4] w-full object-cover sm:w-28"
+                src={comicThumbnail(comic)}
+              />
+            </div>
+            <div className="min-w-0 flex-1">
+              <HeroBadge icon="menu_book" label="Comic Reader" />
+              <h1 className="mt-sm font-display text-display-lg text-on-surface">{comic.title}</h1>
+              <p className="mt-xs text-body-sm font-semibold text-primary">By {comic.author}</p>
+              <p className="mt-md max-w-2xl text-body-md text-on-surface-variant">{comic.summary}</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <div className="mt-6">
-        <PdfReader url={comic.pdfPath} title={comic.title} />
-      </div>
+      <section className="px-margin-mobile pt-lg md:px-margin-desktop">
+        <div className="mx-auto max-w-container-max">
+          <PdfReader url={comic.pdfPath} title={comic.title} author={comic.author} />
+        </div>
+      </section>
     </div>
   );
 }

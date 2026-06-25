@@ -1,96 +1,207 @@
-import { Link } from "react-router-dom";
+import Icon from "../components/ui/Icon";
+import AmitoSpotlight from "../components/AmitoSpotlight";
+import { CtaBanner, HeroBadge } from "../components/ui/PageSections";
+import { AMITO_IMAGES, PROJECT_TEAM } from "../lib/assets";
 
-const differentiators = [
+const DIFFERENTIATORS = [
   {
-    title: "Pre-commitment gut check",
-    body: "You form an explicit judgment before investigating. Borrowed from digital-forensics practice, this prevents anchoring on what you find and enables honest before/after reflection.",
+    icon: "psychology",
+    iconClass: "bg-stop-red/10 text-stop-red",
+    title: "Reasoning-Based",
+    body: "Moves beyond binary 'true/false' to understanding context and intent.",
   },
   {
-    title: "Reasoning, not artifact detection",
-    body: "Detection checklists don't reliably improve accuracy, and AI artifacts are a moving target. STOP&SCAN targets source, context, and verification — processes that stay valid as technology evolves.",
+    icon: "verified_user",
+    iconClass: "bg-content-green/10 text-content-green",
+    title: "Trust Calibration",
+    body: "Helping you decide how much weight to give to a specific piece of media.",
+  },
+] as const;
+
+const PROJECT_MEMBERS = [
+  {
+    name: "Fatma Aksu",
+    role: "PhD Candidate in University of Bologna Department of Psychology",
+    photo: PROJECT_TEAM.fatmaAksu,
   },
   {
-    title: "Uncertainty as a valid outcome",
-    body: "\"Not decided yet\" is a complete, responsible answer. This counters the poorly-calibrated overconfidence that drives misinformation acceptance.",
+    name: "Saniat Sohrawardi (John)",
+    role: "Postdoc, DeFake Project Lead at Rochester Institute of Technology",
+    photo: PROJECT_TEAM.saniatSohrawardi,
   },
   {
-    title: "Teaching manipulation mechanics",
-    body: "Each step explains the why — how broken provenance, emotional amplification, and isolated claims work — so you resist the next iteration, not just today's example.",
+    name: "Emanuel Lukawiecki",
+    role: "PhD Student, Carleton University",
+    photo: PROJECT_TEAM.emanuelLukawiecki,
   },
-];
+] as const;
+
+const PROJECT_MENTORS = [
+  {
+    name: "Alessandra Sala",
+    detail:
+      "Dir of AI and Data Science at Shutterstock, Global President of Women in AI, Co-chair Women4ethical AI",
+  },
+  { name: "Alexandra Trifan", detail: "Director of Operations, Datambit" },
+] as const;
 
 export default function Project() {
   return (
-    <div className="container-page py-12">
-      <div className="mx-auto max-w-3xl">
-        <h1 className="font-display text-4xl font-extrabold">The project</h1>
-        <p className="mt-3 text-lg text-ink/75">
-          STOP&SCAN is a scaffolded sensemaking framework for trust calibration
-          in the age of AI-generated and synthetic media. It targets the human
-          cognitive layer — how people interpret signals and how bias shapes
-          judgment — rather than any single detection technology.
-        </p>
+    <div>
+      <section className="hero-gradient overflow-visible px-margin-mobile pb-xl pt-xxl md:px-margin-desktop">
+        <div className="relative z-10 mx-auto flex max-w-container-max flex-col items-center gap-xl md:flex-row">
+          <div className="flex-1 space-y-lg">
+            <HeroBadge icon="auto_awesome" label="The Mission" />
+            <h1 className="font-display text-display-xl leading-tight text-on-surface">
+              About the Project
+            </h1>
+            <p className="max-w-2xl text-body-lg text-on-surface-variant">
+              Stop & Scan is more than an educational tool; it&apos;s a sensemaking framework
+              designed for{" "}
+              <span className="font-semibold text-primary">trust calibration</span>. We empower
+              users to slow down, engage their reasoning, and navigate the complex landscape of
+              digital information with confidence.
+            </p>
+          </div>
+          <AmitoSpotlight
+            className="flex-1"
+            src={AMITO_IMAGES.project}
+            alt="Amito thoughtful pose"
+            imageClassName="relative z-10 w-64 drop-shadow-2xl"
+            glow="primary"
+            glowClassName="bg-primary/15 blur-[80px]"
+            speech="Let's look behind the curtain together!"
+            speechPlacement="upper-right"
+            speechTail="bottom"
+          />
+        </div>
+      </section>
 
-        <h2 className="mt-10 font-display text-2xl font-extrabold">
-          Why a framework, not a detector
-        </h2>
-        <p className="mt-3 text-ink/75">
-          On average, people perform no better than chance at spotting deepfakes,
-          and are often most confident when they're wrong. Even when detection
-          tools exist, users rarely consult them, and labels can backfire by
-          making unlabeled content seem more true. A list of visual cues to look
-          for has been shown not to improve accuracy. The gap is with the
-          reasoner — so that's where STOP&SCAN intervenes.
-        </p>
-
-        <h2 className="mt-10 font-display text-2xl font-extrabold">
-          What makes it different
-        </h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          {differentiators.map((d) => (
-            <div key={d.title} className="card">
-              <h3 className="font-display font-extrabold">{d.title}</h3>
-              <p className="mt-1.5 text-sm text-ink/70">{d.body}</p>
+      <section className="bg-surface-cream/30 px-margin-mobile py-xxl md:px-margin-desktop">
+        <div className="mx-auto max-w-container-max">
+          <div className="grid items-center gap-xxl md:grid-cols-2">
+            <div className="space-y-md">
+              <h2 className="font-display text-display-lg text-on-surface">
+                Why a framework, not just a detector?
+              </h2>
+              <div className="h-1.5 w-20 rounded-full bg-stop-red" />
+              <p className="text-body-lg leading-relaxed text-on-surface-variant">
+                In an era of rapidly evolving synthetic media, only using a detection tool AI is a
+                losing game. Technologies change, but human psychology and manipulation patterns
+                remain consistent.
+                <br />
+                <br />
+                Stop & Scan shifts the focus from{" "}
+                <span className="italic">&ldquo;Is this real?&rdquo;</span> to{" "}
+                <span className="font-semibold text-primary">
+                  &ldquo;How is this trying to influence me?&rdquo;
+                </span>
+                . By teaching reasoning-based strategies, we provide a durable defense that
+                outlasts any single algorithm and in turn improves the tool usage.
+              </p>
             </div>
-          ))}
-        </div>
-
-        <h2 className="mt-10 font-display text-2xl font-extrabold">
-          Who it's for
-        </h2>
-        <p className="mt-3 text-ink/75">
-          The primary audience is young adults and adolescents (16–25) in
-          educational contexts — the group forming epistemic habits right now,
-          in the most challenging information environment in history. A secondary
-          audience is general adults making high-stakes decisions based on social
-          media in financial, health, electoral, and legal domains.
-        </p>
-
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <div className="card bg-alignment/5">
-            <h3 className="font-display font-extrabold">UN SDG 4</h3>
-            <p className="mt-1 text-sm text-ink/70">
-              Quality Education — promoting critical thinking and media literacy.
-            </p>
-          </div>
-          <div className="card bg-source/5">
-            <h3 className="font-display font-extrabold">UN SDG 16</h3>
-            <p className="mt-1 text-sm text-ink/70">
-              Peace, Justice & Strong Institutions — informed, discerning publics
-              and resilience against information-based manipulation.
-            </p>
+            <div className="grid gap-md">
+              {DIFFERENTIATORS.map((d) => (
+                <DifferentiatorCard key={d.title} {...d} />
+              ))}
+            </div>
           </div>
         </div>
+      </section>
 
-        <div className="mt-10 rounded-3xl bg-ink p-8 text-center text-white">
-          <p className="font-display text-xl font-bold">
-            Grounded in scaffolded learning, psychological inoculation, and
-            human-AI trust calibration.
+      <section className="bg-on-background px-margin-mobile py-xxl text-on-primary md:px-margin-desktop">
+        <div className="mx-auto max-w-container-max space-y-xxl">
+          <div>
+            <h2 className="mb-xl text-center font-display text-display-lg">Project Members</h2>
+            <div className="grid gap-xl md:grid-cols-3">
+              {PROJECT_MEMBERS.map((member) => (
+                <div key={member.name} className="group text-center">
+                  <div className="mx-auto mb-lg h-32 w-32 overflow-hidden rounded-full ring-4 ring-primary-fixed/20 transition-all group-hover:ring-primary-fixed">
+                    <img
+                      alt={member.name}
+                      className="h-full w-full object-cover"
+                      src={member.photo}
+                    />
+                  </div>
+                  <h4 className="font-display text-headline-md">{member.name}</h4>
+                  <p className="mt-1 text-body-sm opacity-70">{member.role}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="h-px w-full bg-white/10" />
+
+          <div>
+            <h3 className="mb-xl text-center font-display text-display-lg">Project Mentors</h3>
+            <div className="flex flex-wrap justify-center gap-xl">
+              {PROJECT_MENTORS.map((mentor) => (
+                <div
+                  key={mentor.name}
+                  className="rounded-2xl border border-white/10 bg-white/5 px-xl py-lg text-center transition-colors hover:bg-white/10"
+                >
+                  <p className="font-display text-headline-md">{mentor.name}</p>
+                  <p className="mt-1 text-body-sm opacity-60">{mentor.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-surface-cream px-margin-mobile py-xxl text-on-surface md:px-margin-desktop">
+        <div className="mx-auto max-w-container-max space-y-lg text-center">
+          <h2 className="font-display text-display-lg">Global Alignment</h2>
+          <p className="mx-auto max-w-2xl text-body-lg text-on-surface-variant">
+            Our project is committed to fostering a more resilient and informed society, aligning
+            with the United Nations Sustainable Development Goals.
           </p>
-          <Link to="/learn" className="btn-accent mt-5">
-            Try the framework →
-          </Link>
+          <div className="mt-xl flex justify-center gap-xl">
+            <div className="flex flex-col items-center gap-sm">
+              <div className="flex h-20 w-20 items-center justify-center rounded-lg bg-[#c5192d] font-display text-display-lg font-bold text-white shadow-lg">
+                4
+              </div>
+              <span className="font-label-md">Quality Education</span>
+            </div>
+            <div className="flex flex-col items-center gap-sm">
+              <div className="flex h-20 w-20 items-center justify-center rounded-lg bg-[#00689d] font-display text-display-lg font-bold text-white shadow-lg">
+                16
+              </div>
+              <span className="font-label-md">Peace & Justice</span>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <CtaBanner
+        title="Ready to sharpen your scan?"
+        description="Start your journey into trust calibration today with our interactive framework."
+        to="/learn"
+        label="Try the framework"
+      />
+    </div>
+  );
+}
+
+function DifferentiatorCard({
+  icon,
+  iconClass,
+  title,
+  body,
+}: {
+  icon: string;
+  iconClass: string;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="flex items-start gap-md rounded-xl border border-on-surface/10 bg-white p-lg shadow-soft">
+      <div className={`rounded-lg p-sm ${iconClass}`}>
+        <Icon name={icon} />
+      </div>
+      <div>
+        <h4 className="font-display text-headline-md text-on-surface">{title}</h4>
+        <p className="mt-1 text-body-sm text-on-surface-variant">{body}</p>
       </div>
     </div>
   );

@@ -1,160 +1,170 @@
 import { Link } from "react-router-dom";
-import Amito from "../components/Amito";
-import { STEPS } from "../lib/framework";
+import AmitoSpotlight from "../components/AmitoSpotlight";
+import Icon from "../components/ui/Icon";
+import { AMITO_IMAGES, FRAMEWORK_STEP_IMAGES } from "../lib/assets";
 
 export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="container-page grid items-center gap-10 py-14 md:grid-cols-2 md:py-20">
-          <div>
-            <span className="chip border-alignment/30 bg-alignment/10 text-alignment">
-              Guided by Amito
-            </span>
-            <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight sm:text-5xl">
-              The internet moves fast.
-              <br />
-              Your judgment doesn't have to.
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-welcome-blue/10 to-white px-margin-mobile py-xxl md:px-margin-desktop md:py-32">
+        <div className="mx-auto grid max-w-container-max items-center gap-xl md:grid-cols-2">
+          <div className="z-10">
+            <div className="mb-md inline-flex items-center gap-sm rounded-full border border-lilac-accent/20 bg-lilac-accent/10 px-md py-xs text-on-surface-variant">
+              <Icon name="auto_awesome" className="text-lilac-accent" />
+              <span className="font-label-md uppercase tracking-widest">
+                Powered by AI for Good
+              </span>
+            </div>
+            <h1 className="font-display text-display-xl leading-tight text-on-surface">
+              Empowering Digital Resilience
             </h1>
-            <p className="mt-4 max-w-xl text-lg text-ink/70">
-              STOP&SCAN is a simple way to pause, check where information came
-              from, understand what it's trying to make you feel, compare it with
-              outside evidence, and decide what to do next.
+            <p className="mt-lg max-w-lg text-body-lg text-on-surface-variant">
+              Join Amito on a journey to navigate the digital world with confidence.
+              Learn to pause, process, and act with clarity in the age of information
+              overload.
             </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link to="/learn" className="btn-primary">
-                Learn STOP&SCAN
+            <div className="mt-xxl flex flex-wrap gap-md">
+              <Link to="/learn" className="btn-primary shadow-2xl shadow-primary/30">
+                Start Learning
               </Link>
-              <Link to="/practice/celebrity-investment-scam" className="btn-accent">
-                Try a Case File
+              <Link to="/practice" className="btn-accent">
+                <Icon name="explore" />
+                Practice
               </Link>
             </div>
-            <p className="mt-4 text-sm text-ink/50">
-              Pause before you trust · Scan before you share · Reflect before you act
+          </div>
+
+          <AmitoSpotlight
+            src={AMITO_IMAGES.greeting}
+            alt="Amito waving"
+            float
+            glow="primary"
+            glowClassName="scale-125 -translate-y-8 bg-gradient-to-tr from-primary/20 via-welcome-blue/10 to-transparent blur-3xl"
+            speech="Hi! I'm Amito. Let's learn how to spot tricky content together!"
+            speechTail="bottom"
+            speechClassName="absolute -right-4 top-0 z-20 max-w-[240px] md:-right-8"
+          />
+        </div>
+      </section>
+
+      {/* Video teaser */}
+      <section className="bg-surface-container-low px-margin-mobile py-xl md:px-margin-desktop">
+        <div className="mx-auto max-w-4xl">
+          <div className="group relative aspect-video cursor-pointer overflow-hidden rounded-3xl border-4 border-white/50 bg-inverse-surface shadow-2xl">
+            <img
+              alt="Meet Amito teaser"
+              className="h-full w-full object-cover"
+              src={AMITO_IMAGES.videoTeaser}
+            />
+            <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/10">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary text-on-primary shadow-2xl transition-transform group-hover:scale-110">
+                <Icon name="play_arrow" className="text-4xl" filled />
+              </div>
+            </div>
+            <div className="absolute bottom-lg left-lg z-10">
+              <span className="rounded-full bg-white/90 px-md py-xs font-label-md uppercase tracking-wider text-primary backdrop-blur-md">
+                Teaser Video: Meet Amito
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Framework grid */}
+      <section className="px-margin-mobile py-xxl md:px-margin-desktop">
+        <div className="mx-auto max-w-container-max">
+          <div className="mb-xl text-center">
+            <h2 className="font-display text-display-xl text-on-surface">The Framework</h2>
+            <p className="mt-sm text-body-lg text-on-surface-variant">
+              Simple steps to master digital resilience.
             </p>
           </div>
 
-          <div className="relative flex justify-center">
-            <div className="absolute -z-0 h-72 w-72 rounded-full bg-alignment/20 blur-3xl" />
-            <Amito state="greeting" size="xl" float />
-            <span className="absolute bottom-6 right-2 animate-float rounded-2xl border border-ink/10 bg-white px-4 py-2 font-display font-bold shadow-soft">
-              I'll guide you. 👋
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* Two paths */}
-      <section className="container-page grid gap-5 pb-4 md:grid-cols-2">
-        <Link
-          to="/learn"
-          className="card group transition-transform hover:-translate-y-1"
-        >
-          <div className="text-sm font-bold uppercase tracking-wide text-ink/40">
-            For first-time users
-          </div>
-          <h2 className="mt-1 font-display text-2xl font-extrabold">
-            Learn STOP&SCAN
-          </h2>
-          <p className="mt-2 text-ink/70">
-            Walk through the framework step by step with Amito and a real-world
-            example. Build the habit before you need it.
-          </p>
-          <span className="mt-4 inline-block font-bold text-alignment group-hover:underline">
-            Start the lesson →
-          </span>
-        </Link>
-
-        <Link
-          to="/practice"
-          className="card group transition-transform hover:-translate-y-1"
-        >
-          <div className="text-sm font-bold uppercase tracking-wide text-ink/40">
-            Already know it?
-          </div>
-          <h2 className="mt-1 font-display text-2xl font-extrabold">
-            Practice with Case Files
-          </h2>
-          <p className="mt-2 text-ink/70">
-            Apply STOP&SCAN to example scenarios and reflect on how your judgment
-            changes. Save each run to your journal.
-          </p>
-          <span className="mt-4 inline-block font-bold text-alignment group-hover:underline">
-            Browse case files →
-          </span>
-        </Link>
-      </section>
-
-      {/* The five steps */}
-      <section className="container-page py-14">
-        <div className="text-center">
-          <h2 className="font-display text-3xl font-extrabold">
-            One pause. Five moves.
-          </h2>
-          <p className="mt-2 text-ink/60">
-            STOP is your pre-commitment. SCAN is how you check.
-          </p>
-        </div>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {STEPS.map((s) => (
-            <Link
-              to={`/resources/${s.key}`}
-              key={s.key}
-              className="card transition-transform hover:-translate-y-1"
-            >
-              <div
-                className="flex h-10 w-10 items-center justify-center rounded-xl font-display text-sm font-extrabold text-white"
-                style={{ backgroundColor: s.hex }}
+          <div className="grid grid-cols-1 gap-lg md:grid-cols-2 lg:grid-cols-3">
+            {(
+              [
+                ["stop", "STOP", "Reclaim Your Attention", "text-white", FRAMEWORK_STEP_IMAGES.stop],
+                ["source", "SOURCE", "Verify the Origin", "text-on-surface", FRAMEWORK_STEP_IMAGES.source],
+                ["content", "CONTENT", "Analyze the Message", "text-on-surface", FRAMEWORK_STEP_IMAGES.content],
+                ["alignment", "ALIGN", "Check Your Values", "text-white", FRAMEWORK_STEP_IMAGES.alignment],
+                ["reflect", "REFLECT", "Act with Purpose", "text-white", FRAMEWORK_STEP_IMAGES.reflect],
+              ] as const
+            ).map(([key, title, subtitle, textClass, step]) => (
+              <Link
+                key={key}
+                to={`/resources/${key === "reflect" ? "reflect" : key}`}
+                className="group flex flex-col items-center rounded-3xl p-xl text-center shadow-xl transition-transform hover:scale-[1.02]"
+                style={{ backgroundColor: step.bg }}
               >
-                {s.letter}
-              </div>
-              <h3 className="mt-3 font-display text-lg font-extrabold">
-                {s.title}
-              </h3>
-              <p className="mt-1 text-sm text-ink/65">{s.tagline}</p>
-            </Link>
-          ))}
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white">
+                  <img alt="" className="h-10 w-10 object-contain" src={step.icon} />
+                </div>
+                <h3 className={`font-display text-display-lg font-bold ${textClass}`}>{title}</h3>
+                <p className={`mb-lg font-body-md opacity-90 ${textClass}`}>{subtitle}</p>
+                <img
+                  alt=""
+                  className="mt-auto w-48 drop-shadow-lg"
+                  src={step.amito}
+                />
+              </Link>
+            ))}
+
+            <div className="flex flex-col items-center justify-center rounded-3xl bg-primary-container p-xl text-center text-white shadow-xl">
+              <h3 className="mb-md font-display text-display-lg font-bold">Ready to start?</h3>
+              <p className="mb-xl font-body-md opacity-90">
+                Dive into the full experience and build your digital resilience habit.
+              </p>
+              <Link
+                to="/learn"
+                className="rounded-full bg-white px-xl py-md font-bold text-primary shadow-xl transition-transform hover:scale-105 active:scale-95"
+              >
+                Start Learning
+              </Link>
+              <Link
+                to="/resources"
+                className="mt-md flex items-center gap-xs font-label-md uppercase tracking-widest text-white/90 hover:text-white"
+              >
+                View Detailed Guide
+                <Icon name="arrow_forward" className="text-sm" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Comics */}
-      <section className="container-page py-14">
-        <div className="card overflow-hidden p-0 md:grid md:grid-cols-2">
-          <div className="relative min-h-[220px] overflow-hidden bg-ink md:min-h-[320px]">
+      {/* Comics band */}
+      <section className="relative flex min-h-[500px] items-center overflow-hidden px-margin-mobile py-32 md:px-margin-desktop">
+        <div className="absolute inset-0 z-0">
+          <img
+            alt=""
+            className="h-full w-full object-cover blur-[2px]"
+            src={AMITO_IMAGES.videoTeaser}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-on-surface/90 via-on-surface/70 to-on-surface/40" />
+        </div>
+        <div className="relative z-10 mx-auto grid max-w-container-max items-center gap-xxl lg:grid-cols-2">
+          <div className="rounded-2xl border border-white bg-white/95 p-xl shadow-2xl backdrop-blur-md">
+            <h2 className="mb-md font-display text-display-xl text-on-surface">
+              Learn through Comics
+            </h2>
+            <p className="mb-xl text-body-lg text-on-surface-variant">
+              Explore real-world digital dilemmas with Amito through engaging visual
+              stories. See how Stop & Scan works in action amidst the noise of the
+              internet.
+            </p>
+            <Link to="/comics" className="btn-primary inline-flex shadow-xl shadow-primary/20">
+              <Icon name="menu_book" />
+              Browse Comics
+            </Link>
+          </div>
+          <div className="hidden justify-center lg:flex">
             <img
-              src="/comics/stop-and-scan-cover.png"
-              alt="STOP & SCAN! Real or AI? — comic cover art showing a person overwhelmed by sensational headlines on their phone"
-              className="absolute inset-0 h-full w-[145%] max-w-none object-cover object-[18%_top] sm:w-[130%] md:w-[155%] md:object-[12%_top]"
+              alt="Amito reading comics"
+              className="max-w-md drop-shadow-2xl"
+              src={AMITO_IMAGES.comics}
             />
           </div>
-          <div className="flex flex-col justify-center p-8">
-            <span className="chip w-fit border-ink/15 bg-cream text-ink/70">
-              Supplementary literacy
-            </span>
-            <h2 className="mt-3 font-display text-3xl font-extrabold">
-              Read it as a comic strip
-            </h2>
-            <p className="mt-3 text-ink/70">
-              Visual stories that complement the framework — panel by panel
-              explorations of real-or-AI judgment, developed with cartoonist and
-              educator Julian Lawrence and his students at Teesside University.
-            </p>
-            <Link to="/comics" className="btn-primary mt-6 w-fit">
-              Browse comics →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Thesis band */}
-      <section className="container-page pb-6">
-        <div className="card bg-ink text-white">
-          <p className="mx-auto max-w-3xl text-center font-display text-xl font-bold leading-relaxed sm:text-2xl">
-            STOP&SCAN helps you pause before you trust, scan before you share,
-            and reflect before you act.{" "}
-            <span className="text-alignment">Amito is your friendly guide.</span>
-          </p>
         </div>
       </section>
     </div>

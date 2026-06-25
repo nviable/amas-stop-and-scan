@@ -1,5 +1,7 @@
 import type { ReactElement } from "react";
 import type { CaseFile, SearchResult, SourceFinding } from "../../lib/caseTypes";
+import Icon from "../ui/Icon";
+import { AMITO_IMAGES } from "../../lib/assets";
 
 export function PostCard({
   post,
@@ -40,55 +42,66 @@ export function PostCard({
   };
 
   return (
-    <div className="mx-auto w-full max-w-md overflow-hidden rounded-3xl border border-ink/10 bg-white shadow-soft">
-      <div className="flex items-center gap-3 p-4">
-        <div
-          className="flex h-11 w-11 items-center justify-center rounded-full font-display font-extrabold text-white"
-          style={{ backgroundColor: post.avatarColor }}
-        >
-          {post.account.charAt(0)}
-        </div>
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-1 font-bold">
-            <span className="truncate">{post.account}</span>
-            {post.verified ? (
-              <span className="text-source">✔</span>
-            ) : (
-              <span className="text-xs text-ink/40">(unverified)</span>
-            )}
+    <div className="mx-auto w-full overflow-hidden rounded-[24px] border border-on-surface/10 bg-white shadow-sm">
+      <div className="flex items-center justify-between border-b border-on-surface/5 p-md">
+        <div className="flex items-center gap-sm">
+          <div
+            className="flex h-10 w-10 items-center justify-center rounded-full font-bold text-white"
+            style={{ backgroundColor: post.avatarColor }}
+          >
+            {post.account.charAt(0)}
           </div>
-          <div className="truncate text-sm text-ink/50">
-            {post.handle} · {post.timeAgo}
+          <div>
+            <p className="text-body-md font-bold leading-tight">
+              {post.account}{" "}
+              {!post.verified && (
+                <span className="text-xs font-normal text-outline-variant">(unverified)</span>
+              )}
+            </p>
+            <p className="text-xs text-outline-variant">
+              {post.handle} · {post.timeAgo}
+            </p>
           </div>
         </div>
-        <span className="text-ink/30">•••</span>
+        <Icon name="more_horiz" className="text-outline" />
       </div>
 
-      <p className="px-4 pb-3 leading-relaxed">{renderBody()}</p>
-
-      <div className="relative aspect-video bg-gradient-to-br from-ink to-[#3b2f63]">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-2xl text-ink shadow-lg">
-            ▶
-          </span>
+      <div className="space-y-md p-md">
+        <p className="text-body-md leading-relaxed">{renderBody()}</p>
+        <div className="relative aspect-video overflow-hidden rounded-xl bg-on-surface">
+          <img
+            alt=""
+            className="h-full w-full object-cover opacity-80"
+            src={AMITO_IMAGES.postVideo}
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-white/20 backdrop-blur-md transition-transform hover:scale-110">
+              <Icon name="play_arrow" className="text-4xl text-white" filled />
+            </div>
+          </div>
+          <div className="absolute bottom-0 flex w-full items-center gap-xs bg-black/40 p-sm text-[10px] text-white backdrop-blur-sm">
+            <Icon name="play_circle" className="text-sm" />
+            {post.mediaCaption}
+          </div>
         </div>
-        <span className="absolute bottom-2 left-2 right-2 truncate rounded bg-black/40 px-2 py-1 text-xs text-white">
-          {post.mediaCaption}
+        {post.linkLabel && (
+          <div className="flex items-center gap-xs text-sm text-source-cyan">
+            <Icon name="link" className="text-sm" />
+            <span className="underline underline-offset-2">{post.linkLabel}</span>
+          </div>
+        )}
+      </div>
+
+      <div className="flex justify-between border-t border-on-surface/5 px-md py-sm text-xs text-outline">
+        <span className="flex items-center gap-xs">
+          <Icon name="favorite" className="text-sm" /> {post.stat.likes}
         </span>
-      </div>
-
-      <a
-        href={post.linkUrl}
-        onClick={(e) => e.preventDefault()}
-        className="block border-y border-ink/10 bg-ink/5 px-4 py-2.5 text-sm font-semibold text-source"
-      >
-        🔗 {post.linkLabel}
-      </a>
-
-      <div className="flex items-center justify-between px-4 py-3 text-sm text-ink/60">
-        <span>♥ {post.stat.likes}</span>
-        <span>💬 {post.stat.comments}</span>
-        <span>↗ {post.stat.shares}</span>
+        <span className="flex items-center gap-xs">
+          <Icon name="chat_bubble" className="text-sm" /> {post.stat.comments}
+        </span>
+        <span className="flex items-center gap-xs">
+          <Icon name="share" className="text-sm" /> {post.stat.shares}
+        </span>
       </div>
     </div>
   );

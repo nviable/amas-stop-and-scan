@@ -1,0 +1,239 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>The Celebrity Investment Video - Stop &amp; Scan</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Nunito+Sans:wght@300;400;600&amp;family=Gochi+Hand&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@100..900&amp;family=Outfit:wght@100..900&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffddb6",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#feae39",
+                    "error": "#ba1a1a",
+                    "primary": "#004cd7",
+                    "surface-container-high": "#eee4ff",
+                    "on-background": "#1f1635",
+                    "inverse-on-surface": "#f6edff",
+                    "reflect-orange": "#ff922b",
+                    "welcome-blue": "#4dabf7",
+                    "surface": "#fef7ff",
+                    "tertiary-container": "#c94600",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#2a1800",
+                    "primary-fixed-dim": "#b5c4ff",
+                    "tertiary": "#a03600",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#643f00",
+                    "on-primary-fixed": "#00164d",
+                    "on-secondary-container": "#6d4400",
+                    "background": "#fef7ff",
+                    "on-surface": "#1f1635",
+                    "on-secondary": "#ffffff",
+                    "content-green": "#37b24d",
+                    "tertiary-fixed-dim": "#ffb59a",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#fef7ff",
+                    "surface-container-low": "#f8f1ff",
+                    "on-primary-fixed-variant": "#003cad",
+                    "surface-cream": "#f6f0e4",
+                    "outline": "#737687",
+                    "inverse-surface": "#342b4b",
+                    "on-primary-container": "#f9f7ff",
+                    "surface-variant": "#e9ddff",
+                    "source-cyan": "#22b8cf",
+                    "secondary-fixed-dim": "#ffb95a",
+                    "on-tertiary-container": "#fff7f4",
+                    "on-tertiary-fixed": "#380d00",
+                    "surface-dim": "#e1d4fd",
+                    "stop-red": "#ef4a6b",
+                    "on-tertiary-fixed-variant": "#802a00",
+                    "primary-fixed": "#dce1ff",
+                    "outline-variant": "#c3c5d8",
+                    "inverse-primary": "#b5c4ff",
+                    "surface-tint": "#0050e1",
+                    "surface-container": "#f3eaff",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#2665fd",
+                    "lilac-accent": "#b197fc",
+                    "tertiary-fixed": "#ffdbcf",
+                    "secondary": "#845400",
+                    "background-paper": "#fbf8f2",
+                    "on-surface-variant": "#434655",
+                    "surface-container-highest": "#e9ddff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xxl": "48px",
+                    "lg": "24px",
+                    "container-max": "1152px",
+                    "xl": "32px",
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "sm": "8px",
+                    "margin-desktop": "40px",
+                    "md": "16px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Outfit"],
+                    "label-md": ["Outfit"],
+                    "body-lg": ["Nunito Sans"],
+                    "body-sm": ["Nunito Sans"],
+                    "handwritten-lg": ["Gochi Hand"],
+                    "display-xl": ["Outfit"],
+                    "display-lg": ["Outfit"],
+                    "body-md": ["Nunito Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "handwritten-lg": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                    "display-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fbf8f2; /* background-paper */
+            color: #1f1635; /* on-background */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .aura-stop {
+            background: radial-gradient(circle, rgba(239, 74, 107, 0.15) 0%, rgba(239, 74, 107, 0) 70%);
+        }
+        .sketch-border {
+            border: 1px solid rgba(31, 22, 53, 0.1);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-on-surface/10 h-20">
+<div class="flex justify-between items-center px-margin-desktop max-w-container-max mx-auto h-full">
+<div class="flex items-center gap-md">
+<span class="font-display-lg text-display-lg font-bold text-primary">Stop &amp; Scan</span>
+</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:opacity-80 transition-opacity" href="#">Learn</a>
+<a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary active:scale-95 duration-150" href="#">Practice</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:opacity-80 transition-opacity" href="#">Resources</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:opacity-80 transition-opacity" href="#">Comics</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:opacity-80 transition-opacity" href="#">Project</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:opacity-80 transition-opacity" href="#">Meet Amito</a>
+</nav>
+<button class="bg-primary-container text-on-primary-container px-lg py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">
+                My Journal
+            </button>
+</div>
+</header>
+<main class="pt-32 pb-xxl px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<!-- Hero Content -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xxl items-center"><div class="lg:col-span-6 text-left flex flex-col items-start"><div class="flex flex-wrap gap-sm mb-lg"><span class="px-md py-xs rounded-full bg-stop-red/10 border border-stop-red/20 text-stop-red font-label-md text-label-md flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">account_balance_wallet</span>Financial Scam</span><span class="px-md py-xs rounded-full bg-welcome-blue/10 border border-welcome-blue/20 text-welcome-blue font-label-md text-label-md flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">school</span>Intro</span><span class="px-md py-xs rounded-full bg-secondary-container/10 border border-secondary-container/20 text-on-secondary-container font-label-md text-label-md flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">schedule</span>8 min</span></div><h1 class="font-display-xl text-display-xl text-on-background mb-md">The Celebrity Investment Video</h1><p class="font-body-lg text-body-lg text-on-surface-variant mb-xl">A famous tech entrepreneur appears to promote a limited-time AI investment platform. People say they're making thousands overnight. <span class="font-bold text-stop-red">Spots are closing soon.</span></p><div class="bg-white rounded-[24px] border border-on-surface/10 shadow-sm overflow-hidden w-full mb-xl"><div class="p-md flex justify-between items-center border-b border-on-surface/5"><div class="flex items-center gap-sm"><div class="w-10 h-10 rounded-full bg-source-cyan flex items-center justify-center text-white font-bold">F</div><div><p class="font-bold text-body-md leading-tight">Future Wealth AI <span class="text-outline-variant font-normal text-xs">(unverified)</span></p><p class="text-outline-variant text-xs">@futurewealth.ai_official · 2h</p></div></div><span class="material-symbols-outlined text-outline">more_horiz</span></div><div class="p-md space-y-md"><p class="text-body-md">🚀 BREAKING: Tech billionaire reveals the AI platform banks don't want you to know about. Early users are making $5,000+ a day. Limited spots — closing tonight!</p><div class="relative rounded-xl overflow-hidden aspect-video bg-on-surface"><img alt="Mockup of a viral investment video" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBph6goBmYvPC7CZvy6MYTFnC1BZ2TjkIgm0EHcClNtVIYEWTLRxw6_E-vrg35jv03LK9gYHhDoubbhoEOie3s9u_W0w_Z0GHXoVxh5OWJbs51fhKcXJdIQZgQzLF2ll30lYYNakjcHfPXHpRXOwVsWcO3MJ3ooslXLT3jsvOiphDZIHSQcETmoE3vLXKAtncHpwph25adlgZk3btbFLeJ3cKpSDhIvzFUf6yRUBxCo2E7zGpIN3RzLlJV1PLZkiKxcC6icROxG4Vs"><div class="absolute inset-0 flex items-center justify-center"><div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"><span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span></div></div></div></div></div><div class="flex flex-col sm:flex-row items-center gap-md"><button class="group relative px-xxl py-md bg-on-background text-white rounded-full font-headline-md text-headline-md flex items-center gap-sm transition-all hover:scale-105 active:scale-95 shadow-lg">Begin this case<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span></button><button class="px-xl py-md bg-transparent border-2 border-on-background/10 text-on-background rounded-full font-body-lg text-body-lg hover:bg-surface-cream transition-colors active:scale-95">Back to library</button></div></div><div class="lg:col-span-6 flex flex-col items-center"><div class="relative w-full max-w-md mb-lg"><div class="absolute inset-0 aura-stop animate-pulse"></div><div class="relative flex justify-center"><img alt="Amito in a stop pose" class="w-64 h-64 md:w-80 md:h-80 object-contain drop-shadow-xl transform transition-transform hover:rotate-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACiL-ehVWribjVOVwK9FPIsJfP0oPkrh0WNj79qt4QXfy5dLLwmutPZW4AnE9q4nGHlHZS3DlxuG64E-UNps69o5QykSPuqKoUTX1wh3EB5a8yfkhb_QYRlLRotLtnLinIAOkdTPjFzmvzz_bwN8m34i4U3Tola1JxVB7rQENloVZgSr1r1cM_8Dsr9uk53QzNNxWLoTGNFRvO1cCSeG6kE8l5QF7CDBv3V86jkkiA5LH3LYuEQUGjK9a5AZDZ5-OCGz91NVh1ZjQ"></div><div class="absolute -top-4 right-0 md:right-10 bg-white p-md rounded-xl rounded-br-none shadow-soft sketch-border max-w-[240px] transform -rotate-2"><p class="font-handwritten-lg text-handwritten-lg text-primary">"Wait! Let's scan this together before we trust."</p></div></div><div class="max-w-md bg-surface-cream/50 p-lg rounded-xl border border-on-surface/5"><p class="font-body-sm text-body-sm text-on-surface-variant italic">Practice mode gives you fewer cues while you scan. If you get stuck, use "Show hint" and Amito will add extra feedback at the end of the journey.</p></div></div></div>
+<!-- Bento Preview Section -->
+<section class="mt-xxl grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="p-lg bg-white rounded-xxl sketch-border shadow-sm flex flex-col gap-sm">
+<div class="w-12 h-12 rounded-xl bg-lilac-accent/20 flex items-center justify-center text-lilac-accent">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Identify Deepfakes</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Learn to spot visual and auditory inconsistencies in AI-generated videos.</p>
+</div>
+<div class="p-lg bg-white rounded-xxl sketch-border shadow-sm flex flex-col gap-sm">
+<div class="w-12 h-12 rounded-xl bg-content-green/20 flex items-center justify-center text-content-green">
+<span class="material-symbols-outlined">security</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Urgency Tactics</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Deconstruct how scammers use time pressure to bypass critical thinking.</p>
+</div>
+<div class="p-lg bg-white rounded-xxl sketch-border shadow-sm flex flex-col gap-sm">
+<div class="w-12 h-12 rounded-xl bg-welcome-blue/20 flex items-center justify-center text-welcome-blue">
+<span class="material-symbols-outlined">travel_explore</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Source Verification</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Practice looking beyond the profile to find the true origin of a post.</p>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-cream dark:bg-inverse-surface border-t border-on-surface/5 py-xl mt-xxl">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center px-margin-desktop max-w-container-max mx-auto gap-lg">
+<div class="max-w-xs">
+<span class="font-display-xl text-display-xl text-primary block mb-sm">Stop &amp; Scan</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Pause before you trust, scan before you share, and reflect before you act. Amito is your friendly guide.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-xxl">
+<div class="flex flex-col gap-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Explore</span>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Learn STOP&amp;SCAN</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Practice with Case Files</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Resource hub</a>
+</div>
+<div class="flex flex-col gap-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">About</span>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">The project</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Meet Amito</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</div>
+</div>
+<div class="max-w-xs bg-white/40 p-md rounded-xl border border-on-surface/5">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-xs block">The habit</span>
+<p class="font-body-sm text-body-sm italic text-on-surface-variant">
+                    "I don't know yet" is a complete and honest answer. Uncertainty, properly calibrated, is protective.
+                </p>
+</div>
+</div>
+<div class="mt-xl px-margin-desktop max-w-container-max mx-auto pt-lg border-t border-on-surface/5 flex justify-between items-center text-on-surface-variant/60">
+<p class="font-body-sm text-body-sm">© 2024 Stop &amp; Scan. All rights reserved.</p>
+<p class="font-body-sm text-body-sm">A scaffolded sensemaking framework for trust calibration. Educational use.</p>
+</div>
+</footer>
+<script>
+        // Micro-interaction for the mascot
+        const mascot = document.querySelector('img[src="https://lh3.googleusercontent.com/aida-public/AB6AXuACiL-ehVWribjVOVwK9FPIsJfP0oPkrh0WNj79qt4QXfy5dLLwmutPZW4AnE9q4nGHlHZS3DlxuG64E-UNps69o5QykSPuqKoUTX1wh3EB5a8yfkhb_QYRlLRotLtnLinIAOkdTPjFzmvzz_bwN8m34i4U3Tola1JxVB7rQENloVZgSr1r1cM_8Dsr9uk53QzNNxWLoTGNFRvO1cCSeG6kE8l5QF7CDBv3V86jkkiA5LH3LYuEQUGjK9a5AZDZ5-OCGz91NVh1ZjQ"]');
+        if (mascot) {
+            document.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 50;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 50;
+                mascot.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg) translateY(-5px)`;
+            });
+        }
+
+        // Hover effect for the aura
+        const heroSection = document.querySelector('.relative.w-full.max-w-md');
+        const aura = document.querySelector('.aura-stop');
+        if (heroSection && aura) {
+            heroSection.addEventListener('mouseenter', () => {
+                aura.style.background = `radial-gradient(circle, rgba(239, 74, 107, 0.25) 0%, rgba(239, 74, 107, 0) 80%)`;
+            });
+            heroSection.addEventListener('mouseleave', () => {
+                aura.style.background = `radial-gradient(circle, rgba(239, 74, 107, 0.15) 0%, rgba(239, 74, 107, 0) 70%)`;
+            });
+        }
+    </script>
+</body></html>

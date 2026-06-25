@@ -1,0 +1,367 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>My Journal | Amito Learning System</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Nunito+Sans:wght@400;600&amp;family=Gochi+Hand&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "lilac-accent": "#b197fc",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#ffdbcf",
+                    "surface": "#fef7ff",
+                    "surface-cream": "#f6f0e4",
+                    "on-surface-variant": "#434655",
+                    "outline-variant": "#c3c5d8",
+                    "on-primary-fixed-variant": "#003cad",
+                    "background": "#fef7ff",
+                    "surface-bright": "#fef7ff",
+                    "tertiary-fixed-dim": "#ffb59a",
+                    "stop-red": "#ef4a6b",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "reflect-orange": "#ff922b",
+                    "primary-container": "#2665fd",
+                    "outline": "#737687",
+                    "inverse-primary": "#b5c4ff",
+                    "surface-container-low": "#f8f1ff",
+                    "secondary-fixed": "#ffddb6",
+                    "on-secondary": "#ffffff",
+                    "source-cyan": "#22b8cf",
+                    "on-primary-container": "#f9f7ff",
+                    "surface-variant": "#e9ddff",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#f6edff",
+                    "surface-container-highest": "#e9ddff",
+                    "on-surface": "#1f1635",
+                    "on-secondary-container": "#6d4400",
+                    "on-tertiary-container": "#fff7f4",
+                    "tertiary": "#a03600",
+                    "on-secondary-fixed": "#2a1800",
+                    "on-background": "#1f1635",
+                    "inverse-surface": "#342b4b",
+                    "welcome-blue": "#4dabf7",
+                    "secondary-container": "#feae39",
+                    "primary-fixed-dim": "#b5c4ff",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#643f00",
+                    "content-green": "#37b24d",
+                    "surface-dim": "#e1d4fd",
+                    "primary-fixed": "#dce1ff",
+                    "error": "#ba1a1a",
+                    "surface-container": "#f3eaff",
+                    "secondary": "#845400",
+                    "surface-tint": "#0050e1",
+                    "on-tertiary-fixed-variant": "#802a00",
+                    "tertiary-container": "#c94600",
+                    "background-paper": "#fbf8f2",
+                    "secondary-fixed-dim": "#ffb95a",
+                    "on-primary-fixed": "#00164d",
+                    "on-tertiary-fixed": "#380d00",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#eee4ff",
+                    "primary": "#004cd7"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "gutter": "16px",
+                    "margin-desktop": "40px",
+                    "xl": "32px",
+                    "unit": "4px",
+                    "xxl": "48px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "container-max": "1152px"
+            },
+            "fontFamily": {
+                    "label-md": ["Outfit"],
+                    "display-lg": ["Outfit"],
+                    "headline-md": ["Outfit"],
+                    "body-sm": ["Nunito Sans"],
+                    "handwritten-lg": ["Gochi Hand"],
+                    "display-xl": ["Outfit"],
+                    "body-md": ["Nunito Sans"],
+                    "body-lg": ["Nunito Sans"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .aura-glow {
+            box-shadow: 0 0 40px rgba(177, 151, 252, 0.15);
+        }
+        .speech-bubble {
+            position: relative;
+            background: #ffffff;
+            border-radius: 1.5rem;
+        }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            border-width: 10px 10px 10px 0;
+            border-style: solid;
+            border-color: transparent #ffffff transparent transparent;
+        }
+        .hairline-border {
+            border: 1px solid rgba(31, 22, 53, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background-paper text-on-surface font-body-md antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-background-paper/90 backdrop-blur-md border-b border-on-surface/10">
+<nav class="flex justify-between items-center px-margin-desktop py-md max-w-container-max mx-auto">
+<div class="flex items-center gap-md"><img alt="STOP&amp;SCAN Logo" class="h-12 w-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAifli5DfnylQqeRS2kFXV3jydRw-rDDcubXS7sPKAcVtqUKM9AHyYLU9lMw6SPymEfiPygvgqLvq9ebHQ17XOpzKJIlZy62EtB721MFu2RTtAdYULWinOIw1gGurWTpGsHfpZhYZa7cKbwWGbK5b9MZdyRmqYy-S0uVHeCRL4A2zCTMbwM-sdeX1_b9Ef_NHJ30LQC2EuVKOa3WXingxYUVa2S8izm5Bis6g9TTqWIeSgQy-qVFwJ8hEFq1nOrBeZxUnOApRsVXXs"></div>
+<div class="hidden md:flex gap-xl items-center"><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Learn</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Practice</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Resources</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Comics</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Project</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Meet Amito</a></div>
+<div class="flex items-center gap-md"><button class="bg-primary text-on-primary px-lg py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">My Journal</button></div>
+</nav>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-xxl">
+<!-- Hero Section -->
+<section class="flex flex-col md:flex-row items-center gap-xxl mb-xxl">
+<div class="w-full md:w-1/3 flex justify-center relative">
+<div class="absolute inset-0 bg-lilac-accent/10 rounded-full blur-3xl scale-75 animate-pulse"></div>
+<img alt="Amito mascot in a reflective pose" class="w-64 h-64 md:w-80 md:h-80 object-contain relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvqzkWnUiH833h8L7R6iVOiEEzEwjjH655a9P15lA27VGy4MhYFNGRb4D5JM4pcozA4Xoivx2FRnn_RCIE0dj37c1j0iOGwS6XUCQx2fn_N4IfTCh1nyxZHOrgMKsyxOtl5o22_TxYrZM76dEKK9xlVBxOoD3s63Z2gR4mRkWuQOSh1JmUoGIWi6Ugzp389xQ-0Ld3rY7dIW30C7BuOSl1XUGjTNDryzhA376Fgn7WDKyMNs2mj1_7NGphOLYAXvzdTHzJP62fx6A">
+</div>
+<div class="w-full md:w-2/3 space-y-md">
+<h1 class="font-display-xl text-display-xl text-on-background">My Reflection Journal</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    Track your journey through the STOP&amp;SCAN framework and see how your digital judgment evolves over time.
+                </p>
+<div class="flex gap-md pt-md">
+<div class="bg-surface-cream px-lg py-sm rounded-xl hairline-border flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">history</span>
+<span class="font-label-md text-label-md">12 Saved Entries</span>
+</div>
+<div class="bg-surface-cream px-lg py-sm rounded-xl hairline-border flex items-center gap-sm">
+<span class="material-symbols-outlined text-content-green">verified_user</span>
+<span class="font-label-md text-label-md">86% Accuracy</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Filters/Control Bar -->
+<div class="flex justify-between items-center mb-xl">
+<h2 class="font-headline-md text-headline-md">Recent Reflections</h2>
+<div class="flex gap-sm">
+<button class="bg-white hairline-border px-md py-xs rounded-full font-label-md text-label-md hover:bg-surface transition-colors">All</button>
+<button class="bg-white hairline-border px-md py-xs rounded-full font-label-md text-label-md hover:bg-surface transition-colors">Guided</button>
+<button class="bg-white hairline-border px-md py-xs rounded-full font-label-md text-label-md hover:bg-surface transition-colors">Practice</button>
+</div>
+</div>
+<!-- Journal Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg" id="journal-grid">
+<!-- Journal Card 1 -->
+<div class="bg-white rounded-[24px] p-lg hairline-border aura-glow hover:-translate-y-1 transition-transform cursor-pointer">
+<div class="flex justify-between items-start mb-md">
+<span class="text-body-sm font-body-sm text-outline">Oct 24, 2024 · 2:30 PM</span>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-sm py-1 rounded-lg text-label-md font-label-md">Guided Lesson</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-md">The Celebrity Investment Video</h3>
+<div class="bg-surface-container-low p-md rounded-xl space-y-sm mb-lg">
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Initial Gut Reaction</span>
+<span class="font-bold text-stop-red">Suspicious</span>
+</div>
+<div class="w-full h-1 bg-outline-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full"></div>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm pt-xs">
+<span class="text-on-surface-variant">Final Decision</span>
+<span class="font-bold text-content-green">Scammed</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-xs font-label-md text-label-md text-primary font-bold">
+                        OPEN ENTRY <span class="material-symbols-outlined">chevron_right</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-error-container hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Journal Card 2 -->
+<div class="bg-white rounded-[24px] p-lg hairline-border aura-glow hover:-translate-y-1 transition-transform cursor-pointer">
+<div class="flex justify-between items-start mb-md">
+<span class="text-body-sm font-body-sm text-outline">Oct 22, 2024 · 10:15 AM</span>
+<span class="bg-surface-variant text-on-surface px-sm py-1 rounded-lg text-label-md font-label-md">Practice Case</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-md">Local Charity Appeal</h3>
+<div class="bg-surface-container-low p-md rounded-xl space-y-sm mb-lg">
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Initial Gut Reaction</span>
+<span class="font-bold text-welcome-blue">Trustworthy</span>
+</div>
+<div class="w-full h-1 bg-outline-variant rounded-full overflow-hidden">
+<div class="h-full bg-reflect-orange w-full"></div>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm pt-xs">
+<span class="text-on-surface-variant">Final Decision</span>
+<span class="font-bold text-primary">Legitimate</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-xs font-label-md text-label-md text-primary font-bold">
+                        OPEN ENTRY <span class="material-symbols-outlined">chevron_right</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-error-container hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Journal Card 3 -->
+<div class="bg-white rounded-[24px] p-lg hairline-border aura-glow hover:-translate-y-1 transition-transform cursor-pointer">
+<div class="flex justify-between items-start mb-md">
+<span class="text-body-sm font-body-sm text-outline">Oct 21, 2024 · 4:45 PM</span>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-sm py-1 rounded-lg text-label-md font-label-md">Guided Lesson</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-md">The Hidden T&amp;C Puzzle</h3>
+<div class="bg-surface-container-low p-md rounded-xl space-y-sm mb-lg">
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Initial Gut Reaction</span>
+<span class="font-bold text-outline">Uncertain</span>
+</div>
+<div class="w-full h-1 bg-outline-variant rounded-full overflow-hidden">
+<div class="h-full bg-lilac-accent w-full"></div>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm pt-xs">
+<span class="text-on-surface-variant">Final Decision</span>
+<span class="font-bold text-stop-red">Misleading</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-xs font-label-md text-label-md text-primary font-bold">
+                        OPEN ENTRY <span class="material-symbols-outlined">chevron_right</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-error-container hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Empty State (Hidden by default, used for demonstration or dynamic logic) -->
+<div class="hidden flex-col items-center justify-center text-center py-xxl gap-lg" id="empty-state">
+<img alt="Amito in a thinking pose" class="w-48 h-48 opacity-50 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvqzkWnUiH833h8L7R6iVOiEEzEwjjH655a9P15lA27VGy4MhYFNGRb4D5JM4pcozA4Xoivx2FRnn_RCIE0dj37c1j0iOGwS6XUCQx2fn_N4IfTCh1nyxZHOrgMKsyxOtl5o22_TxYrZM76dEKK9xlVBxOoD3s63Z2gR4mRkWuQOSh1JmUoGIWi6Ugzp389xQ-0Ld3rY7dIW30C7BuOSl1XUGjTNDryzhA376Fgn7WDKyMNs2mj1_7NGphOLYAXvzdTHzJP62fx6A">
+<div class="max-w-md space-y-sm">
+<h3 class="font-headline-md text-headline-md">Your journal is waiting!</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Looks like you haven't saved any reflections yet. Start a lesson or browse cases to begin your journey.</p>
+</div>
+<div class="flex gap-md">
+<button class="bg-primary text-on-primary px-xl py-md rounded-full font-label-md text-label-md shadow-lg hover:brightness-105 transition-all">Start the lesson</button>
+<button class="bg-white hairline-border text-on-surface px-xl py-md rounded-full font-label-md text-label-md hover:bg-surface transition-all">Browse case files</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface text-inverse-on-surface pt-xxl pb-xl">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-xxl mb-xxl">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-sm mb-lg">
+<img alt="STOP&amp;SCAN Logo" class="h-8 w-8 brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAifli5DfnylQqeRS2kFXV3jydRw-rDDcubXS7sPKAcVtqUKM9AHyYLU9lMw6SPymEfiPygvgqLvq9ebHQ17XOpzKJIlZy62EtB721MFu2RTtAdYULWinOIw1gGurWTpGsHfpZhYZa7cKbwWGbK5b9MZdyRmqYy-S0uVHeCRL4A2zCTMbwM-sdeX1_b9Ef_NHJ30LQC2EuVKOa3WXingxYUVa2S8izm5Bis6g9TTqWIeSgQy-qVFwJ8hEFq1nOrBeZxUnOApRsVXXs">
+<span class="font-display-lg text-display-lg text-white">Stop &amp; Scan</span>
+</div>
+<p class="font-body-md text-body-md text-outline-variant opacity-80">
+                        Equipping the next generation with the tools to navigate the digital frontier with curiosity and critical thought.
+                    </p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-white mb-lg uppercase tracking-widest">Learn</h4>
+<ul class="space-y-sm font-body-md text-body-md text-outline-variant">
+<li class=""><a class="hover:text-white transition-colors" href="#">The Framework</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Case Studies</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Amito's Guide</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-white mb-lg uppercase tracking-widest">Connect</h4>
+<ul class="space-y-sm font-body-md text-body-md text-outline-variant">
+<li class=""><a class="hover:text-white transition-colors" href="#">Discord Community</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">The Lab</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Support</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-white mb-lg uppercase tracking-widest">Legal</h4>
+<ul class="space-y-sm font-body-md text-body-md text-outline-variant">
+<li class=""><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Terms of Service</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Educational Use</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/10 pt-xl flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="font-label-md text-label-md text-outline-variant">© 2024 STOP&amp;SCAN Sensemaking Labs. All rights reserved.</p>
+<div class="flex gap-lg">
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors">language</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors">share</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors">mail</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Interaction logic for card deletion (UI only)
+        document.querySelectorAll('.material-symbols-outlined:contains("delete")').forEach(btn => {
+            btn.closest('button').addEventListener('click', (e) => {
+                e.stopPropagation();
+                const card = e.target.closest('.aura-glow');
+                card.style.transform = 'scale(0.9)';
+                card.style.opacity = '0';
+                setTimeout(() => {
+                    card.remove();
+                    if(document.querySelectorAll('.aura-glow').length === 0) {
+                        document.getElementById('journal-grid').classList.add('hidden');
+                        document.getElementById('empty-state').classList.remove('hidden');
+                    }
+                }, 300);
+            });
+        });
+
+        // Helper for :contains selector in vanilla JS
+        function contains(selector, text) {
+            var elements = document.querySelectorAll(selector);
+            return Array.from(elements).filter(function(element) {
+                return RegExp(text).test(element.textContent);
+            });
+        }
+        
+        // Manual override for delete listener since CSS contains isn't standard
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.querySelector('.material-symbols-outlined')?.textContent === 'delete') {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const card = btn.closest('.aura-glow');
+                    card.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => {
+                        card.remove();
+                        if(document.querySelectorAll('.aura-glow').length === 0) {
+                            document.getElementById('journal-grid').classList.add('hidden');
+                            document.getElementById('empty-state').classList.remove('hidden', 'flex');
+                            document.getElementById('empty-state').classList.add('flex');
+                        }
+                    }, 300);
+                });
+            }
+        });
+    </script>
+
+
+</body></html>

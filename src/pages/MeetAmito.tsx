@@ -1,93 +1,114 @@
-import { Link } from "react-router-dom";
-import Amito from "../components/Amito";
-import { STEPS, type AmitoState } from "../lib/framework";
+import AmitoSpotlight from "../components/AmitoSpotlight";
+import { CtaBanner, HeroBadge } from "../components/ui/PageSections";
+import { AMITO_IMAGES } from "../lib/assets";
+import { STEPS } from "../lib/framework";
 
-const poses: { state: AmitoState; label: string }[] = [
-  { state: "greeting", label: "Greeting" },
-  { state: "stop", label: "Stop" },
-  { state: "source", label: "Source" },
-  { state: "content", label: "Content" },
-  { state: "alignment", label: "Alignment" },
-  { state: "reflect", label: "Reflect" },
-  { state: "reward", label: "Reward" },
-];
+const MEET_POSES = [
+  { state: "greeting", label: "Greeting", img: AMITO_IMAGES.greeting, badge: "text-primary bg-primary/10" },
+  { state: "stop", label: "Stop & Assess", img: AMITO_IMAGES.stop, badge: "text-stop-red bg-stop-red/10" },
+  { state: "source", label: "Source Check", img: AMITO_IMAGES.source, badge: "text-source-cyan bg-source-cyan/10" },
+  { state: "content", label: "Content Analysis", img: AMITO_IMAGES.content, badge: "text-content-green bg-content-green/10" },
+  { state: "alignment", label: "Alignment Check", img: AMITO_IMAGES.alignment, badge: "text-lilac-accent bg-lilac-accent/10" },
+  { state: "reflect", label: "Reflection", img: AMITO_IMAGES.reflect, badge: "text-reflect-orange bg-reflect-orange/10" },
+] as const;
+
+const FRAMEWORK_CARDS = [
+  { key: "stop", title: "STOP", cue: STEPS[0].cue, img: AMITO_IMAGES.stop, border: "hover:border-stop-red/30", bg: "bg-stop-red/10", text: "text-stop-red" },
+  { key: "source", title: "SOURCE", cue: STEPS[1].cue, img: AMITO_IMAGES.source, border: "hover:border-source-cyan/30", bg: "bg-source-cyan/10", text: "text-source-cyan" },
+  { key: "content", title: "CONTENT", cue: STEPS[2].cue, img: AMITO_IMAGES.content, border: "hover:border-content-green/30", bg: "bg-content-green/10", text: "text-content-green" },
+  { key: "alignment", title: "ALIGN", cue: STEPS[3].cue, img: AMITO_IMAGES.alignment, border: "hover:border-lilac-accent/30", bg: "bg-lilac-accent/10", text: "text-lilac-accent" },
+  { key: "reflect", title: "REFLECT", cue: STEPS[4].cue, img: AMITO_IMAGES.reflect, border: "hover:border-reflect-orange/30", bg: "bg-reflect-orange/10", text: "text-reflect-orange" },
+] as const;
 
 export default function MeetAmito() {
   return (
-    <div className="container-page py-12">
-      <div className="grid items-center gap-8 md:grid-cols-2">
-        <div>
-          <h1 className="font-display text-4xl font-extrabold">Meet Amito</h1>
-          <p className="mt-3 text-lg text-ink/75">
-            Amito is the friendly messenger for STOP&SCAN: part assistant, part
-            toolkit, part reminder to slow down before trusting what you see
-            online.
-          </p>
-          <p className="mt-3 text-ink/70">
-            Synthetic media and misinformation can feel intimidating. Amito makes
-            the process approachable — guiding you through each step without ever
-            making you feel foolish for trusting what looked real.
-          </p>
-        </div>
-        <div className="flex justify-center">
-          <Amito state="greeting" size="xl" float />
-        </div>
-      </div>
-
-      <h2 className="mt-14 font-display text-2xl font-extrabold">
-        Amito's colors
-      </h2>
-      <p className="mt-2 text-ink/65">
-        Each STOP&SCAN step has a matching Amito cue, so the framework becomes
-        something you can see and feel.
-      </p>
-      <div className="mt-5 overflow-hidden rounded-3xl border border-ink/10">
-        <table className="w-full text-left">
-          <thead className="bg-ink text-white">
-            <tr>
-              <th className="px-5 py-3 font-display">Framework step</th>
-              <th className="px-5 py-3 font-display">Amito cue</th>
-            </tr>
-          </thead>
-          <tbody>
-            {STEPS.map((s, i) => (
-              <tr key={s.key} className={i % 2 ? "bg-white" : "bg-cream/40"}>
-                <td className="px-5 py-3 font-bold">
-                  <span
-                    className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded text-xs font-extrabold text-white"
-                    style={{ backgroundColor: s.hex }}
-                  >
-                    {s.letter}
-                  </span>
-                  {s.title}
-                </td>
-                <td className="px-5 py-3 text-ink/75">{s.cue}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <h2 className="mt-14 font-display text-2xl font-extrabold">
-        Amito's poses
-      </h2>
-      <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {poses.map((p) => (
-          <div key={p.state} className="card flex flex-col items-center gap-2">
-            <Amito state={p.state} size="md" />
-            <span className="font-display font-bold">{p.label}</span>
+    <div>
+      <section className="hero-gradient relative flex min-h-[500px] flex-col items-center justify-center overflow-visible px-margin-mobile py-xxl md:px-margin-desktop">
+        <div className="mx-auto grid w-full max-w-container-max items-center gap-xl md:grid-cols-2">
+          <div className="space-y-lg text-left">
+            <HeroBadge icon="robot_2" label="Your Guide" />
+            <h1 className="font-display text-display-xl text-on-surface">Meet Amito</h1>
+            <p className="max-w-sm text-body-md text-on-surface-variant">
+              As the messenger of trust, Amito evolves with you through each step of the
+              STOP&SCAN framework, signaling important cues to keep your journey safe.
+            </p>
           </div>
-        ))}
-      </div>
+          <AmitoSpotlight
+            src={AMITO_IMAGES.greeting}
+            alt="Amito waving"
+            imageClassName="relative z-10 max-w-md object-contain transition-transform duration-500 hover:rotate-2"
+            glow="primary"
+            speech={
+              <>
+                &ldquo;Hello! I&apos;m Amito, your friendly guide through the world of digital
+                sensemaking. I&apos;m here to help you navigate information with trust and
+                clarity.&rdquo;
+              </>
+            }
+          />
+        </div>
+      </section>
 
-      <div className="mt-12 rounded-3xl bg-alignment/10 p-8 text-center">
-        <p className="font-display text-xl font-bold">
-          Amito carries the experience — but STOP&SCAN is the habit.
-        </p>
-        <Link to="/learn" className="btn-primary mt-5">
-          Walk through it with Amito →
-        </Link>
-      </div>
+      <section className="bg-background-paper px-margin-mobile py-xxl md:px-margin-desktop">
+        <div className="mx-auto max-w-container-max">
+          <div className="mb-xxl text-center">
+            <h2 className="font-display text-display-lg text-on-surface">
+              Visual Language of Trust
+            </h2>
+            <p className="mt-sm text-body-md text-on-surface-variant">
+              Amito&apos;s colors change to help you identify where you are in the framework.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-md md:grid-cols-5">
+            {FRAMEWORK_CARDS.map((s) => (
+              <div
+                key={s.key}
+                className={`group flex flex-col items-center rounded-lg border border-on-surface/5 bg-surface-container-lowest p-lg transition-all ${s.border}`}
+              >
+                <div
+                  className={`mb-md flex h-24 w-24 items-center justify-center rounded-full ${s.bg} transition-transform group-hover:scale-110`}
+                >
+                  <img alt="" className="h-16 w-16 object-contain" src={s.img} />
+                </div>
+                <h3 className={`mb-xs font-display text-headline-md ${s.text}`}>{s.title}</h3>
+                <p className="text-center text-body-sm text-on-surface-variant">{s.cue}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-surface-container-low px-margin-mobile py-xxl md:px-margin-desktop">
+        <div className="mx-auto max-w-container-max">
+          <h2 className="mb-xl text-center font-display text-display-lg text-on-surface">
+            The Many Poses of Amito
+          </h2>
+          <div className="grid grid-cols-2 gap-lg lg:grid-cols-3">
+            {MEET_POSES.map((p) => (
+              <div
+                key={p.state}
+                className="group flex flex-col items-center overflow-hidden rounded-xl bg-white p-xl aura-glow"
+              >
+                <img
+                  alt={p.label}
+                  className="h-64 object-contain transition-transform duration-300 group-hover:scale-105"
+                  src={p.img}
+                />
+                <span className={`mt-md rounded-full px-md py-xs font-label-md ${p.badge}`}>
+                  {p.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CtaBanner
+        title="Walk through it with Amito"
+        description="Ready to practice the framework? Let Amito guide you through real-world examples and interactive modules."
+        to="/learn"
+        label="Start Learning"
+      />
     </div>
   );
 }

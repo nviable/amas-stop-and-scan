@@ -1,35 +1,52 @@
 import { STEPS } from "../../lib/framework";
 
-/** index: 0 = gut check, 1..5 = STOP, S, C, A, Reflect */
+/** index: 1..5 = STOP, S, C, A, Reflect */
 export default function StepProgress({ index }: { index: number }) {
+  const stepStyles = [
+    { bg: "#f36734", label: "Stop", letter: "STOP", size: "w-12 h-12" },
+    { bg: "#6ae4e7", label: "Scan", letter: "S", size: "w-10 h-10" },
+    { bg: "#82e896", label: "content", letter: "C", size: "w-10 h-10" },
+    { bg: "#ea80dc", label: "align", letter: "A", size: "w-10 h-10" },
+    { bg: "#f3a530", label: "Now", letter: "N", size: "w-10 h-10" },
+  ];
+
   return (
-    <div className="flex items-center justify-center gap-1.5 sm:gap-2 no-print">
-      {STEPS.map((s, i) => {
-        const stepNum = i + 1;
-        const active = index === stepNum;
-        const done = index > stepNum;
-        return (
-          <div key={s.key} className="flex items-center gap-1.5 sm:gap-2">
-            <div
-              className="flex h-9 min-w-9 items-center justify-center rounded-full px-2 text-xs font-extrabold transition-all sm:text-sm"
-              style={{
-                backgroundColor: active || done ? s.hex : "#ffffff",
-                color: active || done ? "#fff" : "#241b3a80",
-                border: `2px solid ${active || done ? s.hex : "#241b3a20"}`,
-              }}
-              title={s.title}
-            >
-              {s.letter}
-            </div>
-            {i < STEPS.length - 1 && (
+    <div className="no-print flex justify-center px-md">
+      <div className="relative flex w-full max-w-2xl items-center justify-between">
+        <div className="absolute left-0 top-1/2 -z-10 h-[2px] w-full -translate-y-1/2 bg-outline-variant" />
+        {STEPS.map((s, i) => {
+          const stepNum = i + 1;
+          const active = index === stepNum;
+          const done = index > stepNum;
+          const style = stepStyles[i];
+          const isActiveStyle = active || done;
+
+          return (
+            <div key={s.key} className="flex flex-col items-center gap-xs">
+              <div
+                className={`flex items-center justify-center rounded-full font-display font-bold text-white shadow-md ring-4 ring-white ${style.size} ${
+                  isActiveStyle ? "" : "border-2 bg-white text-outline-variant"
+                }`}
+                style={{
+                  backgroundColor: isActiveStyle ? style.bg : undefined,
+                  borderColor: isActiveStyle ? undefined : style.bg,
+                }}
+                title={s.title}
+              >
+                {i === 0 ? style.letter : style.letter}
+              </div>
               <span
-                className="hidden h-0.5 w-4 rounded sm:block"
-                style={{ backgroundColor: done ? s.hex : "#241b3a20" }}
-              />
-            )}
-          </div>
-        );
-      })}
+                className={`font-label-md font-bold uppercase tracking-widest ${
+                  isActiveStyle ? "" : "text-outline-variant"
+                }`}
+                style={{ color: isActiveStyle ? style.bg : undefined }}
+              >
+                {style.label}
+              </span>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

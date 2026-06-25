@@ -1,4 +1,5 @@
 import type { AmitoState } from "../lib/framework";
+import { AMITO_IMAGES } from "../lib/assets";
 
 const GLOW: Record<AmitoState, string> = {
   greeting: "#4dabf7",
@@ -24,10 +25,6 @@ interface AmitoProps {
   className?: string;
 }
 
-/**
- * Renders an Amito pose. Pose art lives in /public/amito/{state}.png.
- * A colored glow behind the figure reinforces the active STOP&SCAN step cue.
- */
 export default function Amito({
   state = "greeting",
   size = "md",
@@ -35,6 +32,8 @@ export default function Amito({
   className = "",
 }: AmitoProps) {
   const glow = GLOW[state];
+  const src = AMITO_IMAGES[state] ?? AMITO_IMAGES.greeting;
+
   return (
     <div
       className={`relative inline-flex items-center justify-center ${float ? "animate-float" : ""} ${className}`}
@@ -42,15 +41,12 @@ export default function Amito({
       <span
         aria-hidden
         className="absolute inset-0 m-auto h-3/4 w-3/4 rounded-full blur-2xl animate-glowpulse"
-        style={{ backgroundColor: glow, opacity: 0.5 }}
+        style={{ backgroundColor: glow, opacity: 0.45 }}
       />
       <img
-        src={`/amito/${state}.png`}
+        src={src}
         alt={`Amito — ${state} pose`}
         className={`relative z-10 ${sizes[size]} object-contain drop-shadow-xl`}
-        onError={(e) => {
-          (e.currentTarget as HTMLImageElement).src = "/amito/greeting.png";
-        }}
       />
     </div>
   );

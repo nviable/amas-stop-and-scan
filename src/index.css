@@ -11,52 +11,106 @@ html {
 }
 
 body {
-  @apply bg-[#fbf8f2] text-ink font-body antialiased;
+  @apply bg-background-paper font-body text-body-md text-on-surface antialiased;
 }
 
 @layer components {
   .container-page {
-    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+    @apply mx-auto w-full max-w-container-max px-margin-mobile md:px-margin-desktop;
+  }
+
+  .paper-texture {
+    background-image: radial-gradient(#241b3a05 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .hairline-border {
+    border: 1px solid rgba(31, 22, 53, 0.1);
+  }
+
+  .card-hairline {
+    @apply hairline-border;
+  }
+
+  .aura-glow {
+    box-shadow: 0 0 40px rgba(177, 151, 252, 0.15);
+  }
+
+  .speech-bubble {
+    @apply relative bg-white;
+  }
+
+  .speech-bubble-tr::after {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 10px 10px 10px 0;
+    border-style: solid;
+    border-color: transparent #ffffff transparent transparent;
+  }
+
+  .speech-bubble-br::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 24px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+
+  .hero-gradient {
+    background: linear-gradient(180deg, #dce1ff 0%, #fbf8f2 100%);
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-display font-bold transition-transform duration-150 active:scale-95;
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-display font-semibold transition-all duration-150 active:scale-95;
   }
 
   .btn-primary {
-    @apply btn bg-ink text-white shadow-soft hover:bg-[#352a52];
+    @apply btn bg-primary px-xxl py-md text-on-primary shadow-md hover:brightness-105;
   }
 
   .btn-accent {
-    @apply btn bg-alignment text-ink shadow-soft hover:brightness-105;
+    @apply btn border-2 border-primary px-xl py-md text-primary hover:bg-primary hover:text-on-primary;
   }
 
   .btn-ghost {
-    @apply btn border-2 border-ink/15 bg-white text-ink hover:border-ink/30;
+    @apply btn border-2 border-on-surface/15 bg-white px-xl py-md text-on-surface hover:bg-surface-cream;
+  }
+
+  .btn-inverse {
+    @apply btn bg-inverse-surface px-xxl py-md text-inverse-on-surface hover:opacity-90;
   }
 
   .card {
-    @apply rounded-3xl border border-ink/10 bg-white p-6 shadow-soft;
+    @apply rounded-xxl border border-on-surface/10 bg-surface-container-lowest p-lg shadow-soft;
   }
 
   .chip {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-ink/10 bg-white px-3 py-1.5 text-sm font-semibold;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-outline-variant bg-white px-lg py-sm text-body-sm font-semibold;
   }
 
   .option {
-    @apply w-full rounded-2xl border-2 border-ink/10 bg-white px-4 py-3 text-left font-semibold transition-all hover:border-alignment/60 hover:bg-alignment/5;
+    @apply w-full rounded-xl border-2 border-transparent bg-white p-md text-left text-body-md shadow-sm transition-all hover:border-lilac-accent/30 active:scale-95;
   }
 
   .option-selected {
-    @apply border-alignment bg-alignment/15;
+    @apply border-lilac-accent bg-lilac-accent/5;
   }
 
-  .reader-btn {
-    @apply inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-bold text-white transition-colors hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-40 sm:text-sm;
+  .nav-link {
+    @apply font-label-md text-label-md uppercase tracking-wide text-on-surface-variant transition-opacity hover:opacity-80;
+  }
+
+  .nav-link-active {
+    @apply border-b-2 border-primary pb-0.5 text-primary;
   }
 }
 
-/* Print styles for journal export */
 @media print {
   .no-print {
     display: none !important;

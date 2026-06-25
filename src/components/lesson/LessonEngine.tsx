@@ -5,6 +5,7 @@ import { STEPS } from "../../lib/framework";
 import { useJournal, type ReflectionEntry } from "../../context/JournalContext";
 import AmitoSays from "../AmitoSays";
 import Amito from "../Amito";
+import Icon from "../ui/Icon";
 import StepProgress from "./StepProgress";
 import ChoiceGroup from "./ChoiceGroup";
 import {
@@ -174,33 +175,32 @@ export default function LessonEngine({
   const step = STEPS[screen - 1];
 
   return (
-    <div className="container-page py-8">
-      <div className="mb-6">
+    <div className="px-margin-mobile pb-xxl pt-4 md:px-margin-desktop">
+      <div className="mb-lg">
         <StepProgress index={screen} />
       </div>
 
-      <div className="mx-auto max-w-3xl">
-        {/* Header */}
-        <div className="mb-5 text-center">
+      <div className="mx-auto max-w-container-max">
+        <div className="mb-lg text-center">
           <span
-            className="inline-block rounded-full px-4 py-1 text-sm font-extrabold text-white"
+            className="inline-block rounded-full px-lg py-1 font-label-md font-bold uppercase tracking-wide text-white"
             style={{ backgroundColor: step.hex }}
           >
             {step.letter} · {step.title}
           </span>
-          <p className="mt-2 text-ink/60">{step.tagline}</p>
+          <p className="mt-2 text-body-lg text-on-surface-variant">{step.tagline}</p>
         </div>
 
         {/* SCREEN 1 — STOP / gut check */}
         {screen === 1 && (
-          <div className="space-y-5">
-            <PostCard post={data.post} />
-            <AmitoSays state="stop">{guideMessage(data, mode, screen)}</AmitoSays>
-
-            <div className="card">
-              <p className="font-display text-lg font-bold">
-                What is your gut reaction?
-              </p>
+          <div className="grid grid-cols-1 items-start gap-xxl lg:grid-cols-12">
+            <div className="space-y-lg lg:col-span-6">
+              <PostCard post={data.post} />
+            </div>
+            <div className="space-y-lg lg:col-span-6">
+              <AmitoSays state="stop">{guideMessage(data, mode, screen)}</AmitoSays>
+              <div className="rounded-[32px] border border-on-surface/5 bg-surface-cream/50 p-xl space-y-xl">
+              <p className="font-display text-headline-md">What is your gut reaction?</p>
               <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
                 {data.gutCheck.reactionOptions.map((opt) => (
                   <button
@@ -214,19 +214,17 @@ export default function LessonEngine({
                 ))}
               </div>
 
-              <p className="mt-5 font-display text-lg font-bold">
-                What did it make you feel?
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
+              <p className="mt-lg font-display text-headline-md">What did it make you feel?</p>
+              <div className="mt-3 flex flex-wrap gap-sm">
                 {data.gutCheck.feelingOptions.map((f) => (
                   <button
                     key={f}
                     type="button"
                     onClick={() => setFirstFeeling(f)}
-                    className={`chip ${
+                    className={`rounded-full border-2 px-lg py-sm text-sm font-bold transition-colors ${
                       firstFeeling === f
-                        ? "border-stop bg-stop/10 text-stop"
-                        : ""
+                        ? "border-lilac-accent bg-lilac-accent text-white"
+                        : "border-outline-variant text-on-surface-variant hover:border-lilac-accent hover:bg-lilac-accent/10"
                     }`}
                   >
                     {f}
@@ -234,16 +232,17 @@ export default function LessonEngine({
                 ))}
               </div>
 
-              <label className="mt-5 block font-display text-lg font-bold">
+              <label className="mt-lg block font-display text-headline-md">
                 Before checking, I felt…
               </label>
               <textarea
                 value={stopNote}
                 onChange={(e) => setStopNote(e.target.value)}
-                rows={2}
+                rows={3}
                 placeholder="I felt ______ because ______."
-                className="mt-2 w-full rounded-2xl border-2 border-ink/10 bg-cream/40 p-3 font-body outline-none focus:border-stop"
+                className="mt-2 w-full resize-none rounded-2xl border border-on-surface/10 bg-white p-lg font-body outline-none focus:border-lilac-accent focus:ring-lilac-accent"
               />
+              </div>
             </div>
           </div>
         )}
@@ -473,7 +472,7 @@ export default function LessonEngine({
         )}
 
         {/* Nav controls */}
-        <div className="mt-7 flex items-center justify-between gap-3 no-print">
+        <div className="mt-xl flex items-center justify-between gap-lg border-t border-on-surface/5 pt-lg no-print">
           <button
             type="button"
             onClick={() => {
@@ -481,49 +480,56 @@ export default function LessonEngine({
               setScreen((s) => Math.max(1, (s - 1) as Screen) as Screen);
             }}
             disabled={screen === 1}
-            className="btn-ghost disabled:cursor-not-allowed disabled:opacity-40"
+            className="inline-flex items-center gap-xs rounded-full border border-on-surface/10 px-xl py-sm font-bold text-on-surface-variant transition-colors hover:bg-on-surface/5 disabled:cursor-not-allowed disabled:opacity-40"
           >
-            ← Back
+            <Icon name="arrow_back" className="text-sm" />
+            Back
           </button>
 
-          <div className="flex gap-2">
-            {currentScanKey && !revealed && (
-              <button
-                type="button"
-                onClick={revealFeedback}
-                disabled={isLearn && !hasCurrentChoice}
-                className="btn-ghost disabled:opacity-40"
-              >
-                {isLearn ? "Check my answer" : "Show hint"}
-              </button>
-            )}
-            {screen < 5 ? (
-              <button
-                type="button"
-                onClick={advance}
-                disabled={!canContinue}
-                className="btn-primary disabled:cursor-not-allowed disabled:opacity-40"
-              >
-                Continue →
-              </button>
-            ) : (
-              <button type="button" onClick={finish} className="btn-accent">
-                Save to my Journal
-              </button>
+          <div className="flex flex-col items-end gap-xs">
+            <div className="flex gap-sm">
+              {currentScanKey && !revealed && (
+                <button
+                  type="button"
+                  onClick={revealFeedback}
+                  disabled={isLearn && !hasCurrentChoice}
+                  className="rounded-full border border-on-surface/10 px-lg py-sm font-bold text-on-surface-variant transition-colors hover:bg-on-surface/5 disabled:opacity-40"
+                >
+                  {isLearn ? "Check my answer" : "Show hint"}
+                </button>
+              )}
+              {screen < 5 ? (
+                <button
+                  type="button"
+                  onClick={advance}
+                  disabled={!canContinue}
+                  className="inline-flex items-center gap-xs rounded-full bg-primary px-xxl py-sm font-bold text-on-primary shadow-md transition-all hover:brightness-105 disabled:cursor-not-allowed disabled:bg-outline-variant disabled:opacity-50"
+                >
+                  Continue
+                  <Icon name="arrow_forward" className="text-sm" />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={finish}
+                  className="inline-flex items-center gap-xs rounded-full bg-secondary-container px-xxl py-sm font-bold text-on-secondary-container shadow-md transition-all hover:brightness-105"
+                >
+                  Save to my Journal
+                  <Icon name="bookmark" className="text-sm" />
+                </button>
+              )}
+            </div>
+            {!canContinue && (
+              <p className="text-[10px] font-bold uppercase tracking-widest text-outline-variant">
+                {screen === 1
+                  ? "Pick a reaction to proceed"
+                  : isLearn && hasCurrentChoice && !revealed
+                    ? "Check your answer to continue"
+                    : "Choose a signal to proceed"}
+              </p>
             )}
           </div>
         </div>
-
-        {/* helper hint */}
-        {!canContinue && (
-          <p className="mt-3 text-center text-sm text-ink/45 no-print">
-            {screen === 1
-              ? "Pick a gut reaction and a feeling to continue."
-              : isLearn && hasCurrentChoice && !revealed
-                ? "Check your answer to see Amito's feedback before continuing."
-                : "Choose a signal, or choose that you need more evidence, to continue."}
-          </p>
-        )}
       </div>
     </div>
   );

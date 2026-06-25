@@ -12,7 +12,7 @@ export default function ResourceStep() {
   if (!step || !VALID.includes(key)) {
     return (
       <div className="container-page py-20 text-center">
-        <h1 className="font-display text-3xl font-extrabold">Step not found</h1>
+        <h1 className="font-display text-display-lg">Step not found</h1>
         <Link to="/resources" className="btn-primary mt-6">
           Back to resources
         </Link>
@@ -27,13 +27,13 @@ export default function ResourceStep() {
   const prev = STEPS[idx - 1];
 
   return (
-    <div className="container-page py-12">
+    <div className="px-margin-mobile pb-xxl pt-8 md:px-margin-desktop">
       <div className="mx-auto max-w-3xl">
-        <Link to="/resources" className="text-sm font-bold text-ink/50 hover:text-ink">
+        <Link to="/resources" className="font-label-md text-on-surface-variant hover:text-on-surface">
           ← All steps
         </Link>
 
-        <div className="mt-4 flex items-center gap-4">
+        <div className="mt-md flex items-center gap-md">
           <div
             className="flex h-16 w-16 items-center justify-center rounded-2xl font-display text-2xl font-extrabold text-white"
             style={{ backgroundColor: meta.hex }}
@@ -41,21 +41,21 @@ export default function ResourceStep() {
             {meta.letter}
           </div>
           <div>
-            <h1 className="font-display text-4xl font-extrabold">{meta.title}</h1>
-            <p className="text-ink/60">{r.question}</p>
+            <h1 className="font-display text-display-xl">{meta.title}</h1>
+            <p className="text-on-surface-variant">{r.question}</p>
           </div>
         </div>
 
-        <p className="mt-6 text-lg leading-relaxed text-ink/80">{r.intro}</p>
+        <p className="mt-lg text-body-lg leading-relaxed text-on-surface">{r.intro}</p>
 
         <div
-          className="mt-8 rounded-3xl border-l-4 bg-white p-6 shadow-soft"
+          className="mt-xl rounded-3xl border-l-4 bg-white p-lg shadow-soft"
           style={{ borderColor: meta.hex }}
         >
-          <h2 className="font-display text-lg font-extrabold">Ask yourself</h2>
-          <ul className="mt-3 space-y-2">
+          <h2 className="font-display text-headline-md">Ask yourself</h2>
+          <ul className="mt-md space-y-2">
             {r.asks.map((a, i) => (
-              <li key={i} className="flex gap-2 text-ink/80">
+              <li key={i} className="flex gap-2 text-on-surface">
                 <span style={{ color: meta.hex }}>◆</span>
                 <span>{a}</span>
               </li>
@@ -63,13 +63,13 @@ export default function ResourceStep() {
           </ul>
         </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-[auto,1fr] md:items-start">
+        <div className="mt-lg grid gap-md md:grid-cols-[auto,1fr] md:items-start">
           <Amito state={meta.amito} size="md" />
           <div className="card">
-            <h2 className="font-display text-lg font-extrabold">Why it works</h2>
-            <p className="mt-2 text-ink/75">{r.why}</p>
+            <h2 className="font-display text-headline-md">Why it works</h2>
+            <p className="mt-2 text-on-surface-variant">{r.why}</p>
             <p
-              className="mt-4 rounded-2xl p-3 font-bold"
+              className="mt-md rounded-2xl p-md font-bold"
               style={{ backgroundColor: `${meta.hex}1a`, color: meta.hex }}
             >
               {r.takeaway}
@@ -77,7 +77,7 @@ export default function ResourceStep() {
           </div>
         </div>
 
-        <div className="mt-10 flex items-center justify-between border-t border-ink/10 pt-6">
+        <div className="mt-xl flex items-center justify-between border-t border-on-surface/10 pt-lg">
           {prev ? (
             <Link to={`/resources/${prev.key}`} className="btn-ghost">
               ← {prev.title}

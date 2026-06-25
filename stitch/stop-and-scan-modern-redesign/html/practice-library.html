@@ -1,0 +1,289 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Case Files | Stop &amp; Scan Practice Mode</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;family=Gochi+Hand&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@100..900&amp;family=Outfit:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "lilac-accent": "#b197fc",
+                    "surface-variant": "#e9ddff",
+                    "on-primary-container": "#f9f7ff",
+                    "on-secondary-fixed-variant": "#643f00",
+                    "on-error-container": "#93000a",
+                    "primary": "#004cd7",
+                    "on-surface-variant": "#434655",
+                    "tertiary-container": "#c94600",
+                    "secondary-fixed": "#ffddb6",
+                    "on-primary-fixed-variant": "#003cad",
+                    "surface-cream": "#f6f0e4",
+                    "inverse-surface": "#342b4b",
+                    "background-paper": "#fbf8f2",
+                    "surface-container": "#f3eaff",
+                    "inverse-primary": "#b5c4ff",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#ffb59a",
+                    "inverse-on-surface": "#f6edff",
+                    "secondary-container": "#feae39",
+                    "content-green": "#37b24d",
+                    "on-secondary-fixed": "#2a1800",
+                    "outline-variant": "#c3c5d8",
+                    "on-background": "#1f1635",
+                    "on-primary-fixed": "#00164d",
+                    "tertiary": "#a03600",
+                    "surface-container-high": "#eee4ff",
+                    "surface": "#fef7ff",
+                    "on-surface": "#1f1635",
+                    "on-secondary-container": "#6d4400",
+                    "surface-tint": "#0050e1",
+                    "outline": "#737687",
+                    "on-tertiary-container": "#fff7f4",
+                    "surface-dim": "#e1d4fd",
+                    "surface-container-low": "#f8f1ff",
+                    "primary-fixed": "#dce1ff",
+                    "primary-container": "#2665fd",
+                    "on-secondary": "#ffffff",
+                    "welcome-blue": "#4dabf7",
+                    "primary-fixed-dim": "#b5c4ff",
+                    "surface-container-lowest": "#ffffff",
+                    "source-cyan": "#22b8cf",
+                    "reflect-orange": "#ff922b",
+                    "surface-bright": "#fef7ff",
+                    "on-error": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#845400",
+                    "surface-container-highest": "#e9ddff",
+                    "stop-red": "#ef4a6b",
+                    "secondary-fixed-dim": "#ffb95a",
+                    "tertiary-fixed": "#ffdbcf",
+                    "on-tertiary-fixed-variant": "#802a00",
+                    "background": "#fef7ff",
+                    "on-tertiary-fixed": "#380d00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "margin-mobile": "20px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "xxl": "48px",
+                    "xl": "32px",
+                    "margin-desktop": "40px",
+                    "md": "16px",
+                    "container-max": "1152px"
+            },
+            "fontFamily": {
+                    "label-md": ["Outfit"],
+                    "headline-md": ["Outfit"],
+                    "body-lg": ["Nunito Sans"],
+                    "handwritten-lg": ["Gochi Hand"],
+                    "body-sm": ["Nunito Sans"],
+                    "body-md": ["Nunito Sans"],
+                    "display-lg": ["Outfit"],
+                    "display-xl": ["Outfit"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "handwritten-lg": ["24px", {"lineHeight": "32px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .speech-bubble {
+            position: relative;
+            background: #ffffff;
+            border-radius: 16px;
+            border-bottom-left-radius: 2px;
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, #dce1ff 0%, #fbf8f2 100%);
+        }
+        .card-hairline {
+            border: 1px solid rgba(31, 22, 53, 0.1);
+        }
+        .aura-glow {
+            filter: drop-shadow(0 0 15px rgba(177, 151, 252, 0.3));
+        }
+    </style>
+</head>
+<body class="bg-background-paper text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background-paper/90 backdrop-blur-md border-b border-on-surface/10"><div class="max-w-container-max mx-auto px-margin-desktop py-md flex justify-between items-center"><div class="flex items-center gap-md"><img alt="STOP&amp;SCAN Logo" class="h-12 w-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAifli5DfnylQqeRS2kFXV3jydRw-rDDcubXS7sPKAcVtqUKM9AHyYLU9lMw6SPymEfiPygvgqLvq9ebHQ17XOpzKJIlZy62EtB721MFu2RTtAdYULWinOIw1gGurWTpGsHfpZhYZa7cKbwWGbK5b9MZdyRmqYy-S0uVHeCRL4A2zCTMbwM-sdeX1_b9Ef_NHJ30LQC2EuVKOa3WXingxYUVa2S8izm5Bis6g9TTqWIeSgQy-qVFwJ8hEFq1nOrBeZxUnOApRsVXXs"></div><nav class="hidden md:flex items-center gap-xl"><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Learn</a><a class="text-primary font-label-md text-label-md border-b-2 border-primary pb-1" href="#">Practice</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Resources</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Comics</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Project</a><a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Meet Amito</a></nav><div class="flex items-center gap-md"><button class="bg-primary text-on-primary px-lg py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">My Journal</button></div></div></header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="hero-gradient pt-xxl pb-xl px-margin-desktop overflow-hidden">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-xl">
+<div class="flex-1 space-y-lg text-center md:text-left z-10">
+<div class="inline-flex items-center gap-sm bg-surface-container-high px-md py-xs rounded-full">
+<span class="material-symbols-outlined text-primary text-body-sm" data-icon="lightbulb">lightbulb</span>
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase">PRACTICE LAB</span>
+</div>
+<h1 class="font-display-xl text-display-xl text-on-background">Case Files</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        Practice spotting manipulation with real-world examples. Fewer cues, no hand-holding—just your skills and the framework.
+                    </p>
+</div>
+<div class="flex-1 relative flex justify-center items-center">
+<div class="absolute inset-0 bg-lilac-accent/10 blur-[100px] rounded-full"></div>
+<img alt="A friendly 3D robot character named Amito posing in a thoughtful, analytical stance against a clean background, embodying a modern-tactile aesthetic with soft textures and approachable geometry." class="w-full max-w-sm h-auto object-contain aura-glow relative z-10 scale-110 md:translate-x-12" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6nNq6I9juA21YfsuFX7HZtJNlpUju8nxFSsWBkPNxfAPQbrRizFya-TwvIpXv_f8UR542MprkLfDK4STadnW7p2BOnweU2KfNsoPtru44SFvCYwHk2v-DAtUHez4fQTvOd6FG8kMkAZMN0MiqTINnMXh4NHvaqhg0XZgCTgWBdi0P0jOhMyaMftjKo7tzCOOlS3o79dCo8vnuEwC8adwXxdWFcwq0FkOcKvYajviG5JmBAQZwTVi8sXSu1qYlQ0vRUiJ-q1cNx28">
+</div>
+</div>
+</section>
+<!-- Case Study Grid -->
+<section class="py-xxl px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-xl">
+<h2 class="font-headline-md text-headline-md text-on-background">Available Simulations</h2>
+<div class="flex gap-sm">
+<button class="w-10 h-10 flex items-center justify-center p-0 rounded-full border border-outline-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined" data-icon="filter_list">filter_list</span></button>
+<button class="w-10 h-10 flex items-center justify-center p-0 rounded-full border border-outline-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined" data-icon="search">search</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-[24px] card-hairline p-lg flex flex-col h-full hover:shadow-xl transition-all duration-300 group">
+<div class="mb-md flex justify-between items-start">
+<span class="bg-content-green/15 text-content-green font-label-md text-label-md px-md py-xs rounded-full border border-content-green/20">Intro</span>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+<span class="font-label-md text-label-md">8 min</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm group-hover:text-primary transition-colors">The Celebrity Investment Video</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-xl flex-grow">
+                            Examine a viral video of a famous actor promoting a crypto investment. Is it real or a deepfake?
+                        </p>
+<button class="w-full bg-primary text-on-primary px-xxl py-md rounded-full font-label-md text-label-md hover:brightness-105 active:scale-98 transition-all shadow-md flex justify-center items-center gap-sm">
+                            Begin Case
+                            <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-[24px] card-hairline p-lg flex flex-col h-full hover:shadow-xl transition-all duration-300 group">
+<div class="mb-md flex justify-between items-start">
+<span class="bg-primary/15 text-primary font-label-md text-label-md px-md py-xs rounded-full border border-primary/20">Core</span>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule" style="transform: translateY(0px);">schedule</span>
+<span class="font-label-md text-label-md">9 min</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm group-hover:text-primary transition-colors">The Deepfake Money Expert Ad</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-xl flex-grow">
+                            A financial expert gives urgent advice on a new platform. Check the signals before you click.
+                        </p>
+<button class="w-full bg-primary text-on-primary px-xxl py-md rounded-full font-label-md text-label-md hover:brightness-105 active:scale-98 transition-all shadow-md flex justify-center items-center gap-sm">
+                            Begin Case
+                            <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-[24px] card-hairline p-lg flex flex-col h-full hover:shadow-xl transition-all duration-300 group">
+<div class="mb-md flex justify-between items-start">
+<span class="bg-reflect-orange/15 text-reflect-orange font-label-md text-label-md px-md py-xs rounded-full border border-reflect-orange/20">Advanced</span>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule" style="transform: translateY(0px);">schedule</span>
+<span class="font-label-md text-label-md">10 min</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm group-hover:text-primary transition-colors">The AI Fact-Check That Was Wrong</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-xl flex-grow">
+                            An authentic-looking fact-check report seems to have errors. Can you spot what's actually happening?
+                        </p>
+<button class="w-full bg-primary text-on-primary px-xxl py-md rounded-full font-label-md text-label-md hover:brightness-105 active:scale-98 transition-all shadow-md flex justify-center items-center gap-sm">
+                            Begin Case
+                            <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Card 4 (Placeholder) -->
+<div class="bg-surface-cream/50 rounded-[24px] border-2 border-dashed border-outline-variant p-lg flex flex-col items-center justify-center h-full text-center group">
+<div class="mb-md bg-white rounded-full p-xl shadow-soft">
+<span class="material-symbols-outlined text-outline text-xxl" data-icon="robot_2" style="transform: translateY(0px);">robot_2</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm text-outline">More coming soon</h3>
+<p class="font-body-sm text-body-sm text-outline px-md">
+                            Amito is busy analyzing new cases for you. Check back next week!
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Community Section -->
+<section class="py-xxl px-margin-desktop bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto bg-surface-cream rounded-[32px] p-xl md:p-xxl flex flex-col md:flex-row items-center gap-xl relative overflow-hidden">
+<div class="flex-1 space-y-md z-10">
+<h2 class="font-display-lg text-display-lg text-on-background">Mastered the basics?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Join the community of scan-masters. Get weekly challenges and stay ahead of the latest manipulation tactics.</p>
+<div class="flex flex-col sm:flex-row gap-md pt-md">
+<input class="flex-grow px-lg py-md rounded-full border-outline-variant focus:ring-primary focus:border-primary bg-white" placeholder="Enter your email" type="email">
+<button class="bg-inverse-surface text-inverse-on-surface py-md px-xxl rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">Join the Lab</button>
+</div>
+</div>
+<div class="flex-1 flex justify-center items-center z-10">
+<div class="speech-bubble p-xl max-w-xs shadow-lg" style="transform: translateY(6.60719px);">
+<p class="font-handwritten-lg text-handwritten-lg text-on-surface">"Every expert was once a beginner who didn't quit scanning!"</p>
+<div class="mt-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="verified">verified</span>
+<span class="font-label-md text-label-md text-on-surface-variant">AMITO BOT</span>
+</div>
+</div>
+</div>
+<!-- Abstract visual element -->
+<div class="absolute -right-20 -bottom-20 w-64 h-64 bg-lilac-accent/20 rounded-full blur-[80px]"></div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface text-inverse-on-surface pt-xxl pb-xl"><div class="max-w-container-max mx-auto px-margin-desktop"><div class="grid grid-cols-1 md:grid-cols-4 gap-xxl mb-xxl"><div class="col-span-1 md:col-span-1"><div class="flex items-center gap-sm mb-lg"><img alt="STOP&amp;SCAN Logo" class="h-8 w-8 brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAifli5DfnylQqeRS2kFXV3jydRw-rDDcubXS7sPKAcVtqUKM9AHyYLU9lMw6SPymEfiPygvgqLvq9ebHQ17XOpzKJIlZy62EtB721MFu2RTtAdYULWinOIw1gGurWTpGsHfpZhYZa7cKbwWGbK5b9MZdyRmqYy-S0uVHeCRL4A2zCTMbwM-sdeX1_b9Ef_NHJ30LQC2EuVKOa3WXingxYUVa2S8izm5Bis6g9TTqWIeSgQy-qVFwJ8hEFq1nOrBeZxUnOApRsVXXs"><span class="font-display-lg text-display-lg text-white">Stop &amp; Scan</span></div><p class="font-body-md text-body-md text-outline-variant opacity-80">Equipping the next generation with the tools to navigate the digital frontier with curiosity and critical thought.</p></div><div><h4 class="font-label-md text-label-md text-white mb-lg uppercase tracking-widest">Learn</h4><ul class="space-y-sm font-body-md text-body-md text-outline-variant"><li class=""><a class="hover:text-white transition-colors" href="#">The Framework</a></li><li class=""><a class="hover:text-white transition-colors" href="#">Case Studies</a></li><li class=""><a class="hover:text-white transition-colors" href="#">Amito's Guide</a></li></ul></div><div><h4 class="font-label-md text-label-md text-white mb-lg uppercase tracking-widest">Connect</h4><ul class="space-y-sm font-body-md text-body-md text-outline-variant"><li class=""><a class="hover:text-white transition-colors" href="#">Discord Community</a></li><li class=""><a class="hover:text-white transition-colors" href="#">The Lab</a></li><li class=""><a class="hover:text-white transition-colors" href="#">Support</a></li></ul></div><div><h4 class="font-label-md text-label-md text-white mb-lg uppercase tracking-widest">Legal</h4><ul class="space-y-sm font-body-md text-body-md text-outline-variant"><li class=""><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li><li class=""><a class="hover:text-white transition-colors" href="#">Terms of Service</a></li><li class=""><a class="hover:text-white transition-colors" href="#">Educational Use</a></li></ul></div></div><div class="border-t border-white/10 pt-xl flex flex-col md:flex-row justify-between items-center gap-md"><p class="font-label-md text-label-md text-outline-variant">© 2024 STOP&amp;SCAN Sensemaking Labs. All rights reserved.</p><div class="flex gap-lg"><span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors">language</span><span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors">share</span><span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors">mail</span></div></div></div></footer>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) icon.style.transform = 'translateY(-2px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) icon.style.transform = 'translateY(0px)';
+            });
+        });
+
+        // Floating animation for speech bubble
+        const bubble = document.querySelector('.speech-bubble');
+        if (bubble) {
+            let angle = 0;
+            function animate() {
+                angle += 0.02;
+                const y = Math.sin(angle) * 10;
+                bubble.style.transform = `translateY(${y}px)`;
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+    </script>
+</body></html>
