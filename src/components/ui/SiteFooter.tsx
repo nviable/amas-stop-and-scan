@@ -1,7 +1,19 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import Icon from "./Icon";
-import { PROJECT_MEMBERS } from "../../data/projectMembers";
 import { LOGO_URL } from "../../lib/assets";
+
+const HABIT_QUOTES = [
+  "\"I don't know yet\" is a complete and honest answer. Uncertainty, properly calibrated, is protective.",
+  "You slowed down when the post wanted speed. That is the habit.",
+  "A strong emotional reaction to content is a signal to slow down, not speed up.",
+  "The goal isn't to win a fake-spotting game — it's to slow down when something wants you to rush.",
+  "You did not outsource judgment to a confident machine. That is the habit.",
+  "You separated a trusted face from an untrusted offer. That is the habit.",
+] as const;
+
+function pickHabitQuote() {
+  return HABIT_QUOTES[Math.floor(Math.random() * HABIT_QUOTES.length)];
+}
 
 export const NAV_LINKS = [
   { to: "/learn", label: "Learn" },
@@ -13,6 +25,8 @@ export const NAV_LINKS = [
 ] as const;
 
 export default function SiteFooter() {
+  const [habitQuote] = useState(pickHabitQuote);
+
   return (
     <footer className="bg-inverse-surface text-inverse-on-surface no-print">
       <div className="mx-auto max-w-container-max px-margin-mobile pb-xl pt-xxl md:px-margin-desktop">
@@ -75,6 +89,11 @@ export default function SiteFooter() {
                   My Journal
                 </Link>
               </li>
+              <li>
+                <Link className="transition-colors hover:text-white" to="/styleguide">
+                  Style guide
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -82,50 +101,14 @@ export default function SiteFooter() {
             <h4 className="mb-lg font-label-md uppercase tracking-widest text-white">
               The habit
             </h4>
-            <p className="text-body-md italic text-outline-variant opacity-90">
-              &ldquo;I don&apos;t know yet&rdquo; is a complete and honest answer.
-              Uncertainty, properly calibrated, is protective.
-            </p>
+            <p className="text-body-md italic text-outline-variant opacity-90">{habitQuote}</p>
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-lg border-t border-white/10 pt-xl md:flex-row">
-          <div className="flex flex-col items-center gap-sm md:items-start">
-            <p className="text-center font-label-md text-outline-variant md:text-left">
-              © 2026 STOP&SCAN AI for Good AMAS YRAP 2026 Cohort
-            </p>
-            <Link
-              className="font-label-md text-outline-variant transition-colors hover:text-white"
-              to="/styleguide"
-            >
-              Style guide
-            </Link>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-lg">
-            {PROJECT_MEMBERS.map((member) => (
-              <div key={member.key} className="flex items-center gap-sm">
-                <span className="font-label-md text-outline-variant">{member.name.split(" ")[0]}</span>
-                <a
-                  href={member.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-outline-variant transition-colors hover:text-white"
-                  aria-label={`${member.name} website`}
-                >
-                  <Icon name="language" className="text-lg" />
-                </a>
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-outline-variant transition-colors hover:text-white"
-                  aria-label={`${member.name} on LinkedIn`}
-                >
-                  <Icon name="linkedin" className="text-lg" />
-                </a>
-              </div>
-            ))}
-          </div>
+        <div className="border-t border-white/10 pt-xl">
+          <p className="text-center font-label-md text-outline-variant md:text-left">
+            © 2026 STOP&SCAN is a project of the <a href="https://aiforgood.itu.int/multimedia-authenticity/amas-young-researcher-associate-programme/" target="_blank" rel="noopener noreferrer">AI for Good AMAS YRAP 2026 Cohort</a>
+          </p>
         </div>
       </div>
     </footer>
