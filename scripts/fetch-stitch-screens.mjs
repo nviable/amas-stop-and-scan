@@ -2,6 +2,8 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { stitch } from "@google/stitch-sdk";
 
+/** Writes to stitch/ (gitignored). Copy any assets you need into public/ for the app. */
+
 async function loadDotEnv() {
   try {
     const raw = await readFile(join(process.cwd(), ".env"), "utf8");

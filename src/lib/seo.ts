@@ -1,6 +1,7 @@
 import { getCaseBySlug } from "../data/cases";
 import { getComicBySlug } from "../data/comics";
 import { RESOURCES } from "../data/resources";
+import { asset } from "./assets";
 import { type StepKey } from "./framework";
 
 export const SITE = {
@@ -8,8 +9,8 @@ export const SITE = {
   tagline: "Guided by Amito",
   defaultDescription:
     "STOP&SCAN helps you pause before you trust, scan before you share, and reflect before you act. Amito is your friendly guide through scaffolded digital sensemaking.",
-  defaultImage: "/og-default.png",
-  icon: "/icon-512.png",
+  defaultImage: asset("/og-default.png"),
+  icon: asset("/icon-512.png"),
   themeColor: "#f3a530",
 } as const;
 
@@ -27,61 +28,61 @@ const STATIC_PAGES: Record<string, PageSeo> = {
     title: DEFAULT_TITLE,
     description:
       "Empowering digital resilience with the STOP&SCAN framework. Learn to pause, verify sources, analyze content, check alignment, and reflect — guided by Amito.",
-    image: "/og-default.png",
+    image: asset("/og-default.png"),
   },
   "/learn": {
     title: `Learn STOP&SCAN — ${SITE.name}`,
     description:
       "Walk through the full STOP&SCAN framework with Amito. Register your gut reaction, scan the evidence, and reflect on what changed — no wrong answers.",
-    image: "/amito/pose-stop.png",
+    image: asset("/amito/pose-stop.png"),
   },
   "/practice": {
     title: `Case Files — ${SITE.name}`,
     description:
       "Practice spotting manipulation with real-world case files. Fewer cues than the guided lesson — test your STOP&SCAN skills on scams and authentic content.",
-    image: "/amito/pose-analyze.png",
+    image: asset("/amito/pose-analyze.png"),
   },
   "/resources": {
     title: `Resource Hub — ${SITE.name}`,
     description:
       "Read the reasoning behind each STOP&SCAN step: Stop, Source, Content, Alignment, and Now Reflect. Framework theory for digital trust calibration.",
-    image: "/logo.png",
+    image: asset("/logo.png"),
   },
   "/comics": {
     title: `Comics — ${SITE.name}`,
     description:
       "Visual stories that help you slow down and question believability. Explore STOP&SCAN comics created with Julian Lawrence.",
-    image: "/comics/stop-and-scan-cover.png",
+    image: asset("/comics/stop-and-scan-cover.png"),
   },
   "/journal": {
     title: `My Journal — ${SITE.name}`,
     description:
       "Review saved reflections from guided lessons and practice cases. Track how your gut reaction, evidence scan, and final judgment evolved.",
-    image: "/amito/pose-reflect.png",
+    image: asset("/amito/pose-reflect.png"),
   },
   "/project": {
     title: `The Project — ${SITE.name}`,
     description:
       "STOP&SCAN is scaffolded sensemaking for trust calibration — targeting human cognition, not detection tech. Learn about the research and design rationale.",
-    image: "/amito/pose-content.png",
+    image: asset("/amito/pose-project.png"),
   },
   "/amito": {
     title: `Meet Amito — ${SITE.name}`,
     description:
       "Meet Amito, your friendly guide through STOP&SCAN. Explore framework step cues, poses, and how Amito helps you pause without judgment.",
-    image: "/amito/home-waving.png",
+    image: asset("/amito/home-waving.png"),
   },
   "/styleguide": {
     title: `Style Guide — ${SITE.name}`,
     description:
       "Brand colors, typography, buttons, components, Amito poses, and STOP&SCAN framework assets for designers and contributors.",
-    image: "/logo.png",
+    image: asset("/logo.png"),
     noindex: true,
   },
   "/404": {
     title: `Page Not Found — ${SITE.name}`,
     description: "That page doesn't exist yet. Return to STOP&SCAN and continue learning with Amito.",
-    image: "/og-default.png",
+    image: asset("/og-default.png"),
     noindex: true,
   },
 };
@@ -95,9 +96,9 @@ const RESOURCE_STEP_LABELS: Record<StepKey, string> = {
 };
 
 function resourceStepImage(key: StepKey): string {
-  if (key === "alignment") return "/amito/pose-analyze.png";
-  if (key === "reflect") return "/amito/pose-reflect.png";
-  return `/amito/pose-${key}.png`;
+  if (key === "alignment") return asset("/amito/pose-analyze.png");
+  if (key === "reflect") return asset("/amito/pose-reflect.png");
+  return asset(`/amito/pose-${key}.png`);
 }
 
 export function resolvePageSeo(pathname: string): PageSeo {
@@ -111,7 +112,7 @@ export function resolvePageSeo(pathname: string): PageSeo {
       return {
         title: `${caseFile.title} — Case File — ${SITE.name}`,
         description: caseFile.summary,
-        image: "/amito/pose-stop.png",
+        image: asset("/amito/pose-stop.png"),
       };
     }
   }
@@ -136,7 +137,7 @@ export function resolvePageSeo(pathname: string): PageSeo {
       return {
         title: `${comic.title} — Comics — ${SITE.name}`,
         description: comic.summary,
-        image: comic.thumbnail ?? `/comics/thumbnails/${comic.slug}.png`,
+        image: comic.thumbnail ? asset(comic.thumbnail) : asset(`/comics/thumbnails/${comic.slug}.png`),
       };
     }
   }
@@ -146,7 +147,7 @@ export function resolvePageSeo(pathname: string): PageSeo {
       title: `Reflection — My Journal — ${SITE.name}`,
       description:
         "A saved STOP&SCAN reflection: what you felt first, what you noticed, what changed your mind, and what you'll do next.",
-      image: "/amito/pose-reflect.png",
+      image: asset("/amito/pose-reflect.png"),
       noindex: true,
     };
   }

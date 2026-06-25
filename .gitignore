@@ -10,3 +10,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .vite
+
+# Local Stitch design exports (fetch with npm run stitch:fetch)
+stitch/
+stitch_stop_scan_modern_redesign.zip

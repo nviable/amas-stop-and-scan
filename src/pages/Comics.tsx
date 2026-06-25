@@ -3,7 +3,7 @@ import AmitoSpotlight from "../components/AmitoSpotlight";
 import Icon from "../components/ui/Icon";
 import { HeroBadge } from "../components/ui/PageSections";
 import { COMICS, comicThumbnail } from "../data/comics";
-import { AMITO_IMAGES } from "../lib/assets";
+import { AMITO_IMAGES, PROJECT_TEAM } from "../lib/assets";
 
 const JULIAN_LAWRENCE_URL = "https://www.julianlawrence.net/";
 
@@ -24,7 +24,7 @@ export default function Comics() {
                 <img
                   alt="Julian Lawrence"
                   className="h-full w-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjsDTLPtmevpRhzX4RJqdBEgTWAPU5id4UQeM1-4_Pd1L04xgjKhHAaIsJWyGIQ_bNFSmf_akp-Nbg4sG9zmukDb4nQmla661KN1Ww5HyOrOapHXwGfAq7HgU4MXZrOBK3_rxJISY51fbzxjv2o0FLUWZV0pr-7TX7X-hcNwmiUFnbk-NKoU-8UIvehqVgIvf1oPEU9NnENtiEAO8yHaCBSMytVEkGuOqM9skLAR8woSnxt_8U1jBeL3OpA9XJWK1Q-OjclSSPtfE"
+                  src={PROJECT_TEAM.julianLawrence}
                 />
               </div>
               <div>
