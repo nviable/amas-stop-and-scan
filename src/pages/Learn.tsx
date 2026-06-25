@@ -42,8 +42,8 @@ const LEARN_SECTIONS = [
   {
     key: "alignment",
     step: 4,
-    title: "ALIGN",
-    body: "Find other sources. Does this information align with what trusted organizations are reporting?",
+    title: "ALIGNMENT",
+    body: "Find independent sources. Does this hold up against what others — who have no shared stake in the story — are reporting?",
     cta: "Practice Alignment",
     to: "/resources/alignment",
     ...FRAMEWORK_STEP_IMAGES.alignment,

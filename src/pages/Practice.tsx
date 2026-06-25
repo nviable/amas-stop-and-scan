@@ -90,7 +90,8 @@ export default function Practice() {
               </div>
               <h3 className="mb-sm font-display text-headline-md text-outline">More coming soon</h3>
               <p className="px-md text-body-sm text-outline">
-                Authentic-content and decontextualized-footage cases are on the way.
+                More decontextualized-footage and calibration cases are on the way — so you
+                practice trusting real content too, not only spotting fakes.
               </p>
             </div>
           </div>

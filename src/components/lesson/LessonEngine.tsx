@@ -191,151 +191,162 @@ export default function LessonEngine({
           <p className="mt-2 text-body-lg text-on-surface-variant">{step.tagline}</p>
         </div>
 
-        {/* SCREEN 1 — STOP / gut check */}
-        {screen === 1 && (
-          <div className="grid grid-cols-1 items-start gap-xxl lg:grid-cols-12">
-            <div className="space-y-lg lg:col-span-6">
-              <PostCard post={data.post} />
-            </div>
-            <div className="space-y-lg lg:col-span-6">
-              <AmitoSays state="stop">{guideMessage(data, mode, screen)}</AmitoSays>
-              <div className="rounded-[32px] border border-on-surface/5 bg-surface-cream/50 p-xl space-y-xl">
-              <p className="font-display text-headline-md">What is your gut reaction?</p>
-              <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
-                {data.gutCheck.reactionOptions.map((opt) => (
-                  <button
-                    key={opt}
-                    type="button"
-                    onClick={() => setFirstReaction(opt)}
-                    className={`option ${firstReaction === opt ? "option-selected" : ""}`}
-                  >
-                    {opt}
-                  </button>
-                ))}
-              </div>
-
-              <p className="mt-lg font-display text-headline-md">What did it make you feel?</p>
-              <div className="mt-3 flex flex-wrap gap-sm">
-                {data.gutCheck.feelingOptions.map((f) => (
-                  <button
-                    key={f}
-                    type="button"
-                    onClick={() => setFirstFeeling(f)}
-                    className={`rounded-full border-2 px-lg py-sm text-sm font-bold transition-colors ${
-                      firstFeeling === f
-                        ? "border-lilac-accent bg-lilac-accent text-white"
-                        : "border-outline-variant text-on-surface-variant hover:border-lilac-accent hover:bg-lilac-accent/10"
-                    }`}
-                  >
-                    {f}
-                  </button>
-                ))}
-              </div>
-
-              <label className="mt-lg block font-display text-headline-md">
-                Before checking, I felt…
-              </label>
-              <textarea
-                value={stopNote}
-                onChange={(e) => setStopNote(e.target.value)}
-                rows={3}
-                placeholder="I felt ______ because ______."
-                className="mt-2 w-full resize-none rounded-2xl border border-on-surface/10 bg-white p-lg font-body outline-none focus:border-lilac-accent focus:ring-lilac-accent"
-              />
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* SCREEN 2 — SOURCE */}
-        {screen === 2 && (
-          <div className="space-y-5">
-            <AmitoSays state="source">{guideMessage(data, mode, screen)}</AmitoSays>
-            <SourceFindings
-              findings={data.source.findings}
-              showDetails={isLearn || revealed}
+        <div className="grid grid-cols-1 gap-xl lg:grid-cols-12 lg:items-start">
+          {/* The post under evaluation stays visible through every step */}
+          <aside className="space-y-sm lg:sticky lg:top-24 lg:col-span-5">
+            <p className="font-label-md uppercase tracking-widest text-on-surface-variant">
+              The post you&apos;re evaluating
+            </p>
+            <PostCard
+              post={data.post}
+              highlight={screen === 3 && (isLearn || revealed)}
             />
-            <div className="card">
-              <CommentList comments={data.comments} revealSignals={isLearn || revealed} />
-            </div>
-            <div className="card">
-              <ChoiceGroup
-                question={data.source.question}
-                selected={sourceChoice}
-                onChange={setSourceChoice}
-                revealed={revealed}
-                includeUnsure
-              />
-              {revealed && data.source.question.insight && (
-                <p className="mt-3 rounded-2xl bg-source/10 p-3 text-sm font-semibold text-source">
-                  <span className="font-extrabold">
-                    {isLearn ? "Amito feedback:" : "Hint:"}
-                  </span>{" "}
-                  {data.source.question.insight}
-                </p>
-              )}
-            </div>
-          </div>
-        )}
+            {screen === 3 && (isLearn || revealed) && (
+              <p className="text-xs italic text-on-surface-variant">
+                Highlighted phrases show where the post is applying pressure.
+              </p>
+            )}
+          </aside>
 
-        {/* SCREEN 3 — CONTENT */}
-        {screen === 3 && (
-          <div className="space-y-5">
-            <AmitoSays state="content">{guideMessage(data, mode, screen)}</AmitoSays>
-            <PostCard post={data.post} highlight={isLearn || revealed} />
-            <div className="card">
-              <ChoiceGroup
-                question={data.content.question}
-                selected={contentChoice}
-                onChange={setContentChoice}
-                revealed={revealed}
-                includeUnsure
-              />
-              {revealed && data.content.question.insight && (
-                <p className="mt-3 rounded-2xl bg-content/10 p-3 text-sm font-semibold text-content">
-                  <span className="font-extrabold">
-                    {isLearn ? "Amito feedback:" : "Hint:"}
-                  </span>{" "}
-                  {data.content.question.insight}
-                </p>
-              )}
-            </div>
-          </div>
-        )}
+          {/* Amito's guidance, the step's evidence, and the interaction */}
+          <div className="space-y-lg lg:col-span-7">
+            <AmitoSays state={step.amito}>{guideMessage(data, mode, screen)}</AmitoSays>
 
-        {/* SCREEN 4 — ALIGNMENT */}
-        {screen === 4 && (
-          <div className="space-y-5">
-            <AmitoSays state="alignment">{guideMessage(data, mode, screen)}</AmitoSays>
-            <SearchResults
-              results={data.alignment.results}
-              showSignals={isLearn || revealed}
-            />
-            <div className="card">
-              <ChoiceGroup
-                question={data.alignment.question}
-                selected={alignmentChoice}
-                onChange={setAlignmentChoice}
-                revealed={revealed}
-                includeUnsure
-              />
-              {revealed && data.alignment.question.insight && (
-                <p className="mt-3 rounded-2xl bg-alignment/10 p-3 text-sm font-semibold text-alignment">
-                  <span className="font-extrabold">
-                    {isLearn ? "Amito feedback:" : "Hint:"}
-                  </span>{" "}
-                  {data.alignment.question.insight}
-                </p>
-              )}
-            </div>
-          </div>
-        )}
+            {/* SCREEN 1 — STOP / gut check */}
+            {screen === 1 && (
+              <div className="space-y-xl rounded-[32px] border border-on-surface/5 bg-surface-cream/50 p-xl">
+                <div>
+                  <p className="font-display text-headline-md">What is your gut reaction?</p>
+                  <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
+                    {data.gutCheck.reactionOptions.map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        onClick={() => setFirstReaction(opt)}
+                        className={`option ${firstReaction === opt ? "option-selected" : ""}`}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
-        {/* SCREEN 5 — NOW REFLECT */}
-        {screen === 5 && (
-          <div className="space-y-5">
-            <AmitoSays state="reflect">{guideMessage(data, mode, screen)}</AmitoSays>
+                <div>
+                  <p className="font-display text-headline-md">What did it make you feel?</p>
+                  <div className="mt-3 flex flex-wrap gap-sm">
+                    {data.gutCheck.feelingOptions.map((f) => (
+                      <button
+                        key={f}
+                        type="button"
+                        onClick={() => setFirstFeeling(f)}
+                        className={`rounded-full border-2 px-lg py-sm text-sm font-bold transition-colors ${
+                          firstFeeling === f
+                            ? "border-lilac-accent bg-lilac-accent text-white"
+                            : "border-outline-variant text-on-surface-variant hover:border-lilac-accent hover:bg-lilac-accent/10"
+                        }`}
+                      >
+                        {f}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
+                <div>
+                  <label className="block font-display text-headline-md">
+                    Before checking, I felt…
+                  </label>
+                  <textarea
+                    value={stopNote}
+                    onChange={(e) => setStopNote(e.target.value)}
+                    rows={3}
+                    placeholder="I felt ______ because ______."
+                    className="mt-2 w-full resize-none rounded-2xl border border-on-surface/10 bg-white p-lg font-body outline-none focus:border-lilac-accent focus:ring-lilac-accent"
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* SCREEN 2 — SOURCE */}
+            {screen === 2 && (
+              <>
+                <SourceFindings
+                  findings={data.source.findings}
+                  showDetails={isLearn || revealed}
+                />
+                <div className="card">
+                  <CommentList comments={data.comments} revealSignals={isLearn || revealed} />
+                </div>
+                <div className="card">
+                  <ChoiceGroup
+                    question={data.source.question}
+                    selected={sourceChoice}
+                    onChange={setSourceChoice}
+                    revealed={revealed}
+                    includeUnsure
+                  />
+                  {revealed && data.source.question.insight && (
+                    <p className="mt-3 rounded-2xl bg-source/10 p-3 text-sm font-semibold text-source">
+                      <span className="font-extrabold">
+                        {isLearn ? "Amito feedback:" : "Hint:"}
+                      </span>{" "}
+                      {data.source.question.insight}
+                    </p>
+                  )}
+                </div>
+              </>
+            )}
+
+            {/* SCREEN 3 — CONTENT */}
+            {screen === 3 && (
+              <div className="card">
+                <ChoiceGroup
+                  question={data.content.question}
+                  selected={contentChoice}
+                  onChange={setContentChoice}
+                  revealed={revealed}
+                  includeUnsure
+                />
+                {revealed && data.content.question.insight && (
+                  <p className="mt-3 rounded-2xl bg-content/10 p-3 text-sm font-semibold text-content">
+                    <span className="font-extrabold">
+                      {isLearn ? "Amito feedback:" : "Hint:"}
+                    </span>{" "}
+                    {data.content.question.insight}
+                  </p>
+                )}
+              </div>
+            )}
+
+            {/* SCREEN 4 — ALIGNMENT */}
+            {screen === 4 && (
+              <>
+                <SearchResults
+                  results={data.alignment.results}
+                  showSignals={isLearn || revealed}
+                />
+                <div className="card">
+                  <ChoiceGroup
+                    question={data.alignment.question}
+                    selected={alignmentChoice}
+                    onChange={setAlignmentChoice}
+                    revealed={revealed}
+                    includeUnsure
+                  />
+                  {revealed && data.alignment.question.insight && (
+                    <p className="mt-3 rounded-2xl bg-alignment/10 p-3 text-sm font-semibold text-alignment">
+                      <span className="font-extrabold">
+                        {isLearn ? "Amito feedback:" : "Hint:"}
+                      </span>{" "}
+                      {data.alignment.question.insight}
+                    </p>
+                  )}
+                </div>
+              </>
+            )}
+
+            {/* SCREEN 5 — NOW REFLECT */}
+            {screen === 5 && (
+              <>
             <div className="card grid gap-4 sm:grid-cols-2">
               <div className="rounded-2xl bg-stop/5 p-4">
                 <div className="text-xs font-bold uppercase tracking-wide text-stop">
@@ -468,8 +479,10 @@ export default function LessonEngine({
                 is always a complete, honest answer.
               </p>
             </div>
+              </>
+            )}
           </div>
-        )}
+        </div>
 
         {/* Nav controls */}
         <div className="mt-xl flex items-center justify-between gap-lg border-t border-on-surface/5 pt-lg no-print">
