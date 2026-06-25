@@ -1,0 +1,29 @@
+{
+  "name": "STOP&SCAN — Guided by Amito",
+  "short_name": "STOP&SCAN",
+  "description": "Pause before you trust, scan before you share, and reflect before you act. Amito guides you through the STOP&SCAN framework for digital resilience.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#f3a530",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

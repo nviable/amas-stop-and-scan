@@ -1,6 +1,6 @@
-/** Brand and Stitch design assets (hosted URLs from the redesign export). */
-export const LOGO_URL =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuAifli5DfnylQqeRS2kFXV3jydRw-rDDcubXS7sPKAcVtqUKM9AHyYLU9lMw6SPymEfiPygvgqLvq9ebHQ17XOpzKJIlZy62EtB721MFu2RTtAdYULWinOIw1gGurWTpGsHfpZhYZa7cKbwWGbK5b9MZdyRmqYy-S0uVHeCRL4A2zCTMbwM-sdeX1_b9Ef_NHJ30LQC2EuVKOa3WXingxYUVa2S8izm5Bis6g9TTqWIeSgQy-qVFwJ8hEFq1nOrBeZxUnOApRsVXXs";
+/** Brand assets served from /public. */
+export const LOGO_URL = "/logo.png";
+export const ICON_URL = "/icon-512.png";
 
 export const AMITO_IMAGES = {
   greeting:
@@ -38,7 +38,7 @@ export const PROJECT_TEAM = {
 
 export const FRAMEWORK_STEP_IMAGES = {
   stop: {
-    icon: "https://lh3.googleusercontent.com/aida-public/AB6AXuAYwgkufZf6hpUMHAeYJVa-D97dUbX7qmrxlkZu1AayhJsabEiuc4xzzGI3an1YHOwdQhEYExObwmhF3OqFbP4QQZkosZpsVo7UBbqEIUCPhE6zp7KojpOHsVKt4-PGLMLdFlq-6D4OVtpJgYmm5zRaeAzvzlCJoZrdUWSwO6Uf1HGAYN4qVqpOmNkFINzH2y88RQB3E2yllbbFw3MZrIbwqgHr6zBTPoCkWQFMWJTzF3NEpML4M8-9nM8YR79iYjd8zw_6May1WqRhyw",
+    icon: ICON_URL,
     amito:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDUVsFDY-f9Lykd0Qa47VwS5VipivNKSQ3LWoa8jEZp1qgn3wYuKoErlwThkS0uFTwudOdoNliNmfZm8057a8NQbhZJzYR4yzf27Mct3lQKY6T6u1AZk5n2h69so5sxcos4WJ-nDA_2Tiom3UvYBWU2U47lVXNcPdnFgBmeAUnsbDF4sum0AJaf-OzcOu91aYkX1qriMAjjUypu8wShmy0HmFxG1LNgemIFYA9IX8QH4DZ2QxETSMBRHHXAEDNmVdGR894QatH3Lbs",
     bg: "#f3a530",

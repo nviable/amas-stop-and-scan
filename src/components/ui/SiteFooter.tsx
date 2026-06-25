@@ -20,7 +20,7 @@ export default function SiteFooter() {
           <div>
             <div className="mb-lg flex items-center gap-sm">
               <img
-                alt=""
+                alt="STOP&SCAN logo"
                 className="h-8 w-8 brightness-0 invert"
                 src={LOGO_URL}
               />

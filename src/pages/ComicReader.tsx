@@ -27,7 +27,7 @@ export default function ComicReader() {
           <div className="flex flex-col gap-lg sm:flex-row sm:items-start">
             <div className="shrink-0 overflow-hidden rounded-2xl border border-on-surface/10 bg-white shadow-soft sm:w-28">
               <img
-                alt=""
+                alt={`${comic.title} cover`}
                 className="aspect-[3/4] w-full object-cover sm:w-28"
                 src={comicThumbnail(comic)}
               />

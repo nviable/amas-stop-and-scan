@@ -1,10 +1,12 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { usePageSeo } from "../hooks/usePageSeo";
 import SiteFooter from "./ui/SiteFooter";
 import SiteHeader from "./ui/SiteHeader";
 
 export default function Layout() {
   const { pathname } = useLocation();
+  usePageSeo();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
