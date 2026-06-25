@@ -16,7 +16,11 @@ export default function SiteHeader() {
     <header className="fixed top-0 z-50 w-full border-b border-on-surface/10 bg-background-paper/90 backdrop-blur-md no-print">
       <div className="mx-auto flex h-20 max-w-container-max items-center justify-between px-margin-mobile md:px-margin-desktop">
         <Link to="/" className="flex shrink-0 items-center">
-          <img alt="STOP&SCAN" className="h-12 w-12 object-contain" src={LOGO_URL} />
+          <img
+            alt="STOP&SCAN logo"
+            className="h-12 w-12 object-contain"
+            src={LOGO_URL}
+          />
         </Link>
 
         <nav className="hidden items-center gap-xl md:flex">
