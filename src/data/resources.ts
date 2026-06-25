@@ -49,9 +49,10 @@ export const RESOURCES: Record<StepKey, ResourceContent> = {
       "Could this footage be from a different event, place, or time, repackaged with a new caption?",
       "What is this trying to make me feel, believe, or do — and how fast?",
       "Do I see manipulation mechanics: urgency, a borrowed famous face, moral shock, vague 'experts say', or 'everyone is doing it'?",
+      "Are there labels, content credentials, or a detection tool I can check — treating them as one input, not the final verdict?",
       "Does the framing actually match what is shown or said?",
     ],
-    why: "Research on deepfake detection found that teaching people a checklist of visual artifacts (unnatural textures, edge anomalies) did not reliably improve their judgment — generation tech outpaces those cues. What stays constant is the emotional and logical structure of manipulation: urgency, identity mimicry, false authority, moral shock, and manufactured consensus recur across every format. That structure is what STOP&SCAN teaches you to read.",
+    why: "Detection tools, watermarks, and provenance signals are genuinely useful — but on their own they have limits, and research found that teaching people a checklist of visual artifacts (unnatural textures, edge anomalies) didn't reliably improve their judgment, because generation tech keeps outpacing fixed cues. They work best in conjunction with reasoning: use any tool or signal as one input, then read the emotional and logical structure of manipulation — urgency, identity mimicry, false authority, moral shock, manufactured consensus — which stays constant across formats. Tool plus reasoning is stronger than either alone.",
     takeaway:
       "A strong emotional reaction to content is a signal to slow down, not speed up.",
   },

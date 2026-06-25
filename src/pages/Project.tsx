@@ -86,9 +86,10 @@ export default function Project() {
               </h2>
               <div className="h-1.5 w-20 rounded-full bg-stop-red" />
               <p className="text-body-lg leading-relaxed text-on-surface-variant">
-                In an era of rapidly evolving synthetic media, only using a detection tool AI is a
-                losing game. Technologies change, but human psychology and manipulation patterns
-                remain consistent.
+                In an era of rapidly evolving synthetic media, relying on detection tools alone is
+                a losing game — but paired with human reasoning, those same tools become far more
+                effective. Technologies change, while human psychology and manipulation patterns
+                stay consistent.
                 <br />
                 <br />
                 Stop & Scan shifts the focus from{" "}
@@ -97,7 +98,8 @@ export default function Project() {
                   &ldquo;How is this trying to influence me?&rdquo;
                 </span>
                 . By teaching reasoning-based strategies, we provide a durable defense that
-                outlasts any single algorithm and in turn improves the tool usage.
+                outlasts any single algorithm — and makes the detection tools and provenance
+                signals you do use more effective.
               </p>
             </div>
             <div className="grid gap-md">
