@@ -4,7 +4,7 @@ import Icon from "../components/ui/Icon";
 import { CtaBanner, HeroBadge } from "../components/ui/PageSections";
 import { RESOURCES } from "../data/resources";
 import { AMITO_IMAGES, FRAMEWORK_STEP_IMAGES } from "../lib/assets";
-import { STEPS } from "../lib/framework";
+import { STEPS, stepDisplayTitle } from "../lib/framework";
 
 const RESOURCE_STEPS = [
   {
@@ -105,7 +105,7 @@ export default function Resources() {
                           Step {section.step}
                         </span>
                         <h3 className={`font-display text-headline-md ${section.textClass}`}>
-                          {meta.title === "Now Reflect" ? "NOW REFLECT" : meta.letter}
+                          {stepDisplayTitle(meta)}
                         </h3>
                       </div>
                     </div>
@@ -157,7 +157,7 @@ export default function Resources() {
               </p>
             </div>
             <div className="mt-lg flex flex-wrap justify-center gap-sm md:mt-0">
-              {STEPS.map((s, i) => {
+              {STEPS.map((s) => {
                 const stepImages = FRAMEWORK_STEP_IMAGES[s.key];
                 return (
                   <Link
@@ -170,7 +170,7 @@ export default function Resources() {
                       <img alt="" className="h-6 w-6 object-contain" src={stepImages.icon} />
                     </div>
                     <span className="font-label-md text-on-surface-variant">
-                      {i === 0 ? "STOP" : s.letter}
+                      {stepDisplayTitle(s)}
                     </span>
                   </Link>
                 );

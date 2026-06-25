@@ -4,7 +4,7 @@ import Icon from "../components/ui/Icon";
 import { CtaBanner, HeroBadge } from "../components/ui/PageSections";
 import { RESOURCES } from "../data/resources";
 import { FRAMEWORK_STEP_IMAGES } from "../lib/assets";
-import { STEPS, stepByKey, type StepKey } from "../lib/framework";
+import { STEPS, stepByKey, stepDisplayTitle, type StepKey } from "../lib/framework";
 
 const VALID: StepKey[] = ["stop", "source", "content", "alignment", "reflect"];
 
@@ -83,7 +83,7 @@ export default function ResourceStep() {
   const next = STEPS[idx + 1];
   const prev = STEPS[idx - 1];
 
-  const titleDisplay = meta.letter === "STOP" ? "STOP" : meta.letter;
+  const titleDisplay = stepDisplayTitle(meta);
   const textClass = config.textLight ? "text-white" : "text-on-surface";
   const mutedClass = config.textLight ? "text-white/80" : "text-on-surface-variant";
 
@@ -227,7 +227,7 @@ export default function ResourceStep() {
             Framework progress
           </p>
           <div className="flex flex-wrap justify-center gap-sm">
-            {STEPS.map((s, i) => {
+            {STEPS.map((s) => {
               const stepImages = FRAMEWORK_STEP_IMAGES[s.key];
               const isCurrent = s.key === key;
               return (
@@ -252,7 +252,7 @@ export default function ResourceStep() {
                   <span
                     className={`font-label-md ${isCurrent ? "font-bold text-primary" : "text-on-surface-variant"}`}
                   >
-                    {i === 0 ? "STOP" : s.letter}
+                    {stepDisplayTitle(s)}
                   </span>
                 </Link>
               );
