@@ -83,3 +83,6 @@ export const STEPS: StepMeta[] = [
 
 export const stepByKey = (key: StepKey) =>
   STEPS.find((s) => s.key === key) as StepMeta;
+
+/** Full uppercase step name for resource pages and other prominent UI */
+export const stepDisplayTitle = (step: StepMeta): string => step.title.toUpperCase();
