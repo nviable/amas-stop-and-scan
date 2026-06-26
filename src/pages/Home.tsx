@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import AmitoSpotlight from "../components/AmitoSpotlight";
 import Icon from "../components/ui/Icon";
-import { AMITO_IMAGES, FRAMEWORK_STEP_IMAGES, LOGO_URL } from "../lib/assets";
+import VideoTeaser from "../components/ui/VideoTeaser";
+import { AMITO_IMAGES, AMITO_VIDEOS, FRAMEWORK_STEP_IMAGES, LOGO_URL } from "../lib/assets";
 
 export default function Home() {
   return (
@@ -52,23 +53,12 @@ export default function Home() {
       {/* Video teaser */}
       <section className="bg-surface-container-low px-margin-mobile py-xl md:px-margin-desktop">
         <div className="mx-auto max-w-4xl">
-          <div className="group relative aspect-video cursor-pointer overflow-hidden rounded-3xl border-4 border-white/50 bg-inverse-surface shadow-2xl">
-            <img
-              alt="Meet Amito teaser"
-              className="h-full w-full object-cover"
-              src={AMITO_IMAGES.videoTeaser}
-            />
-            <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/10">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary text-on-primary shadow-2xl transition-transform group-hover:scale-110">
-                <Icon name="play_arrow" className="text-4xl" filled />
-              </div>
-            </div>
-            <div className="absolute bottom-lg left-lg z-10">
-              <span className="rounded-full bg-white/90 px-md py-xs font-label-md uppercase tracking-wider text-primary backdrop-blur-md">
-                Teaser Video: Meet Amito
-              </span>
-            </div>
-          </div>
+          <VideoTeaser
+            src={AMITO_VIDEOS.meetAmitoTeaser}
+            poster={AMITO_IMAGES.videoTeaser}
+            label="Teaser Video: Meet Amito"
+            posterAlt="Meet Amito teaser"
+          />
         </div>
       </section>
 

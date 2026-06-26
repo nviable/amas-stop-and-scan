@@ -30,6 +30,10 @@ const AMITO_MEDIA = {
   videoTeaser: "/media/video-teaser.jpeg",
 } as const;
 
+export const AMITO_VIDEOS = {
+  meetAmitoTeaser: "https://www.youtube.com/watch?v=zcNQUsBJ8vg",
+} as const;
+
 export const AMITO_IMAGES = {
   greeting: asset(AMITO_POSE.greeting),
   stop: asset(AMITO_POSE.stop),
