@@ -1,5 +1,7 @@
-import { useRef, useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import Icon from "./Icon";
+
+const ReactPlayer = lazy(() => import("react-player"));
 
 type VideoTeaserProps = {
   src: string;
@@ -10,34 +12,33 @@ type VideoTeaserProps = {
 
 export default function VideoTeaser({ src, poster, label, posterAlt = "" }: VideoTeaserProps) {
   const [playing, setPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const startPlayback = () => {
-    setPlaying(true);
-    requestAnimationFrame(() => {
-      void videoRef.current?.play();
-    });
-  };
 
   return (
     <div className="relative aspect-video overflow-hidden rounded-3xl border-4 border-white/50 bg-inverse-surface shadow-2xl">
       {playing ? (
-        <video
-          ref={videoRef}
-          className="h-full w-full object-cover"
-          src={src}
-          poster={poster}
-          controls
-          playsInline
-          preload="metadata"
-          controlsList="nodownload"
-          aria-label={label}
-        />
+        <div className="absolute inset-0 [&_video]:h-full [&_video]:w-full [&_video]:object-cover">
+          <Suspense fallback={<div className="h-full w-full bg-inverse-surface" aria-hidden />}>
+            <ReactPlayer
+              src={src}
+              playing
+              controls
+              width="100%"
+              height="100%"
+              style={{ position: "absolute", inset: 0 }}
+              config={{
+                youtube: {
+                  rel: 0,
+                  iv_load_policy: 3,
+                },
+              }}
+            />
+          </Suspense>
+        </div>
       ) : (
         <button
           type="button"
           className="group relative block h-full w-full cursor-pointer border-0 bg-transparent p-0 text-left"
-          onClick={startPlayback}
+          onClick={() => setPlaying(true)}
           aria-label={`Play ${label}`}
         >
           <img alt={posterAlt} className="h-full w-full object-cover" src={poster} />

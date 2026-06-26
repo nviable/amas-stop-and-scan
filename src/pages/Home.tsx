@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import AmitoSpotlight from "../components/AmitoSpotlight";
 import Icon from "../components/ui/Icon";
 import VideoTeaser from "../components/ui/VideoTeaser";
-import { AMITO_IMAGES, FRAMEWORK_STEP_IMAGES, LOGO_URL } from "../lib/assets";
+import { AMITO_IMAGES, AMITO_VIDEOS, FRAMEWORK_STEP_IMAGES, LOGO_URL } from "../lib/assets";
 
 export default function Home() {
   return (
@@ -54,7 +54,7 @@ export default function Home() {
       <section className="bg-surface-container-low px-margin-mobile py-xl md:px-margin-desktop">
         <div className="mx-auto max-w-4xl">
           <VideoTeaser
-            src={AMITO_IMAGES.meetAmitoTeaser}
+            src={AMITO_VIDEOS.meetAmitoTeaser}
             poster={AMITO_IMAGES.videoTeaser}
             label="Teaser Video: Meet Amito"
             posterAlt="Meet Amito teaser"

@@ -28,7 +28,10 @@ const AMITO_MEDIA = {
   postVideo: "/media/post-video.png",
   comicCover: "/comics/stop-and-scan-cover.png",
   videoTeaser: "/media/video-teaser.jpeg",
-  meetAmitoTeaser: "/media/meet-amito-teaser.mp4",
+} as const;
+
+export const AMITO_VIDEOS = {
+  meetAmitoTeaser: "https://www.youtube.com/watch?v=zcNQUsBJ8vg",
 } as const;
 
 export const AMITO_IMAGES = {
@@ -45,7 +48,6 @@ export const AMITO_IMAGES = {
   postVideo: asset(AMITO_MEDIA.postVideo),
   comicCover: asset(AMITO_MEDIA.comicCover),
   videoTeaser: asset(AMITO_MEDIA.videoTeaser),
-  meetAmitoTeaser: asset(AMITO_MEDIA.meetAmitoTeaser),
 } as const;
 
 /** Team photos in /public/team/ */
