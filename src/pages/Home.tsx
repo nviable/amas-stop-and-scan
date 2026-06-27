@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import AmitoSpotlight from "../components/AmitoSpotlight";
+import HeroSection from "../components/ui/HeroSection";
 import Icon from "../components/ui/Icon";
 import VideoTeaser from "../components/ui/VideoTeaser";
 import { AMITO_IMAGES, AMITO_VIDEOS, FRAMEWORK_STEP_IMAGES, LOGO_URL } from "../lib/assets";
@@ -8,7 +9,10 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-welcome-blue/10 to-white px-margin-mobile py-xl md:px-margin-desktop md:py-xxl">
+      <HeroSection
+        background="home"
+        className="px-margin-mobile py-xl md:px-margin-desktop md:py-xxl"
+      >
         <div className="mx-auto grid max-w-container-max items-center gap-lg md:grid-cols-2 md:gap-xl">
           <div className="z-10">
             <img
@@ -48,7 +52,7 @@ export default function Home() {
             speechClassName="absolute top-[-20%] -right-4 z-20 max-w-[200px] md:-right-4 md:max-w-[220px]"
           />
         </div>
-      </section>
+      </HeroSection>
 
       {/* Video teaser */}
       <section className="bg-surface-container-low px-margin-mobile py-xl md:px-margin-desktop">

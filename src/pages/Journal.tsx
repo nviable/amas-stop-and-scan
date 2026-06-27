@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link, useParams } from "react-router-dom";
+import HeroSection from "../components/ui/HeroSection";
 import Icon from "../components/ui/Icon";
 import { HeroBadge } from "../components/ui/PageSections";
 import { useJournal, type ReflectionEntry } from "../context/JournalContext";
@@ -157,7 +158,7 @@ export default function Journal() {
 
   return (
     <div>
-      <section className="hero-gradient overflow-visible px-margin-mobile pb-xl pt-xxl md:px-margin-desktop">
+      <HeroSection className="overflow-visible px-margin-mobile pb-xl pt-xxl md:px-margin-desktop">
         <div className="mx-auto flex max-w-container-max flex-col items-center gap-xxl md:flex-row">
           <div className="relative flex w-full justify-center md:w-1/3">
             <div className="absolute inset-0 scale-75 animate-pulse rounded-full bg-lilac-accent/10 blur-3xl" />
@@ -184,7 +185,7 @@ export default function Journal() {
             )}
           </div>
         </div>
-      </section>
+      </HeroSection>
 
       <div className="px-margin-mobile pb-xxl md:px-margin-desktop">
       <div className="mx-auto max-w-container-max">

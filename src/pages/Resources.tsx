@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import AmitoSpotlight from "../components/AmitoSpotlight";
+import HeroSection from "../components/ui/HeroSection";
 import Icon from "../components/ui/Icon";
 import { CtaBanner, HeroBadge } from "../components/ui/PageSections";
 import { RESOURCES } from "../data/resources";
@@ -47,7 +48,7 @@ const RESOURCE_STEPS = [
 export default function Resources() {
   return (
     <div>
-      <section className="hero-gradient overflow-visible px-margin-mobile pb-xl pt-xxl md:px-margin-desktop">
+      <HeroSection className="overflow-visible px-margin-mobile pb-xl pt-xxl md:px-margin-desktop">
         <div className="mx-auto grid max-w-container-max items-center gap-xl md:grid-cols-2">
           <div className="z-10 space-y-lg">
             <HeroBadge icon="menu_book" label="Resource Hub" />
@@ -67,7 +68,7 @@ export default function Resources() {
             speech="Each step has a guide — read the why before you practice!"
           />
         </div>
-      </section>
+      </HeroSection>
 
       <section className="bg-background-paper px-margin-mobile py-xxl md:px-margin-desktop">
         <div className="mx-auto max-w-container-max">

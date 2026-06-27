@@ -1,3 +1,4 @@
+import HeroSection from "../components/ui/HeroSection";
 import Icon from "../components/ui/Icon";
 import AmitoSpotlight from "../components/AmitoSpotlight";
 import { CtaBanner, HeroBadge } from "../components/ui/PageSections";
@@ -31,7 +32,7 @@ const PROJECT_MENTORS = [
 export default function Project() {
   return (
     <div>
-      <section className="hero-gradient overflow-visible px-margin-mobile pb-xl pt-xxl md:px-margin-desktop">
+      <HeroSection className="overflow-visible px-margin-mobile pb-xl pt-xxl md:px-margin-desktop">
         <div className="relative z-10 mx-auto flex max-w-container-max flex-col items-center gap-xl md:flex-row">
           <div className="flex-1 space-y-lg">
             <HeroBadge icon="auto_awesome" label="The Mission" />
@@ -58,7 +59,7 @@ export default function Project() {
             speechTail="left"
           />
         </div>
-      </section>
+      </HeroSection>
 
       <section className="bg-surface-cream/30 px-margin-mobile py-xxl md:px-margin-desktop">
         <div className="mx-auto max-w-container-max">

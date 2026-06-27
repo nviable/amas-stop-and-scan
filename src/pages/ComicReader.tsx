@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import PdfReader from "../components/comics/PdfReader";
+import HeroSection from "../components/ui/HeroSection";
 import Icon from "../components/ui/Icon";
 import { HeroBadge } from "../components/ui/PageSections";
 import { comicThumbnail, getComicBySlug } from "../data/comics";
@@ -14,7 +15,7 @@ export default function ComicReader() {
 
   return (
     <div className="pb-xxl">
-      <section className="hero-gradient overflow-visible border-b border-on-surface/10 px-margin-mobile py-lg md:px-margin-desktop">
+      <HeroSection className="overflow-visible border-b border-on-surface/10 px-margin-mobile py-lg md:px-margin-desktop">
         <div className="mx-auto max-w-container-max">
           <Link
             to="/comics"
@@ -40,7 +41,7 @@ export default function ComicReader() {
             </div>
           </div>
         </div>
-      </section>
+      </HeroSection>
 
       <section className="px-margin-mobile pt-lg md:px-margin-desktop">
         <div className="mx-auto max-w-container-max">

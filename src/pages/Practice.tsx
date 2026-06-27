@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import AmitoSpotlight from "../components/AmitoSpotlight";
 import { HeroBadge, SpeechBubble } from "../components/ui/PageSections";
+import HeroSection from "../components/ui/HeroSection";
 import Icon from "../components/ui/Icon";
 import { AMITO_IMAGES } from "../lib/assets";
 import { CASES } from "../data/cases";
@@ -20,7 +21,7 @@ const KIND_LABEL: Record<string, string> = {
 export default function Practice() {
   return (
     <div>
-      <section className="hero-gradient overflow-visible px-margin-mobile pb-xl pt-xxl md:px-margin-desktop">
+      <HeroSection className="overflow-visible px-margin-mobile pb-xl pt-xxl md:px-margin-desktop">
         <div className="mx-auto flex max-w-container-max flex-col items-center gap-xl md:flex-row">
           <div className="z-10 flex-1 space-y-lg text-center md:text-left">
             <HeroBadge icon="lightbulb" label="Practice Lab" />
@@ -38,7 +39,7 @@ export default function Practice() {
             glow="lilac"
           />
         </div>
-      </section>
+      </HeroSection>
 
       <section className="px-margin-desktop py-xxl">
         <div className="mx-auto max-w-container-max">

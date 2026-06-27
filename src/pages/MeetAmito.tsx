@@ -1,4 +1,5 @@
 import AmitoSpotlight from "../components/AmitoSpotlight";
+import HeroSection from "../components/ui/HeroSection";
 import { CtaBanner, HeroBadge } from "../components/ui/PageSections";
 import { AMITO_IMAGES } from "../lib/assets";
 import { STEPS } from "../lib/framework";
@@ -23,7 +24,7 @@ const FRAMEWORK_CARDS = [
 export default function MeetAmito() {
   return (
     <div>
-      <section className="hero-gradient relative flex min-h-[500px] flex-col items-center justify-center overflow-visible px-margin-mobile py-xxl md:px-margin-desktop">
+      <HeroSection className="flex min-h-[500px] flex-col items-center justify-center overflow-visible px-margin-mobile py-xxl md:px-margin-desktop">
         <div className="mx-auto grid w-full max-w-container-max items-center gap-xl md:grid-cols-2">
           <div className="space-y-lg text-left">
             <HeroBadge icon="robot_2" label="Your Guide" />
@@ -47,7 +48,7 @@ export default function MeetAmito() {
             }
           />
         </div>
-      </section>
+      </HeroSection>
 
       <section className="bg-background-paper px-margin-mobile py-xxl md:px-margin-desktop">
         <div className="mx-auto max-w-container-max">

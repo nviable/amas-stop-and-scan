@@ -66,6 +66,11 @@ body {
     background: linear-gradient(180deg, #dce1ff 0%, #fbf8f2 100%);
   }
 
+  .hero-section > :not(.hero-smoke-canvas) {
+    position: relative;
+    z-index: 1;
+  }
+
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-display font-semibold transition-all duration-150 active:scale-95;
   }

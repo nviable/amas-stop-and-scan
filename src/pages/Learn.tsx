@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Amito from "../components/Amito";
 import AmitoSpotlight from "../components/AmitoSpotlight";
+import HeroSection from "../components/ui/HeroSection";
 import Icon from "../components/ui/Icon";
 import { CtaBanner, HeroBadge } from "../components/ui/PageSections";
 import LessonEngine from "../components/lesson/LessonEngine";
@@ -70,7 +71,7 @@ export default function Learn() {
 
   return (
     <div>
-      <section className="hero-gradient overflow-visible px-margin-mobile pb-xxl pt-xxl md:px-margin-desktop">
+      <HeroSection className="overflow-visible px-margin-mobile pb-xxl pt-xxl md:px-margin-desktop">
         <div className="mx-auto grid max-w-container-max items-center gap-xxl md:grid-cols-2">
           <div className="order-2 space-y-lg md:order-1">
             <HeroBadge icon="school" label="Sensemaking Framework" />
@@ -100,7 +101,7 @@ export default function Learn() {
             speech="Hi! I'm Amito. Let's learn how to spot tricky content together!"
           />
         </div>
-      </section>
+      </HeroSection>
 
       <div className="w-full">
         {LEARN_SECTIONS.map((section, i) => (

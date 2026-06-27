@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import AmitoSpotlight from "../components/AmitoSpotlight";
+import HeroSection from "../components/ui/HeroSection";
 import Icon from "../components/ui/Icon";
 import { HeroBadge } from "../components/ui/PageSections";
 import { COMICS, comicThumbnail } from "../data/comics";
@@ -10,7 +11,7 @@ const JULIAN_LAWRENCE_URL = "https://www.julianlawrence.net/";
 export default function Comics() {
   return (
     <div>
-      <section className="hero-gradient overflow-visible px-margin-mobile pb-xl pt-xxl md:px-margin-desktop">
+      <HeroSection className="overflow-visible px-margin-mobile pb-xl pt-xxl md:px-margin-desktop">
         <div className="mx-auto grid max-w-container-max grid-cols-1 items-center gap-xl md:grid-cols-2">
           <div className="z-10 space-y-lg">
             <HeroBadge icon="menu_book" label="Visual Sensemaking" />
@@ -48,7 +49,7 @@ export default function Comics() {
             glowClassName="bg-primary/5 blur-3xl aura-glow"
           />
         </div>
-      </section>
+      </HeroSection>
 
       <section className="py-xl">
         <div className="mx-auto max-w-3xl px-margin-mobile text-center md:px-margin-desktop">
