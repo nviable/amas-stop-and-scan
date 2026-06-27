@@ -28,6 +28,11 @@ export interface ReflectionEntry {
   changedBy: string;
   nextActions: string[];
   hintsUsed?: Partial<Record<"source" | "content" | "alignment", boolean>>;
+  performance?: "good" | "partial" | "needs-work";
+  stepScores?: Partial<Record<"source" | "content" | "alignment", "good" | "partial" | "needs-work">>;
+  feedbackHeadline?: string;
+  feedbackBody?: string;
+  feedbackWorkOn?: string[];
 }
 
 interface JournalContextValue {

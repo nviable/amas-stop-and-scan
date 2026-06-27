@@ -38,7 +38,7 @@ export const RESOURCES: Record<StepKey, ResourceContent> = {
     ],
     why: "In the Elon Musk deepfake case, the video lived on an anonymous page with no link to any verified Musk channel. The account existed only to distribute the scam and vanish. Synthetic media makes impersonation cheap: voice clones, account takeovers, pseudo-institutional branding, and 'source laundering' all borrow trust while hiding the true operator. The person who forwarded it to you is not the same as an accountable origin.",
     takeaway:
-      "If you cannot find the origin, that is itself the manipulation. Unverifiable origin = unverified content. Do not share.",
+      "When you cannot trace content to an accountable, verifiable source, treat it as unverified — and hold off on clicking, sharing, or acting until you can.",
   },
   content: {
     key: "content",

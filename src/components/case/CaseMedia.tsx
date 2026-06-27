@@ -6,9 +6,20 @@ import { AMITO_IMAGES } from "../../lib/assets";
 export function PostCard({
   post,
   highlight = false,
+  comments,
+  commentsExpanded = false,
+  onCommentsToggle,
+  revealCommentSignals = false,
+  promptComments = false,
 }: {
   post: CaseFile["post"];
   highlight?: boolean;
+  comments?: CaseFile["comments"];
+  commentsExpanded?: boolean;
+  onCommentsToggle?: () => void;
+  revealCommentSignals?: boolean;
+  /** Draw attention to the comment control until the user opens it (e.g. Source step). */
+  promptComments?: boolean;
 }) {
   const renderBody = () => {
     if (!highlight) return post.body;
@@ -96,13 +107,40 @@ export function PostCard({
         <span className="flex items-center gap-xs">
           <Icon name="favorite" className="text-sm" /> {post.stat.likes}
         </span>
-        <span className="flex items-center gap-xs">
-          <Icon name="chat_bubble" className="text-sm" /> {post.stat.comments}
-        </span>
+        {comments && onCommentsToggle ? (
+          <button
+            type="button"
+            onClick={onCommentsToggle}
+            className={`relative flex items-center gap-xs rounded-full px-2 py-1 transition-colors ${
+              commentsExpanded
+                ? "bg-source-cyan/10 font-semibold text-source-cyan"
+                : promptComments
+                  ? "comment-btn-hint font-semibold text-source-cyan"
+                  : "hover:bg-on-surface/5 hover:text-on-surface"
+            }`}
+            aria-expanded={commentsExpanded}
+          >
+            <Icon name="chat_bubble" className="text-sm" />
+            {post.stat.comments}
+          </button>
+        ) : (
+          <span className="flex items-center gap-xs">
+            <Icon name="chat_bubble" className="text-sm" /> {post.stat.comments}
+          </span>
+        )}
         <span className="flex items-center gap-xs">
           <Icon name="share" className="text-sm" /> {post.stat.shares}
         </span>
       </div>
+
+      {comments && commentsExpanded && (
+        <div className="border-t border-on-surface/5 bg-surface-container-low/40 p-md">
+          <p className="mb-2 font-label-md uppercase tracking-wide text-on-surface-variant">
+            Comments on this post
+          </p>
+          <CommentList comments={comments} revealSignals={revealCommentSignals} compact />
+        </div>
+      )}
     </div>
   );
 }
@@ -110,16 +148,20 @@ export function PostCard({
 export function CommentList({
   comments,
   revealSignals = true,
+  compact = false,
 }: {
   comments: CaseFile["comments"];
   revealSignals?: boolean;
+  compact?: boolean;
 }) {
   return (
-    <div className="space-y-2">
+    <div className={compact ? "space-y-1.5" : "space-y-2"}>
       {comments.map((c, i) => (
         <div
           key={i}
-          className={`rounded-2xl border p-3 text-sm ${
+          className={`rounded-2xl border text-sm ${
+            compact ? "p-2.5" : "p-3"
+          } ${
             revealSignals && c.suspicious
               ? "border-stop/30 bg-stop/5"
               : "border-ink/10 bg-white"
@@ -146,27 +188,49 @@ const FINDING_ICONS: Record<string, string> = {
 export function SourceFindings({
   findings,
   showDetails = true,
+  onFindingActivate,
+  activeFindingIcon,
 }: {
   findings: SourceFinding[];
   showDetails?: boolean;
+  onFindingActivate?: (finding: SourceFinding) => void;
+  activeFindingIcon?: string | null;
 }) {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
-      {findings.map((f, i) => (
-        <div key={i} className="card p-4">
-          <div className="flex items-center gap-2 font-display font-bold text-source">
-            <span className="text-xl">{FINDING_ICONS[f.icon] ?? "🔍"}</span>
-            {f.label}
-          </div>
-          {showDetails ? (
-            <p className="mt-1.5 text-sm text-ink/70">{f.detail}</p>
-          ) : (
-            <p className="mt-1.5 text-xs font-semibold uppercase tracking-wide text-ink/40">
-              Details available with a hint
-            </p>
-          )}
-        </div>
-      ))}
+      {findings.map((f, i) => {
+        const interactive = Boolean(onFindingActivate && f.icon === "chat");
+        const active = activeFindingIcon === f.icon;
+        const Wrapper = interactive ? "button" : "div";
+
+        return (
+          <Wrapper
+            key={i}
+            type={interactive ? "button" : undefined}
+            onClick={interactive ? () => onFindingActivate?.(f) : undefined}
+            className={`card p-4 text-left transition-all ${
+              interactive ? "cursor-pointer hover:-translate-y-0.5 hover:shadow-md" : ""
+            } ${active ? "ring-2 ring-source-cyan/40" : ""}`}
+          >
+            <div className="flex items-center gap-2 font-display font-bold text-source">
+              <span className="text-xl">{FINDING_ICONS[f.icon] ?? "🔍"}</span>
+              {f.label}
+              {interactive && (
+                <span className="ml-auto text-xs font-semibold text-source-cyan">
+                  View comments
+                </span>
+              )}
+            </div>
+            {showDetails ? (
+              <p className="mt-1.5 text-sm text-ink/70">{f.detail}</p>
+            ) : (
+              <p className="mt-1.5 text-xs font-semibold uppercase tracking-wide text-ink/40">
+                Details available with a hint
+              </p>
+            )}
+          </Wrapper>
+        );
+      })}
     </div>
   );
 }

@@ -172,8 +172,8 @@ export default function Learn() {
               Today&apos;s Lesson: {data.title}
             </h2>
             <p className="text-body-lg text-on-surface-variant">
-              Estimated time: {data.estMinutes} minutes. No wrong answers — just practice
-              for your brain. {data.summary}
+              Estimated time: {data.estMinutes} minutes. You&apos;ll get feedback on
+              your scan — and can retake if you want to improve. {data.summary}
             </p>
             <button type="button" onClick={() => setStarted(true)} className="btn-primary mt-lg">
               Launch Case

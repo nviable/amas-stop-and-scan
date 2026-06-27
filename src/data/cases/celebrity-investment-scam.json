@@ -85,7 +85,7 @@
         { "id": "announcement", "label": "No original announcement", "flag": true },
         { "id": "all", "label": "All of the above", "flag": true }
       ],
-      "insight": "If you cannot find a real, accountable origin, that absence is itself the manipulation. Unverifiable origin = unverified content."
+      "insight": "When you cannot trace content to an accountable, verifiable source, treat it as unverified — and hold off on clicking, sharing, or acting until you can."
     }
   },
   "content": {

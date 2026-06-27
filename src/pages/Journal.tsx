@@ -5,6 +5,7 @@ import Icon from "../components/ui/Icon";
 import { HeroBadge } from "../components/ui/PageSections";
 import { useJournal, type ReflectionEntry } from "../context/JournalContext";
 import { downloadMarkdown, printEntry } from "../lib/export";
+import { performanceLabel } from "../lib/lessonScoring";
 import { AMITO_IMAGES } from "../lib/assets";
 
 function fmt(iso: string) {
@@ -26,6 +27,20 @@ function EntryView({ entry }: { entry: ReflectionEntry }) {
       : entry.mode === "practice"
         ? "Practice Case"
         : "Reflection";
+
+  const performance = entry.performance ?? "good";
+  const footerMessage =
+    entry.feedbackHeadline ??
+    (performance === "good"
+      ? "You slowed down when the post wanted speed. That is the habit."
+      : "Keep practicing the scan — slowing down is still the first win.");
+
+  const performanceStyle =
+    performance === "good"
+      ? "bg-content-green/15 text-content-green"
+      : performance === "partial"
+        ? "bg-reflect-orange/15 text-reflect-orange"
+        : "bg-stop-red/15 text-stop-red";
 
   return (
     <div className="px-margin-mobile pb-xxl pt-8 md:px-margin-desktop">
@@ -57,6 +72,15 @@ function EntryView({ entry }: { entry: ReflectionEntry }) {
             <p className="mt-2 text-body-sm text-outline">
               {entry.caseTitle} · {modeLabel} · {fmt(entry.createdAt)}
             </p>
+            {entry.performance && (
+              <p className="mt-3">
+                <span
+                  className={`inline-flex rounded-full px-md py-xs font-label-md uppercase tracking-wide ${performanceStyle}`}
+                >
+                  {performanceLabel(entry.performance)}
+                </span>
+              </p>
+            )}
           </header>
 
           <JournalSection color="#ef4a6b" tab="What I felt first">
@@ -104,11 +128,38 @@ function EntryView({ entry }: { entry: ReflectionEntry }) {
             )}
           </JournalSection>
 
-          <footer className="mt-6 flex items-center gap-3 border-t border-on-surface/15 pt-4">
-            <img alt="Amito" className="h-16 w-16 object-contain" src={AMITO_IMAGES.reward} />
-            <p className="font-hand text-handwritten-lg text-on-surface">
-              You slowed down when the post wanted speed. That is the habit.
-            </p>
+          <footer className="mt-6 flex items-start gap-3 border-t border-on-surface/15 pt-4">
+            <img
+              alt="Amito"
+              className="h-16 w-16 shrink-0 object-contain"
+              src={
+                performance === "good"
+                  ? AMITO_IMAGES.reward
+                  : AMITO_IMAGES.reflect
+              }
+            />
+            <div className="space-y-2">
+              <p className="font-hand text-handwritten-lg text-on-surface">{footerMessage}</p>
+              {entry.feedbackBody && performance !== "good" && (
+                <p className="text-sm text-on-surface-variant">{entry.feedbackBody}</p>
+              )}
+              {entry.feedbackWorkOn && entry.feedbackWorkOn.length > 0 && (
+                <ul className="space-y-1 text-sm text-on-surface-variant">
+                  {entry.feedbackWorkOn.map((line) => (
+                    <li key={line}>→ {line}</li>
+                  ))}
+                </ul>
+              )}
+              {performance !== "good" && entry.mode && (
+                <Link
+                  to={entry.mode === "learn" ? "/learn" : `/practice/${entry.caseId}`}
+                  className="inline-flex items-center gap-xs font-label-md text-primary hover:underline"
+                >
+                  Try this case again
+                  <Icon name="history" className="text-sm" />
+                </Link>
+              )}
+            </div>
           </footer>
         </article>
       </div>
@@ -234,6 +285,12 @@ export default function Journal() {
                   </div>
                   <h3 className="mb-md font-display text-headline-md">{e.caseTitle}</h3>
                   <div className="mb-lg space-y-sm rounded-xl bg-surface-container-low p-md">
+                    <div className="flex justify-between text-body-sm">
+                      <span className="text-on-surface-variant">Scan result</span>
+                      <span className="font-bold">
+                        {e.performance ? performanceLabel(e.performance) : "—"}
+                      </span>
+                    </div>
                     <div className="flex justify-between text-body-sm">
                       <span className="text-on-surface-variant">Initial reaction</span>
                       <span className="font-bold text-stop-red">{e.firstFeeling || "—"}</span>

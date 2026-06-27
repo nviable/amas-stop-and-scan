@@ -2,6 +2,14 @@ import { useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { CaseFile, ChoiceQuestion } from "../../lib/caseTypes";
 import { STEPS } from "../../lib/framework";
+import {
+  buildClosingFeedback,
+  performanceLabel,
+  scoreLesson,
+  type StepScore,
+  UNSURE_OPTION_ID,
+  UNSURE_OPTION_LABEL,
+} from "../../lib/lessonScoring";
 import { useJournal, type ReflectionEntry } from "../../context/JournalContext";
 import AmitoSays from "../AmitoSays";
 import Amito from "../Amito";
@@ -9,7 +17,6 @@ import Icon from "../ui/Icon";
 import StepProgress from "./StepProgress";
 import ChoiceGroup from "./ChoiceGroup";
 import {
-  CommentList,
   PostCard,
   SearchResults,
   SourceFindings,
@@ -24,9 +31,6 @@ const SCAN_STEP_KEY: Record<2 | 3 | 4, ScanKey> = {
   3: "content",
   4: "alignment",
 };
-
-const UNSURE_OPTION_ID = "not-sure-yet";
-const UNSURE_OPTION_LABEL = "I need more evidence before deciding";
 
 function guideMessage(data: CaseFile, mode: LessonMode, screen: Screen) {
   if (mode === "learn") {
@@ -94,6 +98,8 @@ export default function LessonEngine({
   const [finalThought, setFinalThought] = useState("");
   const [changedBy, setChangedBy] = useState("");
   const [nextActions, setNextActions] = useState<string[]>([]);
+  const [commentsExpanded, setCommentsExpanded] = useState(false);
+  const [activeFindingIcon, setActiveFindingIcon] = useState<string | null>(null);
 
   const isLearn = mode === "learn";
   const currentScanKey =
@@ -107,6 +113,26 @@ export default function LessonEngine({
           ? alignmentChoice
           : [];
   const hasCurrentChoice = currentChoice.length > 0;
+
+  const lessonScore = useMemo(
+    () =>
+      scoreLesson(data, {
+        source: sourceChoice,
+        content: contentChoice,
+        alignment: alignmentChoice,
+      }),
+    [data, sourceChoice, contentChoice, alignmentChoice]
+  );
+
+  const closingFeedback = useMemo(
+    () =>
+      buildClosingFeedback(
+        data,
+        lessonScore.performance,
+        lessonScore.stepScores
+      ),
+    [data, lessonScore]
+  );
 
   const buildEntry = (completed: boolean): ReflectionEntry => ({
     id: idRef.current,
@@ -128,6 +154,11 @@ export default function LessonEngine({
     changedBy,
     nextActions,
     hintsUsed: hintedSteps,
+    performance: lessonScore.performance,
+    stepScores: lessonScore.stepScores,
+    feedbackHeadline: closingFeedback.headline,
+    feedbackBody: closingFeedback.body,
+    feedbackWorkOn: closingFeedback.workOn,
   });
 
   const canContinue = useMemo(() => {
@@ -164,12 +195,34 @@ export default function LessonEngine({
   const advance = () => {
     upsertEntry(buildEntry(false));
     setRevealed(false);
+    if (screen !== 2) {
+      setCommentsExpanded(false);
+      setActiveFindingIcon(null);
+    }
     setScreen((s) => Math.min(5, (s + 1) as Screen) as Screen);
   };
 
   const finish = () => {
     upsertEntry(buildEntry(true));
     navigate(`/journal/${idRef.current}`);
+  };
+
+  const retake = () => {
+    idRef.current = newEntryId();
+    setScreen(1);
+    setRevealed(false);
+    setHintedSteps({});
+    setFirstReaction("");
+    setFirstFeeling("");
+    setStopNote("");
+    setSourceChoice([]);
+    setContentChoice([]);
+    setAlignmentChoice([]);
+    setFinalThought("");
+    setChangedBy("");
+    setNextActions([]);
+    setCommentsExpanded(false);
+    setActiveFindingIcon(null);
   };
 
   const step = STEPS[screen - 1];
@@ -200,7 +253,23 @@ export default function LessonEngine({
             <PostCard
               post={data.post}
               highlight={screen === 3 && (isLearn || revealed)}
+              comments={screen >= 2 ? data.comments : undefined}
+              commentsExpanded={commentsExpanded}
+              onCommentsToggle={
+                screen >= 2 ? () => setCommentsExpanded((open) => !open) : undefined
+              }
+              revealCommentSignals={
+                screen >= 2 && (isLearn || revealed || commentsExpanded)
+              }
+              promptComments={
+                screen === 2 && !commentsExpanded && data.comments.length > 0
+              }
             />
+            {screen === 2 && !commentsExpanded && (
+              <p className="text-xs text-on-surface-variant">
+                Tap the comment count or the comments finding to inspect replies on this post.
+              </p>
+            )}
             {screen === 3 && (isLearn || revealed) && (
               <p className="text-xs italic text-on-surface-variant">
                 Highlighted phrases show where the post is applying pressure.
@@ -272,10 +341,14 @@ export default function LessonEngine({
                 <SourceFindings
                   findings={data.source.findings}
                   showDetails={isLearn || revealed}
+                  activeFindingIcon={activeFindingIcon}
+                  onFindingActivate={(finding) => {
+                    if (finding.icon === "chat") {
+                      setActiveFindingIcon("chat");
+                      setCommentsExpanded(true);
+                    }
+                  }}
                 />
-                <div className="card">
-                  <CommentList comments={data.comments} revealSignals={isLearn || revealed} />
-                </div>
                 <div className="card">
                   <ChoiceGroup
                     question={data.source.question}
@@ -389,6 +462,7 @@ export default function LessonEngine({
                     question={data.source.question}
                     selected={sourceChoice}
                     hinted={Boolean(hintedSteps.source)}
+                    score={lessonScore.stepScores.source}
                     insight={data.source.question.insight}
                   />
                   <StepReview
@@ -396,6 +470,7 @@ export default function LessonEngine({
                     question={data.content.question}
                     selected={contentChoice}
                     hinted={Boolean(hintedSteps.content)}
+                    score={lessonScore.stepScores.content}
                     insight={data.content.question.insight}
                   />
                   <StepReview
@@ -403,6 +478,39 @@ export default function LessonEngine({
                     question={data.alignment.question}
                     selected={alignmentChoice}
                     hinted={Boolean(hintedSteps.alignment)}
+                    score={lessonScore.stepScores.alignment}
+                    insight={data.alignment.question.insight}
+                  />
+                </div>
+              </div>
+            )}
+
+            {isLearn && (
+              <div className="card">
+                <p className="font-display text-lg font-bold">How your scan went</p>
+                <div className="mt-4 space-y-3">
+                  <StepReview
+                    title="Source"
+                    question={data.source.question}
+                    selected={sourceChoice}
+                    hinted={false}
+                    score={lessonScore.stepScores.source}
+                    insight={data.source.question.insight}
+                  />
+                  <StepReview
+                    title="Content"
+                    question={data.content.question}
+                    selected={contentChoice}
+                    hinted={false}
+                    score={lessonScore.stepScores.content}
+                    insight={data.content.question.insight}
+                  />
+                  <StepReview
+                    title="Alignment"
+                    question={data.alignment.question}
+                    selected={alignmentChoice}
+                    hinted={false}
+                    score={lessonScore.stepScores.alignment}
                     insight={data.alignment.question.insight}
                   />
                 </div>
@@ -468,16 +576,43 @@ export default function LessonEngine({
               )}
             </div>
 
-            <div className="card flex flex-col items-center gap-3 bg-alignment/5 text-center">
-              <Amito state="reward" size="md" float />
-              <p className="font-display text-xl font-extrabold">
-                {data.reflect.rewardMessage}
-              </p>
-              <p className="max-w-md text-sm text-ink/60">
-                You didn't have to "catch a fake" to succeed. Slowing down when
-                content wants speed is the whole habit — and "I don't know yet"
-                is always a complete, honest answer.
-              </p>
+            <div
+              className={`card flex flex-col items-center gap-3 text-center ${
+                lessonScore.performance === "good"
+                  ? "bg-alignment/5"
+                  : lessonScore.performance === "partial"
+                    ? "bg-reflect-orange/5"
+                    : "bg-stop-red/5"
+              }`}
+            >
+              <Amito
+                state={lessonScore.performance === "good" ? "reward" : "reflect"}
+                size="md"
+                float
+              />
+              <span
+                className={`rounded-full px-md py-xs font-label-md uppercase tracking-wide ${
+                  lessonScore.performance === "good"
+                    ? "bg-content-green/15 text-content-green"
+                    : lessonScore.performance === "partial"
+                      ? "bg-reflect-orange/15 text-reflect-orange"
+                      : "bg-stop-red/15 text-stop-red"
+                }`}
+              >
+                {performanceLabel(lessonScore.performance)}
+              </span>
+              <p className="font-display text-xl font-extrabold">{closingFeedback.headline}</p>
+              <p className="max-w-md text-sm text-ink/70">{closingFeedback.body}</p>
+              {closingFeedback.workOn.length > 0 && (
+                <ul className="max-w-md space-y-2 text-left text-sm text-ink/80">
+                  {closingFeedback.workOn.map((line) => (
+                    <li key={line} className="flex gap-2">
+                      <span className="text-reflect-orange">→</span>
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
               </>
             )}
@@ -522,14 +657,32 @@ export default function LessonEngine({
                   <Icon name="arrow_forward" className="text-sm" />
                 </button>
               ) : (
-                <button
-                  type="button"
-                  onClick={finish}
-                  className="inline-flex items-center gap-xs rounded-full bg-secondary-container px-xxl py-sm font-bold text-on-secondary-container shadow-md transition-all hover:brightness-105"
-                >
-                  Save to my Journal
-                  <Icon name="bookmark" className="text-sm" />
-                </button>
+                <div className="flex flex-wrap justify-end gap-sm">
+                  {lessonScore.performance !== "good" && (
+                    <button
+                      type="button"
+                      onClick={retake}
+                      className="inline-flex items-center gap-xs rounded-full border-2 border-primary px-xl py-sm font-bold text-primary transition-colors hover:bg-primary/5"
+                    >
+                      Try again
+                      <Icon name="history" className="text-sm" />
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    onClick={finish}
+                    className={`inline-flex items-center gap-xs rounded-full px-xxl py-sm font-bold shadow-md transition-all hover:brightness-105 ${
+                      lessonScore.performance === "good"
+                        ? "bg-secondary-container text-on-secondary-container"
+                        : "border border-on-surface/10 bg-white text-on-surface-variant"
+                    }`}
+                  >
+                    {lessonScore.performance === "good"
+                      ? "Save to my Journal"
+                      : "Save attempt anyway"}
+                    <Icon name="bookmark" className="text-sm" />
+                  </button>
+                </div>
               )}
             </div>
             {!canContinue && (
@@ -553,26 +706,39 @@ function StepReview({
   question,
   selected,
   hinted,
+  score,
   insight,
 }: {
   title: string;
   question: ChoiceQuestion;
   selected: string[];
   hinted: boolean;
+  score: StepScore;
   insight?: string;
 }) {
   const picked = selectedLabels(question, selected);
   const flagged = flaggedLabels(question);
+  const scoreStyle =
+    score === "good"
+      ? "text-content-green"
+      : score === "partial"
+        ? "text-reflect-orange"
+        : "text-stop-red";
 
   return (
     <div className="rounded-2xl border border-ink/10 bg-white p-3">
       <div className="flex items-center justify-between gap-2">
         <p className="font-display font-bold">{title}</p>
-        {hinted && (
-          <span className="rounded-full bg-alignment/10 px-2 py-0.5 text-xs font-bold text-alignment">
-            hint used
+        <div className="flex items-center gap-2">
+          <span className={`text-xs font-bold uppercase ${scoreStyle}`}>
+            {performanceLabel(score)}
           </span>
-        )}
+          {hinted && (
+            <span className="rounded-full bg-alignment/10 px-2 py-0.5 text-xs font-bold text-alignment">
+              hint used
+            </span>
+          )}
+        </div>
       </div>
       <p className="mt-1 text-sm text-ink/65">
         You picked:{" "}

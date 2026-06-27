@@ -12,12 +12,6 @@ const DIFFICULTY_STYLE: Record<string, string> = {
   advanced: "bg-reflect-orange/15 text-reflect-orange border-reflect-orange/20",
 };
 
-const KIND_LABEL: Record<string, string> = {
-  scam: "Financial scam",
-  authentic: "Authentic content",
-  decontextualized: "Decontextualized footage",
-};
-
 export default function Practice() {
   return (
     <div>
@@ -66,9 +60,6 @@ export default function Practice() {
                     <span className="font-label-md">{c.estMinutes} min</span>
                   </div>
                 </div>
-                <p className="mb-1 font-label-md uppercase tracking-wide text-on-surface-variant/60">
-                  {KIND_LABEL[c.kind] ?? c.kind}
-                </p>
                 <h3 className="mb-sm font-display text-headline-md transition-colors group-hover:text-primary">
                   {c.title}
                 </h3>
@@ -91,8 +82,8 @@ export default function Practice() {
               </div>
               <h3 className="mb-sm font-display text-headline-md text-outline">More coming soon</h3>
               <p className="px-md text-body-sm text-outline">
-                More decontextualized-footage and calibration cases are on the way — so you
-                practice trusting real content too, not only spotting fakes.
+                More case files are on the way — including examples where careful scanning
+                means trusting content, not only spotting problems.
               </p>
             </div>
           </div>

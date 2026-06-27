@@ -27,6 +27,9 @@ export function entryToMarkdown(entry: ReflectionEntry): string {
   lines.push(`**Case:** ${entry.caseTitle}`);
   lines.push(`**Experience:** ${modeLabel}`);
   lines.push(`**Date:** ${fmtDate(entry.createdAt)}`);
+  if (entry.performance) {
+    lines.push(`**Scan result:** ${entry.performance.replace("-", " ")}`);
+  }
   if (hintsUsed.length > 0) {
     lines.push(`**Hints used:** ${hintsUsed.join(", ")}`);
   }
@@ -55,7 +58,15 @@ export function entryToMarkdown(entry: ReflectionEntry): string {
   }
   lines.push("");
   lines.push(`---`);
-  lines.push(`*You slowed down when the post wanted speed. That is the habit.*`);
+  if (entry.feedbackHeadline) {
+    lines.push(`*${entry.feedbackHeadline}*`);
+    if (entry.feedbackBody) lines.push(`*${entry.feedbackBody}*`);
+    if (entry.feedbackWorkOn?.length) {
+      entry.feedbackWorkOn.forEach((line) => lines.push(`- ${line}`));
+    }
+  } else {
+    lines.push(`*You slowed down when the post wanted speed. That is the habit.*`);
+  }
   return lines.join("\n");
 }
 

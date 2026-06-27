@@ -16,6 +16,8 @@ import {
   Download,
   Globe,
   GraduationCap,
+  Grid2x2Check,
+  Hand,
   Heart,
   History,
   Hourglass,
@@ -98,6 +100,8 @@ const ICONS: Record<string, LucideIcon | typeof LinkedinIcon> = {
   fullscreen: Maximize,
   fullscreen_exit: Minimize,
   download: Download,
+  hand: Hand,
+  "grid-2x2-check": Grid2x2Check,
 };
 
 type IconProps = {
