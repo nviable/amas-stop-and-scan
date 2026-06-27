@@ -49,12 +49,6 @@ export default function VideoTeaser({ src, poster, label, posterAlt = "" }: Vide
           </div>
         </button>
       )}
-
-      <div className="pointer-events-none absolute bottom-lg left-lg z-10">
-        <span className="rounded-full bg-white/90 px-md py-xs font-label-md uppercase tracking-wider text-primary backdrop-blur-md">
-          {label}
-        </span>
-      </div>
     </div>
   );
 }
