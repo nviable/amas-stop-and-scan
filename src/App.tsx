@@ -6,6 +6,7 @@ import Practice from "./pages/Practice";
 import CaseFile from "./pages/CaseFile";
 import Resources from "./pages/Resources";
 import ResourceStep from "./pages/ResourceStep";
+import StepTools from "./pages/StepTools";
 import Journal from "./pages/Journal";
 import Project from "./pages/Project";
 import MeetAmito from "./pages/MeetAmito";
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="practice/:slug" element={<CaseFile />} />
         <Route path="resources" element={<Resources />} />
         <Route path="resources/:step" element={<ResourceStep />} />
+        <Route path="resources/:step/tools" element={<StepTools />} />
         <Route path="journal" element={<Journal />} />
         <Route path="journal/:id" element={<Journal />} />
         <Route path="project" element={<Project />} />

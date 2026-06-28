@@ -31,7 +31,7 @@ const PREVIEW_SKILLS = [
   },
   {
     icon: "grid-2x2-check",
-    iconClass: "bg-lilac-accent/20 text-lilac-accent",
+    iconClass: "bg-alignment/20 text-alignment",
     title: "Cross-check the story",
     body: "Decide what independent sources actually confirm before you trust, share, or dismiss.",
   },

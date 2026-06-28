@@ -6,7 +6,7 @@ const GLOW: Record<AmitoState, string> = {
   stop: "#ef4a6b",
   source: "#22b8cf",
   content: "#37b24d",
-  alignment: "#b197fc",
+  alignment: "#ea80dc",
   reflect: "#ff922b",
   reward: "#b197fc",
 };

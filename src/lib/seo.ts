@@ -117,6 +117,19 @@ export function resolvePageSeo(pathname: string): PageSeo {
     }
   }
 
+  const toolsMatch = pathname.match(/^\/resources\/([^/]+)\/tools$/);
+  if (toolsMatch) {
+    const key = toolsMatch[1] as StepKey;
+    const resource = RESOURCES[key];
+    if (resource) {
+      return {
+        title: `${RESOURCE_STEP_LABELS[key]} Tools — ${SITE.name} Resources`,
+        description: `Tools you can leverage for the ${RESOURCE_STEP_LABELS[key]} step of STOP&SCAN — provenance checks, detectors, and cross-checking aids. Each tool is one input, not a verdict.`,
+        image: resourceStepImage(key),
+      };
+    }
+  }
+
   const resourceMatch = pathname.match(/^\/resources\/([^/]+)$/);
   if (resourceMatch) {
     const key = resourceMatch[1] as StepKey;

@@ -125,7 +125,7 @@ export default function Resources() {
                     <p className="line-clamp-3 text-body-sm text-on-surface-variant">
                       {resource.intro}
                     </p>
-                    <blockquote className="rounded-xl border-l-4 border-lilac-accent/40 bg-surface-container-low px-md py-sm">
+                    <blockquote className="rounded-xl border-l-4 border-alignment/40 bg-surface-container-low px-md py-sm">
                       <p className="text-body-sm italic text-on-surface-variant">
                         &ldquo;{resource.takeaway}&rdquo;
                       </p>

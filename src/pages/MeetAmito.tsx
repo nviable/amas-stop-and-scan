@@ -9,7 +9,7 @@ const MEET_POSES = [
   { state: "stop", label: "Stop & Assess", img: AMITO_IMAGES.stop, badge: "text-stop-red bg-stop-red/10" },
   { state: "source", label: "Source Check", img: AMITO_IMAGES.source, badge: "text-source-cyan bg-source-cyan/10" },
   { state: "content", label: "Content Analysis", img: AMITO_IMAGES.content, badge: "text-content-green bg-content-green/10" },
-  { state: "alignment", label: "Alignment Check", img: AMITO_IMAGES.alignment, badge: "text-lilac-accent bg-lilac-accent/10" },
+  { state: "alignment", label: "Alignment Check", img: AMITO_IMAGES.alignment, badge: "text-alignment bg-alignment/10" },
   { state: "reflect", label: "Reflection", img: AMITO_IMAGES.reflect, badge: "text-reflect-orange bg-reflect-orange/10" },
 ] as const;
 
@@ -17,7 +17,7 @@ const FRAMEWORK_CARDS = [
   { key: "stop", title: "STOP", cue: STEPS[0].cue, img: AMITO_IMAGES.stop, border: "hover:border-stop-red/30", bg: "bg-stop-red/10", text: "text-stop-red" },
   { key: "source", title: "SOURCE", cue: STEPS[1].cue, img: AMITO_IMAGES.source, border: "hover:border-source-cyan/30", bg: "bg-source-cyan/10", text: "text-source-cyan" },
   { key: "content", title: "CONTENT", cue: STEPS[2].cue, img: AMITO_IMAGES.content, border: "hover:border-content-green/30", bg: "bg-content-green/10", text: "text-content-green" },
-  { key: "alignment", title: "ALIGN", cue: STEPS[3].cue, img: AMITO_IMAGES.alignment, border: "hover:border-lilac-accent/30", bg: "bg-lilac-accent/10", text: "text-lilac-accent" },
+  { key: "alignment", title: "ALIGN", cue: STEPS[3].cue, img: AMITO_IMAGES.alignment, border: "hover:border-alignment/30", bg: "bg-alignment/10", text: "text-alignment" },
   { key: "reflect", title: "REFLECT", cue: STEPS[4].cue, img: AMITO_IMAGES.reflect, border: "hover:border-reflect-orange/30", bg: "bg-reflect-orange/10", text: "text-reflect-orange" },
 ] as const;
 

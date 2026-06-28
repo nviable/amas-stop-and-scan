@@ -65,7 +65,7 @@ export const STEPS: StepMeta[] = [
     title: "Alignment",
     tagline: "Does everything fit together?",
     color: "text-alignment",
-    hex: "#b197fc",
+    hex: "#ea80dc",
     amito: "alignment",
     cue: "Lilac head logo",
   },

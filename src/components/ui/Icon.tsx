@@ -6,6 +6,7 @@ import {
   Bookmark,
   Bot,
   Brain,
+  BadgeQuestionMark,
   ChevronLeft,
   ChevronRight,
   CircleHelp,
@@ -14,6 +15,7 @@ import {
   Columns2,
   Compass,
   Download,
+  ExternalLink,
   Globe,
   GraduationCap,
   Grid2x2Check,
@@ -35,7 +37,9 @@ import {
   Shield,
   Sparkles,
   Trash2,
+  TriangleAlert,
   Wallet,
+  Wrench,
   ZoomIn,
   ZoomOut,
   type LucideIcon,
@@ -71,6 +75,7 @@ const ICONS: Record<string, LucideIcon | typeof LinkedinIcon> = {
   school: GraduationCap,
   schedule: Clock,
   auto_awesome: Sparkles,
+  quiz: BadgeQuestionMark,
   explore: Compass,
   play_arrow: Play,
   play_circle: CirclePlay,
@@ -102,6 +107,9 @@ const ICONS: Record<string, LucideIcon | typeof LinkedinIcon> = {
   download: Download,
   hand: Hand,
   "grid-2x2-check": Grid2x2Check,
+  build: Wrench,
+  warning: TriangleAlert,
+  open_in_new: ExternalLink,
 };
 
 type IconProps = {

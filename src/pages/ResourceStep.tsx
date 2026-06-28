@@ -1,9 +1,12 @@
 import { Link, useParams } from "react-router-dom";
 import AmitoSpotlight from "../components/AmitoSpotlight";
 import Icon from "../components/ui/Icon";
+import VideoComingSoon from "../components/ui/VideoComingSoon";
+import VideoTeaser from "../components/ui/VideoTeaser";
 import { CtaBanner, HeroBadge } from "../components/ui/PageSections";
 import { RESOURCES } from "../data/resources";
-import { FRAMEWORK_STEP_IMAGES } from "../lib/assets";
+import { getStepTools } from "../data/stepTools";
+import { AMITO_VIDEOS, faviconFor, FRAMEWORK_STEP_IMAGES, youtubePoster } from "../lib/assets";
 import { STEPS, stepByKey, stepDisplayTitle, type StepKey } from "../lib/framework";
 
 const VALID: StepKey[] = ["stop", "source", "content", "alignment", "reflect"];
@@ -87,6 +90,10 @@ export default function ResourceStep() {
   const textClass = config.textLight ? "text-white" : "text-on-surface";
   const mutedClass = config.textLight ? "text-white/80" : "text-on-surface-variant";
 
+  const toolCategories = getStepTools(key);
+  const toolCount = toolCategories?.reduce((sum, c) => sum + c.tools.length, 0) ?? 0;
+  const previewTools = toolCategories?.flatMap((c) => c.tools).slice(0, 5) ?? [];
+
   return (
     <div>
       {/* Step hero */}
@@ -128,6 +135,25 @@ export default function ResourceStep() {
               speechClassName="absolute -right-4 top-0 z-20 max-w-[220px] shadow-xl md:-right-8"
             />
           </div>
+        </div>
+      </section>
+
+      {/* Step video */}
+      <section className="bg-surface-container-low px-margin-mobile py-xl md:px-margin-desktop">
+        <div className="mx-auto max-w-4xl">
+          {key === "stop" ? (
+            <VideoTeaser
+              src={AMITO_VIDEOS.stop}
+              poster={youtubePoster(AMITO_VIDEOS.stop)}
+              label={`${titleDisplay}: Pause before you react`}
+              posterAlt={`${titleDisplay} step video`}
+            />
+          ) : (
+            <VideoComingSoon
+              label={`${titleDisplay} — ${config.headline}`}
+              accentColor={config.bg}
+            />
+          )}
         </div>
       </section>
 
@@ -220,6 +246,55 @@ export default function ResourceStep() {
         </div>
       </section>
 
+      {/* Tools teaser */}
+      {toolCategories && toolCount > 0 && (
+        <section className="px-margin-mobile pb-xxl md:px-margin-desktop">
+          <div className="mx-auto max-w-container-max">
+            <Link
+              to={`/resources/${key}/tools`}
+              className="group flex flex-col gap-lg rounded-xxl border border-on-surface/10 bg-white p-xl shadow-soft transition-all hover:-translate-y-1 hover:shadow-card md:flex-row md:items-center md:justify-between"
+            >
+              <div className="space-y-sm">
+                <div className="flex items-center gap-sm" style={{ color: config.bg }}>
+                  <Icon name="build" />
+                  <span className="font-label-md uppercase tracking-widest">
+                    Tools for this step
+                  </span>
+                </div>
+                <h2 className="font-display text-display-lg text-on-surface">
+                  {toolCount} tools you can leverage
+                </h2>
+                <p className="max-w-xl text-body-md text-on-surface-variant">
+                  Provenance checks, detectors, and cross-checking tools for {meta.title.toLowerCase()} —
+                  each one is a single input, never a verdict.
+                </p>
+              </div>
+              <div className="flex shrink-0 items-center gap-md">
+                <div className="flex -space-x-2">
+                  {previewTools.map((tool) => (
+                    <span
+                      key={tool.name}
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-on-surface/10 bg-white shadow-sm"
+                    >
+                      <img
+                        alt=""
+                        loading="lazy"
+                        className="h-5 w-5 object-contain"
+                        src={faviconFor(tool.url)}
+                      />
+                    </span>
+                  ))}
+                </div>
+                <span className="inline-flex items-center gap-xs font-label-md font-bold text-primary group-hover:underline">
+                  Explore
+                  <Icon name="arrow_forward" className="text-sm" />
+                </span>
+              </div>
+            </Link>
+          </div>
+        </section>
+      )}
+
       {/* Step progress */}
       <section className="border-y border-on-surface/5 bg-surface-container-low px-margin-mobile py-xl md:px-margin-desktop">
         <div className="mx-auto max-w-container-max">
@@ -236,21 +311,30 @@ export default function ResourceStep() {
                   to={`/resources/${s.key}`}
                   className={`flex flex-col items-center rounded-2xl border px-md py-sm transition-all ${
                     isCurrent
-                      ? "scale-105 border-primary bg-white shadow-card"
+                      ? "scale-105 border-transparent shadow-card"
                       : "border-on-surface/5 bg-white shadow-soft hover:scale-105"
                   }`}
+                  style={
+                    isCurrent
+                      ? {
+                          backgroundColor: `${s.hex}22`,
+                          borderColor: `${s.hex}55`,
+                        }
+                      : undefined
+                  }
                   title={s.tagline}
                   aria-current={isCurrent ? "page" : undefined}
                 >
                   <div
                     className={`mb-xs flex h-10 w-10 items-center justify-center rounded-full border bg-white shadow-sm ${
-                      isCurrent ? "border-primary" : "border-on-surface/5"
+                      isCurrent ? "" : "border-on-surface/5"
                     }`}
+                    style={isCurrent ? { borderColor: s.hex } : undefined}
                   >
                     <img alt="" className="h-6 w-6 object-contain" src={stepImages.icon} />
                   </div>
                   <span
-                    className={`font-label-md ${isCurrent ? "font-bold text-primary" : "text-on-surface-variant"}`}
+                    className={`font-label-md ${isCurrent ? `font-bold ${s.color}` : "text-on-surface-variant"}`}
                   >
                     {stepDisplayTitle(s)}
                   </span>

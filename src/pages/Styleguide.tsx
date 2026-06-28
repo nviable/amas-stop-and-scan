@@ -26,7 +26,7 @@ const FRAMEWORK_COLORS: ColorToken[] = [
   { name: "Stop", token: "stop-red", hex: "#ef4a6b" },
   { name: "Source", token: "source-cyan", hex: "#22b8cf" },
   { name: "Content", token: "content-green", hex: "#37b24d" },
-  { name: "Alignment", token: "lilac-accent", hex: "#b197fc" },
+  { name: "Alignment", token: "alignment", hex: "#ea80dc" },
   { name: "Reflect", token: "reflect-orange", hex: "#ff922b" },
 ];
 

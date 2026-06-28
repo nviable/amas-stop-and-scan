@@ -32,7 +32,25 @@ const AMITO_MEDIA = {
 
 export const AMITO_VIDEOS = {
   meetAmitoTeaser: "https://www.youtube.com/watch?v=zcNQUsBJ8vg",
+  stop: "https://www.youtube.com/watch?v=E8HPyEh-SAk",
 } as const;
+
+/** YouTube thumbnail for a watch URL or video id. */
+export function youtubePoster(watchUrl: string): string {
+  const match = watchUrl.match(/(?:v=|youtu\.be\/)([\w-]{11})/);
+  const id = match?.[1] ?? watchUrl;
+  return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+}
+
+/** Live favicon for a tool URL, via Google's favicon service. */
+export function faviconFor(url: string, size = 128): string {
+  try {
+    const { hostname } = new URL(url);
+    return `https://www.google.com/s2/favicons?domain=${hostname}&sz=${size}`;
+  } catch {
+    return "";
+  }
+}
 
 export const AMITO_IMAGES = {
   greeting: asset(AMITO_POSE.greeting),
@@ -85,7 +103,7 @@ export const FRAMEWORK_STEP_IMAGES = {
   alignment: {
     icon: asset(FRAMEWORK_ICONS.alignment),
     amito: asset(AMITO_POSE.alignment),
-    bg: "#f36734",
+    bg: "#ea80dc",
   },
   reflect: {
     icon: asset(FRAMEWORK_ICONS.reflect),
