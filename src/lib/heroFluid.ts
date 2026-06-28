@@ -1483,15 +1483,19 @@ export function initHeroFluid(
  };
 
  const onTouchMove = (e: TouchEvent) => {
- e.preventDefault();
  const touches = e.targetTouches;
  const rect = canvas.getBoundingClientRect();
  const pointer = pointers[0];
+ let handled = false;
  for (let i = 0; i < touches.length; i++) {
  if (!isInsideCanvas(touches[i].clientX, touches[i].clientY, rect)) continue;
+ handled = true;
  const posX = scaleByPixelRatio(touches[i].clientX - rect.left);
  const posY = scaleByPixelRatio(touches[i].clientY - rect.top);
  updatePointerMoveData(pointer, posX, posY, pointer.color);
+ }
+ if (handled && pointer.down) {
+ e.preventDefault();
  }
  };
 
@@ -1499,11 +1503,16 @@ export function initHeroFluid(
  updatePointerUpData(pointers[0]);
  };
 
+ // Touch-driven splats fight page scroll on phones/tablets; keep mouse on desktop.
+ const enableTouchInteraction = !window.matchMedia("(pointer: coarse)").matches;
+
  window.addEventListener("mousedown", onMouseDown);
  window.addEventListener("mousemove", onMouseMove);
+ if (enableTouchInteraction) {
  window.addEventListener("touchstart", onTouchStart);
  window.addEventListener("touchmove", onTouchMove, { passive: false });
  window.addEventListener("touchend", onTouchEnd);
+ }
 
  /**
  * Updates pointer data when pressed down
@@ -1654,8 +1663,10 @@ export function initHeroFluid(
  cancelAnimationFrame(animationId);
  window.removeEventListener("mousedown", onMouseDown);
  window.removeEventListener("mousemove", onMouseMove);
+ if (enableTouchInteraction) {
  window.removeEventListener("touchstart", onTouchStart);
  window.removeEventListener("touchmove", onTouchMove);
  window.removeEventListener("touchend", onTouchEnd);
+ }
  };
 }
