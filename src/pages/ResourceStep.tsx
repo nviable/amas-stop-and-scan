@@ -3,6 +3,7 @@ import AmitoSpotlight from "../components/AmitoSpotlight";
 import Icon from "../components/ui/Icon";
 import VideoComingSoon from "../components/ui/VideoComingSoon";
 import VideoTeaser from "../components/ui/VideoTeaser";
+import StepHeroSection from "../components/ui/StepHeroSection";
 import { CtaBanner, HeroBadge } from "../components/ui/PageSections";
 import { RESOURCES } from "../data/resources";
 import { getStepTools } from "../data/stepTools";
@@ -97,9 +98,10 @@ export default function ResourceStep() {
   return (
     <div>
       {/* Step hero */}
-      <section
-        className="relative overflow-visible px-margin-mobile pb-xl pt-lg md:px-margin-desktop"
-        style={{ backgroundColor: config.bg }}
+      <StepHeroSection
+        stepKey={key}
+        backgroundColor={config.bg}
+        className="overflow-visible px-margin-mobile pb-xl pt-lg md:px-margin-desktop"
       >
         <div className="mx-auto max-w-container-max">
           <Link
@@ -136,7 +138,7 @@ export default function ResourceStep() {
             />
           </div>
         </div>
-      </section>
+      </StepHeroSection>
 
       {/* Step video */}
       <section className="bg-surface-container-low px-margin-mobile py-xl md:px-margin-desktop">

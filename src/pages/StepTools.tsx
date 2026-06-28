@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Icon from "../components/ui/Icon";
+import StepHeroSection, { TEXT_LIGHT } from "../components/ui/StepHeroSection";
 import { HeroBadge } from "../components/ui/PageSections";
 import { RESOURCES } from "../data/resources";
 import { getStepTools, type StepTool } from "../data/stepTools";
@@ -8,14 +9,6 @@ import { faviconFor, FRAMEWORK_STEP_IMAGES } from "../lib/assets";
 import { STEPS, stepByKey, stepDisplayTitle, type StepKey } from "../lib/framework";
 
 const VALID: StepKey[] = ["stop", "source", "content", "alignment", "reflect"];
-
-const TEXT_LIGHT: Record<StepKey, boolean> = {
-  stop: true,
-  source: false,
-  content: false,
-  alignment: true,
-  reflect: true,
-};
 
 function ToolThumb({ tool }: { tool: StepTool }) {
   const [failed, setFailed] = useState(false);
@@ -125,9 +118,10 @@ export default function StepTools() {
   return (
     <div>
       {/* Hero */}
-      <section
-        className="relative overflow-hidden px-margin-mobile pb-xl pt-lg md:px-margin-desktop"
-        style={{ backgroundColor: images.bg }}
+      <StepHeroSection
+        stepKey={key}
+        backgroundColor={images.bg}
+        className="px-margin-mobile pb-xl pt-lg md:px-margin-desktop"
       >
         <div className="mx-auto max-w-container-max">
           <Link
@@ -150,7 +144,7 @@ export default function StepTools() {
           </h1>
           <p className={`mt-md max-w-2xl text-body-lg ${mutedClass}`}>{r.question}</p>
         </div>
-      </section>
+      </StepHeroSection>
 
       {/* Framing note */}
       <section className="bg-surface-container-low px-margin-mobile py-xl md:px-margin-desktop">

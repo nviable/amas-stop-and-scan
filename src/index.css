@@ -95,6 +95,11 @@ body {
     z-index: 1;
   }
 
+  .step-hero-section > :not(.step-hero-grid-canvas) {
+    position: relative;
+    z-index: 1;
+  }
+
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-display font-semibold transition-all duration-150 active:scale-95;
   }
