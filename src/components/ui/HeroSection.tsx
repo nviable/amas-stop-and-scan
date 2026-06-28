@@ -15,6 +15,7 @@ export default function HeroSection({
   ...props
 }: HeroSectionProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const [motionOk, setMotionOk] = useState(false);
 
   useEffect(() => {
@@ -28,10 +29,11 @@ export default function HeroSection({
   useEffect(() => {
     if (!enableSmoke || !motionOk) return;
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const section = sectionRef.current;
+    if (!canvas || !section) return;
 
     try {
-      return initHeroFluid(canvas);
+      return initHeroFluid(canvas, undefined, section);
     } catch {
       return undefined;
     }
@@ -44,6 +46,7 @@ export default function HeroSection({
 
   return (
     <section
+      ref={sectionRef}
       className={`hero-section relative overflow-hidden ${backgroundClass} ${className}`.trim()}
       {...props}
     >

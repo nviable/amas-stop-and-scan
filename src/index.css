@@ -90,6 +90,10 @@ body {
     background: linear-gradient(180deg, #dce1ff 0%, #fbf8f2 100%);
   }
 
+  .hero-section {
+    touch-action: pan-y;
+  }
+
   .hero-section > :not(.hero-smoke-canvas) {
     position: relative;
     z-index: 1;

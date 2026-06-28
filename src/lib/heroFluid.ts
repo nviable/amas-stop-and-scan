@@ -86,7 +86,8 @@ const BRAND_COLORS = [
  */
 export function initHeroFluid(
  canvas: HTMLCanvasElement,
- incomingConfig: Partial<HeroFluidConfig> = {}
+ incomingConfig: Partial<HeroFluidConfig> = {},
+ container: HTMLElement = canvas.parentElement ?? canvas
 ): (() => void) | undefined {
  const config: HeroFluidConfig = { ...defaultConfig, ...incomingConfig };
  let colorCursor = Math.floor(Math.random() * BRAND_COLORS.length);
@@ -1469,41 +1470,76 @@ export function initHeroFluid(
  updatePointerMoveData(pointer, posX, posY, pointer.color);
  };
 
- const onTouchStart = (e: TouchEvent) => {
- const touches = e.targetTouches;
- const rect = canvas.getBoundingClientRect();
- const pointer = pointers[0];
- for (let i = 0; i < touches.length; i++) {
- if (!isInsideCanvas(touches[i].clientX, touches[i].clientY, rect)) continue;
- const posX = scaleByPixelRatio(touches[i].clientX - rect.left);
- const posY = scaleByPixelRatio(touches[i].clientY - rect.top);
- updatePointerDownData(pointer, touches[i].identifier, posX, posY);
- clickSplat(pointer);
+ const TOUCH_SLOP = 10;
+ let touchGesture: "none" | "pending" | "scroll" | "drag" = "none";
+ let touchStartX = 0;
+ let touchStartY = 0;
+
+ function isInteractiveTarget(target: EventTarget | null) {
+ if (!(target instanceof Element)) return false;
+ return Boolean(
+ target.closest(
+ "a, button, input, textarea, select, label, [role='button'], [role='link']"
+ )
+ );
  }
+
+ const onTouchStart = (e: TouchEvent) => {
+ if (isInteractiveTarget(e.target)) return;
+ const touch = e.targetTouches[0];
+ if (!touch) return;
+ const rect = canvas.getBoundingClientRect();
+ if (!isInsideCanvas(touch.clientX, touch.clientY, rect)) return;
+
+ touchGesture = "pending";
+ touchStartX = touch.clientX;
+ touchStartY = touch.clientY;
+
+ const pointer = pointers[0];
+ const posX = scaleByPixelRatio(touch.clientX - rect.left);
+ const posY = scaleByPixelRatio(touch.clientY - rect.top);
+ updatePointerDownData(pointer, touch.identifier, posX, posY);
  };
 
  const onTouchMove = (e: TouchEvent) => {
- e.preventDefault();
- const touches = e.targetTouches;
- const rect = canvas.getBoundingClientRect();
+ const touch = e.targetTouches[0];
+ if (!touch || touchGesture === "none" || touchGesture === "scroll") return;
+
+ const dx = touch.clientX - touchStartX;
+ const dy = touch.clientY - touchStartY;
  const pointer = pointers[0];
- for (let i = 0; i < touches.length; i++) {
- if (!isInsideCanvas(touches[i].clientX, touches[i].clientY, rect)) continue;
- const posX = scaleByPixelRatio(touches[i].clientX - rect.left);
- const posY = scaleByPixelRatio(touches[i].clientY - rect.top);
- updatePointerMoveData(pointer, posX, posY, pointer.color);
+
+ if (touchGesture === "pending") {
+ if (Math.hypot(dx, dy) < TOUCH_SLOP) return;
+ touchGesture = Math.abs(dy) > Math.abs(dx) ? "scroll" : "drag";
+ if (touchGesture === "scroll") {
+ updatePointerUpData(pointer);
+ return;
  }
+ clickSplat(pointer);
+ }
+
+ const rect = canvas.getBoundingClientRect();
+ const posX = scaleByPixelRatio(touch.clientX - rect.left);
+ const posY = scaleByPixelRatio(touch.clientY - rect.top);
+ updatePointerMoveData(pointer, posX, posY, pointer.color);
  };
 
  const onTouchEnd = () => {
- updatePointerUpData(pointers[0]);
+ const pointer = pointers[0];
+ if (touchGesture === "pending") {
+ clickSplat(pointer);
+ }
+ touchGesture = "none";
+ updatePointerUpData(pointer);
  };
 
  window.addEventListener("mousedown", onMouseDown);
  window.addEventListener("mousemove", onMouseMove);
- window.addEventListener("touchstart", onTouchStart);
- window.addEventListener("touchmove", onTouchMove, { passive: false });
- window.addEventListener("touchend", onTouchEnd);
+ container.addEventListener("touchstart", onTouchStart, { passive: true });
+ container.addEventListener("touchmove", onTouchMove, { passive: true });
+ container.addEventListener("touchend", onTouchEnd);
+ container.addEventListener("touchcancel", onTouchEnd);
 
  /**
  * Updates pointer data when pressed down
@@ -1654,8 +1690,9 @@ export function initHeroFluid(
  cancelAnimationFrame(animationId);
  window.removeEventListener("mousedown", onMouseDown);
  window.removeEventListener("mousemove", onMouseMove);
- window.removeEventListener("touchstart", onTouchStart);
- window.removeEventListener("touchmove", onTouchMove);
- window.removeEventListener("touchend", onTouchEnd);
+ container.removeEventListener("touchstart", onTouchStart);
+ container.removeEventListener("touchmove", onTouchMove);
+ container.removeEventListener("touchend", onTouchEnd);
+ container.removeEventListener("touchcancel", onTouchEnd);
  };
 }
