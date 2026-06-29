@@ -258,10 +258,19 @@ export const STEP_TOOLS: Partial<Record<StepKey, ToolCategory[]>> = {
         },
         {
           name: "Reality Defender",
-          url: "https://www.realitydefender.com/platform/api",
+          url: "https://www.realitydefender.com/",
           description:
-            "Multi-model deepfake detection for images and audio with a free developer tier (limited monthly scans).",
+            "Multi-model deepfake detection for images, video, and audio — upload media or use the API for a quick authenticity check.",
           warning: "Free tier has scan limits. Results are one input among many.",
+          badges: ["Check now", "Free tier", "Web"],
+        },
+        {
+          name: "Aurigin.ai",
+          url: "https://aurigin.ai/",
+          description:
+            "Upload or submit audio to check for AI-generated, cloned, or synthetic voice — useful when a claim hinges on who supposedly said something.",
+          warning:
+            "Probabilistic output; novel voice clones may evade detection. Pair with source tracing and independent corroboration.",
           badges: ["Check now", "Free tier", "Web"],
         },
       ],
