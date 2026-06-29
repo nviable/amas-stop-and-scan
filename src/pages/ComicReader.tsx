@@ -3,7 +3,7 @@ import PdfReader from "../components/comics/PdfReader";
 import HeroSection from "../components/ui/HeroSection";
 import Icon from "../components/ui/Icon";
 import { HeroBadge } from "../components/ui/PageSections";
-import { comicThumbnail, getComicBySlug } from "../data/comics";
+import { comicThumbnail, formatComicAuthors, getComicBySlug } from "../data/comics";
 
 export default function ComicReader() {
   const { slug } = useParams<{ slug: string }>();
@@ -36,7 +36,9 @@ export default function ComicReader() {
             <div className="min-w-0 flex-1">
               <HeroBadge icon="menu_book" label="Comic Reader" />
               <h1 className="mt-sm font-display text-display-lg text-on-surface">{comic.title}</h1>
-              <p className="mt-xs text-body-sm font-semibold text-primary">By {comic.author}</p>
+              <p className="mt-xs text-body-sm font-semibold text-primary">
+                By {formatComicAuthors(comic.authors)}
+              </p>
               <p className="mt-md max-w-2xl text-body-md text-on-surface-variant">{comic.summary}</p>
             </div>
           </div>
@@ -45,7 +47,11 @@ export default function ComicReader() {
 
       <section className="px-margin-mobile pt-lg md:px-margin-desktop">
         <div className="mx-auto max-w-container-max">
-          <PdfReader url={comic.pdfPath} title={comic.title} author={comic.author} />
+          <PdfReader
+            url={comic.pdfPath}
+            title={comic.title}
+            author={formatComicAuthors(comic.authors)}
+          />
         </div>
       </section>
     </div>

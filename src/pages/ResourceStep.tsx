@@ -12,6 +12,14 @@ import { STEPS, stepByKey, stepDisplayTitle, type StepKey } from "../lib/framewo
 
 const VALID: StepKey[] = ["stop", "source", "content", "alignment", "reflect"];
 
+const STEP_VIDEO_URLS: Partial<Record<StepKey, string>> = {
+  stop: AMITO_VIDEOS.stop,
+  source: AMITO_VIDEOS.source,
+};
+
+const VIDEO_ATTRIBUTION =
+  "Content generated with the help of Google Omni and Eleven Labs";
+
 const STEP_CONFIG: Record<
   StepKey,
   {
@@ -94,6 +102,7 @@ export default function ResourceStep() {
   const toolCategories = getStepTools(key);
   const toolCount = toolCategories?.reduce((sum, c) => sum + c.tools.length, 0) ?? 0;
   const previewTools = toolCategories?.flatMap((c) => c.tools).slice(0, 5) ?? [];
+  const stepVideoUrl = STEP_VIDEO_URLS[key];
 
   return (
     <div>
@@ -143,11 +152,11 @@ export default function ResourceStep() {
       {/* Step video */}
       <section className="bg-surface-container-low px-margin-mobile py-xl md:px-margin-desktop">
         <div className="mx-auto max-w-4xl">
-          {key === "stop" ? (
+          {stepVideoUrl ? (
             <VideoTeaser
-              src={AMITO_VIDEOS.stop}
-              poster={youtubePoster(AMITO_VIDEOS.stop)}
-              label={`${titleDisplay}: Pause before you react`}
+              src={stepVideoUrl}
+              poster={youtubePoster(stepVideoUrl)}
+              label={`${titleDisplay}: ${config.headline}`}
               posterAlt={`${titleDisplay} step video`}
             />
           ) : (
@@ -156,6 +165,9 @@ export default function ResourceStep() {
               accentColor={config.bg}
             />
           )}
+          <p className="mt-md text-center text-body-sm text-on-surface-variant">
+            {VIDEO_ATTRIBUTION}
+          </p>
         </div>
       </section>
 

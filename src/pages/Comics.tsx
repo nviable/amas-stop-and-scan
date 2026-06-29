@@ -3,7 +3,7 @@ import AmitoSpotlight from "../components/AmitoSpotlight";
 import HeroSection from "../components/ui/HeroSection";
 import Icon from "../components/ui/Icon";
 import { HeroBadge } from "../components/ui/PageSections";
-import { COMICS, comicThumbnail } from "../data/comics";
+import { COMICS, comicThumbnail, formatComicAuthors } from "../data/comics";
 import { AMITO_IMAGES, PROJECT_TEAM } from "../lib/assets";
 
 const JULIAN_LAWRENCE_URL = "https://www.julianlawrence.net/";
@@ -93,7 +93,7 @@ export default function Comics() {
                     {comic.title}
                   </h3>
                   <p className="mb-sm text-body-sm font-semibold text-primary">
-                    By {comic.author}
+                    By {formatComicAuthors(comic.authors)}
                   </p>
                   <p className="mb-xl flex-grow text-body-sm text-on-surface-variant">
                     {comic.summary}

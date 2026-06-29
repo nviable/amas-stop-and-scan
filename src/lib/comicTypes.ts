@@ -4,7 +4,7 @@ export type ComicStrip = {
   /** URL slug for /comics/:slug */
   slug: string;
   title: string;
-  author: string;
+  authors: string[];
   summary: string;
   /** Path under public/, e.g. /comics/comic-charleen.pdf */
   pdfPath: string;
