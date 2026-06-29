@@ -1,5 +1,8 @@
 /** Optional CDN/R2 prefix — leave unset to serve from /public via the app origin. */
-const ASSET_BASE = import.meta.env.VITE_ASSET_BASE_URL?.replace(/\/$/, "") ?? "";
+const ASSET_BASE =
+  import.meta.env.PUBLIC_ASSET_BASE_URL?.replace(/\/$/, "") ??
+  import.meta.env.VITE_ASSET_BASE_URL?.replace(/\/$/, "") ??
+  "";
 
 /** Resolve a site-relative asset path (optionally prefixed for R2/CDN). */
 export function asset(path: string): string {

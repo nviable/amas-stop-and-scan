@@ -18,8 +18,8 @@ the friendly guide; STOP&SCAN is the brand.
 
 ## Tech stack
 
-- React + Vite + TypeScript
-- React Router
+- [Astro](https://astro.build) (static site generation; uses Vite under the hood)
+- React islands for interactive lesson, journal, comic reader, and video UI
 - Tailwind CSS
 - `localStorage` for the Reflection Journal and progress (no backend)
 - Static JSON for case files and resource content
@@ -28,8 +28,8 @@ the friendly guide; STOP&SCAN is the brand.
 
 ```bash
 npm install
-npm run dev      # start dev server
-npm run build    # type-check + production build to /dist
+npm run dev      # Astro dev server (Vite-powered)
+npm run build    # sitemap + production build to /dist
 npm run preview  # preview the production build
 npm run lint     # eslint
 ```
@@ -38,55 +38,41 @@ npm run lint     # eslint
 
 ```txt
 src/
-  components/        Layout, Nav, Footer, Amito, lesson + case media
+  components/
+    views/           Page-level React views (hydrated as islands)
+    lesson/          Lesson engine, choice UI
+    ui/              Header, footer, heroes, icons
   context/           JournalContext (localStorage)
   data/
-    cases/           Case files as JSON (financial scam is the first)
-    resources.ts     Per-step rationale (seeded from the framework paper)
-  lib/               framework constants, types, export helpers
-  pages/             Home, Learn, Practice, CaseFile, Resources, Journal, Project, MeetAmito, Comics
+    cases/           Case files as JSON
+    resources.ts     Per-step rationale
+  layouts/           BaseLayout.astro (SEO meta, shell)
+  lib/               framework constants, SEO, export helpers
+  pages/             Astro file-based routes (.astro)
 public/
-  amito/             Amito pose art (placeholder renders — swap with finals)
-  comics/            Comic strip PDFs, cover art, and thumbnails
+  amito/             Amito pose art
+  comics/            Comic strip PDFs, cover art, thumbnails
 ```
 
-## Amito assets
+## Deployment
 
-The images in `public/amito/` are AI-generated **placeholders** styled to match
-the Amito renders. Replace them with the final pose art using the same filenames
-(`greeting`, `stop`, `source`, `content`, `alignment`, `reflect`, `reward`).
+Builds to a static `/dist` and deploys as a Cloudflare static-assets Worker via
+`wrangler deploy`. Each route is pre-rendered HTML with per-page SEO metadata.
+Unknown paths serve `404.html` via the Worker's `not_found_handling: "404-page"`
+setting in `wrangler.jsonc`.
+
+Set `PUBLIC_SITE_URL` (no trailing slash) for the canonical URL in sitemap and Open Graph tags.
 
 ## Adding a case file
 
 Add a JSON file under `src/data/cases/` matching the `CaseFile` type in
 `src/lib/caseTypes.ts`, then register it in `src/data/cases/index.ts`. The lesson
-engine renders any conforming case. The schema already supports `authentic` and
-`decontextualized` cases so the framework can train calibration in both
-directions.
+engine renders any conforming case.
 
 ## Adding a comic strip
 
-1. Place the PDF in `public/comics/` (e.g. `public/comics/my-strip.pdf`).
-2. Add an optional thumbnail at `public/comics/thumbnails/my-strip.png` (first
-   page export works well; the gallery falls back to this path by slug).
-3. Register the strip in `src/data/comics.ts`:
+1. Place the PDF in `public/comics/`.
+2. Add an optional thumbnail at `public/comics/thumbnails/my-strip.png`.
+3. Register the strip in `src/data/comics.ts`.
 
-```ts
-{
-  id: "my-strip",
-  slug: "my-strip",
-  title: "My Strip Title",
-  summary: "One-line description for the gallery card.",
-  pdfPath: "/comics/my-strip.pdf",
-  thumbnail: "/comics/thumbnails/my-strip.png", // optional
-}
-```
-
-The gallery at `/comics` and reader at `/comics/:slug` update automatically.
-
-## Deployment
-
-Builds to a static `/dist` and deploys as a Cloudflare static-assets Worker via
-`wrangler deploy`. SPA routing fallback is handled by the Worker's
-`not_found_handling: "single-page-application"` setting in `wrangler.jsonc`, so no
-`_redirects` file is needed.
+The gallery at `/comics` and reader at `/comics/:slug` update automatically on the next build.

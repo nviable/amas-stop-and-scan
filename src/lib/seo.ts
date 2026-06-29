@@ -101,7 +101,7 @@ function resourceStepImage(key: StepKey): string {
   return asset(`/amito/pose-${key}.png`);
 }
 
-export function resolvePageSeo(pathname: string): PageSeo {
+export function resolvePageSeo(pathname: string, searchParams?: URLSearchParams): PageSeo {
   const staticMatch = STATIC_PAGES[pathname];
   if (staticMatch) return staticMatch;
 
@@ -155,7 +155,7 @@ export function resolvePageSeo(pathname: string): PageSeo {
     }
   }
 
-  if (pathname.startsWith("/journal/")) {
+  if (pathname === "/journal" && searchParams?.has("entry")) {
     return {
       title: `Reflection — My Journal — ${SITE.name}`,
       description:

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import AppLink from "../AppLink";
 import Icon from "./Icon";
 
 type SpeechBubbleProps = {
@@ -89,10 +89,10 @@ export function CtaBanner({
             <Icon name="arrow_forward" />
           </button>
         ) : (
-          <Link to={to ?? "/"} className={actionClass}>
+          <AppLink to={to ?? "/"} className={actionClass}>
             {label}
             <Icon name="arrow_forward" />
-          </Link>
+          </AppLink>
         )}
       </div>
     </section>

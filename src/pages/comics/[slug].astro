@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ComicReader from "../../components/views/ComicReader";
+import { COMICS } from "../../data/comics";
+
+export function getStaticPaths() {
+  return COMICS.map((comic) => ({
+    params: { slug: comic.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+---
+
+<BaseLayout>
+  <ComicReader client:only="react" slug={slug!} />
+</BaseLayout>

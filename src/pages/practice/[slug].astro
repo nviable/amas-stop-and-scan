@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CaseFilePage from "../../components/views/CaseFilePage";
+import { CASES } from "../../data/cases";
+
+export function getStaticPaths() {
+  return CASES.map((caseFile) => ({
+    params: { slug: caseFile.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+---
+
+<BaseLayout>
+  <CaseFilePage client:load slug={slug!} />
+</BaseLayout>

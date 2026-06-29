@@ -4,30 +4,31 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "node scripts/generate-sitemap.mjs && tsc -b && vite build",
-    "preview": "vite preview",
+    "dev": "astro dev",
+    "build": "node scripts/generate-sitemap.mjs && astro build",
+    "preview": "astro preview",
     "lint": "eslint .",
     "deploy": "npm run build && wrangler deploy",
     "cf:dev": "npm run build && wrangler dev",
     "stitch:fetch": "node scripts/fetch-stitch-screens.mjs"
   },
   "dependencies": {
+    "@astrojs/react": "^6.0.0",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.18.2",
     "lucide-react": "^1.21.0",
     "pdfjs-dist": "^5.4.296",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-pdf": "^10.4.1",
-    "react-player": "^3.4.0",
-    "react-router-dom": "^6.26.2"
+    "react-player": "^3.4.0"
   },
   "devDependencies": {
     "@google/stitch-sdk": "^0.1.0",
-    "@types/react": "^18.3.5",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
-    "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
@@ -35,7 +36,6 @@
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.5.4",
-    "vite": "^5.4.6",
     "wrangler": "^4.100.0"
   }
 }

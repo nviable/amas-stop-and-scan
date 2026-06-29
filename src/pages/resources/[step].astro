@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ResourceStep from "../../components/views/ResourceStep";
+import type { StepKey } from "../../lib/framework";
+
+export function getStaticPaths() {
+  const steps: StepKey[] = ["stop", "source", "content", "alignment", "reflect"];
+  return steps.map((step) => ({ params: { step } }));
+}
+
+const { step } = Astro.params;
+---
+
+<BaseLayout>
+  <ResourceStep client:load step={step!} />
+</BaseLayout>

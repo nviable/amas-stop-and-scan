@@ -1,5 +1,4 @@
 import { useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import type { CaseFile, ChoiceQuestion } from "../../lib/caseTypes";
 import { STEPS } from "../../lib/framework";
 import {
@@ -80,7 +79,6 @@ export default function LessonEngine({
   data: CaseFile;
   mode?: LessonMode;
 }) {
-  const navigate = useNavigate();
   const { upsertEntry, newEntryId } = useJournal();
   const idRef = useRef<string>(newEntryId());
   const [screen, setScreen] = useState<Screen>(1);
@@ -204,7 +202,7 @@ export default function LessonEngine({
 
   const finish = () => {
     upsertEntry(buildEntry(true));
-    navigate(`/journal/${idRef.current}`);
+    window.location.assign(`/journal?entry=${idRef.current}`);
   };
 
   const retake = () => {

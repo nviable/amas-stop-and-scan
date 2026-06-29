@@ -1,10 +1,11 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-const baseUrl = (process.env.VITE_SITE_URL || "https://amas-stop-and-scan.workers.dev").replace(
-  /\/$/,
-  "",
-);
+const baseUrl = (
+  process.env.PUBLIC_SITE_URL ||
+  process.env.VITE_SITE_URL ||
+  "https://amas-stop-and-scan.workers.dev"
+).replace(/\/$/, "");
 
 const casesDir = join("src", "data", "cases");
 const caseSlugs = readdirSync(casesDir)
