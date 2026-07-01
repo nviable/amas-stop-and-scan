@@ -8,12 +8,20 @@ import type { ComicStrip } from "../lib/comicTypes";
  * 2. Optionally add a cover/thumbnail at public/comics/ (e.g. stop-and-scan-cover.png)
  * 3. Add an entry below — slug should match the PDF filename without .pdf
  */
+/** Format author list for display, e.g. "A, B, and C". */
+export const formatComicAuthors = (authors: string[]): string => {
+  if (authors.length === 0) return "";
+  if (authors.length === 1) return authors[0];
+  if (authors.length === 2) return `${authors[0]} and ${authors[1]}`;
+  return `${authors.slice(0, -1).join(", ")}, and ${authors[authors.length - 1]}`;
+};
+
 export const COMICS: ComicStrip[] = [
   {
     id: "comic-charleen",
     slug: "comic-charleen",
     title: "STOP & SCAN! Real or AI?",
-    author: "Charleen Tang",
+    authors: ["Charleen Tang", "Issy Laing", "Katie Mcalister"],
     summary:
       "Charleen sits down with her phone as a flood of sensational posts, ads, and headlines compete for attention — a visual introduction to pausing before you trust what scrolls past.",
     pdfPath: "/comics/comic-charleen.pdf",

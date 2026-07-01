@@ -42,6 +42,7 @@ const AMITO_MEDIA = {
 export const AMITO_VIDEOS = {
   meetAmitoTeaser: "https://www.youtube.com/watch?v=zcNQUsBJ8vg",
   stop: "https://www.youtube.com/watch?v=E8HPyEh-SAk",
+  source: "https://www.youtube.com/watch?v=zSVFqOqMyxE",
 } as const;
 
 /** YouTube thumbnail for a watch URL or video id. */
