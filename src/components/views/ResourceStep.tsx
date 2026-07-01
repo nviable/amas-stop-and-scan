@@ -2,7 +2,7 @@ import AppLink from "../AppLink";
 import AmitoSpotlight from "../AmitoSpotlight";
 import Icon from "../ui/Icon";
 import VideoComingSoon from "../ui/VideoComingSoon";
-import VideoTeaser from "../ui/VideoTeaser";
+import YouTubeTeaser from "../ui/YouTubeTeaser";
 import StepHeroSection from "../ui/StepHeroSection";
 import { CtaBanner, HeroBadge } from "../ui/PageSections";
 import { RESOURCES } from "../../data/resources";
@@ -27,7 +27,7 @@ const STEP_CONFIG: Record<
   stop: {
     step: 1,
     headline: "Pause before you react",
-    textLight: true,
+    textLight: false,
     badgeIcon: "front_hand",
     ...FRAMEWORK_STEP_IMAGES.stop,
   },
@@ -48,14 +48,14 @@ const STEP_CONFIG: Record<
   alignment: {
     step: 4,
     headline: "Cross-check the story",
-    textLight: true,
+    textLight: false,
     badgeIcon: "hub",
     ...FRAMEWORK_STEP_IMAGES.alignment,
   },
   reflect: {
     step: 5,
     headline: "Decide with honest uncertainty",
-    textLight: true,
+    textLight: false,
     badgeIcon: "psychology",
     ...FRAMEWORK_STEP_IMAGES.reflect,
   },
@@ -143,7 +143,7 @@ export default function ResourceStep({ step }: { step: string }) {
       <section className="bg-surface-container-low px-margin-mobile py-xl md:px-margin-desktop">
         <div className="mx-auto max-w-4xl">
           {key === "stop" ? (
-            <VideoTeaser
+            <YouTubeTeaser
               src={AMITO_VIDEOS.stop}
               poster={youtubePoster(AMITO_VIDEOS.stop)}
               label={`${titleDisplay}: Pause before you react`}

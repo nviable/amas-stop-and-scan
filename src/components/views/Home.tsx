@@ -79,13 +79,13 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-lg md:grid-cols-2 lg:grid-cols-3">
             {(
               [
-                ["stop", "STOP", "Reclaim Your Attention", "text-white", FRAMEWORK_STEP_IMAGES.stop],
-                ["source", "SOURCE", "Verify the Origin", "text-on-surface", FRAMEWORK_STEP_IMAGES.source],
-                ["content", "CONTENT", "Analyze the Message", "text-on-surface", FRAMEWORK_STEP_IMAGES.content],
-                ["alignment", "ALIGN", "Check Your Values", "text-white", FRAMEWORK_STEP_IMAGES.alignment],
-                ["reflect", "REFLECT", "Act with Purpose", "text-white", FRAMEWORK_STEP_IMAGES.reflect],
+                ["stop", "STOP", "Reclaim Your Attention", FRAMEWORK_STEP_IMAGES.stop],
+                ["source", "SOURCE", "Verify the Origin", FRAMEWORK_STEP_IMAGES.source],
+                ["content", "CONTENT", "Analyze the Message", FRAMEWORK_STEP_IMAGES.content],
+                ["alignment", "ALIGN", "Check Your Values", FRAMEWORK_STEP_IMAGES.alignment],
+                ["reflect", "REFLECT", "Act with Purpose", FRAMEWORK_STEP_IMAGES.reflect],
               ] as const
-            ).map(([key, title, subtitle, textClass, step]) => (
+            ).map(([key, title, subtitle, step]) => (
               <AppLink
                 key={key}
                 to={`/resources/${key === "reflect" ? "reflect" : key}`}
@@ -93,14 +93,17 @@ export default function Home() {
                 style={{ backgroundColor: step.bg }}
               >
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white">
-                  <img alt="" className="h-10 w-10 object-contain" src={step.icon} />
+                  <img alt="" aria-hidden className="h-10 w-10 object-contain" src={step.icon} />
                 </div>
-                <h3 className={`font-display text-display-lg font-bold ${textClass}`}>{title}</h3>
-                <p className={`mb-lg font-body-md opacity-90 ${textClass}`}>{subtitle}</p>
+                <h3 className="font-display text-display-lg font-bold text-on-surface">{title}</h3>
+                <p className="mb-lg font-body-md text-on-surface opacity-90">{subtitle}</p>
                 <img
                   alt=""
+                  aria-hidden
                   className="mt-auto w-48 drop-shadow-lg"
                   src={step.amito}
+                  loading="lazy"
+                  decoding="async"
                 />
               </AppLink>
             ))}
