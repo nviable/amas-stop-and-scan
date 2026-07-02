@@ -16,6 +16,7 @@ export const PROJECT_MEMBERS = [
     photo: PROJECT_TEAM.saniatSohrawardi,
     website: "https://nviable.me",
     linkedin: "https://www.linkedin.com/in/sohrawardi/",
+    openToWork: true,
   },
   {
     key: "emanuel",

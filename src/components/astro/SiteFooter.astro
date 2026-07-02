@@ -1,0 +1,68 @@
+---
+import { LOGO_URL } from "../../lib/assets";
+import { pickHabitQuote } from "../../lib/habitQuotes";
+
+const habitQuote = pickHabitQuote();
+---
+
+<footer class="bg-inverse-surface text-inverse-on-surface no-print">
+  <div class="mx-auto max-w-container-max px-margin-mobile pb-xl pt-xxl md:px-margin-desktop">
+    <div class="mb-xxl grid grid-cols-1 gap-xxl md:grid-cols-4">
+      <div>
+        <div class="mb-lg flex items-center gap-sm">
+          <img
+            alt="STOP&SCAN logo"
+            class="h-8 w-8 brightness-0 invert"
+            src={LOGO_URL}
+            width={512}
+            height={512}
+            decoding="async"
+          />
+          <p class="font-display text-display-lg text-white">Stop & Scan</p>
+        </div>
+        <p class="text-body-md text-inverse-on-surface/80">
+          Equipping the next generation with the tools to navigate the digital
+          frontier with curiosity and critical thought.
+        </p>
+      </div>
+
+      <div>
+        <p class="mb-lg font-label-md uppercase tracking-widest text-white">Learn</p>
+        <ul class="space-y-sm text-body-md text-inverse-on-surface/80">
+          <li><a href="/learn" class="transition-colors hover:text-white">The Framework</a></li>
+          <li><a href="/practice" class="transition-colors hover:text-white">Case Studies</a></li>
+          <li><a href="/amito" class="transition-colors hover:text-white">Amito&apos;s Guide</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="mb-lg font-label-md uppercase tracking-widest text-white">Explore</p>
+        <ul class="space-y-sm text-body-md text-inverse-on-surface/80">
+          <li><a href="/resources" class="transition-colors hover:text-white">Resource hub</a></li>
+          <li><a href="/comics" class="transition-colors hover:text-white">Comics</a></li>
+          <li><a href="/journal" class="transition-colors hover:text-white">My Journal</a></li>
+          <li><a href="/styleguide" class="transition-colors hover:text-white">Style guide</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="mb-lg font-label-md uppercase tracking-widest text-white">The habit</p>
+        <p class="text-body-md italic text-inverse-on-surface/90">{habitQuote}</p>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-xl">
+      <p class="text-center font-label-md text-inverse-on-surface/80 md:text-left">
+        © 2026 STOP&SCAN is a project of the
+        <a
+          href="https://aiforgood.itu.int/multimedia-authenticity/amas-young-researcher-associate-programme/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline-offset-2 hover:underline"
+        >
+          AI for Good AMAS YRAP 2026 Cohort
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>

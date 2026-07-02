@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import AppLink from "../AppLink";
 import { LOGO_URL } from "../../lib/assets";
 
 const HABIT_QUOTES = [
@@ -52,19 +52,19 @@ export default function SiteFooter() {
             </h4>
             <ul className="space-y-sm text-body-md text-outline-variant">
               <li>
-                <Link className="transition-colors hover:text-white" to="/learn">
+                <AppLink className="transition-colors hover:text-white" to="/learn">
                   The Framework
-                </Link>
+                </AppLink>
               </li>
               <li>
-                <Link className="transition-colors hover:text-white" to="/practice">
+                <AppLink className="transition-colors hover:text-white" to="/practice">
                   Case Studies
-                </Link>
+                </AppLink>
               </li>
               <li>
-                <Link className="transition-colors hover:text-white" to="/amito">
+                <AppLink className="transition-colors hover:text-white" to="/amito">
                   Amito&apos;s Guide
-                </Link>
+                </AppLink>
               </li>
             </ul>
           </div>
@@ -75,24 +75,24 @@ export default function SiteFooter() {
             </h4>
             <ul className="space-y-sm text-body-md text-outline-variant">
               <li>
-                <Link className="transition-colors hover:text-white" to="/resources">
+                <AppLink className="transition-colors hover:text-white" to="/resources">
                   Resource hub
-                </Link>
+                </AppLink>
               </li>
               <li>
-                <Link className="transition-colors hover:text-white" to="/comics">
+                <AppLink className="transition-colors hover:text-white" to="/comics">
                   Comics
-                </Link>
+                </AppLink>
               </li>
               <li>
-                <Link className="transition-colors hover:text-white" to="/journal">
+                <AppLink className="transition-colors hover:text-white" to="/journal">
                   My Journal
-                </Link>
+                </AppLink>
               </li>
               <li>
-                <Link className="transition-colors hover:text-white" to="/styleguide">
+                <AppLink className="transition-colors hover:text-white" to="/styleguide">
                   Style guide
-                </Link>
+                </AppLink>
               </li>
             </ul>
           </div>

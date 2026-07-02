@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import StepTools from "../../../components/views/StepTools";
+import type { StepKey } from "../../../lib/framework";
+
+export function getStaticPaths() {
+  const toolSteps: StepKey[] = ["source", "content", "alignment"];
+  return toolSteps.map((step) => ({ params: { step } }));
+}
+
+const { step } = Astro.params;
+---
+
+<BaseLayout>
+  <StepTools client:load step={step!} />
+</BaseLayout>

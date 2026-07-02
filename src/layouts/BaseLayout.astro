@@ -1,0 +1,84 @@
+---
+import "../index.css";
+import { resolvePageSeo, absoluteUrl, SITE } from "../lib/seo";
+import { AMITO_IMAGES } from "../lib/assets";
+import SiteHeader from "../components/astro/SiteHeader.astro";
+import SiteFooter from "../components/astro/SiteFooter.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+  mainClass?: string;
+}
+
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const seo = resolvePageSeo(pathname, Astro.url.searchParams);
+const title = Astro.props.title ?? seo.title;
+const description = Astro.props.description ?? seo.description;
+const imagePath = Astro.props.image ?? seo.image ?? SITE.defaultImage;
+const noindex = Astro.props.noindex ?? seo.noindex ?? false;
+const mainClass = Astro.props.mainClass ?? "";
+
+const origin = Astro.site?.toString().replace(/\/$/, "") ?? Astro.url.origin;
+const pageUrl = absoluteUrl(pathname, origin);
+const imageUrl = absoluteUrl(imagePath, origin);
+
+const isLesson =
+  pathname.includes("/practice/") &&
+  !pathname.endsWith("/practice") &&
+  pathname.split("/").length > 2;
+const mainPadding = mainClass || (isLesson ? "pt-24" : "pt-20");
+const isHome = pathname === "/";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={SITE.themeColor} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta
+      property="og:image:alt"
+      content={`${SITE.name} — open hand stop icon in an orange circle`}
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <link rel="canonical" href={pageUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    {
+      isHome && (
+        <link
+          rel="preload"
+          as="image"
+          href={AMITO_IMAGES.greeting}
+          fetchpriority="high"
+        />
+      )
+    }
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="paper-texture flex min-h-screen flex-col">
+      <SiteHeader currentPath={pathname} />
+      <main class={`flex-1 ${mainPadding}`}>
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,175 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HomeHero from "../components/views/HomeHero";
+import YouTubeTeaser from "../components/ui/YouTubeTeaser";
+import {
+  AMITO_IMAGES,
+  AMITO_VIDEOS,
+  FRAMEWORK_STEP_IMAGES,
+} from "../lib/assets";
+
+const frameworkCards = [
+  ["stop", "STOP", "Reclaim Your Attention", FRAMEWORK_STEP_IMAGES.stop],
+  ["source", "SOURCE", "Verify the Origin", FRAMEWORK_STEP_IMAGES.source],
+  ["content", "CONTENT", "Analyze the Message", FRAMEWORK_STEP_IMAGES.content],
+  ["alignment", "ALIGN", "Check Your Values", FRAMEWORK_STEP_IMAGES.alignment],
+  ["reflect", "REFLECT", "Act with Purpose", FRAMEWORK_STEP_IMAGES.reflect],
+] as const;
+---
+
+<BaseLayout>
+  <div>
+    <HomeHero client:load />
+
+    <section class="bg-surface-container-low px-margin-mobile py-xl md:px-margin-desktop">
+      <div class="mx-auto max-w-4xl">
+        <YouTubeTeaser
+          client:visible
+          src={AMITO_VIDEOS.meetAmitoTeaser}
+          poster={AMITO_IMAGES.videoTeaser}
+          label="Teaser Video: Meet Amito"
+          posterAlt="Meet Amito teaser"
+        />
+      </div>
+    </section>
+
+    <section class="px-margin-mobile py-xxl md:px-margin-desktop">
+      <div class="mx-auto max-w-container-max">
+        <div class="mb-xl text-center">
+          <h2 class="font-display text-display-xl text-on-surface">The Framework</h2>
+          <p class="mt-sm text-body-lg text-on-surface-variant">
+            Simple steps to master digital resilience.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-lg md:grid-cols-2 lg:grid-cols-3">
+          {
+            frameworkCards.map(([key, title, subtitle, step]) => (
+              <a
+                href={`/resources/${key}`}
+                class="group flex flex-col items-center rounded-3xl p-xl text-center shadow-xl transition-transform hover:scale-[1.02]"
+                style={{ backgroundColor: step.bg }}
+              >
+                <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white">
+                  <img
+                    alt=""
+                    aria-hidden="true"
+                    class="h-10 w-10 object-contain"
+                    src={step.icon}
+                    width={64}
+                    height={64}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <h3 class="font-display text-display-lg font-bold text-on-surface">{title}</h3>
+                <p class="mb-lg font-body-md text-on-surface opacity-90">{subtitle}</p>
+                <img
+                  alt=""
+                  aria-hidden="true"
+                  class="mt-auto w-48 drop-shadow-lg"
+                  src={step.amito}
+                  width={1000}
+                  height={1000}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            ))
+          }
+
+          <div
+            class="flex flex-col items-center justify-center rounded-3xl bg-primary-container p-xl text-center text-white shadow-xl"
+          >
+            <h3 class="mb-md font-display text-display-lg font-bold">Ready to start?</h3>
+            <p class="mb-xl font-body-md opacity-90">
+              Dive into the full experience and build your digital resilience habit.
+            </p>
+            <a
+              href="/learn"
+              class="rounded-full bg-white px-xl py-md font-bold text-primary shadow-xl transition-transform hover:scale-105 active:scale-95"
+            >
+              Start Learning
+            </a>
+            <a
+              href="/resources"
+              class="mt-md flex items-center gap-xs font-label-md uppercase tracking-widest text-white/90 hover:text-white"
+            >
+              View Detailed Guide
+              <svg
+                aria-hidden="true"
+                class="inline-block size-[1em] shrink-0 text-sm"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="relative flex min-h-[500px] items-center overflow-hidden px-margin-mobile py-32 md:px-margin-desktop"
+    >
+      <div class="absolute inset-0 z-0">
+        <img
+          alt=""
+          aria-hidden="true"
+          class="h-full w-full object-cover blur-[2px]"
+          src={AMITO_IMAGES.videoTeaser}
+          width={1920}
+          height={1080}
+          loading="lazy"
+          decoding="async"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-on-surface/90 via-on-surface/70 to-on-surface/40"
+        >
+        </div>
+      </div>
+      <div class="relative z-10 mx-auto grid max-w-container-max items-center gap-xxl lg:grid-cols-2">
+        <div
+          class="rounded-2xl border border-white bg-white/95 p-xl shadow-2xl backdrop-blur-md"
+        >
+          <h2 class="mb-md font-display text-display-xl text-on-surface">Learn through Comics</h2>
+          <p class="mb-xl text-body-lg text-on-surface-variant">
+            Explore real-world digital dilemmas with Amito through engaging visual stories. See how
+            Stop & Scan works in action amidst the noise of the internet.
+          </p>
+          <a href="/comics" class="btn-primary inline-flex shadow-xl shadow-primary/20">
+            <svg
+              aria-hidden="true"
+              class="inline-block size-[1em] shrink-0"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M12 7v14"></path>
+              <path
+                d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+              ></path>
+            </svg>
+            Browse Comics
+          </a>
+        </div>
+        <div class="hidden justify-center lg:flex">
+          <img
+            alt="Amito reading comics"
+            class="max-w-md drop-shadow-2xl"
+            src={AMITO_IMAGES.comics}
+            width={1000}
+            height={1000}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

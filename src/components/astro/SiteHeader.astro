@@ -1,0 +1,49 @@
+---
+import { LOGO_URL } from "../../lib/assets";
+import { isNavActive, NAV_LINKS } from "../../lib/nav";
+import MobileNav from "../ui/MobileNav";
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+---
+
+<header class="fixed top-0 z-[70] w-full border-b border-on-surface/10 bg-background-paper/90 backdrop-blur-md no-print">
+  <div class="mx-auto flex h-20 max-w-container-max items-center justify-between px-margin-mobile md:px-margin-desktop">
+    <a href="/" class="flex shrink-0 items-center">
+      <img
+        alt="STOP&SCAN logo"
+        class="h-12 w-12 object-contain"
+        src={LOGO_URL}
+        width={512}
+        height={512}
+        decoding="async"
+      />
+    </a>
+
+    <nav class="hidden items-center gap-xl md:flex" aria-label="Main">
+      {NAV_LINKS.map(({ to, label }) => (
+        <a
+          href={to}
+          class:list={[
+            isNavActive(currentPath, to) ? "nav-link nav-link-active" : "nav-link",
+          ]}
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-md">
+      <a
+        href="/journal"
+        class="hidden rounded-full bg-primary px-lg py-sm font-label-md uppercase tracking-wide text-on-primary transition-all hover:opacity-90 active:scale-95 sm:inline-flex"
+      >
+        My Journal
+      </a>
+      <MobileNav client:load currentPath={currentPath} />
+    </div>
+  </div>
+</header>

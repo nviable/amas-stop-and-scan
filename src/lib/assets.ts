@@ -1,10 +1,19 @@
 /** Optional CDN/R2 prefix — leave unset to serve from /public via the app origin. */
-const ASSET_BASE = import.meta.env.VITE_ASSET_BASE_URL?.replace(/\/$/, "") ?? "";
+const ASSET_BASE =
+  import.meta.env.PUBLIC_ASSET_BASE_URL?.replace(/\/$/, "") ??
+  import.meta.env.VITE_ASSET_BASE_URL?.replace(/\/$/, "") ??
+  "";
 
 /** Resolve a site-relative asset path (optionally prefixed for R2/CDN). */
 export function asset(path: string): string {
   if (path.startsWith("http://") || path.startsWith("https://")) return path;
   return `${ASSET_BASE}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+/** Prefer an optimized WebP sibling for large raster assets. */
+export function rasterAsset(path: string): string {
+  const webp = path.replace(/\.(png|jpe?g)$/i, ".webp");
+  return asset(webp);
 }
 
 /** Brand assets in /public root. */
@@ -54,26 +63,26 @@ export function faviconFor(url: string, size = 128): string {
 }
 
 export const AMITO_IMAGES = {
-  greeting: asset(AMITO_POSE.greeting),
-  stop: asset(AMITO_POSE.stop),
-  source: asset(AMITO_POSE.source),
-  content: asset(AMITO_POSE.content),
-  alignment: asset(AMITO_POSE.alignment),
-  reflect: asset(AMITO_POSE.reflect),
-  reward: asset(AMITO_POSE.reward),
-  comics: asset(AMITO_POSE.comics),
-  project: asset(AMITO_POSE.project),
-  learn: asset(AMITO_POSE.learn),
-  postVideo: asset(AMITO_MEDIA.postVideo),
-  comicCover: asset(AMITO_MEDIA.comicCover),
-  videoTeaser: asset(AMITO_MEDIA.videoTeaser),
+  greeting: rasterAsset(AMITO_POSE.greeting),
+  stop: rasterAsset(AMITO_POSE.stop),
+  source: rasterAsset(AMITO_POSE.source),
+  content: rasterAsset(AMITO_POSE.content),
+  alignment: rasterAsset(AMITO_POSE.alignment),
+  reflect: rasterAsset(AMITO_POSE.reflect),
+  reward: rasterAsset(AMITO_POSE.reward),
+  comics: rasterAsset(AMITO_POSE.comics),
+  project: rasterAsset(AMITO_POSE.project),
+  learn: rasterAsset(AMITO_POSE.learn),
+  postVideo: rasterAsset(AMITO_MEDIA.postVideo),
+  comicCover: rasterAsset(AMITO_MEDIA.comicCover),
+  videoTeaser: rasterAsset(AMITO_MEDIA.videoTeaser),
 } as const;
 
 /** Team photos in /public/team/ */
 export const PROJECT_TEAM = {
-  fatmaAksu: asset("/team/fatma-aksu.png"),
-  saniatSohrawardi: asset("/team/saniat-sohrawardi.png"),
-  emanuelLukawiecki: asset("/team/emanuel-lukawiecki.png"),
+  fatmaAksu: rasterAsset("/team/fatma-aksu.png"),
+  saniatSohrawardi: rasterAsset("/team/saniat-sohrawardi.png"),
+  emanuelLukawiecki: rasterAsset("/team/emanuel-lukawiecki.png"),
   julianLawrence: asset("/team/julian-lawrence.jpg"),
 } as const;
 
@@ -88,27 +97,27 @@ const FRAMEWORK_ICONS = {
 export const FRAMEWORK_STEP_IMAGES = {
   stop: {
     icon: asset(FRAMEWORK_ICONS.stop),
-    amito: asset(AMITO_POSE.stop),
+    amito: rasterAsset(AMITO_POSE.stop),
     bg: "#f3a530",
   },
   source: {
     icon: asset(FRAMEWORK_ICONS.source),
-    amito: asset(AMITO_POSE.source),
+    amito: rasterAsset(AMITO_POSE.source),
     bg: "#6ae4e7",
   },
   content: {
     icon: asset(FRAMEWORK_ICONS.content),
-    amito: asset(AMITO_POSE.content),
+    amito: rasterAsset(AMITO_POSE.content),
     bg: "#82e896",
   },
   alignment: {
     icon: asset(FRAMEWORK_ICONS.alignment),
-    amito: asset(AMITO_POSE.alignment),
+    amito: rasterAsset(AMITO_POSE.alignment),
     bg: "#ea80dc",
   },
   reflect: {
     icon: asset(FRAMEWORK_ICONS.reflect),
-    amito: asset(AMITO_POSE.reflect),
+    amito: rasterAsset(AMITO_POSE.reflect),
     bg: "#f3a530",
   },
 } as const;
