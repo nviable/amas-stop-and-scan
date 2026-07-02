@@ -111,7 +111,7 @@ export default function Project() {
                   </div>
                   <h4 className="font-display text-headline-md">{member.name}</h4>
                   <p className="mt-1 text-body-sm opacity-70">{member.role}</p>
-                  <div className="mt-md flex justify-center gap-md">
+                  <div className="mt-md flex flex-wrap items-center justify-center gap-sm">
                     <a
                       href={member.website}
                       target="_blank"
@@ -130,6 +130,17 @@ export default function Project() {
                     >
                       <Icon name="linkedin" className="text-xl" />
                     </a>
+                    {"openToWork" in member && member.openToWork && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center rounded-full border border-content-green/50 bg-content-green/15 px-sm py-0.5 text-[10px] font-bold uppercase tracking-wide text-content-green transition-colors hover:border-content-green hover:bg-content-green/25"
+                        aria-label={`${member.name} is open to work — view LinkedIn`}
+                      >
+                        Open to work
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}
