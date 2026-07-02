@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import HomeHero from "../components/views/HomeHero";
 import YouTubeTeaser from "../components/ui/YouTubeTeaser";
 import {
   AMITO_IMAGES,
   AMITO_VIDEOS,
   FRAMEWORK_STEP_IMAGES,
-  LOGO_URL,
 } from "../lib/assets";
 
 const frameworkCards = [
@@ -19,75 +19,7 @@ const frameworkCards = [
 
 <BaseLayout>
   <div>
-    <section
-      class="hero-section relative overflow-hidden bg-gradient-to-br from-primary/5 via-welcome-blue/10 to-white px-margin-mobile py-xl md:px-margin-desktop md:py-xxl"
-    >
-      <div class="mx-auto grid max-w-container-max items-center gap-lg md:grid-cols-2 md:gap-xl">
-        <div class="z-10">
-          <img
-            alt="STOP&SCAN"
-            class="mb-sm h-auto w-full max-w-[240px] object-contain sm:max-w-[280px] md:max-w-[320px]"
-            src={LOGO_URL}
-            width={512}
-            height={512}
-            decoding="async"
-            fetchpriority="high"
-          />
-          <h1 class="font-display text-headline-md text-on-surface md:text-display-lg">
-            Empowering Digital Resilience
-          </h1>
-          <p class="mt-sm max-w-md text-body-md text-on-surface-variant md:text-body-lg">
-            <span class="font-semibold text-on-surface">STOP&SCAN</span> is a five-step habit for
-            pausing before you trust what you see online. Join Amito to practice pause, verify,
-            analyze, align, and reflect.
-          </p>
-          <div class="mt-lg flex flex-wrap gap-md md:mt-xl">
-            <a href="/learn" class="btn-primary shadow-xl shadow-primary/20">Start Learning</a>
-            <a href="/practice" class="btn-accent">
-              <svg
-                aria-hidden="true"
-                class="inline-block size-[1em] shrink-0"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"
-                ></path>
-              </svg>
-              Practice
-            </a>
-          </div>
-        </div>
-
-        <div
-          class="relative mx-auto flex max-w-[280px] items-center justify-center md:max-w-xs md:justify-self-end lg:max-w-sm"
-        >
-          <div
-            class="absolute inset-0 scale-110 rounded-full bg-gradient-to-tr from-primary/20 via-welcome-blue/10 to-transparent blur-3xl"
-            aria-hidden="true"
-          >
-          </div>
-          <img
-            src={AMITO_IMAGES.greeting}
-            alt="Amito waving"
-            class="relative z-10 w-full animate-float object-contain"
-            width={1000}
-            height={1000}
-            decoding="async"
-            fetchpriority="high"
-          />
-          <div
-            class="speech-bubble speech-bubble-br absolute top-[-20%] -right-4 z-20 max-w-[200px] rounded-2xl border border-on-surface/10 bg-white p-lg shadow-soft md:-right-4 md:max-w-[220px]"
-          >
-            <p class="font-hand text-handwritten-lg text-on-surface">
-              Hi! I'm Amito. Let's learn how to spot tricky content together!
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <HomeHero client:load />
 
     <section class="bg-surface-container-low px-margin-mobile py-xl md:px-margin-desktop">
       <div class="mx-auto max-w-4xl">
