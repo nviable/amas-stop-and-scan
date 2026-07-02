@@ -43,7 +43,7 @@ const { currentPath } = Astro.props;
       >
         My Journal
       </a>
-      <MobileNav client:idle currentPath={currentPath} />
+      <MobileNav client:load currentPath={currentPath} />
     </div>
   </div>
 </header>
