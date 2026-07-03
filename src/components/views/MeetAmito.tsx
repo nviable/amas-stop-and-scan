@@ -1,4 +1,5 @@
 import AmitoSpotlight from "../AmitoSpotlight";
+import AmitoToolkitBlock from "../AmitoToolkitBlock";
 import HeroSection from "../ui/HeroSection";
 import { CtaBanner, HeroBadge } from "../ui/PageSections";
 import { AMITO_IMAGES } from "../../lib/assets";
@@ -103,6 +104,8 @@ export default function MeetAmito() {
           </div>
         </div>
       </section>
+
+      <AmitoToolkitBlock className="bg-surface-container-low" />
 
       <CtaBanner
         title="Walk through it with Amito"

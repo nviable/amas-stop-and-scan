@@ -13,7 +13,7 @@
     "stitch:fetch": "node scripts/fetch-stitch-screens.mjs"
   },
   "dependencies": {
-    "@astrojs/react": "^6.0.0",
+    "@astrojs/react": "^4.4.2",
     "@astrojs/tailwind": "^6.0.2",
     "@fontsource/gochi-hand": "^5.2.8",
     "@fontsource/nunito-sans": "^5.2.7",
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@google/stitch-sdk": "^0.1.0",
+    "@types/qrcode": "^1.5.6",
     "@types/react": "^18.3.31",
     "@types/react-dom": "^18.3.7",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
@@ -36,9 +37,13 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.11",
     "postcss": "^8.4.47",
+    "qrcode": "^1.5.4",
     "sharp": "^0.35.3",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.5.4",
     "wrangler": "^4.100.0"
+  },
+  "overrides": {
+    "vite": "^6.4.3"
   }
 }

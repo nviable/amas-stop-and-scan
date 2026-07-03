@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AppLink from "../AppLink";
+import AmitoToolkitBlock from "../AmitoToolkitBlock";
 import Icon from "../ui/Icon";
 import StepHeroSection, { TEXT_LIGHT } from "../ui/StepHeroSection";
 import { HeroBadge } from "../ui/PageSections";
@@ -185,6 +186,8 @@ export default function StepTools({ step }: { step: string }) {
           ))}
         </div>
       </section>
+
+      <AmitoToolkitBlock className="border-t border-on-surface/5 bg-surface-container-low" />
 
       {/* Footer nav */}
       <section className="border-t border-on-surface/5 px-margin-mobile py-xl md:px-margin-desktop">

@@ -1,5 +1,6 @@
 import AppLink from "../AppLink";
 import AmitoSpotlight from "../AmitoSpotlight";
+import AmitoToolkitBlock from "../AmitoToolkitBlock";
 import HeroSection from "../ui/HeroSection";
 import Icon from "../ui/Icon";
 import { CtaBanner, HeroBadge } from "../ui/PageSections";
@@ -180,6 +181,8 @@ export default function Resources() {
           </div>
         </div>
       </section>
+
+      <AmitoToolkitBlock />
 
       <CtaBanner
         title="Put the guides into practice"
