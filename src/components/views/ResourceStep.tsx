@@ -15,6 +15,9 @@ const VALID: StepKey[] = ["stop", "source", "content", "alignment", "reflect"];
 const STEP_VIDEO_URLS: Partial<Record<StepKey, string>> = {
   stop: AMITO_VIDEOS.stop,
   source: AMITO_VIDEOS.source,
+  content: AMITO_VIDEOS.content,
+  alignment: AMITO_VIDEOS.alignment,
+  reflect: AMITO_VIDEOS.reflect,
 };
 
 const VIDEO_ATTRIBUTION =

@@ -43,6 +43,9 @@ export const AMITO_VIDEOS = {
   meetAmitoTeaser: "https://www.youtube.com/watch?v=zcNQUsBJ8vg",
   stop: "https://www.youtube.com/watch?v=E8HPyEh-SAk",
   source: "https://www.youtube.com/watch?v=zSVFqOqMyxE",
+  content: "https://www.youtube.com/watch?v=HhAjKIjnwJ4",
+  alignment: "https://www.youtube.com/watch?v=hDrMlVPko3U",
+  reflect: "https://www.youtube.com/watch?v=Gza4EpT_AMs",
 } as const;
 
 /** YouTube thumbnail for a watch URL or video id. */
