@@ -37,6 +37,7 @@ const AMITO_MEDIA = {
   postVideo: "/media/post-video.png",
   comicCover: "/comics/stop-and-scan-cover.png",
   videoTeaser: "/media/video-teaser.jpeg",
+  summitBanner: "/media/ai-for-good-summit-2026-banner.png",
 } as const;
 
 export const AMITO_VIDEOS = {
@@ -80,6 +81,8 @@ export const AMITO_IMAGES = {
   comicCover: rasterAsset(AMITO_MEDIA.comicCover),
   videoTeaser: rasterAsset(AMITO_MEDIA.videoTeaser),
 } as const;
+
+export const SUMMIT_BANNER = rasterAsset(AMITO_MEDIA.summitBanner);
 
 /** Team photos in /public/team/ */
 export const PROJECT_TEAM = {
