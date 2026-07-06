@@ -1,4 +1,3 @@
-import AiForGoodSummitBlock from "../AiForGoodSummitBlock";
 import AppLink from "../AppLink";
 import AmitoSpotlight from "../AmitoSpotlight";
 import HeroSection from "../ui/HeroSection";
@@ -54,8 +53,6 @@ export default function Home() {
           />
         </div>
       </HeroSection>
-
-      <AiForGoodSummitBlock />
 
       {/* Video teaser */}
       <section className="bg-surface-container-low px-margin-mobile py-xl md:px-margin-desktop">
