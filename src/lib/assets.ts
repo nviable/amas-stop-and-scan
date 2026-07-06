@@ -82,7 +82,7 @@ export const AMITO_IMAGES = {
   videoTeaser: rasterAsset(AMITO_MEDIA.videoTeaser),
 } as const;
 
-export const SUMMIT_BANNER = rasterAsset(AMITO_MEDIA.summitBanner);
+export const SUMMIT_BANNER = asset(AMITO_MEDIA.summitBanner);
 
 /** Team photos in /public/team/ */
 export const PROJECT_TEAM = {
