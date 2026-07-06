@@ -81,6 +81,9 @@ export const AMITO_IMAGES = {
   videoTeaser: rasterAsset(AMITO_MEDIA.videoTeaser),
 } as const;
 
+export const SUMMIT_BANNER =
+  "https://cdn.stopandscan.org/amito-geneva-banner-2026.jpeg";
+
 /** Team photos in /public/team/ */
 export const PROJECT_TEAM = {
   fatmaAksu: rasterAsset("/team/fatma-aksu.png"),

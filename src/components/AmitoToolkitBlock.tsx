@@ -72,7 +72,7 @@ export default function AmitoToolkitBlock({ className = "" }: AmitoToolkitBlockP
                   aren&apos;t free to use. Our program&apos;s technical cohort has been building{" "}
                   <strong className="font-semibold text-on-surface">Amito</strong>, the{" "}
                   <strong className="font-semibold text-on-surface">
-                    AI for Good Media Integrity Toolkit
+                    AI Media Integrity Toolkit
                   </strong>
                   : a conversational bot that turns the framework into an evolving, interactive
                   toolkit you can chat with.

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import AiForGoodSummitBlock from "../components/AiForGoodSummitBlock";
 import HomeHero from "../components/views/HomeHero";
 import YouTubeTeaser from "../components/ui/YouTubeTeaser";
 import {
@@ -20,6 +21,8 @@ const frameworkCards = [
 <BaseLayout>
   <div>
     <HomeHero client:load />
+
+    <AiForGoodSummitBlock client:visible />
 
     <section class="bg-surface-container-low px-margin-mobile py-xl md:px-margin-desktop">
       <div class="mx-auto max-w-4xl">
