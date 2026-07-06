@@ -45,8 +45,8 @@ export default function AiForGoodSummitBlock({ className = "" }: AiForGoodSummit
             alt="AI for Good Global Summit 2026 — AI and multimedia authenticity standards featuring STOP&SCAN and Amito"
             className="aspect-[16/9] w-full object-cover object-center"
             loading="eager"
-            width={1920}
-            height={1080}
+            width={1376}
+            height={768}
           />
 
           <div className="grid gap-sm p-md md:grid-cols-2 md:gap-md md:p-lg">
