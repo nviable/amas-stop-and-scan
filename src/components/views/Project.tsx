@@ -27,6 +27,11 @@ const PROJECT_MENTORS = [
       "Dir of AI and Data Science at Shutterstock, Global President of Women in AI, Co-chair Women4ethical AI",
   },
   { name: "Alexandra Trifan", detail: "Director of Operations, Datambit" },
+  {
+    name: "Xavier Bruni",
+    detail: "Co-founder of TrustMyContent",
+    linkedin: "https://www.linkedin.com/in/xbruni/",
+  },
 ] as const;
 
 export default function Project() {
@@ -159,6 +164,17 @@ export default function Project() {
                 >
                   <p className="font-display text-headline-md">{mentor.name}</p>
                   <p className="mt-1 text-body-sm opacity-60">{mentor.detail}</p>
+                  {"linkedin" in mentor && mentor.linkedin && (
+                    <a
+                      href={mentor.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-md inline-flex text-on-primary/70 transition-colors hover:text-on-primary"
+                      aria-label={`${mentor.name} on LinkedIn`}
+                    >
+                      <Icon name="linkedin" className="text-xl" />
+                    </a>
+                  )}
                 </div>
               ))}
             </div>
