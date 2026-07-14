@@ -25,12 +25,16 @@ const PROJECT_MENTORS = [
     name: "Alessandra Sala",
     detail:
       "Dir of AI and Data Science at Shutterstock, Global President of Women in AI, Co-chair Women4ethical AI",
+    linkedin: "https://www.linkedin.com/in/salaalessandra",
   },
-  { name: "Alexandra Trifan", detail: "Director of Operations, Datambit" },
   {
     name: "Xavier Bruni",
     detail: "Co-founder of TrustMyContent",
     linkedin: "https://www.linkedin.com/in/xbruni/",
+  },
+  {
+    name: "Alexandra Trifan",
+    detail: "Director of Operations, Datambit",
   },
 ] as const;
 
@@ -156,7 +160,7 @@ export default function Project() {
 
           <div>
             <h3 className="mb-xl text-center font-display text-display-lg">Project Mentors</h3>
-            <div className="flex flex-wrap justify-center gap-xl">
+            <div className="grid gap-xl sm:grid-cols-2 md:grid-cols-3">
               {PROJECT_MENTORS.map((mentor) => (
                 <div
                   key={mentor.name}
