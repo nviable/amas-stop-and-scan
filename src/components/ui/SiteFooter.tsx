@@ -1,6 +1,6 @@
 import { useState } from "react";
 import AppLink from "../AppLink";
-import { LOGO_URL } from "../../lib/assets";
+import { LOGO_URL, PARTNER_LOGOS } from "../../lib/assets";
 
 const HABIT_QUOTES = [
   "\"I don't know yet\" is a complete and honest answer. Uncertainty, properly calibrated, is protective.",
@@ -106,6 +106,34 @@ export default function SiteFooter() {
         </div>
 
         <div className="border-t border-white/10 pt-xl">
+          <p className="mb-lg font-label-md uppercase tracking-widest text-white">
+            In partnership with
+          </p>
+          <ul
+            className="mb-xl flex flex-wrap items-center justify-center gap-md md:justify-start"
+            aria-label="Partner organizations"
+          >
+            {PARTNER_LOGOS.map((partner) => (
+              <li key={partner.name}>
+                <a
+                  href={partner.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-16 items-center rounded-xl bg-background-paper px-md py-sm transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inverse-primary"
+                >
+                  <img
+                    alt={partner.name}
+                    className="h-10 w-auto max-w-[11rem] object-contain"
+                    src={partner.src}
+                    width={partner.width}
+                    height={partner.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
           <p className="text-center font-label-md text-outline-variant md:text-left">
             © 2026 STOP&SCAN is a project of the <a href="https://aiforgood.itu.int/multimedia-authenticity/amas-young-researcher-associate-programme/" target="_blank" rel="noopener noreferrer">AI for Good AMAS YRAP 2026 Cohort</a>
           </p>
