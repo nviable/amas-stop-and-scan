@@ -1,5 +1,5 @@
 ---
-import { LOGO_URL } from "../../lib/assets";
+import { LOGO_URL, PARTNER_LOGOS } from "../../lib/assets";
 import { pickHabitQuote } from "../../lib/habitQuotes";
 
 const habitQuote = pickHabitQuote();
@@ -52,6 +52,36 @@ const habitQuote = pickHabitQuote();
     </div>
 
     <div class="border-t border-white/10 pt-xl">
+      <p class="mb-lg font-label-md uppercase tracking-widest text-white">
+        In partnership with
+      </p>
+      <ul
+        class="mb-xl flex flex-wrap items-center justify-center gap-md md:justify-start"
+        aria-label="Partner organizations"
+      >
+        {
+          PARTNER_LOGOS.map((partner) => (
+            <li>
+              <a
+                href={partner.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex h-16 items-center rounded-xl bg-background-paper px-md py-sm transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inverse-primary"
+              >
+                <img
+                  src={partner.src}
+                  alt={partner.name}
+                  class="h-10 w-auto max-w-[11rem] object-contain"
+                  width={partner.width}
+                  height={partner.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
       <p class="text-center font-label-md text-inverse-on-surface/80 md:text-left">
         © 2026 STOP&SCAN is a project of the
         <a

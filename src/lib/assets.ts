@@ -20,6 +20,38 @@ export function rasterAsset(path: string): string {
 export const LOGO_URL = asset("/logo.png");
 export const ICON_URL = asset("/icon-512.png");
 
+/** Institutional affiliation logos shown in the site footer. */
+export const PARTNER_LOGOS = [
+  {
+    name: "International Telecommunication Union",
+    href: "https://www.itu.int/",
+    src: asset("/partners/itu.svg"),
+    width: 170,
+    height: 200,
+  },
+  {
+    name: "AI for Good",
+    href: "https://aiforgood.itu.int/",
+    src: asset("/partners/ai-for-good.png"),
+    width: 533,
+    height: 147,
+  },
+  {
+    name: "RIT ESL Global Cybersecurity Institute",
+    href: "https://www.rit.edu/cybersecurity/",
+    src: asset("/partners/rit-esl-cybersecurity.svg"),
+    width: 193,
+    height: 37,
+  },
+  {
+    name: "University of Bologna",
+    href: "https://www.unibo.it/",
+    src: asset("/partners/unibo.png"),
+    width: 415,
+    height: 136,
+  },
+] as const;
+
 const AMITO_POSE = {
   greeting: "/amito/home-waving.png",
   stop: "/amito/pose-stop.png",
