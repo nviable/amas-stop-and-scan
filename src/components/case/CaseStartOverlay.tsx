@@ -5,21 +5,14 @@ import { LOGO_URL } from "../../lib/assets";
 
 type CaseStartMode = "learn" | "practice";
 
-const COPY: Record<
-  CaseStartMode,
-  { eyebrow: string; eyebrowIcon: string; title: string; body: string }
-> = {
+const COPY: Record<CaseStartMode, { eyebrow: string; eyebrowIcon: string }> = {
   learn: {
     eyebrow: "Guided lesson",
     eyebrowIcon: "school",
-    title: "This is a training example",
-    body: "Amito will walk you through a reconstructed post from a real case. It isn't a live scam, and this website hasn't been hacked. The links are simulated and don't go anywhere.",
   },
   practice: {
     eyebrow: "Practice case",
     eyebrowIcon: "lightbulb",
-    title: "This is a training example",
-    body: "You're looking at a reconstructed example based on a past case. It isn't a live scam, and this website hasn't been hacked. The links are simulated and don't go anywhere.",
   },
 };
 
@@ -33,7 +26,6 @@ export default function CaseStartOverlay({
   onStart: () => void;
 }) {
   const titleId = useId();
-  const descriptionId = useId();
   const startRef = useRef<HTMLButtonElement>(null);
   const onStartRef = useRef(onStart);
   const copy = COPY[mode];
@@ -76,7 +68,6 @@ export default function CaseStartOverlay({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        aria-describedby={descriptionId}
         className="relative max-h-[calc(100vh-2rem)] w-full max-w-md overflow-y-auto rounded-xxl border border-on-surface/10 bg-white p-xl shadow-xl md:p-xxl"
       >
         <div className="mb-lg flex items-center justify-between">
@@ -98,14 +89,8 @@ export default function CaseStartOverlay({
         </div>
 
         <h2 id={titleId} className="font-display text-display-lg text-on-surface">
-          {copy.title}
+          This is a practice scenario
         </h2>
-        <p
-          id={descriptionId}
-          className="mt-md text-body-lg text-on-surface-variant"
-        >
-          {copy.body}
-        </p>
 
         <button
           ref={startRef}
