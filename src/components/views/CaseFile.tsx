@@ -3,6 +3,7 @@ import AppLink from "../AppLink";
 import Icon from "../ui/Icon";
 import LessonEngine from "../lesson/LessonEngine";
 import { PostCard } from "../case/CaseMedia";
+import CaseStartOverlay from "../case/CaseStartOverlay";
 import { getCaseBySlug } from "../../data/cases";
 import { AMITO_IMAGES } from "../../lib/assets";
 import { SpeechBubble } from "../ui/PageSections";
@@ -40,6 +41,7 @@ const PREVIEW_SKILLS = [
 export default function CaseFile({ slug }: { slug: string }) {
   const data = getCaseBySlug(slug);
   const [started, setStarted] = useState(false);
+  const [acknowledged, setAcknowledged] = useState(false);
 
   if (!data) {
     return (
@@ -58,6 +60,11 @@ export default function CaseFile({ slug }: { slug: string }) {
 
   return (
     <div className="px-margin-mobile pb-xxl pt-8 md:px-margin-desktop">
+      <CaseStartOverlay
+        mode="practice"
+        open={!acknowledged}
+        onStart={() => setAcknowledged(true)}
+      />
       <div className="mx-auto max-w-container-max">
         <div className="grid grid-cols-1 items-center gap-xxl lg:grid-cols-12">
           <div className="flex flex-col items-start lg:col-span-6">

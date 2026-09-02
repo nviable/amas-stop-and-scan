@@ -20,6 +20,7 @@ import {
   SearchResults,
   SourceFindings,
 } from "../case/CaseMedia";
+import CaseStartOverlay from "../case/CaseStartOverlay";
 
 type Screen = 1 | 2 | 3 | 4 | 5;
 type LessonMode = "learn" | "practice";
@@ -75,9 +76,11 @@ function flaggedLabels(question: ChoiceQuestion) {
 export default function LessonEngine({
   data,
   mode = "practice",
+  showStartOverlay,
 }: {
   data: CaseFile;
   mode?: LessonMode;
+  showStartOverlay?: boolean;
 }) {
   const { upsertEntry, newEntryId } = useJournal();
   const idRef = useRef<string>(newEntryId());
@@ -100,6 +103,8 @@ export default function LessonEngine({
   const [activeFindingIcon, setActiveFindingIcon] = useState<string | null>(null);
 
   const isLearn = mode === "learn";
+  const shouldShowStartOverlay = showStartOverlay ?? isLearn;
+  const [acknowledged, setAcknowledged] = useState(!shouldShowStartOverlay);
   const currentScanKey =
     screen >= 2 && screen <= 4 ? SCAN_STEP_KEY[screen as 2 | 3 | 4] : null;
   const currentChoice =
@@ -227,6 +232,11 @@ export default function LessonEngine({
 
   return (
     <div className="px-margin-mobile pb-xxl pt-4 md:px-margin-desktop">
+      <CaseStartOverlay
+        mode={mode}
+        open={!acknowledged}
+        onStart={() => setAcknowledged(true)}
+      />
       <div className="mb-lg">
         <StepProgress index={screen} />
       </div>
