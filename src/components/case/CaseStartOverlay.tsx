@@ -5,14 +5,19 @@ import { LOGO_URL } from "../../lib/assets";
 
 type CaseStartMode = "learn" | "practice";
 
-const COPY: Record<CaseStartMode, { eyebrow: string; eyebrowIcon: string }> = {
+const COPY: Record<
+  CaseStartMode,
+  { eyebrow: string; eyebrowIcon: string; body: string }
+> = {
   learn: {
     eyebrow: "Guided lesson",
     eyebrowIcon: "school",
+    body: "You'll learn the STOP&SCAN framework on a past case.",
   },
   practice: {
     eyebrow: "Practice case",
     eyebrowIcon: "lightbulb",
+    body: "You'll practice scanning a past case on your own.",
   },
 };
 
@@ -26,6 +31,7 @@ export default function CaseStartOverlay({
   onStart: () => void;
 }) {
   const titleId = useId();
+  const descriptionId = useId();
   const startRef = useRef<HTMLButtonElement>(null);
   const onStartRef = useRef(onStart);
   const copy = COPY[mode];
@@ -68,6 +74,7 @@ export default function CaseStartOverlay({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
+        aria-describedby={descriptionId}
         className="relative max-h-[calc(100vh-2rem)] w-full max-w-md overflow-y-auto rounded-xxl border border-on-surface/10 bg-white p-xl shadow-xl md:p-xxl"
       >
         <div className="mb-lg flex items-center justify-between">
@@ -91,6 +98,12 @@ export default function CaseStartOverlay({
         <h2 id={titleId} className="font-display text-display-lg text-on-surface">
           This is a practice scenario
         </h2>
+        <p
+          id={descriptionId}
+          className="mt-md text-body-lg text-on-surface-variant"
+        >
+          {copy.body}
+        </p>
 
         <button
           ref={startRef}
