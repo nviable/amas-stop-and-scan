@@ -37,6 +37,11 @@ export interface CaseFile {
     avatarColor: string;
     body: string;
     mediaCaption: string;
+    /** 16:9 still shown in the simulated media player (`/public/...`). */
+    thumbnail?: string;
+    /** Defaults to video (play control). Image posts hide the play overlay. */
+    mediaType?: "video" | "image";
+    mediaAlt?: string;
     stat: { likes: string; comments: string; shares: string };
     linkLabel: string;
     linkUrl: string;
