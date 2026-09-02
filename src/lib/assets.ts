@@ -113,6 +113,11 @@ export const AMITO_IMAGES = {
   videoTeaser: rasterAsset(AMITO_MEDIA.videoTeaser),
 } as const;
 
+/** 16:9 still for a case-file media player; falls back to the shared placeholder. */
+export function caseMediaThumbnail(path?: string): string {
+  return path ? rasterAsset(path) : AMITO_IMAGES.postVideo;
+}
+
 export const SUMMIT_BANNER =
   "https://cdn.stopandscan.org/amito-geneva-banner-2026.jpeg";
 

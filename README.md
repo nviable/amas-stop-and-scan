@@ -52,6 +52,7 @@ src/
 public/
   amito/             Amito pose art
   comics/            Comic strip PDFs, cover art, thumbnails
+  media/cases/       16:9 lineart stills for Learn/Practice post media
 ```
 
 ## Deployment

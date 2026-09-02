@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import type { CaseFile, SearchResult, SourceFinding } from "../../lib/caseTypes";
 import Icon from "../ui/Icon";
-import { AMITO_IMAGES } from "../../lib/assets";
+import { caseMediaThumbnail } from "../../lib/assets";
 
 export function PostCard({
   post,
@@ -21,6 +21,9 @@ export function PostCard({
   /** Draw attention to the comment control until the user opens it (e.g. Source step). */
   promptComments?: boolean;
 }) {
+  const thumbnail = caseMediaThumbnail(post.thumbnail);
+  const isVideo = (post.mediaType ?? "video") === "video";
+
   const renderBody = () => {
     if (!highlight) return post.body;
     let parts: Array<string | ReactElement> = [post.body];
@@ -81,17 +84,26 @@ export function PostCard({
         <p className="text-body-md leading-relaxed">{renderBody()}</p>
         <div className="relative aspect-video overflow-hidden rounded-xl bg-on-surface">
           <img
-            alt=""
-            className="h-full w-full object-cover opacity-80"
-            src={AMITO_IMAGES.postVideo}
+            alt={post.mediaAlt ?? ""}
+            className="h-full w-full object-cover"
+            src={thumbnail}
+            width={1280}
+            height={720}
+            loading="lazy"
+            decoding="async"
           />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-white/20 backdrop-blur-md transition-transform hover:scale-110">
-              <Icon name="play_arrow" className="text-4xl text-white" filled />
+          {isVideo && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/15">
+              <div
+                className="flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-md"
+                aria-hidden
+              >
+                <Icon name="play_arrow" className="text-4xl text-white" filled />
+              </div>
             </div>
-          </div>
+          )}
           <div className="absolute bottom-0 flex w-full items-center gap-xs bg-black/40 p-sm text-[10px] text-white backdrop-blur-sm">
-            <Icon name="play_circle" className="text-sm" />
+            <Icon name={isVideo ? "play_circle" : "image"} className="text-sm" />
             {post.mediaCaption}
           </div>
         </div>

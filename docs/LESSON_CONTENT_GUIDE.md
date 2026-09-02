@@ -70,7 +70,7 @@ Every case currently shows a **media area** under the post text.
 | **Media caption** | Yes | Short label under the media, e.g. `▶ Video: "I'm giving back to the people" — AI investment reveal` or `Image: rows of new graves described as being in Minab` |
 | **Alt text** (images) | Recommended | One sentence describing what's in the image for accessibility |
 
-> **Note:** The app currently uses a shared placeholder for post media. Contributors should still deliver the real file/URL — the dev team attaches it when building the case.
+> **Note:** Put a 16:9 still at `public/media/cases/{slug}.png` (WebP sibling generated on build) and set `post.thumbnail`. Use `mediaType: "image"` for photo posts so the play control is hidden. If `thumbnail` is omitted, the shared `/media/post-video.png` placeholder is used.
 
 ### Link in post (if any)
 
