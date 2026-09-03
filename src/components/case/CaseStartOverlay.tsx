@@ -104,6 +104,9 @@ export default function CaseStartOverlay({
         >
           {copy.body}
         </p>
+        <p className="mt-sm text-body-md text-on-surface-variant">
+          Every post, video, comment, and link you'll see is fabricated for this exercise. No real accounts, sites, or events are involved.
+        </p>
 
         <button
           ref={startRef}

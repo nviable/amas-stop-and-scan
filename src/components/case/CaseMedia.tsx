@@ -1,4 +1,4 @@
-import type { ReactElement } from "react";
+import { useState, type ReactElement } from "react";
 import type { CaseFile, SearchResult, SourceFinding } from "../../lib/caseTypes";
 import Icon from "../ui/Icon";
 import { caseMediaThumbnail } from "../../lib/assets";
@@ -23,6 +23,7 @@ export function PostCard({
 }) {
   const thumbnail = caseMediaThumbnail(post.thumbnail);
   const isVideo = (post.mediaType ?? "video") === "video";
+  const [linkNoteOpen, setLinkNoteOpen] = useState(false);
 
   const renderBody = () => {
     if (!highlight) return post.body;
@@ -108,9 +109,29 @@ export function PostCard({
           </div>
         </div>
         {post.linkLabel && (
-          <div className="flex items-center gap-xs text-sm text-source-cyan">
-            <Icon name="link" className="text-sm" />
-            <span className="underline underline-offset-2">{post.linkLabel}</span>
+          <div className="relative">
+            <button
+              type="button"
+              className="flex items-center gap-xs text-sm text-source-cyan"
+              title="Simulated link. Part of the scenario, not a real website."
+              aria-expanded={linkNoteOpen}
+              onClick={() => setLinkNoteOpen((open) => !open)}
+              onMouseEnter={() => setLinkNoteOpen(true)}
+              onMouseLeave={() => setLinkNoteOpen(false)}
+              onFocus={() => setLinkNoteOpen(true)}
+              onBlur={() => setLinkNoteOpen(false)}
+            >
+              <Icon name="link" className="text-sm" />
+              <span className="underline underline-offset-2">{post.linkLabel}</span>
+            </button>
+            {linkNoteOpen && (
+              <div
+                role="tooltip"
+                className="mt-xs w-fit max-w-full rounded-lg bg-on-surface px-sm py-xs text-xs text-white"
+              >
+                Simulated link. Part of the scenario, not a real website.
+              </div>
+            )}
           </div>
         )}
       </div>
